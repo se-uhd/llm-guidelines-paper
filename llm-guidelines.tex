@@ -1,0 +1,166 @@
+\documentclass[journal]{IEEEtran}
+
+% language and encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+%\usepackage{cite}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\setlength{\marginparwidth}{2cm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, fit}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+
+% editorial commands
+\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
+%\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
+
+% RFC 2119 (https://www.rfc-editor.org/rfc/rfc2119)
+% MUST: absolute requirement
+\newcommand{\must}{\textbf{MUST}\xspace}
+% MUST NOT: absolute prohibition
+\newcommand{\mustnot}{\textbf{MUST NOT}\xspace}
+% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course
+\newcommand{\should}{\textbf{SHOULD}\xspace}
+% SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
+\newcommand{\shouldnot}{\textbf{SHOULD NOT}\xspace}
+% MAY: an item is truly optional
+\newcommand{\may}{\textbf{MAY}\xspace}
+
+% command to indicate where certain information should be reported
+\newcommand{\paper}{PAPER\xspace}
+\newcommand{\supplementarymaterial}{SUPPLEMENTARY MATERIAL\xspace}
+
+% configure enumerate/itemize
+\usepackage[inline]{enumitem}
+
+% Get author names despite the fact that IEEEtran doesn't support it (it can't be used together with natbib)
+\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
+\addbibresource{literature.bib}
+
+\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
+
+% prevent single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% prevent single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+% commands to reference sections
+
+% scope
+\newcommand{\scope}{\href{/scope/}{Motivation and Scope}\xspace}
+
+% study types
+\newcommand{\studytypes}{\href{/study-types}{Study Types}\xspace}
+\newcommand{\llmsforresearcher}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineering-researchers}{LLMs as Tools for Software Engineering Researchers}\xspace}
+\newcommand{\annotators}{\href{/study-types\#llms-as-annotators}{LLMs as Annotators}\xspace}
+\newcommand{\judges}{\href{/study-types\#llms-as-judges}{LLMs as Judges}\xspace}
+\newcommand{\synthesis}{\href{/study-types\#llms-for-synthesis}{LLMs for Synthesis}\xspace}
+\newcommand{\participants}{\href{/study-types\#llms-as-participants}{LLMs as Participants}\xspace}
+\newcommand{\llmsforengineers}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineers}{LLMs as Tools for Software Engineers}\xspace}
+\newcommand{\llmusage}{\href{/study-types\#studying-llm-usage-in-software-engineering}{Studying LLM Usage in Software Engineering}\xspace}
+\newcommand{\newtools}{\href{/study-types\#llms-for-new-software-engineering-tools}{LLMs for New Software Engineering Tools}\xspace}
+\newcommand{\benchmarkingtasks}{\href{/study-types\#benchmarking-llms-for-software-engineering-tasks}{Benchmarking LLMs for Software Engineering Tasks}\xspace}
+
+%guidelines
+\newcommand{\guidelines}{\href{/guidelines}{Guidelines}\xspace}
+\newcommand{\usagerole}{\href{/guidelines\#declare-llm-usage-and-role}{Declare LLM Usage and Role}\xspace}
+\newcommand{\modelversion}{\href{/guidelines\#report-model-version-configuration-and-customizations}{Report Model Version, Configuration, and Customizations}\xspace}
+\newcommand{\toolarchitecture}{\href{/guidelines\#report-tool-architecture-beyond-models}{Report Tool Architecture beyond Models}\xspace}
+\newcommand{\humanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{Use Human Validation for LLM Outputs}\xspace}
+\newcommand{\prompts}{\href{/guidelines\#report-prompts-their-development-and-interaction-logs}{Report Prompts, their Development, and Interaction Logs}\xspace}
+\newcommand{\openllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{Use an Open LLM as a Baseline}\xspace}
+\newcommand{\benchmarksmetrics}{\href{/guidelines\#report-suitable-baselines-benchmarks-and-metrics}{Report Suitable Baselines, Benchmarks, and Metrics}\xspace}
+\newcommand{\limitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{Report Limitations and Mitigations}\xspace}
+
+\begin{document}
+
+\title{Evaluation Guidelines for Empirical Studies in Software Engineering involving LLMs.}
+
+\author{Sebastian Baltes\\
+University of Bayreuth, Germany\\
+sebastian.baltes@uni-bayreuth.de}
+
+\maketitle
+
+
+\begin{abstract}
+bla
+\end{abstract}
+
+\begin{IEEEkeywords}
+Software Engineering, Large Language Models, Empirical Research, Metascience, Guidelines
+\end{IEEEkeywords}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+In the short period since the release of ChatGPT in November 2022, large language models (LLMs) have changed the software engineering research landscape.
+While there are numerous opportunities to use LLMs for supporting research or software engineering tasks, solid science needs rigorous empirical evaluations.
+Such evaluations might explore the effectiveness, performance, and robustness of LLMs in different contexts, such as improving code quality, reducing development time, or supporting software documentation.
+However, it is often unclear how valid and reproducible results can be achieved with empirical studies involving LLMs - or what effect their usage has on the validity of empirical results.
+This uncertainty poses significant challenges for researchers aiming to draw reliable conclusions from empirical studies.
+
+One of the primary risks in creating unreproducible results stems from the variability in LLM performance due to differences in training data, model architecture, evaluation metrics, and the inherent non-determinism that those models possess.
+For example, slight changes in the training dataset or the hyperparameters can lead to significantly different outcomes, making it difficult to replicate studies.
+Additionally, the lack of standardized benchmarks and evaluation protocols further complicates the reproducibility of results.
+These issues highlight the need for clear guidelines and best practices to ensure that empirical studies with LLMs yield valid and reproducible results.
+Another aspect is that, without detailed information on the exact study setup, benchmarks, and metrics used, it is challenging for other researchers to replicate results using different models and tools.
+The importance of open science practices and documenting the study setup is not to be underestimated~\cite{DBLP:journals/corr/abs-2412-17859}.
+
+There has been extensive work developing guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g., \emph{Experimentation in Software Engineering}~\cite{DBLP:books/sp/WohlinRHORW24} or \emph{Guide to Advanced Empirical Software Engineering}~\cite{DBLP:books/sp/08/SSS2008}) or their replications (e.g., [A Procedure and \emph{Guidelines for Analyzing Groups of Software Engineering Replications}~\cite{DBLP:journals/tse/SantosVOJ21}).
+We believe that LLMs have specific intrinsic characteristics that require specific guidelines for researchers to achieve an acceptable level of reproducibility.
+However, so far, there are no specific guidelines for conducting and assessing studies involving LLMs in software engineering research.
+
+For example, even if we know the specific version of an LLM used for an empirical study, the reported performance for the studied tasks can change over time, especially for commercial models that evolve beyond version identifiers~\cite{DBLP:journals/corr/abs-2307-09009}.
+Moreover, commercial providers do not guarantee the availability of old versions indefinitely.
+Besides versions, LLMs' performance widely varies depending on configured parameters such as temperature.
+Therefore, not reporting the parameter settings impacts the reproducibility of the research.
+Even for ``open'' models such as Llama, we do not know how they were fine-tuned for specific tasks and what the exact training data was~\cite{Gibney2024}.
+For example, when evaluating LLMs' performance for certain programming tasks, it would be relevant to know whether the solution to a certain problem was part of the training data or not.
+
+\section{Scope}
+
+First, we want to clarify that our focus is on LLMs, that is natural language use cases.
+Multi-modal foundational models are beyond the scope of our guidelines.
+We are aware that these foundational models have a huge potential for supporting software engineering research and practice.
+However, due to the diversity of  the artifacts that can be generated or used as input (e.g., images, audio, and video) and the more demanding hardware requirements, we deliberately focus on LLMs alone.
+However, our guidelines could be extended in the future to include foundational models beyond text.
+
+Second, given the exponential growth in LLM usage across all research domains, we also want to define the study types to which our guidelines apply.
+LLMs are already widely used to support several aspects of the overall research process---from fairly simple tasks such as proof-reading, spell-checking, and text translation, to more complex activities such as data coding and synthesis of literature reviews.
+The \studytypes and \guidelines we describe are tailored to software engineering research, but we expect many of those study types to generalize beyond that domain.
+We focus on AI for software engineering (AI4SE), that is, studying the support and automation of software engineering tasks with the help of artificial intelligence (AI), more specifically LLMs (see Section~\llmsforengineers), as well as empirical software engineering research supported by LLMs (see Section~\llmsforresearcher).
+By research support, we mean active involvement of LLMs in data collection, processing, or analysis.
+We consider LLMs supporting writing or LLMs supporting study design to be out-of-scope for our guidelines.
+
+Third, with our guidelines, we mainly target researchers planning, designing, or conducting empirical studies involving LLMs.
+While the researchers reviewing scientific articles written by others can also use our guidelines, e.g., to check whether authors adhere to the \must requirements, reviewers are not our main target audience.
+
+%\bibliographystyle{IEEEtran}
+%\bibliography{literature,is,hci,se}
+\printbibliography
+
+\end{document}
