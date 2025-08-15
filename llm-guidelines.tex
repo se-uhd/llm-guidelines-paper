@@ -262,9 +262,27 @@ While the researchers reviewing scientific articles written by others can also u
 The development of empirical guidelines for software engineering (SE) studies involving large language models (LLMs) is crucial for ensuring the validity and reproducibility of results.
 However, these guidelines must be tailored for different study types that pose unique challenges.
 Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
-
 Our \guidelines use the following study types to contextualize the recommendations we provide.
 We present the study types independent of specific guidelines, that is, the guidelines refer to the study types but not the other way around.
+The study types are:
+
+\vspace{0.5\baselineskip}
+\begin{enumerate}[label=\Alph*.]
+    \item \emph{\llmsforresearcher}
+    \begin{enumerate}[label=\arabic*)]
+        \item \annotators
+        \item \judges
+        \item \synthesis
+        \item \subjects
+    \end{enumerate}
+    \item \emph{\llmsforengineers}
+    \begin{enumerate}[label=\arabic*)]
+        \setcounter{enumii}{4}
+        \item \llmusage
+        \item \newtools
+        \item \benchmarkingtasks
+    \end{enumerate}
+\end{enumerate}
 
 \subsection{LLMs as Tools for Software Engineering Researchers}
 \label{sec:llms-as-tools-for-software-engineering-researchers}
@@ -310,7 +328,7 @@ While generally cost-effective, LLM annotation requires careful management of pe
 Finally, research has identified consistent biases in label assignment, including tendencies to overestimate certain labels and misclassify neutral content, particularly in stance detection tasks~\cite{DBLP:journals/corr/abs-2304-10145}.
 
 
-\subsection{LLMs as Judges}
+\subsubsection{LLMs as Judges}
 \label{sec:llms-as-judges}
 
 LLMs can act as judges or raters to evaluate properties of software artifacts.
@@ -359,7 +377,7 @@ Research is ongoing as to how suitable LLMs are as standalone judges. Questions 
 A lack of large-scale ground truth datasets for benchmarking LLM performance on judgment studies is hindering progress on evaluating research in this area.
 
 
-\subsection{LLMs for Synthesis}
+\subsubsection{LLMs for Synthesis}
 \label{sec:llms-for-synthesis}
 
 LLMs can support synthesis tasks in software engineering research by processing and distilling information from qualitative data sources.
@@ -390,7 +408,7 @@ The proprietary nature of many LLMs limits transparency. In particular, it is un
 Furthermore, reproducibility issues persist due to inconsistencies across inferences, model versions, and prompt variations.
 
 % Reverted back to "subject", as participant seems to be primarily used for humans: see  https://dictionary.apa.org/subject and https://dictionary.apa.org/participant
-\subsection{LLMs as Subjects}
+\subsubsection{LLMs as Subjects}
 \label{sec:llms-as-subjects}
 
 In empirical studies, data is collected from participants through methods such as surveys, interviews, or controlled experiments.
@@ -430,7 +448,7 @@ Beyond construct validity, internal validity must also be considered, particular
 External validity also remains a challenge, as findings based on LLMs may not generalize to humans.
 
 
-\subsection{LLMs as Tools for Software Engineers}
+\subsubsection{LLMs as Tools for Software Engineers}
 \label{sec:llms-as-tools-for-software-engineers}
 
 LLM-based assistants have become an essential tool for software engineers, supporting them in various tasks such as code generation, summarization, and repair.
@@ -561,8 +579,7 @@ For more details on benchmarks, see our guideline \benchmarksmetrics.
 \section{Guidelines}
 \label{sec:guidelines}
 
-The wording of the recommendations (\must, \should, \may) follows RFC 2119~\cite{rfc2119} and RFC 8174~\cite{rfc8174}.
-
+The wording of our recommendations (\must, \should, \may) follows RFC 2119~\cite{rfc2119} and RFC 8174~\cite{rfc8174}.
 Throughout the guidelines, we mention what information we expect to be reported in the \paper or in the \supplementarymaterial.
 We are aware that different venues have different page limits and that not everything can be reported in the paper.
 It is of course better to report essential information that we expect to be reported in the paper in the supplementary material than not at all.
@@ -578,9 +595,22 @@ The guidelines could be extended in the future to make this more visible.
 The main goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical studies involving LLMs in software engineering.
 While we consider LLM-based studies to have characteristics that differ from traditional empirical studies (e.g., their inherent non-determinism and the fact that truly open models are rare), previous guidelines regarding open science and  empirical studies still apply.
 While full reproducibility of LLM study results is very challenging given LLM's non-determinism, transparency on LLM usage, methods, data, and architecture, as suggested by our guidelines, is an essential prerequisite for future replication studies.
+Our guidelines are structured as follows:
+
+\vspace{0.5\baselineskip}
+\begin{enumerate}[label=\arabic*)]
+    \item \emph{\usagerole}
+    \item \emph{\modelversion}
+    \item \emph{\toolarchitecture}
+    \item \emph{\prompts}
+    \item \emph{\humanvalidation}
+    \item \emph{\openllm}
+    \item \emph{\benchmarksmetrics}
+    \item \emph{\limitationsmitigations}
+\end{enumerate}
 
 \subsection{Declare LLM Usage and Role}
-\label{sec:sec:declare-llm-usage-and-role}
+\label{sec:declare-llm-usage-and-role}
 
 \vspace{0.5\baselineskip}
 \begin{framed}
