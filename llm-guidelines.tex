@@ -1,10 +1,31 @@
-\documentclass[journal]{IEEEtran}
+\documentclass[sigconf, nonacm]{acmart}
+\settopmatter{printacmref=false}
+
+% get rid of warning
+\setlength{\headheight}{15.45749pt}
+
+% turn the "country missing" check into a warning instead of an error
+\makeatletter
+\def\@ACM@checkaffil{%
+  \if@ACM@instpresent\else
+    \ClassWarningNoLine{\@classname}{No institution present for an affiliation}%
+  \fi
+  \if@ACM@citypresent\else
+    \ClassWarningNoLine{\@classname}{No city present for an affiliation}%
+  \fi
+  \if@ACM@countrypresent\else
+    \ClassWarningNoLine{\@classname}{No country present for an affiliation}%
+  \fi
+}
+\makeatother
 
 % language and encoding
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
 
-\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amsmath, amsfonts} % amssymb
+\usepackage{balance}
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{array}
@@ -15,6 +36,7 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 %\usepackage{cite}
+\usepackage{natbib}
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 
 \setlength{\marginparwidth}{2cm}
@@ -28,6 +50,7 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{xspace}
+\usepackage{dashrule}
 
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
@@ -57,8 +80,8 @@
 \usepackage[inline]{enumitem}
 
 % Get author names despite the fact that IEEEtran doesn't support it (it can't be used together with natbib)
-\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
-\addbibresource{literature.bib}
+%\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
+%\addbibresource{literature.bib}
 
 \newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
 
@@ -98,7 +121,7 @@
 \usepackage{listings}
 \usepackage{textcomp} % fix single quotes in listings environments
 \lstset{
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\scriptsize,
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
@@ -151,48 +174,85 @@
   leftline=true
 ]{framed}
 
-\begin{document}
-
 \title{Evaluation Guidelines for Empirical Studies in Software Engineering involving LLMs}
 
-\author{
-    \IEEEauthorblockN{Sebastian Baltes\IEEEauthorrefmark{1}, Florian Angermeir\IEEEauthorrefmark{2}, Chetan Arora\IEEEauthorrefmark{3}, Marvin Muñoz Barón\IEEEauthorrefmark{4}, Lukas Böhme\IEEEauthorrefmark{5}, Fabio Calefato\IEEEauthorrefmark{6}, Chunyang Chen\IEEEauthorrefmark{4}, Neil Ernst\IEEEauthorrefmark{7}, Davide Falessi\IEEEauthorrefmark{8}, Brian Fitzgerald\IEEEauthorrefmark{9}, Davide Fucci\IEEEauthorrefmark{10}, Marcos Kalinowski\IEEEauthorrefmark{11}, Stefano Lambiase\IEEEauthorrefmark{12}, Mircea Lungu\IEEEauthorrefmark{13}, Lutz Prechelt\IEEEauthorrefmark{14}, Paul Ralph\IEEEauthorrefmark{15}, Christoph Treude\IEEEauthorrefmark{16}, Stefan Wagner\IEEEauthorrefmark{4}}
-    
-    \IEEEauthorblockA{\IEEEauthorrefmark{1}University of Bayreuth, Germany (sebastian.baltes@uni-bayreuth.de)}
-    
-    \IEEEauthorblockA{\IEEEauthorrefmark{2}fortiss, Germany, and Blekinge Institute of Technology, Sweden (angermeir@fortiss.org)}
+\begin{document}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{3}Monash University, Australia (chetan.arora@monash.edu)}
+\author{Sebastian Baltes}
+\affiliation{\institution{University of Bayreuth, Germany}}
+\email{sebastian.baltes@uni-bayreuth.de}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{4}Technical University of Munich, Germany (\{marvin.munoz-baron, stefan.wagner\}@tum.de)}
+\author{Florian Angermeir}
+\affiliation{\institution{fortiss, Germany}}
+\affiliation{\institution{BTH, Sweden}}
+\email{angermeir@fortiss.org}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{5}HPI, University of Potsdam, Germany (lukas.boehme@hpi.de)}
+\author{Chetan Arora}
+\affiliation{\institution{Monash University, Australia}}
+\email{chetan.arora@monash.edu}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{6}University of Bari, Italy (fabio.calefato@uniba.it)}
+\author{Marvin Muñoz Barón}
+\affiliation{\institution{TU Munich, Germany}}
+\email{marvin.munoz-baron@tum.de}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{7}University of Victoria, Canada (nernst@uvic.ca)}
+\author{Lukas Böhme}
+\affiliation{\institution{HPI, University of Potsdam, Germany}}
+\email{lukas.boehme@hpi.de}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{8}University of Rome ``Tor Vergata'', Italy (falessi@ing.uniroma2.it)}
+\author{Fabio Calefato}
+\affiliation{\institution{University of Bari, Italy}}
+\email{fabio.calefato@uniba.it}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{9}Lero and University of Limerick, Ireland (brian.fitzgerald@ul.ie)}   
+\author{Chunyang Chen}
+\affiliation{\institution{TU Munich, Germany}}
+\email{chun-yang.chen@tum.de}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{10}Blekinge Institute of Technology, Sweden (davide.fucci@bth.se)}
+\author{Neil Ernst}
+\affiliation{\institution{University of Victoria, Canada}}
+\email{nernst@uvic.ca}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{11}Pontifical Catholic University of Rio de Janeiro, Brazil (kalinowski@inf.puc-rio.br)}
+\author{Davide Falessi}
+\affiliation{\institution{University of Rome, Italy}}
+\email{falessi@ing.uniroma2.it}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{12}University of Salerno, Italy (slambiase@unisa.it)}
+\author{Brian Fitzgerald}
+\affiliation{\institution{Lero, Ireland}}
+\affiliation{\institution{University of Limerick, Ireland}}
+\email{brian.fitzgerald@ul.ie}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{13}IT University of Copenhagen, Denmark (mlun@itu.dk)}
+\author{Davide Fucci}
+\affiliation{\institution{BTH, Sweden}}
+\email{davide.fucci@bth.se}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{14}Free University of Berlin, Germany (prechelt@inf.fu-berlin.de)}
+\author{Marcos Kalinowski}
+\affiliation{\institution{PUC Rio de Janeiro, Brazil}}
+\email{kalinowski@inf.puc-rio.br}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{15}Dalhousie University, Canada (paulralph@dal.ca)}
+\author{Stefano Lambiase}
+\affiliation{\institution{University of Salerno, Italy}}
+\email{slambiase@unisa.it}
 
-    \IEEEauthorblockA{\IEEEauthorrefmark{16}Singapore Management University, Singapore (ctreude@smu.edu.sg)}
-}
+\author{Mircea Lungu}
+\affiliation{\institution{IT University Copenhagen, Denmark}}
+\email{mlun@itu.dk}
 
-\maketitle
+\author{Lutz Prechelt}
+\affiliation{\institution{Freie Universität Berlin, Germany}}
+\email{prechelt@inf.fu-berlin.de}
 
+\author{Paul Ralph}
+\affiliation{\institution{Dalhousie University, Canada}}
+\email{paulralph@dal.ca}
+
+\author{Christoph Treude}
+\affiliation{\institution{SMU, Singapore}}
+\email{ctreude@smu.edu.sg}
+
+\author{Stefan Wagner}
+\affiliation{\institution{TU Munich, Germany}}
+\email{stefan.wagner@tum.de}
+
+\renewcommand{\shortauthors}{Baltes et al.}
 
 \begin{abstract}
 Large language models (LLMs) are increasingly being integrated into software engineering (SE) research and practice, yet their non-determinism, opaque training data, and evolving architectures complicate the reproduction and replication of empirical studies.
@@ -202,9 +262,9 @@ Our goal is to enable reproducibility and replicability despite LLM-specific bar
 We maintain the study types and guidelines online as a living resource for the community to use and shape (see \href{https://llm-guidelines.org/}{llm-guidelines.org}).
 \end{abstract}
 
-\begin{IEEEkeywords}
-Software Engineering, Large Language Models, Empirical Research, Metascience, Guidelines
-\end{IEEEkeywords}
+%\keywords{software engineering, large language models, empirical research, meta-science, guidelines}
+
+\maketitle
 
 \section{Introduction}
 \label{sec:introduction}
@@ -222,7 +282,7 @@ These issues highlight the need for clear guidelines and best practices to ensur
 Another aspect is that, without detailed information on the exact study setup, benchmarks, and metrics used, it is challenging for other researchers to replicate results using different models and tools.
 The importance of open science practices and documenting the study setup is not to be underestimated~\cite{DBLP:journals/corr/abs-2412-17859}.
 
-There has been extensive work developing guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g., \emph{Experimentation in Software Engineering}~\cite{DBLP:books/sp/WohlinRHORW24} or \emph{Guide to Advanced Empirical Software Engineering}~\cite{DBLP:books/sp/08/SSS2008}) or their replications (e.g., [A Procedure and \emph{Guidelines for Analyzing Groups of Software Engineering Replications}~\cite{DBLP:journals/tse/SantosVOJ21}).
+There has been extensive work developing guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g., \emph{Experimentation in Software Engineering}~\cite{DBLP:books/sp/WohlinRHORW24} or \emph{Guide to Advanced Empirical Software Engineering}~\cite{DBLP:books/sp/08/SSS2008}) or their replications (e.g., \emph{A Procedure and Guidelines for Analyzing Groups of Software Engineering Replications}~\cite{DBLP:journals/tse/SantosVOJ21}).
 
 As motivated in our previous position paper~\cite{DBLP:conf/wsese/0001BFB25}, we believe that LLMs have specific intrinsic characteristics that require specific guidelines for researchers to achieve an acceptable level of reproducibility.
 For example, even if we know the specific version of an LLM used for an empirical study, the reported performance for the studied tasks can change over time, especially for commercial models that evolve beyond version identifiers~\cite{DBLP:journals/corr/abs-2307-09009}.
@@ -266,33 +326,35 @@ Our \guidelines use the following study types to contextualize the recommendatio
 We present the study types independent of specific guidelines, that is, the guidelines refer to the study types but not the other way around.
 The study types are:
 
-\vspace{0.5\baselineskip}
-\begin{enumerate}[label=\Alph*.]
-    \item \emph{\llmsforresearcher}
-    \begin{enumerate}[label=\arabic*)]
+\par\noindent\rule{\columnwidth}{0.5pt}
+\begin{enumerate}[label=3.\arabic*]
+    \item \textbf{\llmsforresearcher}
+    \begin{enumerate}[label=3.1.\arabic*]
         \item \annotators
         \item \judges
         \item \synthesis
         \item \subjects
     \end{enumerate}
-    \item \emph{\llmsforengineers}
-    \begin{enumerate}[label=\arabic*)]
-        \setcounter{enumii}{4}
+    \item \textbf{\llmsforengineers}
+    \begin{enumerate}[label=3.2.\arabic*]
+        %\setcounter{enumii}{4}
         \item \llmusage
         \item \newtools
         \item \benchmarkingtasks
     \end{enumerate}
 \end{enumerate}
+\par\noindent\rule{\columnwidth}{0.5pt}
 
 \subsection{LLMs as Tools for Software Engineering Researchers}
 \label{sec:llms-as-tools-for-software-engineering-researchers}
 
 LLMs can be leveraged as powerful tools to assist researchers conducting empirical studies.
 They can automate various tasks such as data collection, preprocessing, and analysis.
-For example, LLMs can apply pre-defined coding guides to large qualitative datasets (\annotators), assess the quality of software artifacts (\judges), generate summaries of research papers (\synthesis), and even simulate human behavior in empirical studies (\subjects).
-This can significantly reduce the time and effort required by researchers, allowing them to focus on other aspects of their studies.
+For example, LLMs can apply pre-defined coding guides to qualitative datasets (\annotators), assess the quality of software artifacts (\judges), generate summaries of research papers (\synthesis), or simulate human behavior in empirical studies (\subjects).
+This can significantly reduce the time and effort required to perform a study, allowing researchers to focus on other aspects.
 However, besides the many \emph{advantages} that all these applications bring, they also come with \emph{challenges} such as potential threats to validity and implications for the reproducibility of study results.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{LLMs as Annotators}
 \label{sec:llms-as-annotators}
@@ -325,11 +387,14 @@ Moreover, in previous studies, LLMs have shown significant variability in annota
 Context-dependent annotations pose a specific challenge, as LLMs show difficulty in correctly interpreting text segments that require broader contextual understanding~\cite{DBLP:conf/chi/HeHDRH24}.
 While pooling multiple outputs can improve reliability, this approach necessitates additional computational resources and still requires validation against human-annotated data.
 While generally cost-effective, LLM annotation requires careful management of per-token charges, particularly for longer texts~\cite{DBLP:conf/emnlp/WangLXZZ21}. Furthermore, achieving reliable annotations may require multiple runs of the same input to enable majority voting~\cite{DBLP:journals/corr/abs-2304-11085}, although exact cost comparisons between LLM-based and human annotation is controversial~\cite{DBLP:conf/chi/HeHDRH24}.
-Finally, research has identified consistent biases in label assignment, including tendencies to overestimate certain labels and misclassify neutral content, particularly in stance detection tasks~\cite{DBLP:journals/corr/abs-2304-10145}.
+Finally, research has identified consistent biases in label assignment, including tendencies to overestimate certain labels and misclassify neutral content~\cite{DBLP:journals/corr/abs-2304-10145}.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{LLMs as Judges}
 \label{sec:llms-as-judges}
+
+\paragraph{Description}
 
 LLMs can act as judges or raters to evaluate properties of software artifacts.
 For instance, LLMs can be used to assess code readability, adherence to coding standards, or the quality of code comments.
@@ -342,13 +407,18 @@ Lubos et al.~\cite{DBLP:conf/re/LubosFTGMEL24} leveraged \href{https://www.llama
 They prompted the LLM with the text below, where the words in brackets reflect parameters for the study:
 
 \begin{plain}
-Your task is to evaluate the quality of a software requirement.
-Evaluate whether the following requirement is {quality_characteristic}.
-{quality_characteristic} means: {quality_characteristic_explanation}
+Your task is to evaluate the quality of a
+software requirement.
+Evaluate whether the following requirement is
+{quality_characteristic}.
+{quality_characteristic} means:
+{quality_characteristic_explanation}
 The evaluation result must be: 'yes' or 'no'.
-Request: Based on the following description of the project:
+Request: Based on the following description of
+the project:
 {project_description}
-Evaluate the quality of the following requirement: {requirement}.
+Evaluate the quality of the following
+requirement: {requirement}.
 Explain your decision and suggest an improved version.
 \end{plain}
 
@@ -357,7 +427,7 @@ Agreement can be measured in many ways; this study used Cohen's kappa measure~\c
 However, evaluating machine judgment may not be the same as human-human judgments, and is an open area of research~\cite{DBLP:journals/corr/abs-2410-03775}. 
 One crucial decision in such studies is the number of examples provided to the LLM.
 This might involve no tuning (zero-shot), several examples (few-shot), or providing many examples (closer to traditional training data).
-In the example above, Lubos et al. chose zero-shot tuning, providing no specific guidance besides the project's context, i.e., they did not show the LLM what a yes or no answer might look like. 
+In the example above, Lubos et al. chose zero-shot tuning, providing no specific guidance besides the provided context; they did not show the LLM what a yes or no answer might look like. 
 
 \paragraph{Advantages}
 
@@ -376,9 +446,12 @@ For tasks where human judges themselves disagree significantly, it is not clear 
 Research is ongoing as to how suitable LLMs are as standalone judges. Questions around bias, accuracy, and trust remain~\cite{DBLP:journals/corr/abs-2406-18403}. There is reason for concern about LLMs judging student assignments or doing peer review of scientific papers~\cite{DBLP:conf/coling/ZhouC024}. Even beyond questions of technical capacity, ethical questions remain, particularly if there is some implicit expectation that a human is judging the output, such as in a quiz. Involving a human in the judgment loop---for example, to contextualize the scoring---is one approach~\cite{panHumanCenteredDesignRecommendations2024}. 
 A lack of large-scale ground truth datasets for benchmarking LLM performance on judgment studies is hindering progress on evaluating research in this area.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{LLMs for Synthesis}
 \label{sec:llms-for-synthesis}
+
+\paragraph{Description}
 
 LLMs can support synthesis tasks in software engineering research by processing and distilling information from qualitative data sources.
 In this context, synthesis refers to the process of integrating and interpreting information from multiple sources to generate higher-level insights, identify patterns across datasets, and develop conceptual frameworks or theories. Unlike annotation (see Section \annotators), which focuses on categorizing or labeling individual data points, synthesis involves connecting and interpreting these annotations to develop a cohesive understanding of the phenomenon being studied.
@@ -407,9 +480,13 @@ Moreover, LLMs may produce biased results, reinforcing existing prejudices or om
 The proprietary nature of many LLMs limits transparency. In particular, it is unknown how the inclusion of certain training data might affect the synthesis process.
 Furthermore, reproducibility issues persist due to inconsistencies across inferences, model versions, and prompt variations.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
+
 % Reverted back to "subject", as participant seems to be primarily used for humans: see  https://dictionary.apa.org/subject and https://dictionary.apa.org/participant
 \subsubsection{LLMs as Subjects}
 \label{sec:llms-as-subjects}
+
+\paragraph{Description}
 
 In empirical studies, data is collected from participants through methods such as surveys, interviews, or controlled experiments.
 LLMs can serve as \emph{subjects} in empirical studies by simulating human behavior and interactions.
@@ -426,7 +503,7 @@ LLMs can be used as subjects in various types of empirical studies, enabling res
 The broader applicability of LLM-based studies beyond software engineering has been compiled by Xu et al.~\cite{DBLP:journals/ipm/XuSRGPLSH24}, who examined various uses in social science research.
 Given the socio-technical nature of software development, some of these approaches should be transferable to empirical software engineering research.
 For example, LLMs can be applied in survey and interview studies to impersonate developers responding to survey questionnaires or interviews, allowing researchers to test the clarity and effectiveness of survey items or to simulate responses under varying conditions, such as different expertise levels or cultural contexts. For instance, Gerosa et al.~\cite{DBLP:journals/ase/GerosaTSS24} explored persona-based interviews and multi-persona focus groups, demonstrating how LLMs can emulate human responses and behaviors while addressing ethical concerns, biases, and methodological challenges.
-Another example are usability studies, in which LLMs can simulate end-user feedback, providing insights into potential usability issues and offering suggestions for improvement based on predefined user personas. This aligns with the work of Bano et al.~\cite{bano2025doessoftwareengineerlook}, who investigated biases in LLM-generated candidate profiles in software engineering recruitment processes. Their study, which analyzed both textual and visual inputs, revealed biases favoring male, Caucasian candidates, lighter skin tones, and slim physiques, particularly for senior roles.
+Another example are usability studies, in which LLMs can simulate end-user feedback, providing insights into potential usability issues and offering suggestions for improvement based on predefined user personas. This aligns with the work of Bano et al.~\cite{bano2025doessoftwareengineerlook}, who investigated biases in LLM-generated candidate profiles in SE recruitment processes. Their study, which analyzed both textual and visual inputs, revealed biases favoring male, Caucasian candidates, lighter skin tones, and slim physiques, particularly for senior roles.
 
 \paragraph{Advantages}
 
@@ -448,16 +525,19 @@ Beyond construct validity, internal validity must also be considered, particular
 External validity also remains a challenge, as findings based on LLMs may not generalize to humans.
 
 
-\subsubsection{LLMs as Tools for Software Engineers}
+\subsection{LLMs as Tools for Software Engineers}
 \label{sec:llms-as-tools-for-software-engineers}
 
 LLM-based assistants have become an essential tool for software engineers, supporting them in various tasks such as code generation, summarization, and repair.
 Researchers have studied how software engineers use LLMs (\llmusage), developed new tools that integrate LLMs (\newtools), and benchmarked LLMs for software engineering tasks  (\benchmarkingtasks).
 Like in the previous section, we outline the \emph{advantages} that studying LLMs in these contexts brings, but also point to specific \emph{challenges}.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{Studying LLM Usage in Software Engineering}
 \label{sec:studying-llm-usage-in-software-engineering}
+
+\paragraph{Description}
 
 Studying how software engineers use LLMs in their workflows is crucial for understanding the current state of practice in software engineering.
 Researchers can observe software engineers' usage of LLM-based tools in the field, or study if and how they adopt such tools, their usage patterns, as well as perceived benefits and challenges.
@@ -479,7 +559,7 @@ They found that the majority of study participants had already adopted AI for so
 Multiple participants cited copyright and privacy issues, as well as the inconsistent or low quality outputs as barriers for adoption.
 Retrospective studies analyzing the data generated during the use of LLMs by software engineers can provide additional insights into human LLM interactions.
 For example, researchers can employ data mining methods to build large-scale conversation datasets, such as the DevGPT dataset introduced by Xiao et al~\cite{DBLP:conf/msr/XiaoTHM24} (data collection started in August 2023).
-Conversations can then be analyzed using quantitative~\cite{DBLP:conf/msr/RabbiCZI24} and qualitative~\cite{DBLP:conf/msr/MohamedPP24} analysis methods (both studies use the DevGPT dataset).
+Conversations can then be analyzed using quantitative~\cite{DBLP:conf/msr/RabbiCZI24} and qualitative~\cite{DBLP:conf/msr/MohamedPP24} analysis methods.
 
 \paragraph{Advantages}
 
@@ -507,9 +587,12 @@ To nevertheless make study results dependable, researchers need to establish tha
 When it comes to studying LLM usage in controlled laboratory studies, researchers may struggle with the inherent variability of LLM outputs.
 Since reproducibility and precision are essential for hypothesis testing, the stochastic nature of LLM responses---where identical prompts may yield different outputs across participants---can complicate the interpretation of experimental results and affect the reliability of study findings.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{LLMs for New Software Engineering Tools}
 \label{sec:llms-for-new-software-engineering-tools}
+
+\paragraph{Description}
 
 LLMs are being integrated into new tools supporting software engineers in their daily tasks, e.g., code comprehension~\cite{DBLP:conf/chi/YanHWH24} and test cases generation~\cite{DBLP:journals/tse/SchaferNET24}.
 Such integration is important to tailor the tools to the specific needs of a development team, enhance their capabilities, and influence their behavior in accordance with users' needs.
@@ -540,9 +623,12 @@ When using commercial LLMs, researchers face challenges because the training dat
 From an engineering perspective, while open models are available, the most performant ones require substantial hardware resources.
 Resorting to cloud-based APIs or relying on third-party providers for hosting, while seemingly a potential solution, introduces new concerns related to data privacy and security.
 
+\par\noindent\hdashrule{\columnwidth}{0.5pt}{2pt 2pt}
 
 \subsubsection{Benchmarking LLMs for Software Engineering Tasks}
 \label{sec:benchmarking-llms-for-software-engineering-tasks}
+
+\paragraph{Description}
 
 Benchmarking is the process of evaluating the LLM output for standardized tasks using standardized metrics.
 Hence, high-quality reference datasets are necessary to perform evaluation across studies.
@@ -568,10 +654,10 @@ Finally, benchmarks can foster open science practices by providing a common grou
 
 \paragraph{Challenges}
 
-Benchmark contamination, the inclusion of the benchmark in the training dataset of the LLM,~\cite{DBLP:journals/corr/abs-2410-16186} has recently been identified as an issue.
-The careful selection of samples and building of corresponding input prompts is particularly important, as correlations between prompts may bias benchmark results~\cite{DBLP:conf/acl/SiskaMAB24}.
-While LLMs might perform well on a specific benchmark, such as HumanEval, it does not necessarily perform well on another benchmark.
-Benchmark metrics such as perplexity or BLEU-N do not always reflect human judgment.
+Benchmark contamination, that is, the inclusion of the benchmark in the training dataset of the LLM~\cite{DBLP:journals/corr/abs-2410-16186} has recently been identified as an issue.
+The careful selection of samples and the creation of the corresponding input prompts is particularly important, as correlations between prompts may bias benchmark results~\cite{DBLP:conf/acl/SiskaMAB24}.
+Although LLMs might perform well on a specific benchmark such as HumanEval, they do not necessarily perform well on other benchmarks.
+Moreover, Benchmark metrics such as perplexity or BLEU-N do not always reflect human judgment.
 Recently, Cao et al.~\cite{cao2025should} has proposed guidelines for building benchmarks for LLMs related to coding tasks, grounded in a systematic survey of existing benchmarks. 
 In this process, they highlight current shortcomings related to reliability, transparency irreproducibility, low data quality, and inadequate validation measures.
 For more details on benchmarks, see our guideline \benchmarksmetrics. 
@@ -597,17 +683,19 @@ While we consider LLM-based studies to have characteristics that differ from tra
 While full reproducibility of LLM study results is very challenging given LLM's non-determinism, transparency on LLM usage, methods, data, and architecture, as suggested by our guidelines, is an essential prerequisite for future replication studies.
 Our guidelines are structured as follows:
 
-\vspace{0.5\baselineskip}
-\begin{enumerate}[label=\arabic*)]
-    \item \emph{\usagerole}
-    \item \emph{\modelversion}
-    \item \emph{\toolarchitecture}
-    \item \emph{\prompts}
-    \item \emph{\humanvalidation}
-    \item \emph{\openllm}
-    \item \emph{\benchmarksmetrics}
-    \item \emph{\limitationsmitigations}
+\par\noindent\rule{\columnwidth}{0.5pt}
+\begin{enumerate}[label=4.\arabic*]
+    \item \usagerole
+    \item \modelversion
+    \item \toolarchitecture
+    \item \prompts
+    \item \humanvalidation
+    \item \openllm
+    \item \benchmarksmetrics
+    \item \limitationsmitigations
 \end{enumerate}
+\par\noindent\rule{\columnwidth}{0.5pt}
+
 
 \subsection{Declare LLM Usage and Role}
 \label{sec:declare-llm-usage-and-role}
@@ -619,7 +707,8 @@ Our guidelines are structured as follows:
 
 \subsubsection{Recommendations}
 
-When conducting any kind of empirical study involving LLMs, researchers \must clearly declare that an LLM was used in a suitable section of the \paper~(e.g., in the introduction or research methods section).
+When conducting any kind of empirical study involving LLMs, researchers \must clearly declare that an LLM was used.
+This \should be done in a suitable section of the \paper, for example, in the introduction or research methods section.
 For authoring scientific articles, such transparency is, for example, required by the ACM Policy on Authorship: \enq{The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work}~\cite{ACM2023}.
 Beyond generic authorship declarations and declarations that LLMs were used as part of the research process, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
 % Related paper:
@@ -632,7 +721,6 @@ The ACM Policy on Authorship suggests to to disclose the usage of Generative AI 
 Similarly, the acknowledgements section could also be used to disclose Generative AI usage for other aspects of the research, if not explicitly described in other parts of the paper.
 The ACM policy further suggests: \emph{``If you are uncertain about the need to disclose the use of a particular tool, err on the side of caution, and include a disclosure in the acknowledgements section of the Work''}~\cite{ACM2023}.
 For double-blind review, during which the acknowledgements section is usually hidden, researchers can add a temporary ``AI Disclosure'' section in the same place the acknowledgements section would appear. 
-
 An example of an LLM disclosure beyond writing support can be found in a recent paper by Ludos et al.~\cite{DBLP:conf/re/LubosFTGMEL24}, in which they write in the methodology section:
 
 \begin{quote}
@@ -654,7 +742,7 @@ However, the the ACM Policy on Authorship is very clear that any use of GenAI to
 
 \subsubsection{Study Types}
 
-This guideline \must be followed for all study types.
+Researchers \must follow this guideline for all study types.
 
 \subsection{Report Model Version, Configuration, and Customizations}
 \label{sec:report-model-version-configuration-and-customizations}
@@ -733,10 +821,7 @@ Similar statements can be made for self-hosted models.
 However, when self-hosting models, the \supplementarymaterial can become a true replication package, providing specific instructions for reproducing study results.
 For example, for models provisioned using \href{https://ollama.com/library/}{ollama}, one can report the specific tag and checksum of the model being used, e.g., \emph{``llama3.3, tag 70b-instruct-q8\_0, checksum d5b5e1b84868.''}
 Given suitable hardware, running the corresponding model in its default configuration is then as easy as executing one command in the command line (see also Section \openllm):
-
-\begin{plain}
-ollama run llama3.3:70b-instruct-q8_0
-\end{plain}
+\texttt{ollama run llama3.3:70b-instruct-q8\_0}
 
 An example of a study involving fine-tuning is Dhar et al.'s work~\cite{DBLP:conf/icsa/DharVV24}.
 They conducted an exploratory empirical study to assess whether LLMs can generate architectural design decisions. The authors detail the system architecture, including the decision-making framework, the role of the LLM in generating design decisions, and the interaction between the LLM and other components of the system. The study provides information on the fine-tuning approach and datasets used for evaluation, including the source of the architectural decision records, preprocessing methods, and the criteria for data selection. 
@@ -941,15 +1026,12 @@ When \llmusage, especially for controlled experiments exact prompts \must be rep
 For observational studies, especially the ones targeting commercial tools, researchers \must report the full interactions logs/conversations except for when transcripts might identify anonymous participants or reveal personal or confidential information.
 If the full interaction logs cannot be shared, e.g., because they contain confidential information, the prompts and responses \must at least be summarized and described in the \paper.
 
-Researchers \must report the complete prompts that were used, including all instructions, context, and input data. This applies across all study types, but specific focus areas vary:
-
-\begin{itemize}
-  \item For LLMs as \annotators, researchers \must document any predefined coding guides or instructions included in prompts, as these influence how the model labels artifacts.
-  \item For LLMs as \judges, researchers \must include the evaluation criteria, scales, and examples embedded in the prompt to ensure consistent interpretation.
-  \item For LLMs used in \synthesis tasks (e.g., summarization, aggregation), researchers \must document the sequence of prompts used to generate and refine outputs, including follow-ups and clarifying queries.
-  \item For LLMs as \subjects (e.g., simulating human participants), researchers \must report any role-playing instructions, constraints, or personas used to guide LLM behavior.
-  \item For \benchmarkingtasks studies using pre-defined prompts (e.g., HumanEval, CruxEval), researchers \must specify the benchmark version and any modifications made to the prompts or evaluation setup. If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes and \should make the relevant code publicly available.
-\end{itemize}
+Researchers \must report the complete prompts that were used, including all instructions, context, and input data. This applies across all study types, but specific focus areas vary.
+For LLMs as \annotators, researchers \must document any predefined coding guides or instructions included in prompts, as these influence how the model labels artifacts.
+For LLMs as \judges, researchers \must include the evaluation criteria, scales, and examples embedded in the prompt to ensure consistent interpretation.
+For LLMs used in \synthesis tasks (e.g., summarization, aggregation), researchers \must document the sequence of prompts used to generate and refine outputs, including follow-ups and clarifying queries.
+For LLMs as \subjects (e.g., simulating human participants), researchers \must report any role-playing instructions, constraints, or personas used to guide LLM behavior.
+For \benchmarkingtasks studies using pre-defined prompts (e.g., HumanEval, CruxEval), researchers \must specify the benchmark version and any modifications made to the prompts or evaluation setup. If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes and \should make the relevant code publicly available.
 
 \subsection{Use Human Validation for LLM Outputs}
 \label{sec:use-human-validation-for-llm-outputs}
@@ -1134,13 +1216,13 @@ For example, a large open dataset of software bugs is a collection of bugs accor
 \citeauthor{hu2025assessingadvancingbenchmarksevaluating} conducted a comprehensive structured literature review on LLM benchmarks related to software engineering tasks.
 They analyzed 191 benchmarks and categorized them based on the specific task they address, making the paper a valuable resource for identifying relevant existing benchmarks.
 
-Two benchmarks used for code generation are \emph{HumanEval} (\href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:conf/acl/PapineniRWZ02} and \emph{MBPP} (\href{https://huggingface.co/datasets/google-research-datasets/mbpp}{GitHub}) \cite{DBLP:journals/corr/abs-2108-07732}.
+Two benchmarks used for code generation are \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:conf/acl/PapineniRWZ02} and \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732}.
 Both benchmarks consist of code snippets written in Python sourced from publicly available repositories.
 Each snippet consists of four parts: a prompt based on function definition and a corresponding description what the function should accomplish, a canonical solution, an entry point for execution, and tests.
 The input of the LLM is the entire prompt.
 The output of the LLM is evaluated either against the canonical solution using metrics or against a test suite.
-Other benchmarks for code generation include \emph{ClassEval} (\href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2308-01861}, \emph{LiveCodeBench} (\href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (\href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
-An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:journals/corr/abs-2006-03511} (\href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
+Other benchmarks for code generation include \emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:journals/corr/abs-2308-01861}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
+An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:journals/corr/abs-2006-03511} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
 
 According to \citeauthor{10.1145/3695988}, main problems types for LLMs are classification, recommendation and generation problems.
 Each of these problem types requires a different set of metrics.
@@ -1425,8 +1507,10 @@ Because models and tools evolve, we maintain the guidelines as a living resource
 Our study types and guidelines are based on discussion sessions with researchers at the 2024 International Software Engineering Research Network (ISERN) meeting and at the 2nd Copenhagen Symposium on Human-Centered Software Engineering AI.
 ChatGPT was used to generate initial versions of the abstract and conclusion sections of this paper.
 
+\balance
 %\bibliographystyle{IEEEtran}
-%\bibliography{literature,is,hci,se}
-\printbibliography
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{literature}
+%\printbibliography
 
 \end{document}
