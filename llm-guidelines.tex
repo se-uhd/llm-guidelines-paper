@@ -195,13 +195,16 @@
 
 
 \begin{abstract}
-TODO
+Large language models (LLMs) are increasingly being integrated into software engineering (SE) research and practice, yet their non-determinism, opaque training data, and evolving architectures complicate the reproduction and replication of empirical studies.
+We present a community effort to scope this space, introducing a taxonomy of LLM-based study types in SE together with eight guidelines for designing and reporting empirical studies involving LLMs.
+The guidelines present essential (\must) criteria as well as desired (\should) criteria and target transparency throughout the research process: declaring LLM usage and role; reporting model versions, configurations and fine-tuning; documenting tool architectures; disclosing prompts and interaction logs; using human validation; employing an open LLM as a baseline; reporting suitable baselines, benchmarks, and metrics; and articulating limitations and mitigations.
+Our goal is to enable reproducibility and replicability despite LLM-specific barriers to open science.
+We maintain the study types and guidelines online as a living resource for the community to use and shape (see \href{https://llm-guidelines.org/}{llm-guidelines.org}).
 \end{abstract}
 
 \begin{IEEEkeywords}
 Software Engineering, Large Language Models, Empirical Research, Metascience, Guidelines
 \end{IEEEkeywords}
-
 
 \section{Introduction}
 \label{sec:introduction}
@@ -1367,10 +1370,30 @@ Especially in exploratory research, the impact is hard to estimate beforehand, m
 
 The limitations and mitigations \should be followed for all study types in a sensible manner, i.e. depending on the applicability to the individual study.
 
+\section{Conclusion}
+
+This paper organizes the landscape of empirical studies involving LLMs in software engineering along seven study types and distills eight guidelines aimed at improving their validity, transparency, and reproducibility.
+Our guidelines recommend researchers to 
+\begin{enumerate*}[label=(\arabic*)]
+\item explicitly declare when and how LLMs are used;
+\item report model versions, configuration, and fine-tuning details;
+\item describe the complete tool architecture beyond the model;
+\item release prompts, their development, and, where possible, interaction logs;
+\item validate LLM outputs with humans;
+\item include an open LLM as a baseline;
+\item select appropriate baselines, benchmarks, and metrics; and
+\item report study limitations and mitigations, including costs, potential biases, and environmental impact.
+\end{enumerate*}
+Adopting these practices will not eliminate LLMs' non-determinism, but it will make claims auditable and results easier to replicate and compare across studies. 
+By consistently applying these recommendations, the community can produce more reliable evidence on what LLM can and cannot deliver for software engineering research and practice.
+Our guidelines complement existing empirical software engineering guidance while addressing LLM-specific challenges.
+Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them: \href{https://llm-guidelines.org/}{llm-guidelines.org}.
+
 
 \section*{Acknowledgments}
 
 Our study types and guidelines are based on discussion sessions with researchers at the 2024 International Software Engineering Research Network (ISERN) meeting and at the 2nd Copenhagen Symposium on Human-Centered Software Engineering AI.
+ChatGPT was used to generate initial versions of the abstract and conclusion sections of this paper.
 
 %\bibliographystyle{IEEEtran}
 %\bibliography{literature,is,hci,se}
