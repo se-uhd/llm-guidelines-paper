@@ -258,10 +258,11 @@
 
 \begin{abstract}
 Large language models (LLMs) are increasingly being integrated into software engineering (SE) research and practice, yet their non-determinism, opaque training data, and evolving architectures complicate the reproduction and replication of empirical studies.
-We present a community effort to scope this space, introducing a taxonomy of LLM-based study types in SE together with eight guidelines for designing and reporting empirical studies involving LLMs.
-The guidelines present essential (\must) criteria as well as desired (\should) criteria and target transparency throughout the research process: declaring LLM usage and role; reporting model versions, configurations and fine-tuning; documenting tool architectures; disclosing prompts and interaction logs; using human validation; employing an open LLM as a baseline; reporting suitable baselines, benchmarks, and metrics; and articulating limitations and mitigations.
+We present a community effort to scope this space, introducing a taxonomy of LLM-based study types together with eight guidelines for designing and reporting empirical studies involving LLMs.
+The guidelines present essential (\must) criteria as well as desired (\should) criteria and target transparency throughout the research process.
+Our recommendations, contextualized by our study types, are: (1) to declare LLM usage and role; (2) to report model versions, configurations, and fine-tuning; (3) to document tool architectures; (4) to disclose prompts and interaction logs; (5) to use human validation; (6) to employ an open LLM as a baseline; (7) to report suitable baselines, benchmarks, and metrics; and (8) to openly articulate limitations and mitigations.
 Our goal is to enable reproducibility and replicability despite LLM-specific barriers to open science.
-We maintain the study types and guidelines online as a living resource for the community to use and shape (see \href{https://llm-guidelines.org/}{llm-guidelines.org}).
+We maintain the study types and guidelines online as a living resource for the community to use and shape (\href{https://llm-guidelines.org/}{llm-guidelines.org}).
 \end{abstract}
 
 %\keywords{software engineering, large language models, empirical research, meta-science, guidelines}
@@ -272,62 +273,61 @@ We maintain the study types and guidelines online as a living resource for the c
 \label{sec:introduction}
 
 In the short period since the release of ChatGPT in November 2022, large language models (LLMs) have changed the software engineering (SE) research landscape.
-While there are numerous opportunities to use LLMs for supporting research or software engineering tasks, solid science needs rigorous empirical evaluations.
-Such evaluations might explore the effectiveness, performance, and robustness of LLMs in different contexts, such as improving code quality, reducing development time, or supporting software documentation.
-However, it is often unclear how valid and reproducible results can be achieved with empirical studies involving LLMs---or what effect their usage has on the validity of empirical results.
-This uncertainty poses significant challenges for researchers aiming to draw reliable conclusions from empirical studies.
+Although there are numerous opportunities to use LLMs to support SE research and development tasks, solid science needs rigorous empirical evaluations to explore the effectiveness, performance, and robustness of using LLMs to automate different research and development tasks.
+LLMs can, for example, be used to support literature reviews, reduce development time, and generate software documentation.
+However, it is often unclear how valid, reproducible, and replicable empirical studies involving LLM are.
+This uncertainty poses significant challenges for researchers and practitioners who seek to draw reliable conclusions from empirical studies.
 
-One of the primary risks in creating unreproducible results stems from the variability in LLM performance due to differences in training data, model architecture, evaluation metrics, and the inherent non-determinism that those models possess.
-For example, slight changes in the training dataset or the hyperparameters can lead to significantly different outcomes, making it difficult to replicate studies.
-Additionally, the lack of standardized benchmarks and evaluation protocols further complicates the reproducibility of results.
-These issues highlight the need for clear guidelines and best practices to ensure that empirical studies with LLMs yield valid and reproducible results.
-Another aspect is that, without detailed information on the exact study setup, benchmarks, and metrics used, it is challenging for other researchers to replicate results using different models and tools.
 The importance of open science practices and documenting the study setup is not to be underestimated~\cite{DBLP:journals/corr/abs-2412-17859}.
-
-There has been extensive work developing guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g., \emph{Experimentation in Software Engineering}~\cite{DBLP:books/sp/WohlinRHORW24} or \emph{Guide to Advanced Empirical Software Engineering}~\cite{DBLP:books/sp/08/SSS2008}) or their replications (e.g., \emph{A Procedure and Guidelines for Analyzing Groups of Software Engineering Replications}~\cite{DBLP:journals/tse/SantosVOJ21}).
-
-As motivated in our previous position paper~\cite{DBLP:conf/wsese/0001BFB25}, we believe that LLMs have specific intrinsic characteristics that require specific guidelines for researchers to achieve an acceptable level of reproducibility.
-For example, even if we know the specific version of an LLM used for an empirical study, the reported performance for the studied tasks can change over time, especially for commercial models that evolve beyond version identifiers~\cite{DBLP:journals/corr/abs-2307-09009}.
-Moreover, commercial providers do not guarantee the availability of old versions indefinitely.
-Besides versions, LLMs' performance widely varies depending on configured parameters such as temperature.
-Therefore, not reporting the parameter settings impacts the reproducibility of the research.
+One of the primary risks in creating irreproducible and irreplicable results based on studies involving LLMs stems from the variability in model performance due to their inherent non-determinism, but also due to differences in configuration, training data, model architecture, or evaluation metrics.
+Slight changes can lead to significantly different results.
+The lack of standardized benchmarks and evaluation protocols further hinders the reproducibility and replicability of study results.
+Without detailed information on the exact study setup, benchmarks, and metrics used, it is challenging for other researchers to replicate results using different models and tools.
+These issues highlight the need for clear guidelines and best practices for designing and reporting studies involving LLMs.
+While the SE research community has developed guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g., \emph{Experimentation in Software Engineering}~\cite{DBLP:books/sp/WohlinRHORW24}, \emph{Guide to Advanced Empirical Software Engineering}~\cite{DBLP:books/sp/08/SSS2008}) or their replications (e.g., \emph{A Procedure and Guidelines for Analyzing Groups of Software Engineering Replications}~\cite{DBLP:journals/tse/SantosVOJ21}),  we believe that LLMs have specific intrinsic characteristics that require specific guidelines for researchers to achieve an acceptable level of reproducibility and replicability (see also our previous position paper~\cite{DBLP:conf/wsese/0001BFB25}).
+For example, even if we knew the specific version of a commercial LLM used for an empirical study, the reported task performance could still change over time, since commercial models are known to evolve beyond version identifiers~\cite{DBLP:journals/corr/abs-2307-09009}.
+Moreover, commercial providers do not guarantee the availability of old model or tool versions indefinitely.
+In addition to version differences, LLM performance varies widely depending on configured parameters such as temperature.
+Therefore, not reporting the parameter settings severely impacts reproducibility.
 Even for ``open'' models such as \emph{Llama}, we do not know how they were fine-tuned for specific tasks and what the exact training data was~\cite{Gibney2024}.
-Further, when evaluating LLMs' performance for certain programming tasks, it would be relevant to know whether the solution to a certain problem was part of the training data or not.
+A general problem when evaluating LLMs' performance is that we do not know whether the solution to a certain problem was part of the training data or not.
 
-So far, there are no hollistic guidelines for conducting and reporting studies involving LLMs in software engineering research.
+So far, there are no holistic guidelines for conducting and reporting studies involving LLMs in SE research.
 With this community effort, we try to fill this gap.
-After outlining the \scope of this article, we continue by introducing a taxonomy of \studytypes before presenting eight \guidelines that the authors of this article co-developed as a team.
+After outlining the \scope of this article, we continue by introducing a taxonomy of \studytypes before presenting eight \guidelines that the authors of this article co-developed.
 The most recent version is always available online (\href{https://llm-guidelines.org/}{llm-guidelines.org}); other researchers can suggest changes via a public GitHub repository.
 
-\section{Scope of this Article}
+\section{Scope}
 \label{sec:scope}
 
-First, we want to clarify that our focus is on LLMs, that is natural language use cases.
-Multi-modal foundational models are beyond the scope of our guidelines.
-We are aware that these foundational models have a huge potential for supporting software engineering research and practice.
-However, due to the diversity of  the artifacts that can be generated or used as input (e.g., images, audio, and video) and the more demanding hardware requirements, we deliberately focus on LLMs alone.
-However, our guidelines could be extended in the future to include foundational models beyond text.
+First, we want to clarify that our focus is on LLMs, that is, natural language use cases.
+Multi-modal foundational models are beyond the scope of our study types and guidelines.
+We are aware that these foundational models have great potential to support software engineering research and practice.
+However, due to the diversity of artifacts that can be generated or used as input (e.g., images, audio, and video) and the more demanding hardware requirements, we deliberately focus on LLMs only.
+However, our guidelines could be extended in the future to include foundational models beyond natural language text.
 
-Second, given the exponential growth in LLM usage across all research domains, we also want to define the study types to which our guidelines apply.
-LLMs are already widely used to support several aspects of the overall research process---from fairly simple tasks such as proof-reading, spell-checking, and text translation, to more complex activities such as data coding and synthesis of literature reviews.
-The \studytypes and \guidelines we describe are tailored to software engineering research, but we expect many of those study types to generalize beyond that domain.
-We focus on AI for software engineering (AI4SE), that is, studying the support and automation of software engineering tasks with the help of artificial intelligence (AI), more specifically LLMs (see Section~\llmsforengineers), as well as empirical software engineering research supported by LLMs (see Section~\llmsforresearcher).
-By research support, we mean active involvement of LLMs in data collection, processing, or analysis.
-We consider LLMs supporting writing or LLMs supporting study design to be out-of-scope for our guidelines.
+Second, given the exponential growth in LLM usage across all research domains, we also want to define the research contexts in which our guidelines apply.
+LLMs are already widely used to support several aspects of the overall research process, from fairly simple tasks such as proof-reading, spell-checking, and text translation, to more complex activities such as data coding and synthesis of literature reviews.
+The \studytypes and \guidelines we describe are tailored to software engineering (SE) research, but we expect many of our study types to generalize beyond that domain.
+On the practical side, we focus on AI for software engineering (AI4SE), that is, studying the support and automation of SE tasks with the help of artificial intelligence (AI), more specifically LLMs (see Section~\llmsforengineers).
+In terms of research support, we focus on empirical SE research supported by LLMs (see Section~\llmsforresearcher).
+By research support, we mean the active involvement of LLMs in data collection, processing, or analysis.
+We consider LLMs supporting the study design or the writing process to be out of scope.
 
-Third, with our guidelines, we mainly target researchers planning, designing, or conducting empirical studies involving LLMs.
-While the researchers reviewing scientific articles written by others can also use our guidelines, e.g., to check whether authors adhere to the \must requirements, reviewers are not our main target audience.
+Third, our guidelines mainly target researchers planning, designing, or conducting empirical studies involving LLMs.
+Although researchers who review scientific articles written by others can also use our guidelines, for example, to check whether the authors adhere to the essential \must requirements, reviewers are not our main target audience.
 
 \section{Study Types}
 \label{sec:study-types}
 
-The development of empirical guidelines for software engineering (SE) studies involving large language models (LLMs) is crucial for ensuring the validity and reproducibility of results.
-However, these guidelines must be tailored for different study types that pose unique challenges.
-Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
-Our \guidelines use the following study types to contextualize the recommendations we provide.
-We present the study types independent of specific guidelines, that is, the guidelines refer to the study types but not the other way around.
-The study type sections start with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond as well as the \textbf{advantages} and \textbf{challenges} of using LLMs for the respective study types.
-This section is structured as follows:
+The development of empirical guidelines for software engineering (SE) studies involving LLMs is crucial to ensuring the validity and reproducibility of results.
+However, such guidelines must be tailored to different study types that each pose unique challenges.
+%Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
+Therefore, we developed a taxonomy of study types that we then use to contextualize the recommendations we provide.
+Note that our \guidelines refer to the \studytypes but not the other way around.
+
+Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond as well as the \textbf{advantages} and \textbf{challenges} of using LLMs for the respective study type.
+The remainder of this section is structured as follows:
 
 \par\noindent\rule{\columnwidth}{0.5pt}
 \begin{enumerate}[label=3.\arabic*]
@@ -376,11 +376,11 @@ Accordingly, the annotations fell into three categories: exact matches (where al
 The study by \citeauthor{Ahmed2025}~\cite{Ahmed2025} examined LLMs-as-annotators in software engineering research across five datasets and ten annotation tasks. Using six state-of-the-art LLMs to perform tasks previously done by humans, they found that model-model agreement strongly correlates with human-model agreement, suggesting situations in which LLMs could effectively replace human annotators. Their research showed that for tasks where humans themselves disagree significantly (such as evaluating code conciseness), models also perform poorly. Conversely, if multiple LLMs reach similar solutions independently, then LLMs are likely suitable for the annotation task. They proposed using model confidence scores to identify specific samples that could be safely delegated to LLMs, potentially reducing human annotation effort without compromising inter-rater agreement.
 
 \paragraph{\bfseries Advantages}
-Recent research demonstrates several key advantages of using LLMs as annotators, such as their cost-effectiveness accuracy.
-LLM-based annotation dramatically reduces costs compared to human labeling, with studies showing cost reductions of 50-96\% across various natural language tasks~\cite{DBLP:conf/emnlp/WangLXZZ21}.
-For example, \citeauthor{DBLP:conf/chi/HeHDRH24} found in their study that GPT-4 annotation cost only \$122.08 compared to \$4,508 for a comparable MTurk pipeline~\cite{DBLP:conf/chi/HeHDRH24}.
-Moreover, the LLM-based approach resulting in a completion time of just 2 days versus several weeks for the crowd-sourced approach.
-Moreover, LLMs consistently demonstrate strong performance, with ChatGPT's accuracy exceeding crowd workers by approximately 25\% on average~\cite{DBLP:journals/corr/abs-2303-15056} and achieving impressive results in specific tasks such as sentiment analysis (65\% accuracy) and counterspeech detection (79\% precision)~\cite{DBLP:journals/corr/abs-2304-10145}. They also show remarkably high inter-coder agreement, surpassing both crowd workers and trained annotators~\cite{DBLP:journals/corr/abs-2303-15056}.
+Recent research demonstrates several advantages of using LLMs as annotators, including their cost-effectiveness and accuracy.
+LLM-based annotation can dramatically reduce costs compared to human labeling, with studies showing cost reductions of 50-96\% on various natural language tasks~\cite{DBLP:conf/emnlp/WangLXZZ21}.
+For example, \citeauthor{DBLP:conf/chi/HeHDRH24} found in their study that GPT-4 annotation costs only \$122.08 compared to \$4,508 for a comparable MTurk pipeline~\cite{DBLP:conf/chi/HeHDRH24}.
+Moreover, the LLM-based approach resulted in a completion time of just 2 days versus several weeks for the crowd-sourced approach.
+Moreover, LLMs consistently demonstrate strong performance, with ChatGPT's accuracy exceeding crowd workers by approximately 25\% on average~\cite{DBLP:journals/corr/abs-2303-15056}, achieving impressive results in specific tasks such as sentiment analysis (65\% accuracy)~\cite{DBLP:journals/corr/abs-2304-10145}. LLMs also show remarkably high inter-coder agreement, higher than crowd workers and trained annotators~\cite{DBLP:journals/corr/abs-2303-15056}.
 
 \paragraph{\bfseries Challenges}
 Challenges of using LLMs as annotators include reliability issues, human-LLM interaction challenges, biases, errors, and resource considerations.
@@ -431,12 +431,15 @@ However, evaluating machine judgment may not be the same as human-human judgment
 One crucial decision in such studies is the number of examples provided to the LLM.
 This might involve no tuning (zero-shot), several examples (few-shot), or providing many examples (closer to traditional training data).
 In the example above, \citeauthor{DBLP:conf/re/LubosFTGMEL24} chose zero-shot tuning, providing no specific guidance besides the provided context; they did not show the LLM what a yes or no answer might look like. 
+In contrast, \citeauthor{wang2025multimodalrequirementsdatabasedacceptance}~\cite{wang2025multimodalrequirementsdatabasedacceptance} provided a rubric to an LLM when treating LLMs as a judge to produce interpretable scales (0 to 4) for overall quality of acceptance criteria generated from user stories.
+They further composed this with a lower-level reward stage to refine acceptance criteria, which significantly improved acceptance criteria correctness, clarity, and alignment with user stories.
 
 \paragraph{\bfseries Advantages}
 
 By providing, depending on the model configuration, relatively consistent and evaluations, LLMs can help mitigate human biases and the variability that human judges might introduce.
 This may lead to more reliable and reproducible results in empirical studies, to the extent these models can be reproduced or checkpointed.
-LLMs can be much more efficient, and scale far more easily, than the equivalent human approach. With LLM automation, entire datasets could be assessed, as opposed to subsets. The main constraint, which varies by model and budget, is the input context size, i.e., the number of tokens one can pass into a model. For example, the upper bound on context that can be passed into OpenAi's \textsf{o1-mini} model is \href{https://help.openai.com/en/articles/9855712-openai-o1-models-faq-chatgpt-enterprise-and-edu}{32k tokens}. 
+LLMs can be much more efficient, and scale far more easily, than the equivalent human approach. With LLM automation, entire datasets could be assessed, as opposed to subsets, and the assessment produced can be at the selected level of granularity, e.g., binary outputs (e.g., yes or no) or defined levels (e.g. 0 to 4).
+The main constraint, which varies by model and budget, is the input context size, i.e., the number of tokens one can pass into a model. For example, the upper bound on context that can be passed into OpenAi's \textsf{o1-mini} model is \href{https://help.openai.com/en/articles/9855712-openai-o1-models-faq-chatgpt-enterprise-and-edu}{32k tokens}. 
 
 \paragraph{\bfseries Challenges}
 
@@ -463,8 +466,14 @@ In this case, the synthesis is done primarily based on the training data of the 
 
 \paragraph{\bfseries Example(s)} 
 
-While published examples of applying LLMs for synthesis in the software engineering domain are still scarce, recent work has explored the use of LLMs for qualitative synthesis in other domains, enabling a reflection on how LLMs can be applied for this purpose in software engineering~\cite{DBLP:journals/ase/BanoHZT24}. \citeauthor{barros2024largelanguagemodelqualitative}~\cite{barros2024largelanguagemodelqualitative} conducted a systematic mapping study on the use of LLMs for qualitative research. They identified examples in domains such as healthcare and social sciences (see, e.g., \cite{de2024performing,mathis2024inductive}) in which LLMs were used to support different methodologies for qualitative analysis, including grounded theory and thematic analysis. Overall, the findings highlight the successful generation of preliminary coding schemes from interview transcripts, later refined by human researchers, along with support for pattern identification. This approach was reported not only to expedite the initial coding process but also to allow researchers to focus more on higher-level analysis and interpretation. However, they emphasize that effective use of LLMs requires structured prompts and careful human oversight. This particular paper suggests using LLMs to support tasks such as initial coding and theme identification while conservatively reserving interpretative or creative processes for human analysts.
-Similarly, \citeauthor{leça2024applicationsimplicationslargelanguage}~\cite{leça2024applicationsimplicationslargelanguage} conducted a systematic mapping study to investigate how LLMs are used in qualitative analysis and how they can be applied in software engineering research. Consistent with the study by \citeauthor{barros2024largelanguagemodelqualitative}~\cite{barros2024largelanguagemodelqualitative}, they identified that LLMs are applied primarily in tasks like coding, thematic analysis, and data categorization, providing efficiency by reducing the time, cognitive demands, and resources often required for these processes.
+Although published examples of applying LLMs for synthesis in the software engineering domain are still scarce, recent work has explored the use of LLMs for qualitative synthesis in other domains, allowing reflection on how LLMs can be applied for this purpose in software engineering~\cite{DBLP:journals/ase/BanoHZT24}. \citeauthor{barros2024largelanguagemodelqualitative}~\cite{barros2024largelanguagemodelqualitative} conducted a systematic mapping study on the use of LLMs for qualitative research. They identified examples in domains such as healthcare and social sciences (see, e.g., \cite{de2024performing,mathis2024inductive}) in which LLMs were used to support qualitative analysis, including grounded theory and thematic analysis).
+Overall, the findings highlight the successful generation of preliminary coding schemes from interview transcripts, later refined by human researchers, along with support for pattern identification.
+This approach was reported not only to expedite the initial coding process but also to allow researchers to focus more on higher-level analysis and interpretation.
+However, they emphasize that effective use of LLMs requires structured prompts and careful human oversight.
+This particular paper suggests using LLMs to support tasks such as initial coding and theme identification while conservatively reserving interpretative or creative processes for human analysts.
+Similarly, \citeauthor{leça2024applicationsimplicationslargelanguage}~\cite{leça2024applicationsimplicationslargelanguage} conducted a systematic mapping study to investigate how LLMs are used in qualitative analysis and how they can be applied in software engineering research. Consistent with the study by \citeauthor{barros2024largelanguagemodelqualitative}~\cite{barros2024largelanguagemodelqualitative}, they identified that LLMs are applied primarily in tasks such as coding, thematic analysis, and data categorization, providing efficiency by reducing the time, cognitive demands, and resources often required for these processes.
+\citeauthor{DBLP:journals/corr/abs-2506-21138}'s work is an example of using LLMs to create synthetic data.
+They present an approach to generate synthetic requirements data, showing that \enq{synthetic requirements can match or surpass human-authored requirements for specific classification tasks}~\cite{DBLP:journals/corr/abs-2506-21138}.
 
 \paragraph{\bfseries Advantages}
 
@@ -783,10 +792,11 @@ Suitable benchmarks and metrics \should be used to compare the base model to the
 In summary, our recommendation is to report:
 
 \begin{enumerate*}[label=(\arabic*)]
-\item Model/tool name and version, checksum/fingerprint if available; \must in \paper;
-\item All relevant configured parameters that affect output generation; \must in \paper;
-\item Default values of all available parameters; \should;
-\item Additional properties such as context window size; \may.
+\item Model/tool name and version (\must in \paper);
+\item All relevant configured parameters that affect output generation (\must in \paper);
+\item Default values of all available parameters (\should);
+\item Checksum/fingerprint of used model version and configuration (\should, if available);
+\item Additional properties such as context window size (\may).
 \end{enumerate*}
 
 For fine-tuned models, additional recommendations apply:
@@ -1346,17 +1356,15 @@ For unforeseen scenarios, however, the model might perform much worse.
 This guideline \must be followed for all study types that automatically evaluate the performance of LLMs or LLM-based tools.
 The design of a benchmark and the selection of appropriate metrics are highly dependent on the specific study type and research goal.
 Recommending specific metrics for specific study types is beyond the scope of these guidelines, but \citeauthor{10.1145/3695988} provide a good starting point and overview of existing metrics for evaluating LLMs~\cite{10.1145/3695988}.
-Section \humanvalidation provides an overview of integrating human evaluation in LLM-based studies. 
+In addition, our Section \humanvalidation provides an overview of the integration of human evaluation in LLM-based studies. 
 
 For example, for \annotators, the research goal might be to assess which model comes close to a ground truth dataset created by human annotators.
 Especially for open annotation tasks, selecting suitable metrics to compare LLM-generated and human-generated labels is important.
 In general, annotation tasks can vary significantly: Are multiple labels allowed for the same sequence? Are the available labels predefined, or should the LLM generate a set of labels independently?
 Due to this task dependence, researchers \must justify their metric choice, explaining what aspects of the task it captures and its limitations.
 
-If researchers assess a well-established task, e.g. code generation, they \should report standard metrics pass@k and compare to other models.
-If non-standard metrics are used they \must state the reasoning.
-% What are characteristics of a specific study type?
-% - 
+If researchers assess a well-established task such as code generation, they \should report standard metrics such as \emph{pass@k} and compare the performance between models.
+If non-standard metrics are used, researchers \must state their reasoning.
 
 
 \subsection{Report Limitations and Mitigations}
