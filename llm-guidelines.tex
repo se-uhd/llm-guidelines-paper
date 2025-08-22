@@ -117,7 +117,7 @@
 \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Use Human Validation for LLM Outputs}}\xspace}
 \newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Report Prompts, their Development, and Interaction Logs}}\xspace}
 \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Use an Open LLM as a Baseline}}\xspace}
-\newcommand{\benchmarksmetrics}{\hyperref[sec:report-suitable-baselines-benchmarks-and-metrics]{\emph{Report Suitable Baselines, Benchmarks, and Metrics}}\xspace}
+\newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Use Suitable Baselines, Benchmarks, and Metrics}}\xspace}
 \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Report Limitations and Mitigations}}\xspace}
 
 \usepackage{listings}
@@ -259,7 +259,7 @@
 Large language models (LLMs) are increasingly being integrated into software engineering (SE) research and practice, yet their non-determinism, opaque training data, and evolving architectures complicate the reproduction and replication of empirical studies.
 We present a community effort to scope this space, introducing a taxonomy of LLM-based study types together with eight guidelines for designing and reporting empirical studies involving LLMs.
 The guidelines present essential (\must) criteria as well as desired (\should) criteria and target transparency throughout the research process.
-Our recommendations, contextualized by our study types, are: (1) to declare LLM usage and role; (2) to report model versions, configurations, and fine-tuning; (3) to document tool architectures; (4) to disclose prompts and interaction logs; (5) to use human validation; (6) to employ an open LLM as a baseline; (7) to report suitable baselines, benchmarks, and metrics; and (8) to openly articulate limitations and mitigations.
+Our recommendations, contextualized by our study types, are: (1) to declare LLM usage and role; (2) to report model versions, configurations, and fine-tuning; (3) to document tool architectures; (4) to disclose prompts and interaction logs; (5) to use human validation; (6) to employ an open LLM as a baseline; (7) to use suitable baselines, benchmarks, and metrics; and (8) to openly articulate limitations and mitigations.
 Our goal is to enable reproducibility and replicability despite LLM-specific barriers to open science.
 We maintain the study types and guidelines online as a living resource for the community to use and shape (\href{https://llm-guidelines.org/}{llm-guidelines.org}).
 \end{abstract}
@@ -1265,12 +1265,12 @@ For observational studies in which using an open LLM is impossible, investigator
 Finally, when using \synthesis,  where an LLM serves to explore qualitative data or contrast alternative interpretations, researchers \may report results of an open LLM.
 
 
-\subsection{Report Suitable Baselines, Benchmarks, and Metrics}
-\label{sec:report-suitable-baselines-benchmarks-and-metrics}
+\subsection{Use Suitable Baselines, Benchmarks, and Metrics}
+\label{sec:use-suitable-baselines-benchmarks-and-metrics}
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\underline{tl;dr:} \input{_tldr/07_report-baselines-benchmarks-and-metrics-tldr.tex}  
+\underline{tl;dr:} \input{_tldr/07_use-baselines-benchmarks-and-metrics-tldr.tex}  
 \end{framed}
 
 \subsubsection{\bfseries Recommendations}
@@ -1515,7 +1515,7 @@ To mitigate these concerns, researchers \should minimize the sensitive data used
 %\enquote{The field of AI is currently primarily driven by research that seeks to maximize model accuracy — progress is often used synonymously with improved prediction quality. This endless pursuit of higher accuracy over the decade of AI research has significant implications for computational resource requirements and environmental footprint. To develop AI technologies responsibly, we must achieve competitive model accuracy at a fixed or even reduced computational and environmental cost.}~\cite{DBLP:conf/mlsys/WuRGAAMCBHBGGOM22}
 
 Although \emph{metrics} such as \emph{BLEU} or \emph{ROUGE} are commonly used to evaluate the performance of LLMs (see Section \benchmarksmetrics), they may not capture other relevant SE-specific aspects such as functional correctness or runtime performance of automatically generated source code~\cite{DBLP:conf/nips/LiuXW023}.
-%Researchers \should clarify and state all relevant requirements, and employ and report the metrics to measure the satisfaction of the requirements (e.g., test-case success rate) and \should follow the best practices described in \href{/guidelines/report-baselines-benchmarks-and-metrics}{Report Suitable Baselines, Benchmarks, and Metrics}.
+%Researchers \should clarify and state all relevant requirements, and employ and report the metrics to measure the satisfaction of the requirements (e.g., test-case success rate) and \should follow the best practices described in \href{/guidelines/use-baselines-benchmarks-and-metrics}{Use Suitable Baselines, Benchmarks, and Metrics}.
 Given the high resource demand of LLMs, in addition to traditional metrics such as accuracy, precision, and recall or more contemporary metrics such as \emph{pass@k}, \emph{resource consumption} has to become a key indicator of performance. % to assess research progress responsibly. 
 While research has predominantly focused on energy consumption during the early phases of building LLMs (e.g., data center manufacturing, data acquisition, training), inference, that is LLM usage, often becomes similarly or even more resource-intensive~\cite{de2023growing, DBLP:conf/mlsys/WuRGAAMCBHBGGOM22, DBLP:journals/corr/abs-2410-02950, JIANG2024202, mitu2024hidden}.
 Hence, researchers \should aim for lower resource consumption on the model side.
