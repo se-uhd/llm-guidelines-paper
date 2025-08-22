@@ -52,6 +52,7 @@
 \usepackage{booktabs}
 \usepackage{xspace}
 \usepackage{dashrule}
+\usepackage[super]{nth}
 
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\subsectionautorefname}{Section}
@@ -94,30 +95,30 @@
 % commands to reference sections
 
 % scope
-\newcommand{\scope}{\hyperref[sec:scope]{Scope}\xspace}
+\newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
 
 % study types
-\newcommand{\studytypes}{\hyperref[sec:study-types]{Study Types}\xspace}
-\newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{LLMs as Tools for Software Engineering Researchers}\xspace}
-\newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{LLMs as Annotators}\xspace}
-\newcommand{\judges}{\hyperref[sec:llms-as-judges]{LLMs as Judges}\xspace}
-\newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{LLMs for Synthesis}\xspace}
-\newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{LLMs as Subjects}\xspace}
-\newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{LLMs as Tools for Software Engineers}\xspace}
-\newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{Studying LLM Usage in Software Engineering}\xspace}
-\newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{LLMs for New Software Engineering Tools}\xspace}
-\newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{Benchmarking LLMs for Software Engineering Tasks}\xspace}
+\newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
+\newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs as Tools for Software Engineering Researchers}}\xspace}
+\newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
+\newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
+\newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
+\newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
+\newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs as Tools for Software Engineers}}\xspace}
+\newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage in Software Engineering}}\xspace}
+\newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for New Software Engineering Tools}}\xspace}
+\newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs for Software Engineering Tasks}}\xspace}
 
 %guidelines
-\newcommand{\guidelines}{\hyperref[sec:guidelines]{Guidelines}\xspace}
-\newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{Declare LLM Usage and Role}\xspace}
-\newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{Report Model Version, Configuration, and Customizations}\xspace}
-\newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{Report Tool Architecture beyond Models}\xspace}
-\newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{Use Human Validation for LLM Outputs}\xspace}
-\newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{Report Prompts, their Development, and Interaction Logs}\xspace}
-\newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{Use an Open LLM as a Baseline}\xspace}
-\newcommand{\benchmarksmetrics}{\hyperref[sec:report-suitable-baselines-benchmarks-and-metrics]{Report Suitable Baselines, Benchmarks, and Metrics}\xspace}
-\newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{Report Limitations and Mitigations}\xspace}
+\newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
+\newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Declare LLM Usage and Role}}\xspace}
+\newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Report Model Version, Configuration, and Customizations}}\xspace}
+\newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Report Tool Architecture beyond Models}}\xspace}
+\newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Use Human Validation for LLM Outputs}}\xspace}
+\newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Report Prompts, their Development, and Interaction Logs}}\xspace}
+\newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Use an Open LLM as a Baseline}}\xspace}
+\newcommand{\benchmarksmetrics}{\hyperref[sec:report-suitable-baselines-benchmarks-and-metrics]{\emph{Report Suitable Baselines, Benchmarks, and Metrics}}\xspace}
+\newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Report Limitations and Mitigations}}\xspace}
 
 \usepackage{listings}
 \usepackage{textcomp} % fix single quotes in listings environments
@@ -293,7 +294,8 @@ A general problem when evaluating LLMs' performance is that we do not know wheth
 So far, there are no holistic guidelines for conducting and reporting studies involving LLMs in SE research.
 With this community effort, we try to fill this gap.
 After outlining our \scope, we continue by introducing a taxonomy of \studytypes before presenting eight \guidelines that the authors of this article co-developed.
-The most recent version is always available online (\href{https://llm-guidelines.org/}{llm-guidelines.org}); other researchers can suggest changes via a public GitHub repository.
+The most recent version is always available online.\footnote{\url{https://llm-guidelines.org}}
+Other researchers can suggest changes via a public GitHub repository.\footnote{\url{https://github.com/se-uhd/llm-guidelines-website}}
 
 \section{Scope}
 \label{sec:scope}
@@ -314,6 +316,22 @@ We consider LLMs supporting the study design or the writing process to be out of
 
 Third, our guidelines mainly target researchers planning, designing, or conducting empirical studies involving LLMs.
 Although researchers who review scientific articles written by others can also use our guidelines, for example, to check whether the authors adhere to the essential \must requirements, reviewers are not our main target audience.
+
+\section{Methodology}
+\label{sec:methodology}
+
+The starting point for the development of these guidelines was the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain.
+The first and last author of this paper organized a session to discuss the need to develop guidelines for empirical studies involving LLMs.
+These discussions resulted in a position paper published at the \emph{\nth{2} International Workshop on Methodological Issues with Empirical Studies in Software Engineering} (WSESE 2025)~\cite{DBLP:conf/wsese/0001BFB25}.
+The first and last author presented a preprint of that paper at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), forming a workstream to lead the collaborative refinement and extension of the preliminary guidelines presented in the position paper.
+
+We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
+During these discussions, we added a new study type (\synthesis), refined the guidelines to \modelversion and to \toolarchitecture, extended the guideline to \prompts, and added the new guidelines to \benchmarksmetrics and to \limitationsmitigations.
+Then, at least two co-authors were assigned to each study type and guideline.
+They refined and extended the content to align with the intended structure, followed by a peer review and refinement phase.
+Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
+After the internal review was completed, we invited external experts in empirical software engineering to review the study types and guidelines.
+After incorporating their feedback,\footnote{The discussion is documented in this GitHub issue: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled this article and published it online.
 
 \section{Study Types}
 \label{sec:study-types}
@@ -436,7 +454,7 @@ A crucial decision in studies focusing on LLMs as judges is the number of exampl
 This might involve no tuning (zero-shot), several examples (few-shot), or providing many examples (closer to traditional training data).
 In the example above, \citeauthor{DBLP:conf/re/LubosFTGMEL24} chose zero-shot tuning, providing no specific guidance besides the provided context; they did not show the LLM what a `yes' or `no' answer might look like. 
 In contrast, \citeauthor{wang2025multimodalrequirementsdatabasedacceptance}~\cite{wang2025multimodalrequirementsdatabasedacceptance} provided a rubric to an LLM when treating LLMs as a judge to produce interpretable scales (0 to 4) for the overall quality of acceptance criteria generated from user stories.
-They also composed this with a lower-level reward stage to refine acceptance criteria, which significantly improved the correctness, clarity, and alignment with the user stories.
+They combined this with a lower-level reward stage to refine acceptance criteria, which significantly improved correctness, clarity, and alignment with the user stories.
 
 \paragraph{\bfseries Advantages}
 
@@ -477,7 +495,7 @@ LLMs can support synthesis tasks in software engineering research by processing 
 In this context, synthesis refers to the process of integrating and interpreting information from multiple sources to generate higher-level insights, identify patterns across datasets, and develop conceptual frameworks or theories.
 Unlike annotation (see Section \annotators), which focuses on categorizing or labeling individual data points, synthesis involves connecting and interpreting these annotations to develop a cohesive understanding of the phenomenon being studied.
 Synthesis tasks can also mean generating synthetic datasets (e.g., source code, bug-fix pairs, requirements, etc.) that are then used in downstream tasks to train, fine-tune, or evaluate existing models or tools.
-In this case, the synthesis is done primarily based on the training data of the model; the input that researchers provide is limited to prompts and examples.
+In this case, the synthesis is done primarily using the LLM and its training data; the input is limited to basic instructions and examples.
 
 \paragraph{\bfseries Example(s)} 
 
@@ -710,8 +728,8 @@ For more details on benchmarks, see Section \benchmarksmetrics.
 
 Our guidelines focus on LLMs, that is, foundational models that use \emph{text} as in- and output.
 We do not address multi-modal foundation models that support other media such as images.
-However, many of our recommendations apply to multi-modal models as well.
-%The guidelines could be extended in the future to make this more visible.
+However, many of our recommendations apply to these models as well.
+We consider the extension of our guidelines to explicitly address multi-modal foundational models an important direction for future work.
 
 The main goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical studies involving LLMs in software engineering.
 While we consider LLM-based studies to have characteristics that differ from traditional empirical studies (e.g., their inherent non-determinism and the fact that truly open models are rare), previous guidelines regarding open science and empirical studies still apply.
@@ -721,14 +739,14 @@ The wording of our guidelines (\must, \should, \may) follows RFC 2119~\cite{rfc2
 Throughout the following sections, we mention the information we expect researchers to report in the \paper and/or in the \supplementarymaterial.
 We are aware that different publication venues have different page limits and that not all aspects can be reported in the \paper.
 If information \must be reported in the \paper, we explicitly mention this in the specific guidelines.
-Of course, it is better to report essential information in the \supplementarymaterial than not at all.
+Of course, it is better to report essential information that we expect in the \paper in the \supplementarymaterial than not at all.
 The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\cite{daniel_graziotin_2024_10796477}.
 %Unless explicitly mentioned otherwise, we expect information to be reported either in the \paper and/or the \supplementarymaterial.
 
 At the beginning of each section, we provide a brief \underline{\emph{tl;dr}} summary that lists the most important aspects of the corresponding guideline.
 In addition to our \textbf{recommendations}, we provide \textbf{examples} from the SE research community and beyond, as well as the \textbf{advantages} and potential \textbf{challenges} of following the respective guidelines.
 We conclude each guideline by linking it to the \textbf{study types}.
-The remainder of this section is structured as follows:
+The remainder of this section presents our eight guidelines and is structured as follows:
 
 \par\noindent\rule{\columnwidth}{0.5pt}
 \begin{enumerate}[label=4.\arabic*]
