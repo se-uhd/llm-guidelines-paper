@@ -13,21 +13,7 @@ It is also different from using LLMs for general software engineering tasks, as 
 \citeauthor{DBLP:conf/re/LubosFTGMEL24}~\cite{DBLP:conf/re/LubosFTGMEL24} leveraged \href{https://www.llama.com/llama2/}{Llama-2} to evaluate the quality of software requirements statements. 
 They prompted the LLM with the text below, where the words in curly brackets reflect the study parameters:
 
-\begin{plain}
-Your task is to evaluate the quality of a
-software requirement.
-Evaluate whether the following requirement is
-{quality_characteristic}.
-{quality_characteristic} means:
-{quality_characteristic_explanation}
-The evaluation result must be: 'yes' or 'no'.
-Request: Based on the following description of
-the project:
-{project_description}
-Evaluate the quality of the following
-requirement: {requirement}.
-Explain your decision and suggest an improved version.
-\end{plain}
+\judgesexample
 
 \citeauthor{DBLP:conf/re/LubosFTGMEL24} evaluated the LLM's output against human judges, to assess how well the LLM matched experts. 
 Agreement can be measured in many ways; this study used Cohen's kappa~\cite{cohen60} and found moderate agreement for simple requirements and poor agreement for more complex requirements.
