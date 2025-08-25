@@ -124,6 +124,7 @@
 \newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1}}
 \newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
 \newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries  #1}}
+\newcommand{\scopeparagraph}[1]{\paragraph{\bfseries  #1}}
 
 % adjust layout depending on document type
 \newcommand{\modelversionsummary}{\input{_guidelines/02_report-model-version-configuration-and-customizations-summary_latex.tex}}
@@ -187,7 +188,7 @@
   font=\itshape
 ]{framed}
 
-\title{Evaluation Guidelines for Empirical Studies in Software Engineering involving LLMs}
+\title{Reporting Guidelines for Empirical Studies in Software Engineering involving LLMs}
 
 \begin{document}
 
@@ -204,7 +205,7 @@
 \affiliation{\institution{Monash University, Australia}}
 \email{chetan.arora@monash.edu}
 
-\author{Marvin Muñoz Barón\\ Chunyang Chen}
+\author{Marvin Muñoz Barón\texorpdfstring{\\}{, }Chunyang Chen}
 \affiliation{\institution{TU Munich, Germany}}
 \email{{marvin.munoz-baron, chun-yang.chen}@tum.de}
 
@@ -238,7 +239,7 @@
 \affiliation{\institution{PUC Rio de Janeiro, Brazil}}
 \email{kalinowski@inf.puc-rio.br}
 
-\author{Stefano Lambiase\\Daniel Russo}
+\author{Stefano Lambiase\texorpdfstring{\\}{, }Daniel Russo}
 \affiliation{\institution{Aalborg University, Denmark}}
 \email{{stla, daniel.russo}@cs.aau.dk}
 
@@ -300,8 +301,8 @@ During these discussions, we added a new study type (\synthesis), refined the gu
 Then, at least two co-authors were assigned to each study type and guideline.
 They refined and extended the content to align with the intended structure, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
-After the internal review was completed, we invited external experts in empirical software engineering to review the study types and guidelines.
-After incorporating their feedback,\footnote{The discussion is documented in this GitHub issue: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled this article and published it online.
+After completing the internal review, we invited external experts in empirical SE to review the study types and guidelines.
+After incorporating their feedback,\footnote{The discussion is documented in this GitHub issue: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled and published this article.
 
 \section{Study Types}
 \label{sec:study-types}
