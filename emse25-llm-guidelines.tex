@@ -1,0 +1,532 @@
+\documentclass{svjour3}
+
+% language and encoding
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
+
+\usepackage{authblk}
+\usepackage{float}
+\usepackage[sort&compress]{natbib}
+%\setcitestyle{authoryear}
+\usepackage{caption}
+\usepackage{manyfoot}
+\usepackage{lstcustom}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathrsfs}
+\usepackage[title]{appendix}%
+\usepackage{balance}
+\usepackage{algorithm}
+\usepackage{algorithmicx}%
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\setlength{\marginparwidth}{2cm}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, fit}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{dashrule}
+\usepackage[super]{nth}
+
+\setlength{\marginparwidth }{2cm}
+
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+
+% editorial commands
+\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
+%\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
+
+% RFC 2119 (https://www.rfc-editor.org/rfc/rfc2119)
+% MUST: absolute requirement
+\newcommand{\must}{\textsc{must}\xspace}
+% MUST NOT: absolute prohibition
+\newcommand{\mustnot}{\textsc{must not}\xspace}
+% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course
+\newcommand{\should}{\textsc{should}\xspace}
+% SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
+\newcommand{\shouldnot}{\textsc{should not}\xspace}
+% MAY: an item is truly optional
+\newcommand{\may}{\textsc{may}\xspace}
+
+% command to indicate where certain information should be reported
+\newcommand{\paper}{\emph{paper}\xspace}
+\newcommand{\supplementarymaterial}{\emph{supplementary material}\xspace}
+
+% configure enumerate/itemize
+\usepackage[inline]{enumitem}
+
+% Get author names despite the fact that IEEEtran doesn't support it (it can't be used together with natbib)
+%\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
+%\addbibresource{literature.bib}
+
+\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
+
+% prevent single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% prevent single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+% commands to reference sections
+
+% scope
+\newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
+
+% study types
+\newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
+\newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs as Tools for Software Engineering Researchers}}\xspace}
+\newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
+\newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
+\newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
+\newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
+\newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs as Tools for Software Engineers}}\xspace}
+\newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage in Software Engineering}}\xspace}
+\newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for New Software Engineering Tools}}\xspace}
+\newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs for Software Engineering Tasks}}\xspace}
+
+%guidelines
+\newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
+\newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Declare LLM Usage and Role}}\xspace}
+\newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Report Model Version, Configuration, and Customizations}}\xspace}
+\newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Report Tool Architecture beyond Models}}\xspace}
+\newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Use Human Validation for LLM Outputs}}\xspace}
+\newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Report Prompts, their Development, and Interaction Logs}}\xspace}
+\newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Use an Open LLM as a Baseline}}\xspace}
+\newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Use Suitable Baselines, Benchmarks, and Metrics}}\xspace}
+\newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Report Limitations and Mitigations}}\xspace}
+
+% custom format for subsubsections and paragraphs
+\newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1:}}
+\newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
+\newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
+\newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
+
+% adjust layout depending on document type
+\newcommand{\modelversionsummary}{\input{_guidelines/02_report-model-version-configuration-and-customizations-summary_latex.tex}}
+\newcommand{\judgesexample}{\input{_studytypes/01-02-llms-as-judges-example_latex.tex}}
+
+\usepackage{listings}
+\usepackage{textcomp} % fix single quotes in listings environments
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true,
+  aboveskip=0.5\baselineskip,
+  belowskip=0.5\baselineskip,
+  xleftmargin=0.5\parindent,
+  xrightmargin=0pt,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{black},
+  commentstyle=\color{gray},
+  stringstyle=\color{gray},
+  emphstyle=\color{red},
+  numbers=left,
+  numbersep=8pt,
+  upquote=true
+%  columns=flexible,
+%  numberstyle=\tiny,
+%  keepspaces=true
+}
+
+\lstnewenvironment{plain} {\lstset{
+  numbers=none
+}}{}
+
+% boxes for results
+\usetikzlibrary{shadows}
+\definecolor{framebg}{gray}{0.95}
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[
+  leftmargin=0pt,
+  rightmargin=0pt,
+  usetwoside=false,
+  innerleftmargin=6pt,
+  innerrightmargin=6pt,
+  innertopmargin=4pt,
+  innerbottommargin=4pt,
+  skipabove=0.5\baselineskip plus 1pt,
+  skipbelow=0.5\baselineskip plus 2pt,
+  linecolor=black,
+  backgroundcolor=framebg,
+  linewidth=2pt,
+  roundcorner=0pt,
+  nobreak=false,
+  shadow=false,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  leftline=true,
+  font=\itshape
+]{framed}
+
+% Set title
+\makeatletter
+\def\makeheadbox{%
+  \hbox to0pt{%
+    \vbox{\baselineskip=10dd
+      \hrule
+      \hbox to\hsize{%
+        \vrule\kern3pt
+        \vbox{\kern3pt
+          % ---- customise here -----------------
+          \hbox{\bfseries Empirical Software Engineering}%
+          \hbox{(submitted manuscript)}%
+          % --------------------------------------
+          \kern3pt}%
+        \hfil\kern3pt\vrule}%
+      \hrule}%
+    \hss}}
+\makeatother
+
+\date{Submitted: 26/08/2025}
+
+\title{Reporting Guidelines for Empirical Studies in Software~Engineering involving LLMs}
+
+\author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Lutz~Prechelt \and Paul~Ralph \and Christoph~Treude \and Stefan~Wagner}
+
+\institute{%
+  Sebastian~Baltes \at
+  University of Bayreuth, Germany\\
+  \email{sebastian.baltes@uni-bayreuth.de}\\
+  (corresponding author)
+  \and
+  Florian~Angermeir \at
+  fortiss, Germany\\
+  Blekinge Institute of Technology, Sweden\\
+  \email{angermeir@fortiss.org}
+  \and
+  Chetan~Arora \at
+  Monash University, Australia\\
+  \email{chetan.arora@monash.edu}
+  \and
+  Marvin~Muñoz~Barón \and Chunyang~Chen \at
+  Technical University of Munich, Germany\\
+  \email{\{marvin.munoz-baron, chun-yang.chen\}@tum.de}
+  \and
+  Lukas~Böhme \at
+  Hasso-Plattner-Institut, Germany\\
+  University of Potsdam, Germany\\
+  \email{lukas.boehme@hpi.de}
+  \and
+  Fabio~Calefato \at
+  University of Bari, Italy\\
+  \email{fabio.calefato@uniba.it}
+  \and
+  Neil~Ernst \at
+  University of Victoria, Canada\\
+  \email{nernst@uvic.ca}
+  \and
+  Davide~Falessi \at
+  University of Rome Tor Vergata, Italy\\
+  \email{falessi@ing.uniroma2.it}
+  \and
+  Brian~Fitzgerald \at
+  Lero, Ireland\\
+  University of Limerick, Ireland\\
+  \email{brian.fitzgerald@ul.ie}
+  \and
+  Davide~Fucci \at
+  Blekinge Institute of Technology, Sweden\\
+  \email{davide.fucci@bth.se}
+  \and
+  Marcos~Kalinowski \at
+  PUC Rio de Janeiro, Brazil\\
+  \email{kalinowski@inf.puc-rio.br}
+  \and
+  Stefano~Lambiase \and Daniel~Russo \at
+  Aalborg University in Copenhagen, Denmark\\
+  \email{\{stla, daniel.russo\}@cs.aau.dk}
+  \and
+  Mircea~Lungu \at
+  IT University of Copenhagen, Denmark\\
+  \email{mlun@itu.dk}
+  \and
+  Lutz~Prechelt \at
+  Freie Universität Berlin, Germany\\
+  \email{prechelt@inf.fu-berlin.de}
+  \and
+  Paul~Ralph \at
+  Dalhousie University, Canada\\
+  \email{paulralph@dal.ca}
+  \and
+  Christoph~Treude \at
+  Singapore Management University, Singapore\\
+  \email{ctreude@smu.edu.sg}
+  \and
+  Stefan~Wagner \at
+  Technical University of Munich, Germany\\
+  \email{stefan.wagner@tum.de}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Large language models (LLMs) are increasingly being integrated into software engineering (SE) research and practice, yet their non-determinism, opaque training data, and evolving architectures complicate the reproduction and replication of empirical studies.
+We present a community effort to scope this space, introducing a taxonomy of LLM-based study types together with eight guidelines for designing and reporting empirical studies involving LLMs.
+The guidelines present essential (\must) criteria as well as desired (\should) criteria and target transparency throughout the research process.
+Our recommendations, contextualized by our study types, are: (1) to declare LLM usage and role; (2) to report model versions, configurations, and fine-tuning; (3) to document tool architectures; (4) to disclose prompts and interaction logs; (5) to use human validation; (6) to employ an open LLM as a baseline; (7) to use suitable baselines, benchmarks, and metrics; and (8) to openly articulate limitations and mitigations.
+Our goal is to enable reproducibility and replicability despite LLM-specific barriers to open science.
+We maintain the study types and guidelines online as a living resource for the community to use and shape (\href{https://llm-guidelines.org/}{llm-guidelines.org}).
+\end{abstract}
+
+\keywords{software engineering, large language models, empirical research, meta-science, guidelines}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+\input{_scope/01_motivation.tex}
+
+\section{Scope}
+\label{sec:scope}
+
+\input{_scope/02_scope.tex}
+
+\section{Methodology}
+\label{sec:methodology}
+
+The starting point for the development of these guidelines was the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain.
+The first and last author of this paper organized a session to discuss the need to develop guidelines for empirical studies involving LLMs.
+These discussions resulted in a position paper published at the \emph{\nth{2} International Workshop on Methodological Issues with Empirical Studies in Software Engineering} (WSESE 2025)~\citep{DBLP:conf/wsese/0001BFB25}.
+The first and last author presented a preprint of that paper at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), forming a workstream to lead the collaborative refinement and extension of the preliminary guidelines presented in the position paper.
+
+We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
+During these discussions, we added a new study type (\synthesis), refined the guidelines to \modelversion and to \toolarchitecture, extended the guideline to \prompts, and added the new guidelines to \benchmarksmetrics and to \limitationsmitigations.
+Then, at least two co-authors were assigned to each study type and guideline.
+They refined and extended the content to align with the intended structure, followed by a peer review and refinement phase.
+Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
+After completing the internal review, we invited external experts in empirical SE to review the study types and guidelines.
+After incorporating their feedback,\footnote{Discussion on GitHub: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled and published this article.
+
+\section{Study Types}
+\label{sec:study-types}
+
+The development of empirical guidelines for software engineering (SE) studies involving LLMs is crucial to ensuring the validity and reproducibility of results.
+However, such guidelines must be tailored to different study types that each pose unique challenges.
+%Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
+Therefore, we developed a taxonomy of study types that we then use to contextualize the recommendations we provide.
+%Note that our \guidelines refer to the \studytypes but not the other way around.
+
+Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond as well as the \textbf{advantages} and \textbf{challenges} of using LLMs for the respective study type.
+The remainder of this section is structured as follows:
+
+\par\noindent\rule{\columnwidth}{0.5pt}
+\begin{enumerate}[label=3.\arabic*]
+    \item \textbf{\llmsforresearcher}
+    \begin{enumerate}[label=3.1.\arabic*]
+        \item \annotators
+        \item \judges
+        \item \synthesis
+        \item \subjects
+    \end{enumerate}
+    \item \textbf{\llmsforengineers}
+    \begin{enumerate}[label=3.2.\arabic*]
+        %\setcounter{enumii}{4}
+        \item \llmusage
+        \item \newtools
+        \item \benchmarkingtasks
+    \end{enumerate}
+\end{enumerate}
+\par\noindent\rule{\columnwidth}{0.5pt}
+
+\subsection{LLMs as Tools for Software Engineering Researchers}
+\label{sec:llms-as-tools-for-software-engineering-researchers}
+
+\input{_studytypes/01_llms-as-tools-for-software-engineering-researchers.tex}
+
+\input{_studytypes/01-01-llms-as-annotators.tex}
+
+\input{_studytypes/01-02-llms-as-judges.tex}
+
+\input{_studytypes/01-03-llms-for-synthesis.tex}
+
+\subsection{LLMs as Tools for Software Engineers}
+\label{sec:llms-as-tools-for-software-engineers}
+
+\input{_studytypes/02_llms-as-tools-for-software-engineers.tex}
+
+\input{_studytypes/02-01_studying-llm-usage-in-software-engineering.tex}
+
+\input{_studytypes/02-02_llms-for-new-software-engineering-tools.tex}
+
+\input{_studytypes/02-03_benchmarking-llms-for-software-engineering-tasks.tex}
+
+
+\section{Guidelines}
+\label{sec:guidelines}
+
+Our guidelines focus on LLMs, that is, foundational models that use \emph{text} as in- and output.
+We do not address multi-modal foundation models that support other media such as images.
+However, many of our recommendations apply to these models as well.
+We consider the extension of our guidelines to explicitly address multi-modal foundational models an important direction for future work.
+
+The main goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical studies involving LLMs in software engineering.
+While we consider LLM-based studies to have characteristics that differ from traditional empirical studies (e.g., their inherent non-determinism and the fact that truly open models are rare), previous guidelines regarding open science and empirical studies still apply.
+Although full reproducibility of LLM study results is very challenging given LLM's non-determinism, transparency on LLM usage, methods, data, and architecture, as suggested by our guidelines, is an essential prerequisite for future replication studies.
+
+The wording of our guidelines (\must, \should, \may) follows RFC 2119~\citep{rfc2119} and RFC 8174~\citep{rfc8174}.
+Throughout the following sections, we mention the information we expect researchers to report in the \paper and/or in the \supplementarymaterial.
+We are aware that different publication venues have different page limits and that not all aspects can be reported in the \paper.
+If information \must be reported in the \paper, we explicitly mention this in the specific guidelines.
+Of course, it is better to report essential information that we expect in the \paper in the \supplementarymaterial than not at all.
+The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+%Unless explicitly mentioned otherwise, we expect information to be reported either in the \paper and/or the \supplementarymaterial.
+
+At the beginning of each section, we provide a brief \underline{\emph{tl;dr}} summary that lists the most important aspects of the corresponding guideline.
+In addition to our \textbf{recommendations}, we provide \textbf{examples} from the SE research community and beyond, as well as the \textbf{advantages} and potential \textbf{challenges} of following the respective guidelines.
+We conclude each guideline by linking it to the \textbf{study types}.
+The remainder of this section presents our eight guidelines and is structured as follows:
+
+\clearpage
+
+\par\noindent\rule{\columnwidth}{0.5pt}
+\begin{enumerate}[label=4.\arabic*]
+    \item \usagerole
+    \item \modelversion
+    \item \toolarchitecture
+    \item \prompts
+    \item \humanvalidation
+    \item \openllm
+    \item \benchmarksmetrics
+    \item \limitationsmitigations
+\end{enumerate}
+\par\noindent\rule{\columnwidth}{0.5pt}
+
+
+\subsection{Declare LLM Usage and Role}
+\label{sec:declare-llm-usage-and-role}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/01_declare-llm-usage-and-role-tldr.tex}
+\end{framed}
+
+\input{_guidelines/01_declare-llm-usage-and-role}
+
+
+\subsection{Report Model Version, Configuration, and Customizations}
+\label{sec:report-model-version-configuration-and-customizations}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/02_report-model-version-configuration-and-customizations-tldr.tex} 
+\end{framed}
+
+\input{_guidelines/02_report-model-version-configuration-and-customizations.tex}
+
+
+\subsection{Report Tool Architecture Beyond Models}
+\label{sec:report-tool-architecture-beyond-models}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/03_report-tool-architecture-beyond-models-tldr.tex} 
+\end{framed}
+
+\input{_guidelines/03_report-tool-architecture-beyond-models.tex}
+
+
+\subsection{Report Prompts, their Development, and Interaction Logs}
+\label{sec:report-prompts-their-development-and-interaction-logs}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/04_report-prompts-their-development-and-interaction-logs-tldr.tex}
+\end{framed}
+
+\input{_guidelines/04_report-prompts-their-development-and-interaction-logs.tex}
+
+
+\subsection{Use Human Validation for LLM Outputs}
+\label{sec:use-human-validation-for-llm-outputs}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/05_use-human-validation-for-llm-outputs-tldr.tex}  
+\end{framed}
+
+\input{_guidelines/05_use-human-validation-for-llm-outputs.tex}
+
+
+\subsection{Use an Open LLM as a Baseline}
+\label{sec:use-an-open-llm-as-a-baseline}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/06_use-an-open-llm-as-a-baseline-tldr.tex} 
+\end{framed}
+
+\input{_guidelines/06_use-an-open-llm-as-a-baseline.tex}
+
+
+\subsection{Use Suitable Baselines, Benchmarks, and Metrics}
+\label{sec:use-suitable-baselines-benchmarks-and-metrics}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/07_use-baselines-benchmarks-and-metrics-tldr.tex}  
+\end{framed}
+
+\input{_guidelines/07_use-baselines-benchmarks-and-metrics.tex}
+
+
+\subsection{Report Limitations and Mitigations}
+\label{sec:report-limitations-and-mitigations}
+
+\vspace{0.5\baselineskip}
+\begin{framed}
+\underline{tl;dr:} \input{_tldr/08_report-limitations-and-mitigations-tldr.tex}   
+\end{framed}
+
+\input{_guidelines/08_report-limitations-and-mitigations.tex}
+
+
+\section{Conclusion}
+
+This paper organizes the landscape of empirical studies involving LLMs in software engineering along seven study types and distills eight guidelines aimed at improving their validity, transparency, and reproducibility.
+Our guidelines recommend that researchers
+\begin{enumerate*}[label=(\arabic*)]
+\item explicitly declare when and how LLMs are used;
+\item report model versions, configuration, and fine-tuning details;
+\item describe the complete tool architecture beyond the model;
+\item release prompts, their development, and, where possible, interaction logs;
+\item validate LLM outputs with humans;
+\item include an open LLM as a baseline;
+\item select appropriate baselines, benchmarks, and metrics; and
+\item report study limitations and mitigations, including costs, potential biases, and environmental impact.
+\end{enumerate*}
+Adopting these practices will not eliminate LLM non-determinism, but it will make claims auditable, and results easier to replicate and compare across studies. 
+By consistently applying our recommendations, the community can produce more reliable evidence on what LLM can and cannot deliver for software engineering research and practice.
+Our guidelines complement existing empirical software engineering guidance while addressing LLM-specific challenges.
+Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them: \href{https://llm-guidelines.org/}{llm-guidelines.org}.
+
+
+\section*{Acknowledgments}
+
+Our study types and guidelines are based on discussion sessions with researchers at the 2024 International Software Engineering Research Network (ISERN) meeting and at the 2nd Copenhagen Symposium on Human-Centered Software Engineering AI (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
+ChatGPT with GPT-5 was used to generate initial versions of the abstract and conclusion sections of this paper.
+
+\bibliographystyle{spbasic}
+\bibliography{literature}
+
+\end{document}
