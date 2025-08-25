@@ -1,4 +1,5 @@
-\documentclass{svjour3}
+\documentclass[smallextended]{svjour3}
+\usepackage[square,numbers,sort&compress]{natbib}
 
 % language and encoding
 \usepackage[english]{babel}
@@ -7,11 +8,8 @@
 
 \usepackage{authblk}
 \usepackage{float}
-\usepackage[sort&compress]{natbib}
-%\setcitestyle{authoryear}
-\usepackage{caption}
+%\usepackage{caption}
 \usepackage{manyfoot}
-\usepackage{lstcustom}
 \usepackage[most]{tcolorbox}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage{mathrsfs}
@@ -276,6 +274,9 @@
   \email{stefan.wagner@tum.de}
 }
 
+\authorrunning{Baltes et al.}
+\titlerunning{LLM Guidelines for Software Engineering}
+
 \begin{document}
 
 \maketitle
@@ -316,7 +317,7 @@ Then, at least two co-authors were assigned to each study type and guideline.
 They refined and extended the content to align with the intended structure, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
 After completing the internal review, we invited external experts in empirical SE to review the study types and guidelines.
-After incorporating their feedback,\footnote{Discussion on GitHub: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled and published this article.
+After incorporating their feedback,\footnote{Discussion: \url{https://github.com/se-uhd/llm-guidelines-website/issues/89}} we compiled and published this article.
 
 \section{Study Types}
 \label{sec:study-types}
@@ -396,8 +397,6 @@ At the beginning of each section, we provide a brief \underline{\emph{tl;dr}} su
 In addition to our \textbf{recommendations}, we provide \textbf{examples} from the SE research community and beyond, as well as the \textbf{advantages} and potential \textbf{challenges} of following the respective guidelines.
 We conclude each guideline by linking it to the \textbf{study types}.
 The remainder of this section presents our eight guidelines and is structured as follows:
-
-\clearpage
 
 \par\noindent\rule{\columnwidth}{0.5pt}
 \begin{enumerate}[label=4.\arabic*]
@@ -526,7 +525,7 @@ Because models and tools evolve, we maintain the guidelines as a living resource
 Our study types and guidelines are based on discussion sessions with researchers at the 2024 International Software Engineering Research Network (ISERN) meeting and at the 2nd Copenhagen Symposium on Human-Centered Software Engineering AI (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
 ChatGPT with GPT-5 was used to generate initial versions of the abstract and conclusion sections of this paper.
 
-\bibliographystyle{spbasic}
+\bibliographystyle{plainnat}
 \bibliography{literature}
 
 \end{document}
