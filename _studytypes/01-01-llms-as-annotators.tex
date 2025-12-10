@@ -13,7 +13,7 @@ Recent work in software engineering has begun to explore the use of LLMs for ann
 They used three models of comparable size with an absolute majority voting rule (i.e., a label is only accepted if it receives more than half of the total votes from the models).
 Accordingly, the annotations fell into three categories: exact matches (where all models agreed), partial matches (where a majority agreed), and non-matches (where no majority was reached).
 The study by \citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} examined LLMs as annotators in software engineering research across five datasets, six LLMs, and ten annotation tasks.
-They found that model-model agreement strongly correlates with human-model agreement, suggesting situations in which LLMs could effectively replace human annotators. Their research showed that for tasks where humans themselves disagreed significantly , models also performed poorly.
+They found that model-model agreement strongly correlates with human-model agreement, suggesting situations in which LLMs could effectively replace human annotators. Their research showed that for tasks where humans themselves disagreed significantly, models also performed poorly.
 Conversely, if multiple LLMs reach similar solutions independently, then LLMs are likely suitable for the annotation task.
 They proposed to use model confidence scores to identify specific samples that could be safely delegated to LLMs, potentially reducing human annotation effort without compromising inter-rater agreement.
 
