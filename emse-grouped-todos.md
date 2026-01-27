@@ -117,14 +117,14 @@
 - [ ] **R1-37** - Remove AI-sounding filler (e.g., “crucial for accuracy”) around p.29 l.1.
 
 ### Section 5.5 - Human Validation
-- [ ] **R1-38** - Fix paraphrased quotes and define “first three categories” in §5.5.2.
+- [x] **R1-38** - Fix paraphrased quotes and define “first three categories” in §5.5.2.
 - [ ] **R1-39** - Clarify why p.32 l.25 is relevant to human validation.
-- [ ] **R1-41** - Explain the connection between “struggle with adapting to AI-assisted work” and §5.5.4.
+- [x] **R1-41** - Explain the connection between “struggle with adapting to AI-assisted work” and §5.5.4.
 
 ### Section 5.6 - Open Baselines & Infrastructure
-- [ ] **R1-43** - Reword “managed cloud APIs provided by proprietary vendors” for clarity.
+- [x] **R1-43** - Reword “managed cloud APIs provided by proprietary vendors” for clarity.
 - [ ] **R1-44** - Add a comparison table for proprietary vs. open-weight vs. full-open models.
-- [ ] **R1-45** - Use static analysis as the example at p.37 l.15.
+- [x] **R1-45** - Use static analysis as the example at p.37 l.15.
 
 ### Section 5.7 - Benchmarks, Repetition & Model Identification
 - [ ] **R1-46** - Specify which benchmarks are referenced at p.37 l.4.
