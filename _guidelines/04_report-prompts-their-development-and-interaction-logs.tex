@@ -2,8 +2,9 @@ Prompts are critical for any study involving LLMs.
 Depending on the task, prompts may include various \href{https://www.promptingguide.ai/introduction/elements}{types of content}, including instructions, context, and input data, and output indicators.
 For SE tasks, the context can include source code, execution traces, error messages, and other forms of natural language content.
 The output can be unstructured text or a structured format such as JSON.
+
 Prompts significantly influence the quality of the output of a model, and understanding how exactly they were formatted and integrated into an LLM-based study is essential to ensure transparency, verifiability, and reproducibility.
-We remind the reader that these guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
+\added{\citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.}
 
 \guidelinesubsubsection{Recommendations}
 
@@ -55,6 +56,9 @@ In both cases, it is important to document the entire interaction between the in
 Just as a human participant might give different answers to the same question asked two months apart, the responses from ChatGPT can also vary over time (see also Section \subjects).
 Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
 
+We remind the reader that these guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
+This implies that our guidelines do not recommend that researcher disclose the prompts they have used for such tasks.
+
 \guidelinesubsubsection{Example(s)}
 
 A paper by \citeauthor{anandayuvaraj2024fail}~\cite{anandayuvaraj2024fail} is a good example of making prompts available online.
@@ -67,7 +71,7 @@ The \paper thoroughly explains the rationale behind the prompt design and the da
 It also includes an overview figure and two concrete examples, enabling transparency and reproducibility while keeping the main text concise.
 An example of reporting full interaction logs is the study by \citeauthor{ronanki2023investigating}~\cite{ronanki2023investigating}, for which they reported the full answers of ChatGPT and uploaded them to \href{https://zenodo.org/records/8124936}{Zenodo}. 
 
-\guidelinesubsubsection{Advantages}
+\guidelinesubsubsection{Benefits}
 
 As motivated above, providing detailed documentation of the prompts improves the verifiability, reproducibility, and comparability of LLM-based studies.
 It allows other researchers to replicate the study under similar conditions, refine prompts based on documented improvements, and evaluate how different types of content (e.g., source code vs. execution traces) influence LLM behavior.
@@ -109,3 +113,8 @@ For \synthesis tasks (e.g., summarization, aggregation), researchers \must docum
 For \subjects (e.g., simulating human participants), researchers \must report any role-playing instructions, constraints, or personas used to guide LLM behavior.
 For \benchmarkingtasks studies using pre-defined prompts (e.g., \emph{HumanEval}, \emph{CruxEval}), researchers \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
 If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
+
+\guidelinesubsubsection{Advice for Reviewers}
+
+\added{As in the previous subsection, in most cases, reviewers should simply request any missing information be added unless so much is missing that the reviewer cannot assess methodological rigor. For this guideline, the trickiest part is the paper's description of how prompts were developed. Generating prompts is a creative, improvised process---characterized by trial-and-error, guesswork, and copious intuitive microdecisions---all of which are impossible to justify with a priori theory or universal principles. The purpose of describing this process is to illuminate potential biases or validity problems; the prompt generating process cannot generally be described algorithmically such that a different researcher following the same process would produce identical prompts. Reviewers should \textit{not} demand justification of each word choice or over-rationalized\footnote{``Over-rationalized'' means presenting chaotic, improvised events as logical plan-execution.} accounts of prompt generation. Instead, reviewers should focus on ensuring that sufficient information is provided such that (1) a new research team could \textit{use} (not produce) exactly the same prompts in exactly the same way; and (2) any potential biases or validity issues are transparent.}
+
