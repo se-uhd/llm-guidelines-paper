@@ -21,6 +21,7 @@
 
 \usepackage{todonotes}
 \setuptodonotes{inline}
+\newcommand{\CA}[1]{\todo[color=red!40, linecolor=red, bordercolor=red, textcolor=black]{#1}}
 
 \title{Guidelines for Empirical Studies in Software Engineering Involving Large Language Models}
 \author{Sebastian Baltes et al.}
@@ -72,12 +73,14 @@ This is worthwhile work that can benefit from a number of improvements mainly it
 	We have carefully addressed all the issues item by item as follows.
 \end{revresponse}
 
+% R1 C1
 \begin{revcomment}
 Regarding significance, the motivation behind this work is clearly set in the introduction. The presented contributions can clearly impact the field of software engineering theory and practice as described in the concluding sections.
 \end{revcomment}
 \begin{revresponse}
 \end{revresponse}
 
+% R1 C2
 \begin{revcomment}
 Regarding novelty, the work's contributions are original with respect to the state-of-the-art. Existing work in the area is coherently analyzed and synthesized, and the study's contributions are clearly identified in its context.
 \end{revcomment}
@@ -87,13 +90,21 @@ Regarding novelty, the work's contributions are original with respect to the sta
 %	\end{changes}
 \end{revresponse}
 
+% R1 C3
 \begin{revcomment}
     Regarding soundness, the study's contributions address its research questions, but in some cases the applied research methods lack the required rigor. In particular the methods described in Section 3 could be improved by having the process informed in a systematic way from other disciplines. The contribution's evaluation can be improved perhaps with a provision (as an appendix) of a model study following the recommendations, in order to judge the recommendations' practicality and value. Threats to validity and their effect on the results' soundness are not explicitly presented.
 \end{revcomment}
 \begin{revresponse}
 \todo{Should we add an example application?}
 
+\CA{Chetan (CA): I agree. I went through all studies that cite the Arxiv version of this paper, but couldn't find any paper that applies the guidelines.}
+\todo{Florian: Found one new paper that claimed to follow the guidelines for their evaluation: https://aet.cit.tum.de/research/publications/soelch2026icse.pdf}
+
+
 \todo{Should we add threats to validity? Something like the following:}
+\CA{CA: Yes :)}
+
+% R1 C4
 \begin{revcomment}
 Threats to Validity
 
@@ -101,16 +112,18 @@ Given the secondary nature of this study – guidelines for research rather than
 \end{revcomment}
 \end{revresponse}
 
-
+% R1 C5
 \begin{revcomment}
     Regarding verifiability, independent verification of the paper's claimed contributions is difficult, though this is a difficult to address issue.
 \end{revcomment}
 \begin{revresponse}
     We believe the contribution can only be evaluated long-term by applying it to many studies.
+    \todo{FLORIAN ANGERMEIR – I'd add the following angle: As well as through the lens of a starting point for further analyses, such as https://arxiv.org/pdf/2601.01954 and https://arxiv.org/pdf/2510.25506.}
 \end{revresponse}
 
+% R1 C6
 \begin{revcomment}
-    Regarding presentation, the paper's structure can be improved. Several challenges and advantages are repeated in many sections. Consider codifying them, analyzing them once, and then cross-referencing them from a table. Furrthermore, the identified challenges are given without any proposed means to address them. Most are later addressed through the proposed guidelines. Consider codifying and linking the two, again in tabular form. Along similar lines,  consider splitting the provided recommendations into a hirerachically numbered set of recommendations and a separate rationale exposition. In some places the exposition is not as clear as it could be.
+    Regarding presentation, the paper's structure can be improved. Several challenges and advantages are repeated in many sections. Consider codifying them, analyzing them once, and then cross-referencing them from a table. Furthermore, the identified challenges are given without any proposed means to address them. Most are later addressed through the proposed guidelines. Consider codifying and linking the two, again in tabular form. Along similar lines,  consider splitting the provided recommendations into a hierarchically numbered set of recommendations and a separate rationale exposition. In some places the exposition is not as clear as it could be.
 \end{revcomment}
 
 \begin{revresponse}
@@ -121,9 +134,20 @@ Given the secondary nature of this study – guidelines for research rather than
     \todo{Hierarchically number recommendations?}
 
     \todo{Make exposition clearer}
+
+    \todo{STEFANO LAMBIASE SAYS: It seems to me that the problem lies in the study type section. At this point, we could: (1) move the entire study type section to the appendix and replace it with something more generic and concise, as suggested by the reviewer, and (2) add the table he refers to (perhaps a Sankey diagram could achieve the same result).}
+
+    \todo{FLORIAN ANGERMEIR: Agree about the study type section. Not a fan of the appendix, as the study types are an important context. How about generic advantages subsection first, then each study type (description, examples, reference to challenges) and one subsection with a list of challenges that we can reference also in the guidelines?
+    }
+
+    \CA{CHETAN: I agree with Florian. I reckon we should have a dedicated advantages / challenges section towards the beginning of Section 5 and then later a traceability matrix of guidelines and the advantages and challenges. I think also we should aim to improve the readability of the paper overall, by using a consistent numbering scheme, such as: \\
+    Guideline-level: G5.2 \\
+    Recommendation IDs: R5.2-1, R5.2-2,\\
+    Challenge IDs: C1, C2, … \\
+    Advantage IDs: A1, A2, …}
 \end{revresponse}
 
-
+% R1 C7
 \begin{revcomment}
     Furthermore, many paragraphs, such as those in Section 5.8.1, start with a long-winded rationale before arriving at the recommendation. Consider using recommendations as each paragraph's thematic sentence.  The text is free from typos and style errors. The formatting follows the provided instructions, but could be improved. Please fix the capitalization of referenced titles, see e.g. reference 96 (should be Python, ChatGPT). Consider converting the RFC 2119 MUST/SHALL/MAY verbs into lowercase. Their uppercase appearance is distracting, and the paper contains guidelines, not a technical standard. Consider reducing in-text cross-references to other sections—they are distracting. If needed, add them in a separate section, as is done in many Design Pattern catalogues. The abstract is self-standing and summarizes succinctly the paper's essence. The paper could also benefit from the addition of a few figures to help navigating it.
 
@@ -140,6 +164,7 @@ Given the secondary nature of this study – guidelines for research rather than
     \todo{What figures could help to navigate it?}
 \end{revresponse}
 
+% R1 C8
 \begin{revcomment}
     Below is a list of more detailed comments.
 
@@ -149,7 +174,7 @@ Page 3, line 16: Consider providing some details or examples as motivation, perh
     \todo{Add example where LLM poses risk for validity.}
 \end{revresponse}
 
-
+% R1 C9
 \begin{revcomment}
 Page 3, line 29: Consider also mentioning the  ACM SIGSOFT Empirical Standards for Software Engineering.
 \end{revcomment}
@@ -157,6 +182,7 @@ Page 3, line 29: Consider also mentioning the  ACM SIGSOFT Empirical Standards f
     We added the ACM SIGSOFT Empirical Standards.
 \end{revresponse}
 
+% R1 C10
 \begin{revcomment}
 Page 3, line 33: LLMs are also a new tool, which requires fresh methdological guidance.
 \end{revcomment}
@@ -164,6 +190,7 @@ Page 3, line 33: LLMs are also a new tool, which requires fresh methdological gu
     We added the need for fresh methodological guidance.
 \end{revresponse}
 
+% R1 C11
 \begin{revcomment}
 Page 4, line 7: Consider changing "recent version" into "recent version of this document".
 \end{revcomment}
@@ -175,6 +202,7 @@ We are referring to continuously evolving guidelines as published online. We cha
     
 \end{revresponse}
 
+% R1 C12
 \begin{revcomment}
 Page 4, line 9: Remove "xw"?
 
@@ -185,6 +213,7 @@ Page 4, line 38: Consider changing "advise" into "advice".
     Done!
 \end{revresponse}
 
+% R1 C13
 \begin{revcomment}
 Section 2: The scope includes software code in addition to natural language, right?
 \end{revcomment}
@@ -192,17 +221,22 @@ Section 2: The scope includes software code in addition to natural language, rig
     Yes, absolutely. We changed it to ``textual use cases.''
 \end{revresponse}
 
+% R1 C14
 \begin{revcomment}
 Page 5, line 23: Also data generation, as in 4.1.4
 \end{revcomment}
 \begin{revresponse}
     \todo{Not sure what they are referring to. Any ideas?
     
-    They are referring to use of LLMs for data generation. We refer to "data collection, processing or analysis" on page 5. Data collection arguably includes data generation but the simplest fix might be "data collection/generation, processing or analysis"}
+    They are referring to use of LLMs for data generation. We refer to "data collection, processing or analysis" on page 5. Data collection arguably includes data generation but the simplest fix might be "data collection/generation, processing or analysis"
+    
+    STEFANO LAMBIASE — I agree with the simple change to "data collection/generation..."
+    FLORIAN ANGERMEIR – Sounds good.
+    }
+    
 \end{revresponse}
 
-
-
+% R1 C15
 \begin{revcomment}
 Page 6, line 29: The numbering is wrong.
 \end{revcomment}
@@ -210,6 +244,7 @@ Page 6, line 29: The numbering is wrong.
     Fixed!
 \end{revresponse}
 
+% R1 C16
 \begin{revcomment}
 Page 7, line 38: Consider changing "inter-rater agreement" into "accuracy". 
 \end{revcomment}
@@ -217,13 +252,23 @@ Page 7, line 38: Consider changing "inter-rater agreement" into "accuracy".
     We kept ``inter-rater agreement'' here because we are referring to a specific paper in which they use that term.
 \end{revresponse}
 
+% R1 C17
 \begin{revcomment}
 Page 8, line 16: Please clarify.
 \end{revcomment}
 \begin{revresponse}
+We have now clarified it further and added an example to improve the sentence's readability.
+ \begin{changes}
+    Studies have shown that LLMs can be unreliable for high-stakes labeling, i.e., labels where misclassification has substantial downstream consequences (e.g., safety-critical or compliance-related decisions). In addition, LLMs can exhibit uneven per-class performance, with accuracy differing markedly across label categories, often performing worse on rare or ambiguous labels and systematically over- or under-assigning specific annotation categories.
+    \end{changes}
+    
     \todo{I don't understand what to clarify.}
+    \todo{STEFANO LAMBIASE — I think we are talking of the following phrase "Challenges: Challenges of using LLMs as annotators include reliability issues, human-LLM interaction challenges, biases, errors, and resource considerations." Right? I also can not find the problem.}
+    \todo{FLORIAN ANGERMEIR – I assume its about "Studies have shown that LLMs are especially unreliable for high-stakes labeling tasks [128] and that LLMs can have notable performance disparities between label categories [144]." But I don't know how to clarify this even more.}
+    \CA{CHETAN: I agree with Florian. I think it is about this sentence. I attempted to clarify it further.}
 \end{revresponse}
 
+% R1 C18
 \begin{revcomment}
     Section 4.1: It might be worth investigating the following philosophical question. Is it sound to consider human judgmenet as the gold standard against which LLM performance is evaluated? For example, this is not the approach scientists employ when evaluating the accuracy of spectrometer measurements.
 \end{revcomment}
@@ -233,6 +278,7 @@ Page 8, line 16: Please clarify.
     This is quite an interesting remark. Proper treatment is out of scope for our paper. However, we have added this as a note at the end of the opening paragraph in S 4.1
 \end{revresponse}
 
+% R1 C19
 \begin{revcomment}
 Section 4.1.2: Several of the advantages listed here also apply to 4.1.1. Consider some form of merging to avoid gratuitous differences or repetitions.
 \end{revcomment}
@@ -240,6 +286,7 @@ Section 4.1.2: Several of the advantages listed here also apply to 4.1.1. Consid
     We added a pointer back to the advantages in 4.1.1, in \S 4.1.2. We keep these separate, even at the risk of repetition, since the guidelines are intended to be read standalone if necessary.
 \end{revresponse}
 
+% R1 C20
 \begin{revcomment}
 Page 10, line 11: Please explain why this is an issue.
 \end{revcomment}
@@ -250,6 +297,7 @@ Page 10, line 11: Please explain why this is an issue.
     \end{changes}
 \end{revresponse}
 
+% R1 C21
 \begin{revcomment}
 Page 10, line 32: The word synthesis also applies to this use, but under a different meaning: "the production of a substance from simpler materials after a chemical reaction" rather than "the mixing of different ideas, influences, or things to make a whole that is different, or new" as used at the beginning of the paragraph. To avoid confusion, consider splitting this case into a separate section with a title like "synthetic data generation".
 \end{revcomment}
@@ -258,21 +306,29 @@ Page 10, line 32: The word synthesis also applies to this use, but under a diffe
     We have removed the second sense of the word - novel datasets - from this section. As there are not a lot of examples of synthetic LLM created datasets as of this writing, we have deferred including this usage.
 \end{revresponse}
 
+% R1 C22
 \begin{revcomment}
 Section 4.1.3: The examples provided here are the the wrong (meta) level compared to the other sections. If no direct examples can be found, consider mentioning this distinction.
 \end{revcomment}
 \begin{revresponse}
     \todo{The examples are fine IMHO, but could use some more concrete details.}
+\todo{Cristy: I added examples from SE, so I guess it's fine now.}
+We have now added concrete examples from software engineering, from scoping studies to specific proposed implementation frameworks.
+
 \end{revresponse}
 
+% R1 C23
 \begin{revcomment}
 Section 4.1.3: Several of the challenges listed here also apply to other sections. Consider some form of merging to avoid gratuitous differences or repetitions.
 \end{revcomment}
 \begin{revresponse}
     \todo{How do we deal with that? Should we have some general challenges somewhere that we can refer to in the individual use cases?}
     \todo{NE: I think we could have a prefatory section (4.0) called "Common Challenges and Benefits" which would list scalability, ethics, cost, context size, etc. But since our web site has separate 'pages' per study type, it would be less standalone.}
+    \todo{STEFANO LAMBIASE — Another option (also to streamline the paper) would be to move the study types as they are to the appendix and keep a section more focused on the challenges, which reports the types of studies in a more vague way. The focus of the paper is the guidelines, so this could help the flow of the reading and also resolve reviewer 2's comment. As the person who contributed most to this section, I'm not particularly keen on doing so, but I think we should consider it.}
+    \todo{FLORIAN ANGERMEIR – (Copy from other comment) Not a fan of the appendix, as the study types are an important context. How about generic advantages subsection first, then each study type (description, examples, reference to challenges) and one subsection with a list of challenges that we can reference also in the guidelines?}
 \end{revresponse}
 
+% R1 C4
 \begin{revcomment}
 Page 12, line 32: Please clarify the meaning and implications of "should". Is this something the researchers should verify (if so, how) or is it a currently unatainable ideal?
 \end{revcomment}
@@ -284,6 +340,7 @@ Page 12, line 32: Please clarify the meaning and implications of "should". Is th
  "We understand the point being made. However, these 4 criteria are drawn from reference [5] so we do not feel we can/should qualify an individual criterion" }
 \end{revresponse}
 
+% R1 C25
 \begin{revcomment}
 Page 16, line 22: A key advantage is the automation of tasks previously executed by humans.
 \end{revcomment}
@@ -291,6 +348,7 @@ Page 16, line 22: A key advantage is the automation of tasks previously executed
     Added this as the overarching advantage in the introductory paragraph.
 \end{revresponse}
 
+% R1 C26
 \begin{revcomment}
 Page 16, line 44: Please … and replicability.
 \end{revcomment}
@@ -298,6 +356,7 @@ Page 16, line 44: Please … and replicability.
     We added this point on replicability to the list of challenges.
 \end{revresponse}
 
+% R1 C27
 \begin{revcomment}
 Section 5: Consider also including guidelines for reviewing papers that use LLMs. Following the providing guidelines is a start, but there are also things the reviewers should avoid, such as excessive requirements regarding verification. Furthermore, consider the space needed for fullfilling all the requirments; could much of the data be supplied as part of a replication package? If so which?
 \end{revcomment}
@@ -308,6 +367,7 @@ Section 5: Consider also including guidelines for reviewing papers that use LLMs
         \end{changes}
 \end{revresponse}
 
+% R1 C28
 \begin{revcomment}
 Section 5.2: Is the position regarding the requirement to disclosue version too timid? As stated, many providers do not make it possible to use a past version. I think more epistemological thought, deliberation, and discussion is needed regarding the fact that research with SAAS models may not be deterministically reproducible.  This is not neccessarily a fatal problem. Many research methods, such as ethnography, grounded theory, and action research, share this feature. However, in such cases additional emphasis is placed in methodological elements such as triangulation, reflexivity, audit trails, and peer debriefing. These measures aim to ensure trustworthiness, encompassing credibility, transferability, dependability, and confirmability—the qualitative counterparts to validity, generalizability, reliability, and objectivity in deterministic quantitative research. Consider discussing these issues and adjusting the recommendations.
 \end{revcomment}
@@ -315,6 +375,7 @@ Section 5.2: Is the position regarding the requirement to disclosue version too 
     \todo{Very good point but goes beyond what we are asking for in this particular guideline. Maybe pick this up separately and merge with Lutz's suggestion?}
 \end{revresponse}
 
+% R1 C29
 \begin{revcomment}
 Section 5.2.4: Consider expanding and explaining the drawbacks, advantages, and limitations of a 0 temperature setting regarding reproducibility.
 \end{revcomment}
@@ -322,6 +383,7 @@ Section 5.2.4: Consider expanding and explaining the drawbacks, advantages, and 
     \todo{Discuss impacto of a temperature 0 setting.}
 \end{revresponse}
 
+% R1 C30
 \begin{revcomment}
 Section 5.2.5: I recommend summarizing recommendations by study type also in a table. (Also applies to the other .5 subsections.)
 \end{revcomment}
@@ -329,41 +391,51 @@ Section 5.2.5: I recommend summarizing recommendations by study type also in a t
     \todo{Think about good visual summaries.}
 \end{revresponse}
 
+% R1 C31
 \begin{revcomment}
-Section 5.3: In general, for replicability we tend to distribute source code. So why here is the requirement only for abstract models (e.g. arghitecture diagrams, coordination logic), rather than concrete implementations? Consider requiring both.
+Section 5.3: In general, for replicability we tend to distribute source code. So why here is the requirement only for abstract models (e.g. architecture diagrams, coordination logic), rather than concrete implementations? Consider requiring both.
 \end{revcomment}
 \begin{revresponse}
     \todo{True. We should add this as a SHOULD.}
+    \todo{STEFANO LAMBIASE — I agree.}
 \end{revresponse}
 
+% R1 C32
 \begin{revcomment}
 Page 29, line 1: Why is "keeping a record of the actual conversation" "crucial for accuracy"? There are several other such statements in the paragraphs' concluding phrases, which read like AI-generated slop. Please review them carefully, removing those that don't add anything substantial and fixing those, such as this one, that read nicely but are actually incorrect.
 \end{revcomment}
 \begin{revresponse}
     \todo{?}
+    \todo{@Christoph: Assuming this text was written by you, can you please take care of this?}
 \end{revresponse}
 
+% R1 C33
 \begin{revcomment}
 Section 5.5.2: The text in the quotes appears to be paraphrased, so remove them (or adjust the text). Clarify what are "the first three categories".
 \end{revcomment}
 \begin{revresponse}
     \todo{?}
+    \todo{@Marvin: Under the assumption that you are familiar with this example, could you please address the comment here?}
 \end{revresponse}
 
+% R1 C34
 \begin{revcomment}
 Page 32, line 25: Please clarify how this is relevant to human validation.
 \end{revcomment}
 \begin{revresponse}
     \todo{?}
+    \todo{@Marvin: Under the assumption that you are familiar with this example, could you please address the comment here?}
 \end{revresponse}
 
+% R1 C35
 \begin{revcomment}
 Section 5.5.2: What is your recommendation given the cited low human-model and human-human agreements?
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    \todo{@Marvin: Assuming you already have some insights here, could you please address this question?}
 \end{revresponse}
 
+% R1 C36
 \begin{revcomment}
 Section 5.5.4: Please clarify the relevance of the "struggle with adapting to AI-assisted work" to this section.
 \end{revcomment}
@@ -372,109 +444,144 @@ Section 5.5.4: Please clarify the relevance of the "struggle with adapting to AI
     The two sentences here are presented as a long quote (based on quotation marks) from Hicks et al., but this is not a direct quote. Better to simplify and remove the word "struggle".  }
 \end{revresponse}
 
+% R1 C37
 \begin{revcomment}
 Section 5.6.1: Please clarify why including an open LLM baseline might not be possible if the study involves human participants.
 \end{revcomment}
 \begin{revresponse}
     \todo{?}
+    \todo{@Davide Falessi: Could you please take care of this?}
 \end{revresponse}
 
+% R1 C38
 \begin{revcomment}
 Page 35, line 45: Consider changing "managed cloud APIs provided by proprietary vendors" into "vendor-provided managed proprietary cloud APIs".
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    We clarified our statement by removing ``managed cloud''.  
 \end{revresponse}
 
+% R1 C39
 \begin{revcomment}
 Section 5.6: Consider tabulating the scientific advantages of moving from proprietary, to open-weight, to full-open models.
 \end{revcomment}
 \begin{revresponse}
     \todo{?}
+    \todo{@Davide Falessi: Could you please take care of this?}
 \end{revresponse}
 
+% R1 C40
 \begin{revcomment}
 Page 37, line 15: Static analysis would be an even better example.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Lukas Boehme
+    Thanks, we added static analysis as an example in addition to program repair.
 \end{revresponse}
 
+% R1 C41
 \begin{revcomment}
 Page 37, line 4: Please clarify: what benchmarks is the example referring to?
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Lukas Boehme
+    Thanks, we added the reference for improved clarity.
 \end{revresponse}
 
+% R1 C42
 \begin{revcomment}
 Section 5.7.2: Most of the information presented here is (useful) background, not concrete examples. Consider moving it to an appropriate section.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Lukas Boehme:
+    We moved the background explanations of  metrics to the recommendation subsection.
 \end{revresponse}
 
+% R1 C43
 \begin{revcomment}
 Page 38, line 37: Please use a display equation
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Lukas Boehme
+    Fixed.
 \end{revresponse}
 
+% R1 C44
 \begin{revcomment}
-Page 38, line 49: The tasks mentioned here to not adhere to the problem types introduced  at the beginning of Section 5.7.2
+Page 38, line 49: The tasks mentioned here do not adhere to the problem types introduced at the beginning of Section 5.7.2
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Lukas Boehme
+    We have added an explicit category label to clarify that the mentioned tasks belong to the 'generation' category.
 \end{revresponse}
 
+% R1 C45
 \begin{revcomment}
 Section 5.7: This section can benefit from a structured classification of the benchmarks described in Section 5.7.2.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    \todo{Lukas Boehme: I added for classification and recommendation tasks using LLMs. Maybe someone reads it :)}
+    Thanks for the suggestion. We agree that the section benefits from the introduced categorization of benchmarks and edited the section.
 \end{revresponse}
 
+% R1 C46
 \begin{revcomment}
 Page 40, line 18: This is one of the most important issues. Consider placing it more prominently and providing concrete
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    %Lukas Boehme: The line is about benchmark contamination. I agree that this aspect is central for llm benchmarks and we should go into more detail how to prevent contamination. How should we 'place it more prominently'?
+    %Florian Angermeir: Lukas and I sat together. He'll merge relevant parts from 5.8 into 5.7 and I'll adjust 5.8 accordingly once he's done.
+    Thank you for raising this point. The topic of benchmark contamination/inter-dataset duplication was discussed mainly in section 5.8 (Report Limitations and Mitigations) with a brief mentioning in section 5.7 (Use Suitable Baselines, Benchmarks, and Metrics). We performed the following changes: First, a detailed discussion of benchmark contamination and related mitigations in 5.7. Second, we focused the discussion in 5.8 on the broader topic of inter-dataset duplication and the necessity of authors to discuss those threats to the validity. We hope this restructuring give the topic the appropriate attention and makes it more concrete for authors.
 \end{revresponse}
 
+% R1 C47
 \begin{revcomment}
 Page 42, line 7: GPT-4o is a very coarse model identifier. Clarify whether the problem also applies to models sharing the same fingerprint.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    \todo{Florian Angermeir: 
+    1. Removed GPT-4o as example. It did not add any value. 
+    2. Replaced ''the same model version'' with ''the same precise model version (including minor version)''. 
+    3. Not sure the fingerprint refers to the minor version (e.g. GPT-4o-2023-10-03) or to the system\_fingerprint. If the first we answer it with the changes already. If the second: Those values are in the consumer OpenAI API read-only. For business OpenAI API I don't know. To my limited knowledge there is not investigation on the impact of fixed fingerprint on performance regressions.}
+    \todo{Florian Angermeir: Anybody as an opinion on the fingerprinting statement?}
+    \todo{(Response Draft) Thank you for raising this issue. We adjusted the formulation to be more precise. TODO: Fingerprinting response....}
 \end{revresponse}
 
+% R1 C48
 \begin{revcomment}
 Page 42, line 35: Please start the paragraph with a thematic sentence.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    %Florian
+    \todo{Done}
+    Thank you for supporting us in enhancing the readability of our manuscript.
 \end{revresponse}
 
+% R1 C49
 \begin{revcomment}
 Page 44, line 26: The paragraph starts by discussing generalizability and then switches to a discussion of code duplication. Please structure accordingly.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Florian: Rephrased the setting of the code-duplication examples.
+    Thank you for raising this point. We clarified the topic of code duplication as on example for dataset leakage affecting generalizability.
 \end{revresponse}
 
+% R1 C50
 \begin{revcomment}
-Section 5.8: To aid transparency and provide context, the cost should be reported by breaking down its components, e.g. number of input tokens, output tokens, and corresponding unit costs. This allows prediciting future costs.
+Section 5.8: To aid transparency and provide context, the cost should be reported by breaking down its components, e.g. number of input tokens, output tokens, and corresponding unit costs. This allows predicting future costs.
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Florian
+    Thank you for the thoughtful suggestion. We included it as the preferred way of reporting costs.
 \end{revresponse}
 
+% R1 C51
 \begin{revcomment}
 Section 5.8: Given that its benefits are very difficult to judge, I am not convinced regarding the value of an environmental impact assessment for scientific research. How would one evaluate CERN LHC, Mars space missions, ITER, NIF, and LLM model training in this context?
 \end{revcomment}
 \begin{revresponse}
-    \todo{?}
+    % Florian: Softened this from should to may. But given the environmental impact of LLMs, it would IMO be unethical to not at least nudge researchers to think about it, even if only with MAY recommendation.}
+    The reviewer raises an important point here. We agree, that SHOULD was too strong and changed it to MAY. Given the increased environmental impact of LLM-focused research compared to traditional research, we nevertheless deem it noteworthy to raise awareness.
 \end{revresponse}
 
 \begin{concludingresponse}[]
@@ -502,51 +609,95 @@ Main strengths:
 	We appreciate the acknowledgement of the strengths. We have responded to all weaknesses in the following.
 \end{revresponse}
 
+% R2 C1
 \begin{revcomment}
 Too long: we want to encourage the community to read this, the longer the paper, the fewer the readers. Trim, cut. For example, the "study types" subsections in Sec 5 are heavy and confusing (it took me some time to understand they're referring to Sec 4), I would simply get rid of those subsections.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+\todo{STEFANO LAMBIASE — Following a suggestion from reviewer 2, we could (1) delete all the 'Study Types' subsections in section 5 and (2) create a table (or Sankey diagram) linking the guidelines to the study types (the image could be placed at the beginning of section 5).}
+\todo{STEFANO LAMBIASE (Potential Answer) — We agree with the reviewer that excessive length is an obstacle to the dissemination of the paper. The subsection to which the reviewer refers was intended to indicate which study types the guidelines should apply to; in order to address a similar comment from reviewer 1, we decided to (1) delete the subsections and (2) begin section 5 with a chart showing which guidelines apply to which study types. We hope this resolves the issue raised by the reviewer.
+
+Regarding other ways to reduce the size of the paper, reviewer 1 pointed out that the section on study types was repetitive. We therefore moved the entire section to the appendix and replaced it with a new, more concise and clearer section on study types.
+
+These two changes together helped to greatly reduce the size of the paper, addressing the reviewer's point.}
 \end{revresponse}
 
+% R2 C2
 \begin{revcomment}
-Lack of overview: we should be able to read the paper in one page. Consolidate all guidelines in a table at the beginnning
+Lack of overview: we should be able to read the paper in one page. Consolidate all guidelines in a table at the beginning
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
 %	\printpartbibliography{ReviewerReference,Besser2020}
 	
 %	And btw, your \autoref{comment:work-not-good} was mean! (We can use the \verb|\autoref| command.)
+\todo{STEFANO LAMBIASE — I imagine that by reducing the TLDRs, we could obtain a table or an image. Perhaps it could be a summary image that opens the paper (similar to what is done for some HCI papers). I can take care of that but I suggest doing so AFTER we have sorted out all the comments on the guidelines.}
+\todo{STEFANO LAMBIASE (Potential Answer) — We agree with the reviewer. We have summarised the guidelines in an image at the beginning of the paper.}
+\todo{Florian Angermeir – Great suggestion! I started with a collection of all recommendations for 08-Report Limitations under 08_report-limitations-and-mitigations-summary_latex.tex}
 \end{revresponse}
 
+% R2 C3
 \begin{revcomment}
-Usage of RFC terminology MUST/SHOULD: a paper, even community driven, cannot speak for the whole community, the paper it not a standard and EMSE is not a stndardization body. Peer-review is not a standardization method. I would recommend to NOT take the style a standard, this is unsound and confusing.
+Usage of RFC terminology MUST/SHOULD: a paper, even community driven, cannot speak for the whole community, the paper it not a standard and EMSE is not a standardization body. Peer-review is not a standardization method. I would recommend to NOT take the style a standard, this is unsound and confusing.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — Reviewer 1 said something similar, and a colleague (and others later) also suggested something in a comment above. Probably the best solution is to remove the caps lock and put them in lower case. The question I ask myself is: would that be enough to satisfy the reviewer? Does he want us to remove the notation altogether?
+
+Personally, I think that would be a shame and I would prefer to keep it. Maybe we can fight for this.}
+
+\todo{STEFANO LAMBIASE (Potential Answer) — Also the first reviewer pointed out something similar. Following your suggestion, we decided to soften our position by removing the caps lock for this terminology and making the sentences less schematic. However, we decided to keep this notation because it is in line with the empirical guidelines for SE studies proposed by Ralph et al. and other similar contributions. We believe it is important for the positioning and interpretation of the paper.}
+
+\todo{Florian Angermeir – I also like the RFC terminology. But at this point I wonder whether we should present the recommendations in the light of the terminology of the ACM Sigsoft Empirical Standards (Essential, Desirable, Extraordinary Attributes) to also facilitate alignment/integration later. We could in the summary table/image at the beginning mark the recommendations as Essential/Desirable/Extraordinary and then mention, that we will use MUST for essentials, SHOULD for desirable, and MAY for extraordinary recommendations throughout the text. Minimal changes for us, we still have the RFC terminology and the direct link to the empirical standards.}
 \end{revresponse}
 
+% R2 C4
 \begin{revcomment}
 - Usage of MUST: this is too strong. even if I agree with the utmost importance of some guidelines, my general philosophy of science is to be be very cautious with undisputable truth and hard rules. Science is about taking a critical standpoint at everything, and about being able to take one's own path, regardless of the others command. I would remove the MUST.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — This ties in with the comment above. The reviewer seems particularly polite in this specific comment (compared to others), which makes me think he is open to dialogue. Perhaps we could try to better justify the MUST (perhaps with references). Obviously, this is assuming that we all agree we want to keep the MUST. I will try to write a response that leans towards keeping it, but I am only doing so to fill out the document a little.}
+
+\todo{STEFANO LAMBIASE (Answer Proposal) — We understand the reviewer’s concern; given the size of the research team, there are indeed differing perspectives within our group, including views aligned with the one expressed by the reviewer. That said, through internal discussion we converged on the conclusion that, in order to make this contribution concrete and genuinely usable, the adoption of such terminology (not only MUST, but also SHOULD, etc.) was necessary.
+First, this choice aligns our guidelines with the Empirical Standards that clearly inspire our work; it is a deliberate decision aimed at ensuring continuity and coherence within the community. 
+Second, as also suggested by the reviewer in a previous comment, these guidelines are explicitly intended to be used in practice. At this moment—one that is disruptive for the community, including ourselves—there is a strong need for clarity and guidance. We therefore considered it important to set clear boundaries that help readers navigate the guidelines effectively. It is not uncommon for the community to criticize recommendations for being overly vague, and we believe that the careful use of MUST helps address this concern.
+Third, we deliberately limited the use of MUST to guidelines that we, as a group, unanimously considered both essential and broadly acceptable. 
+We hope the reviewer can appreciate that, in this specific context, the benefits of this approach outweigh its potential drawbacks.
+}
+\todo{Florian Angermeir – Answer Proposal sounds great! If we incorporate my remark on the previous comment we might be able to close the gap with the reviewer here :)}
 \end{revresponse}
 
+% R2 C5
 \begin{revcomment}
 If some guidelines are too strong, it decreases the credibility of the whole effort. for example the suggestion to test results on commercial models "over an extended period of time" is methodologically sound but may be infeasible given the time and cost constraints of typical academic projects.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+\todo{STEFANO LAMBIASE — This is a valid point, and I can empathise with the reviewer's position. I see two options: (1) we identify these guidelines and soften them, or (2) for some of these guidelines, we change them from MUST to SHOULD, with a recommendation to do so if you have the resources, in order to satisfy academic rigour (thus touching on the researcher's pride). What do you think?}
+\todo{Florian Angermeir – I see the reviewers point. Lets do a hybrid approach. Once we have the list of recommendations in the beginning lets go through them in a small team again and change or soften where necessary.}
 \end{revresponse}
 
+% R2 C6
 \begin{revcomment}
 Cherry-picking examples: there are many more example papers to cite, but it is not the goal of the paper to be a survey. Yet, how were the examples selected? bias towards the authors' paper? their collaborators
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — Here we can talk about the process. Personally, I used a combination of search strings and other tools (such as Litmap and similar); there is no bias. Assuming that none of us had any bias, I will try to draft a response below.}
+
+\todo{STEFANO LAMBIASE (Proposal Answer) — The paper selection process was conducted as follows:
+1. During an initial meeting, at least two authors were assigned to each specific part of the guidelines (study types or individual guidelines), with the responsibility of drafting the corresponding section.
+2. Each pair of authors independently started drafting their section by searching for relevant examples using search strings on academic databases such as Scopus.
+3. After collecting an initial set of examples, the pool was further expanded using dedicated tools such as Litmaps and similar services.
+4. The identified papers were then individually assessed by one author and subsequently reviewed by the second author. Papers that did not add new insights beyond those already covered by the existing examples were not included.
+5. Finally, multiple final review rounds were carried out on the guidelines as a whole, during which the selected papers were cross-checked by additional authors and, where necessary, further examples were added.
+
+As correctly noted by the reviewer, the purpose of the examples was not to be systematic, but illustrative. Since this work is not intended to be a systematic review, we believe that this approach is appropriate and sufficient. Moreover, the involvement of multiple authors at different stages of the process helped mitigate individual bias and ensured a balanced selection of examples.
+}
+
+\todo{Florian Angermeir – Response sounds good. If we want to add, ChatGPT identified 13 references in which at least one of us was an author. So we could add, that less than 20 of the 150 references originated from us. (There will still be some changes to the bib)}
 \end{revresponse}
 
+% R2 C7
 \begin{revcomment}
 Focus on Natural Language Use Cases -> Focus on Textual Use Cases. Code is not natural language.
 \end{revcomment}
@@ -578,76 +729,130 @@ The methodology demonstrates real community engagement.
     Thank you for the summary and the acknowledged strengths!
 \end{revresponse}
 
+% R3 C1
 \begin{revcomment}
 Insufficient Discussion of Trade-offs and Conflicts Between Guidelines. For example, using an open LLM baseline (Guideline 6) while also requiring multiple experimental repetitions (Guideline 7) and human validation (Guideline 5) could be prohibitively expensive for many researchers. How to prioritize the guidelines? Do you recommend any decision tree to define which study type is the most appropriate?
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — This is similar to Comment 5 from Reviewer 2. This reviewer even suggests a decision tree, but I think that would be overkill in this case. What I would do (as mentioned for the previous reviewer) is to soften some of these points (with SHOULD) and specify that those who have the resources should do so for the sake of academic rigour. I am thinking of something similar to the "DEVIATIONS" that are also included in the empirical standards.}
+\todo{Florian Angermeir – Agree on softening/changing. Not sure if deviations would not be too much work given how many considerations we'd probably have?}
 \end{revresponse}
 
+% R3 C2
 \begin{revcomment}
 An Insufficient Treatment of Data Contamination and Leakage. While Section 5.8.1 mentions data leakage, the discussion is buried in the limitations section rather than being a standalone guideline. Given that benchmark contamination is acknowledged as a "major challenge," this deserves more prominence. What recommendations or validation strategies do you recommend?
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+%STEFANO LAMBIASE — I have reread the section and see that we provide suggestions for dealing with this, although they are not extremely specific. In addition, the suggestions we provide are also more than just simple "report limitations" (es. “Hence, to ensure the validity of the evaluation results, researchers should carefully curate the fine-tuning and evaluation datasets to prevent inter-dataset duplication and must not leak their fine-tuned or evaluation datasets into LLM improvement processes.”. I therefore find myself somewhat at a loss in addressing this specific comment.
+% Florian Angermeir – Lukas and I sat together. He'll merge relevant parts from 5.8 into 5.7 and I'll adjust 5.8 accordingly once he's done.
+%Florian
+Thank you for highlighting this improvement point. We agree, that this topic a major challenge. To ensure this issue receives the necessary attention, we expanded the discussion of benchmark contamination and gave concrete mitigations in more detail in 5.7. In the same line, we streamlined the discussion in 5.8 on the broader topic of inter-dataset duplication, also here discussing the necessity of authors to discuss those threats to the validity while providing initial guidance for authors training LLMs from scratch. We hope this restructuring give the topic the appropriate attention and makes it more concrete for authors.
 \end{revresponse}
 
+% R3 C3
 \begin{revcomment}
 Insufficient Guidance on Statistical Power and Sample Sizes. While the paper mentions power analysis in Guideline 5, there's no systematic guidance on determining appropriate sample sizes for LLM experiments, especially given non-determinism.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — The comment is complicated. I see two cases here (but I may be missing something).
+
+In the first case, the reviewer is referring to studies involving humans to validate the results of LLMs. In this specific case, the comment is misplaced: power analysis is a method for determining the minimum sample size, and this number depends on various factors. We cannot give a single comprehensive answer. I would say that it is therefore sufficient to explain this to the reviewer and explain it better in the paper (perhaps with a footnote).
+
+In the second case, the reviewer refers to studies that use different LLMs to generate data. Their comment is therefore 'how many instances do I need to generate to be sure'. In this case, it is difficult to give a number because of non-determinism. In addition, we have a guideline regarding the use of multiple LLMs in different interactions. 
+
+What do you think?}
+
+\todo{Florian Angermeir – I'd argue, that Guidance on statistical power analysis/sample size is out of scope of this manuscript. Empirical standards hold more guidance on this: https://www2.sigsoft.org/EmpiricalStandards/docs/supplements?supplement=Sampling
+BUT if we do so, we either have to argue power analysis as one example to satisfy the Empirical Standards (or remove it from the guideline summary), or soften/align it with them.
+}
 \end{revresponse}
 
 \begin{generalcomment}
-    This is a highly pertinent and timely paper for empirical SE community. While I think this paper should definitely be accepted, I have a few suggestions for the authors to improve before a possible publication. Hence, I recommend a Major Revision.
+DETAILED COMMENTS: This is a highly pertinent and timely paper for empirical SE community. While I think this paper should definitely be accepted, I have a few suggestions for the authors to improve before a possible publication. Hence, I recommend a Major Revision.
 \end{generalcomment}
 \begin{revresponse}
     Thanks for this positive stance towards our manuscript and the chance to improve it!
 \end{revresponse}
 
+% R3 C4
 \begin{revcomment}
 Several guidelines contain SHOULD recommendations that may be difficult to follow:
 
 * Guideline 5.4 (Report full interaction logs): For large-scale studies with thousands of LLM calls, storage and privacy concerns may prohibit full disclosure
-
+    
 * Guideline 5.6 (Open LLM baseline): When state-of-the-art proprietary models significantly outperform open alternatives, including an underperforming baseline may provide limited scientific value
 
 * Guideline 5.8 (Report costs): Cloud API costs fluctuate; reported costs may not reflect what future researchers will pay
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{MIRCEA LUNGU: 
+Guideline 5.4 ("Report full interaction logs") already addresses exceptional situations by specifying that: "If full prompt disclosure is not feasible... summaries or examples should be provided." 
+
+However, the broader principle is that, when a paper's analysis is based on interaction logs, finding ways to share that data is a challenge to embrace, not avoid. Shared data enables verification of claims and follow-up research, and increases the value of the work itself, as every published dataset becomes a resource for meta-analyses and replication studies.
+
+It is true that thousands of LLM calls cannot be published in print, but standard repositories like those we recommend in Section 5.4 can easily handle such volumes (Zenodo alone accepts up to 50GB per dataset—orders of magnitude more than interaction logs require).
+
+For privacy concerns, sensitive content can be redacted while preserving methodologically relevant details, as is standard practice in human-subjects research.
+}
+
+
+
+\todo{STEFANO LAMBIASE — As with the previous comments, we can tell him (1) we have resolved the issue above (in general) and (2) we have softened our stance on these specific points.
+
+I still think that (perhaps with footnotes or conditions) we could soften some of these guidelines by doing something similar to the 'DEVIATIONS' found in empirical standards.
+}
+
+\todo{Florian Angermeir – I understand the concern for MUST, but for SHOULD I have trouble following the logic. In the end it is up to the researcher to balance feasibility with desirable attributes. Maybe we should mention somewhere in the text, that each guideline is always to be considered in the context of the research and deviations in general possible with a brief account of the potential threats? This way we'd also avoid to add 'DEVIATIONS' everywhere.}
 \end{revresponse}
 
+% R3 C5
 \begin{revcomment}
 Similarly, some guidelines depend on others in non-obvious ways; for example, guideline 5.3 assumes a documented model per guideline 5.2. Guideline 5.7 interacts with guideline 5.6 for the open LLM baseline. Please elaborate or add a dependency diagram or a checklist showing the logical flow of applying the guidelines.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — Personally, I don't see the problem here. The important thing is that the guidelines don't contradict each other. Perhaps we could try telling the reviewer that doing as he says would add further complexity to the article (which contradicts the suggestion made by Reviewer 2). Alternatively, maybe we could create this decision tree; I honestly have no idea how much effort that would require. What do you think?}
+\todo{Florian Angermeir – I'd follow your argument line with reviewer 2. Additionally, we can argue, that the summary table in the beginning makes dependencies easier visible.}
 \end{revresponse}
 
+% R3 C6
 \begin{revcomment}
 While Guideline 5.7 mentions repeating experiments due to non-determinism, there is no systematic guidance on determining appropriate sample sizes or the number of repetitions for different study types. For a researcher working with LLM experiments, what would be a valid statistical sample and parameters to reproduce the experiment? What are the recommendations to compare models or outputs? How to select a metric to compare models or experiments as researchers mitigate data contamination, and metrics evolve?
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+\todo{Florian Angermeir – Two arguments here. First, recommendation on sample size is out of scope. Second, general recommendation not possible. Third, add the problem of not being able to determine the sample size ad-hoc is discussed here (disclaimer: my paper): https://arxiv.org/pdf/2510.25506. Fourth, we could add one example of analyzing the required sample size for a specific task: https://arxiv.org/pdf/2410.03492}
 \end{revresponse}
 
+% R3 C7
 \begin{revcomment}
 While the RFC 2119 distinction is clear in principle, how should it be enforced?  What constitutes an acceptable justification for not meeting "should" criteria? How should reviewers handle partial compliance? Provide reviewer guidance or a compliance checklist to operationalize the guidelines in peer review.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — In my view, there are two possible ways to address this point. 
+First, we can clarify that these are guidelines and that reviewers are (in principle) trained researchers capable of managing the review process responsibly (it is debatable, but...). In this sense, it is reasonable to expect them to handle specific deviations autonomously, especially since it is impossible for us to anticipate and explicitly cover all plausible deviations.
+Second, we could introduce a short paragraph or dedicated subsection explicitly discussing deviations. This section would need to be developed from scratch, but it could provide high-level, general guidance on how to handle exceptions, while avoiding unnecessary complexity or excessive burden on the guidelines.
+}
+\todo{Florian Angermeir – I'd argue here for the common sense of reviewers, that deviations from good practice should be justified and their impact discussed. Two sentences somewhere in the introduction and done.}
 \end{revresponse}
 
+% R3 C8
 \begin{revcomment}
 While including examples from other domains (healthcare, social sciences) provides context, some readers may question their relevance to SE-specific challenges.
 Ensure every cross-domain example is explicitly connected back to SE contexts.
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — This is tough because some of the examples we have included are needed to guide certain future visions. The reviewer seems polite here, I think we can reason with them and perhaps add what he suggests in the form of footnotes or short sentences when necessary. I propose a response below.}
+\todo{STEFANO LAMBIASE (Potential Answer) — We agree with the trade-off outlined by the reviewer. As suggested, we have added (in the case of papers not specifically about SE) examples of how the topics discussed there apply to the context of software development. We believe that this approach allows us to maintain the context without being irrelevant to the context.}
+\todo{Florian Angermeir – I removed some of the reference to other fields, that only strengthened an already differently back argument. (E.g. Lakiotaki, Vries)}
 \end{revresponse}
 
+% R3 C9
 \begin{revcomment}
 Please consider the following references:
 
@@ -656,7 +861,9 @@ https://arxiv.org/html/2406.04244v1
 https://arxiv.org/abs/2502.00678
 \end{revcomment}
 \begin{revresponse}
-\todo{?}
+
+\todo{STEFANO LAMBIASE — Both references discuss how LLMs can incorporate benchmarks into their training data, thereby making the use of the same benchmark less robust for its evaluation. I imagine we can briefly mention them in the guidelines (SECTION 5.7.4, last paragraph).}
+\todo{STEFANO LAMBIASE (Potential ANswer) — We have included the reviewer's references at the end of Section 5.7.4.}
 \end{revresponse}
 
 \end{document}

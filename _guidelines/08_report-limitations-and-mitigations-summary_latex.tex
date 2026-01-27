@@ -1,0 +1,49 @@
+In summary, our recommendation is:
+
+\begin{enumerate*}[label=(\arabic*)]
+1\item Availability of a complete replication package, including code, prompts, configurations, and outputs (\must);
+2\item Multiple experimental repetitions to account for non-determinism, together with the reported aggregation metrics (\should);
+3\item Measures taken to control output variability, such as temperature settings and fixed random seeds, where applicable (\may);
+4\item Explicit discussion of reproducibility and generalization challenges relevant to the study (\must);
+5\item Scope of generalizability clearly stated. If in scope, comparison with other LLMs of similar size or capability, possibly on subsets of results (\must);
+6\item Use of open LLMs to establish reproducible baselines, or longitudinal evaluation over time when using closed or managed LLMs (\should);
+7\item Careful curation of fine-tuning and evaluation datasets to avoid benchmark contamination and data leakage into LLM improvement processes (\must);
+8\item Analysis and discussion of potential inter-dataset duplication and its impact on results, regardless of training data transparency (\must);
+9\item Use of deduplicated or deduplication-aware open datasets, when feasible (\may);
+10\item Transparency of execution costs, including hardware specifications for self-hosted models or token-based pricing for managed services (\should);
+11\item Provision of representative LLM outputs as empirical evidence, reported at appropriate architectural levels (e.g., per agent or component) (\must);
+12\item Inclusion of a sampled subset of the validation dataset to support partial replication of results (\should);
+13\item Compliance with data protection regulations, minimization of sensitive data usage, documentation via a data management plan, and ethics approval where required (\must);
+14\item Consideration and reduction of resource consumption through model choice, query limits, prompt design, and dataset sampling strategies (\should);
+15\item Reporting or estimation of environmental impact using established carbon-tracking or estimation tools (\may);
+16\item Precise documentation of LLM versions, configurations, and hosting or hardware environments (\must);
+17\item Justification for the use of LLMs over alternative approaches, including discussion of performance gains relative to resource costs (\must);
+18\item Explicit discussion of study limitations and corresponding mitigation strategies in the context of the specific research setting (\should).
+\end{enumerate*}
+
+
+\begin{comment}
+To enable reproducibility, researchers \should disclose a replication package for their study.
+They \should perform multiple repetitions of their experiments (see \benchmarksmetrics) to account for non-deterministic outputs.
+In some cases, researchers \may reduce the output variability by setting the temperature to a value close to 0 and setting a fixed seed value.
+To ensure reproducibility, researchers \should follow all previous guidelines and further discuss the generalization challenges outlined below.
+If generalizability to other LLMs is not in the scope of the research, this \must be clearly explained in the \paper or, if generalizability is in scope, researchers \must compare their results or subsets of the results (e.g., due to computational cost) with other LLMs that are, e.g., similar in size, to assess the generalizability of their findings (see also Section \openllm).
+Hence, researchers \should employ open LLMs to establish a reproducible baseline and, if the use of an open LLM is not possible, researchers \should test and report their results over an extended period of time as a proxy of the stability of the results over time.
+To ensure the validity of the evaluation results, researchers \should carefully curate the fine-tuning and evaluation datasets to prevent benchmark contamination and \mustnot leak their fine-tuned or evaluation datasets into LLM improvement processes.
+If information about the training data of the employed LLM is available, researchers \should evaluate the inter-dataset duplication. 
+Independent of whether such information is available, researchers \must discuss potential inter-dataset duplication and its impact on the reported results.
+Hence, researchers \may consider using open datasets curated with deduplication in mind such as \emph{RedPajama (Together~AI)}~\cite{together2023redpajama}.
+Hence, for transparency reasons, researchers \should report the cost associated with executing an LLM-based study.
+If the study used self-hosted LLMs, researchers \should report the specific hardware used. 
+If the study used managed LLMs, the service cost \should be reported, preferably in terms of the number of input tokens, output tokens, and cost per unit.
+To ensure the validity and reproducibility of the research results, researchers \must provide the LLM outputs as evidence (see Section \prompts).
+Depending on the architecture (see Section \toolarchitecture), these outputs \should be reported on different architectural levels (e.g., outputs of individual LLMs in multi-agent systems).
+Additionally, researchers \should include a subset of the employed validation dataset, selected using an accepted sampling strategy, to allow partial replication of the results.
+To mitigate these concerns, researchers \should minimize the sensitive data used in their studies, \must follow applicable regulations (e.g., GDPR) and individual processing agreements, \should create a data management plan outlining how the data is handled and protected against leakage and discrimination, and \must apply for approval from the ethics committee of their organization (if required).
+Hence, researchers \should aim for lower resource consumption on the model side.
+Researchers \may further reduce resource consumption by restricting the number of queries, input tokens, or output tokens~\cite{mitu2024hidden}, by using different prompt engineering techniques (e.g., zero-shot prompts seem to emit less CO2 than chain-of-thought prompts), or by carefully sampling smaller datasets for fine-tuning and evaluation instead of using large datasets.
+To report the environmental impact of a study, researchers \may use software such as \href{https://github.com/mlco2/codecarbon}{CodeCarbon} or \href{experiment-impact-tracker}{Experiment Impact Tracker} to track and quantify the carbon footprint of the study or report an estimate of the carbon footprint through tools such as \href{https://mlco2.github.io/impact/#about}{MLCO2 Impact}.
+They \should detail the LLM version and configuration as described in \modelversion, state the hardware or hosting provider of the model as described in \toolarchitecture.
+Researchers \must justify why LLMs were chosen over existing approaches and discuss the achieved performance in relation to their potentially higher resource consumption.
+Limitations and mitigations \should be discussed for all study types in relation to the context of the individual study.
+\end{comment}

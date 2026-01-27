@@ -2,6 +2,8 @@
 \documentclass[smallextended]{svjour3}
 \usepackage[square,numbers,sort&compress]{natbib}
 
+\usepackage[pagewise]{lineno}
+\usepackage[normalem]{ulem}
 % language and encoding
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -50,6 +52,7 @@
 \newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
 %\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
 \newcommand{\added}[1]{{\textcolor{blue}{#1}}}
+\newcommand{\removed}[1]{\textcolor{blue}{\sout{#1}}}
 % RFC 2119 (https://www.rfc-editor.org/rfc/rfc2119)
 % MUST: absolute requirement
 \newcommand{\must}{\textsc{must}\xspace}
@@ -199,7 +202,7 @@
 
 \title{Guidelines for Empirical Studies in Software~Engineering involving Large~Language~Models}
 
-\author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Lutz~Prechelt \and Paul~Ralph \and Rijnard~van~Tonder \and Christoph~Treude \and Stefan~Wagner}
+\author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Cristina~Martinez~Montes \and Lutz~Prechelt \and Paul~Ralph \and Rijnard~van~Tonder \and Christoph~Treude \and Stefan~Wagner}
 
 \institute{%
   Sebastian~Baltes \at
@@ -258,6 +261,11 @@
   IT University of Copenhagen, Denmark\\
   \email{mlun@itu.dk}
   \and
+  Cristina~Martinez~Montes \at
+  Chalmers University of Technology, Sweden\\
+  University of Gothenburg, Sweden\\
+  \email{montesc@chalmers.se}
+  \and
   Lutz~Prechelt \at
   Freie Universität Berlin, Germany\\
   \email{prechelt@inf.fu-berlin.de}
@@ -283,6 +291,7 @@
 \titlerunning{Guidelines for Empirical Studies in SE involving LLMs}
 
 \begin{document}
+\linenumbers
 
 \maketitle
 
@@ -297,6 +306,9 @@
 \section{Statements and Declarations}
 
 \paragraph{Competing Interests:} The authors declare no competing interests. Multiple co-authors are members of the EMSE Editorial Board, which is disclosed here for transparency.
+
+%extra v-space will disappear when the "added" tag is deleted.
+\added{\paragraph{Authorship:} All authors of this paper not only contributed content but also stand behind the criteria outlined in the guidelines beyond their own contribution. }
 
 \paragraph{Funding:} No funding was received for writing this article. However, the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI}, which played a central role in forming the team of co-authors, was supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo.
 

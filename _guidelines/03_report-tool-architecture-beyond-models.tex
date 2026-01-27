@@ -51,13 +51,13 @@ A second example is \citeauthor{DBLP:conf/chi/YanHWH24}'s IVIE tool~\cite{DBLP:c
 The authors document the tool architecture, detailing the IDE integration, context extraction from code editors, and the formatting pipeline for LLM-generated explanations.
 This documentation illustrates how architectural components beyond the core LLM affect the overall tool performance and user experience.
 
-\guidelinesubsubsection{Advantages}
+\guidelinesubsubsection{Benefits}
 
 Usually, researchers implement software layers around the bare LLMs, using different architectural patterns.
 These implementations significantly impact the performance of LLM-based tools and hence need to be documented in detail.
 Documenting the architecture and supplemental data of LLM-based systems enhances reproducibility and transparency~\cite{DBLP:journals/software/LuZXXW24}.
 In empirical software engineering studies, this is essential for experiment replication, result validation, and benchmarking.
-A clear documentation of the architecture and the supplemental data that was used enables comparison and upholds scientific rigor and accountability, fostering reliable and reusable research.
+Clear documentation of the architecture and the supplemental data that was used enables comparison and upholds scientific rigor and accountability, fostering reliable and reusable research.
 
 \guidelinesubsubsection{Challenges}
 
@@ -67,3 +67,11 @@ They must also balance transparency with data privacy concerns, adapt to the evo
 \guidelinesubsubsection{Study Types}
 
 This guideline \must be followed for all studies that involve tools with system-level components beyond bare LLMs, from lightweight wrappers that pre-process user input or post-process model outputs, to systems employing retrieval-augmented methods or complex agent-based architectures.
+
+\guidelinesubsubsection{Advice for Reviewers}
+
+\added{As in the previous subsection, in most cases, reviewers should simply request any missing information be added unless so much information is missing that the review cannot assess methodological rigor. For this guideline, reviewers may question whether the \textit{paper} (not the only supplement) includes sufficient description of the system and may (hopefully using our recommendations) ask authors to shift selective details from supplements to the paper body. }
+
+
+%%Paul: I'm thinking through some of these issues around proprietary systems for the first time and could do with a sanity check on this paragaph. In general I'm skeptical of anyone trying to take scientific credit for proprietary or confidential technologies. The purpose of science is to undersand and improve the world. Secrecy impedes both. What are the arguments for accepting a paper about a technology when we can't access the tech or even a fullsome description of how it works?
+\added{For reviewers, the most difficult questions here surround the use of proprietary or confidential components. Broadly, empirically evaluating an artifact is always a scientific contribution regardless of how opaque the artifact is. However, the more inscrutable and less available an invention, the less it counts as a scientific contribution. Finally, reviewers should \textit{not} accept proprietary or confidential \textit{scientific instruments}. The means of study (tools, instruments, metrics, scales, interview guides, experimental materials, etc.) must be fully disclosed, even when the object under study is not.}
