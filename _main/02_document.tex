@@ -1,9 +1,12 @@
 \section{Introduction}
 \label{sec:introduction}
 
+%Done. It's in the statements and declarations section. Paul couldn't find a reviewer comment about this so the change isn't mentioned in the response to reviewers.
+%\todo{mention somewhere that a requirement for authorship was that the author contributes content, but also stands behind the criteria outlined in the guidelines beyond the own contribution}
+
 \input{_scope/01_motivation.tex}
 
-\section{Scope}
+\section{Scope of Guidelines}
 \label{sec:scope}
 
 \input{_scope/02_scope.tex}
@@ -11,7 +14,7 @@
 \section{Methodology}
 \label{sec:methodology}
 
-The starting point for the development of these guidelines was the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain.
+This project was initiated at the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain.
 The first and last author of this paper organized a session to discuss the need to develop guidelines for empirical studies involving LLMs.
 These discussions resulted in a position paper published at the \emph{\nth{2} International Workshop on Methodological Issues with Empirical Studies in Software Engineering} (WSESE 2025)~\citep{DBLP:conf/wsese/0001BFB25}.
 The first and last author presented a preprint of that paper at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), forming a workstream to lead the collaborative refinement and extension of the preliminary guidelines presented in the position paper.
@@ -27,33 +30,35 @@ After incorporating their feedback,\footnote{Discussion: \url{https://github.com
 \section{Study Types}
 \label{sec:study-types}
 
-The development of empirical guidelines for software engineering (SE) studies involving LLMs is crucial to ensuring the validity and reproducibility of results.
+Empirical guidelines for SE studies involving LLMs are needed to ensure the validity and reproducibility of results.
 However, such guidelines must be tailored to different study types that each pose unique challenges.
 %Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
-Therefore, we developed a taxonomy of study types that we then use to contextualize the recommendations we provide.
+Therefore, we created a taxonomy of study types to contextualize our recommendations.
 %Note that our \guidelines refer to the \studytypes but not the other way around.
 
 Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond as well as the \textbf{advantages} and \textbf{challenges} of using LLMs for the respective study type.
-The remainder of this section is structured as follows:
 
-\par\noindent\rule{\columnwidth}{0.5pt}
-\begin{enumerate}[label=4.\arabic*]
-    \item \textbf{\llmsforresearcher}
-    \begin{enumerate}[label=4.1.\arabic*]
-        \item \annotators
-        \item \judges
-        \item \synthesis
-        \item \subjects
-    \end{enumerate}
-    \item \textbf{\llmsforengineers}
-    \begin{enumerate}[label=4.2.\arabic*]
-        %\setcounter{enumii}{4}
-        \item \llmusage
-        \item \newtools
-        \item \benchmarkingtasks
-    \end{enumerate}
-\end{enumerate}
-\par\noindent\rule{\columnwidth}{0.5pt}
+%% This sub-table of contents is organizational overkill. 
+% The remainder of this section is structured as follows:
+
+% \par\noindent\rule{\columnwidth}{0.5pt}
+% \begin{enumerate}[label=4.\arabic*]
+%     \item \textbf{\llmsforresearcher}
+%     \begin{enumerate}[label=4.1.\arabic*]
+%         \item \annotators
+%         \item \judges
+%         \item \synthesis
+%         \item \subjects
+%     \end{enumerate}
+%     \item \textbf{\llmsforengineers}
+%     \begin{enumerate}[label=4.2.\arabic*]
+%         %\setcounter{enumii}{4}
+%         \item \llmusage
+%         \item \newtools
+%         \item \benchmarkingtasks
+%     \end{enumerate}
+% \end{enumerate}
+% \par\noindent\rule{\columnwidth}{0.5pt}
 
 \subsection{LLMs as Tools for Software Engineering Researchers}
 \label{sec:llms-as-tools-for-software-engineering-researchers}
@@ -81,27 +86,21 @@ The remainder of this section is structured as follows:
 \section{Guidelines}
 \label{sec:guidelines}
 
-Our guidelines focus on LLMs, that is, foundational models that use \emph{text} as in- and output.
-We do not address multi-modal foundation models (FM) that support other media such as images.
-However, many of our recommendations apply to these models as well.
-We consider the extension of our guidelines to explicitly address multi-modal foundational models an important direction for future work.
+%% With a whole section called ``Scope of Guidelines'' we don't need this paragraph.
+%As explained in Section \ref{sec:scope}, while many of our recommendations may also apply to multi-modal foundation models (FM), we focus on LLMs. Extending our guidelines to explicitly address multi-modal foundational models is an important direction for future work.
 
-The main goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical studies involving LLMs in software engineering.
-While we consider LLM-based studies to have characteristics that differ from traditional empirical studies (e.g., their inherent non-determinism and the fact that truly open models are rare), previous guidelines regarding open science and empirical studies still apply.
-
-Although full reproducibility of LLM study results is very challenging given LLM's non-determinism, transparency on LLM usage, methods, data, and architecture, as suggested by our guidelines, is an essential prerequisite for future replication studies. \added{Finally, for \emph{peer review of LLM papers}, we suggest reviewers can simply check the provided guidelines as a start. However, there are also things reviewers should avoid, such as excessive requirements regarding verification. Future work for these guidelines should include \emph{invalid critiques} as well, as is done in the SIGSOFT Empirical Standards work~\cite{ralph2021empiricalstandardssoftwareengineering}.}
-
-The wording of our guidelines (\must, \should, \may) follows RFC 2119~\citep{rfc2119} and RFC 8174~\citep{rfc8174}.
-Throughout the following sections, we mention the information we expect researchers to report in the \paper and/or in the \supplementarymaterial.
-We are aware that different publication venues have different page limits and that not all aspects can be reported in the \paper.
-If information \must be reported in the \paper, we explicitly mention this in the specific guidelines.
-Of course, it is better to report essential information that we expect in the \paper in the \supplementarymaterial than not at all.
-The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+A primary goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical SE studies involving LLMs. \added{As repeating LLM-focused research to verify results lies somewhere between the ACM's definitions of reproducibility (different team, same research artifacts) and repeatability (different team, different research artifacts)~\cite{acm2020artifactreview} due to potential model changes and imperfect research artifacts, we follow \citeauthor{DBLP:journals/corr/abs-2510-25506}~\cite{DBLP:journals/corr/abs-2510-25506} and use the terms interchangeably.} While previous guidelines regarding open science and empirical studies still apply, the unusual characteristics of LLMs (e.g. inherent non-determinism~\cite{DBLP:conf/naacl/SongWLL25, YuanNondeterminismLLMInference}, opaque and proprietary models) present additional replicability challenges, which, in tern, demand new guidance.  
 
 %Unless explicitly mentioned otherwise, we expect information to be reported either in the \paper and/or the \supplementarymaterial.
-At the beginning of each section, we provide a brief \underline{\emph{tl;dr}} summary that lists the most important aspects of the corresponding guideline.
-In addition to our \textbf{recommendations}, we provide \textbf{examples} from the SE research community and beyond, as well as the \textbf{advantages} and potential \textbf{challenges} of following the respective guidelines.
-We conclude each guideline by linking it to the \textbf{study types}.
+For each recommendation below, we begin with a brief \underline{\emph{tl;dr}} summary that lists the most important aspects of the corresponding guideline. In addition to our \textbf{recommendations}, we provide \textbf{examples} from the SE research community and beyond, as well as the \textbf{benefits} and potential \textbf{challenges} of following the respective guideline, followed by \textbf{advice for reviewers}. We conclude each guideline by linking it to the \textbf{study types}.
+
+\added{Broadly, reviewers should use our guidelines to help them interrogate the extent to which a manuscript's authors have done what was practically possible to improve reproducibility. We must neither accept research absent reasonable efforts to improve reproducibility, nor reject research for failing to obtain an impossible goal. We borrow this principle of ``reasonable efforts'' from the SIGSOFT Empirical Standards work~\cite{ralph2021empiricalstandardssoftwareengineering}, where it applies to methodological rigor more generally. Of course papers should acknowledge their limitations, but to determine whether these limitations are reasonable, reviewers should ask ``have the authors done what they could to minimize limitations?'' The guidelines presented next attempt to nail down what ``reasonable efforts'' and ``done what they could'' practically mean in an LLM-enabled context. Lastly, reviewers should be cognizant that this is all very new and be patient with authors as consensus emerges.}
+
+\textcolor{red}{Here we will refer to ACM empirical guidelines, meniton the attributes, say that we map the attributes to the MUST SHOULD MAY, and then continue the paragraph as it is. Maybe we can add a small footnote that explain that we are aware that this wording can be bold but we argue that it is important for reading and clarity reasons.}
+The wording of our guidelines (\must, \should, \may) follows RFC 2119~\citep{rfc2119} and RFC 8174~\citep{rfc8174}.
+The following sections indicate which information we expect researchers to report, and whether it should be in the \paper or \supplementarymaterial. Where a publication venue's page limits hinder reporting all expected elements in the \paper, it is better to report essential information in the \supplementarymaterial than not at all.
+The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+
 The remainder of this section presents our eight guidelines and is structured as follows:
 
 \par\noindent\rule{\columnwidth}{0.5pt}
@@ -209,7 +208,7 @@ The remainder of this section presents our eight guidelines and is structured as
 \section{Conclusion}
 
 This paper organizes the landscape of empirical studies involving LLMs in software engineering along seven study types and distills eight guidelines aimed at improving their validity, transparency, and reproducibility.
-Our guidelines recommend that researchers
+Our guidelines recommend that researchers:
 \begin{enumerate*}[label=(\arabic*)]
 \item explicitly declare when and how LLMs are used;
 \item report model versions, configuration, and fine-tuning details;
@@ -223,7 +222,7 @@ Our guidelines recommend that researchers
 Adopting these practices will not eliminate LLM non-determinism, but it will make claims auditable, and results easier to replicate and compare across studies. 
 By consistently applying our recommendations, the community can produce more reliable evidence on what LLM can and cannot deliver for software engineering research and practice.
 Our guidelines complement existing empirical software engineering guidance while addressing LLM-specific challenges.
-Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them: \href{https://llm-guidelines.org/}{llm-guidelines.org}.
+Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them at \href{https://llm-guidelines.org/}{llm-guidelines.org}.
 
 
 \section*{Acknowledgments}
