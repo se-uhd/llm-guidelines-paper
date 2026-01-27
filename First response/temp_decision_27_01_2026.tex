@@ -1,0 +1,116 @@
+# 1. Normative Language
+Reviews complain about RFC language and operationalization in practice. Reviewer complaints about usage of MUST
+
+### Decision
+- Combine with ACM SIGSOFT Empirical Standards tiers -> See red text in section 5
+
+### Options
+- Keep RFC-style terminology
+- Replace/combine with ACM SIGSOFT Empirical Standards tiers (MUST=essential attribute, SHOULD=desirable attribute,...)
+- Change to lower-case, replace  all other occurrences of "must, should, may"
+- Soften most MUSTs
+
+### Open Questions
+- How to enforce?
+- How to guide reviewers?
+
+### Comments
+#### R1 Comment 7
+Consider converting the RFC 2119 MUST/SHALL/MAY verbs into lowercase. Their uppercase appearance is distracting, and the paper contains guidelines, not a technical standard.
+
+#### R2 Comment 3
+Usage of RFC terminology MUST/SHOULD: a paper, even community driven, cannot speak for the whole community, the paper it not a standard and EMSE is not a standardization body. Peer-review is not a standardization method. I would recommend to NOT take the style a standard, this is unsound and confusing.
+
+#### R2 Comment 4
+Usage of MUST: this is too strong. even if I agree with the utmost importance of some guidelines, my general philosophy of science is to be be very cautious with undisputable truth and hard rules. Science is about taking a critical standpoint at everything, and about being able to take one's own path, regardless of the others command. I would remove the MUST.
+
+#### R3 Comment 7
+While the RFC 2119 distinction is clear in principle, how should it be enforced? What constitutes an acceptable justification for not meeting ‘should’ criteria? How should reviewers handle partial compliance? Provide reviewer guidance or a compliance checklist to operationalize the guidelines in peer review.
+
+
+#################################################################################################################
+
+# 2. Feasibility vs. rigor trade-offs
+No guidance on soundness vs. feasibility in real life studies.
+
+### Options
+- Dedicated per-guideline deviation 
+- Global "deviations allowed with justification" principle
+- Per-guideline softening
+
+#### Decision
+- Already introduced in section 5 row 18-30
+
+### Open Questions
+
+### Comments
+#### R2 Comment 1
+Too long: we want to encourage the community to read this, the longer the paper, the fewer the readers. Trim, cut. For example, the ‘study types’ subsections in Sec 5 are heavy and confusing…
+
+#### R3 Comment 1
+Insufficient Discussion of Trade-offs and Conflicts Between Guidelines. For example, using an open LLM baseline (Guideline 6) while also requiring multiple experimental repetitions (Guideline 7) and human validation (Guideline 5) could be prohibitively expensive for many researchers. How to prioritize the guidelines?
+
+#### R3 Comment 4
+Several guidelines contain SHOULD recommendations that may be difficult to follow:
+	•	Guideline 5.4 (Report full interaction logs): For large-scale studies with thousands of LLM calls, storage and privacy concerns may prohibit full disclosure
+	•	Guideline 5.6 (Open LLM baseline): When state-of-the-art proprietary models significantly outperform open alternatives, including an underperforming baseline may provide limited scientific value
+	•	Guideline 5.8 (Report costs): Cloud API costs fluctuate; reported costs may not reflect what future researchers will pay”
+
+
+#################################################################################################################
+
+# 3. Prioritization and dependencies between guidelines
+It is unclear which guidelines to prioritize or how they depend on each other.
+
+### Options
+- Summary table
+- Checklist
+- Dependency diagram
+- Decision tree
+
+### Decision
+- Table in beginning summarizing recommendations (MUST, SHOULD) in guidelines 
+- Dependency diagram over guidelines (at the end)
+
+### Open Questions
+
+### Comments
+#### R2 Comment 2
+Lack of overview: we should be able to read the paper in one page. Consolidate all guidelines in a table at the beginning.
+
+#### R3 Comment 1
+Insufficient Discussion of Trade-offs and Conflicts Between Guidelines. For example, using an open LLM baseline (Guideline 6) while also requiring multiple experimental repetitions (Guideline 7) and human validation (Guideline 5) could be prohibitively expensive for many researchers. How to prioritize the guidelines?
+
+#### R3 Comment 5
+Similarly, some guidelines depend on others in non-obvious ways; for example, guideline 5.3 assumes a documented model per guideline 5.2. Guideline 5.7 interacts with guideline 5.6 for the open LLM baseline. Please elaborate or add a dependency diagram or a checklist showing the logical flow of applying the guidelines.
+
+#### R3 Comment 7
+While the RFC 2119 distinction is clear in principle, how should it be enforced? What constitutes an acceptable justification for not meeting ‘should’ criteria? How should reviewers handle partial compliance? Provide reviewer guidance or a compliance checklist to operationalize the guidelines in peer review.
+
+
+#################################################################################################################
+
+# 4. Study-type structure
+Reviewers complain that we duplicate information in the paper and that the study types do not add enough value to justify the length.
+
+### Options
+- Compress study types in main text \& remove study types to appendix
+- Delete study types subsections in Section 5 and replace with matrix
+- Keep study types, but factor out challenges and advantages with ID-based tracing
+
+### Decision
+- Remove study types from section 5
+- Delete challenges in study types
+- Introduce section 4.3 with summary of challenges and linking of challenges to study types
+
+### Open Questions
+
+### Comments
+#### R1 Comment 6
+Several challenges and advantages are repeated in many sections. Consider codifying them, analyzing them once, and then cross-referencing them from a table.
+
+#### R1 Comment 23
+Several of the challenges listed here also apply to other sections. Consider some form of merging to avoid gratuitous differences or repetitions.
+
+#### R2 Comment 1
+Too long: we want to encourage the community to read this, the longer the paper, the fewer the readers. Trim, cut. For example, the "study types" subsections in Sec 5 are heavy and confusing (it took me some time to understand they're referring to Sec 4), I would simply get rid of those subsections.
