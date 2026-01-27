@@ -1,11 +1,11 @@
 This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs.
 While Section~\toolarchitecture addresses how LLMs are integrated into larger systems and tools, here we concentrate on the models themselves, their version, configuration parameters, and any direct customizations applied to the model (e.g., fine-tuning).
 Whether only this guideline or also the following one applies for a particular study depends on the exact study setup and tool architecture.
-In any event, as soon as an LLM is involved, the information outlined in this guideline is essential to enable reproducibility and replicability.
+In any event, as soon as an LLM is involved, the information outlined in this guideline is essential for reproducibility.
 
 \guidelinesubsubsection{Recommendations}
 
-LLMs or LLM-based tools, especially those offered as-a-service, are frequently updated; different versions may produce different results for the same input.
+LLMs or LLM-based tools, especially those offered as services, are frequently updated; different versions may produce different results for the same input.
 Moreover, configuration parameters such as temperature or seed values affect content generation.
 Therefore, researchers \must document in the \paper which model or tool version they used in their study, along with the date when the experiments were carried out and the configured parameters that affect output generation.
 Since default values might change over time, researchers \should always report all configuration values, even if they used the defaults.
@@ -76,7 +76,7 @@ They conducted an exploratory empirical study to assess whether LLMs can generat
 The authors detail the system architecture, including the decision-making framework, the role of the LLM in generating design decisions, and the interaction between the LLM and other components of the system (see Section \toolarchitecture).
 The authors provide information on the fine-tuning approach and datasets used for the evaluation, including the source of the architectural decision records, preprocessing methods, and the criteria for data selection. 
 
-\guidelinesubsubsection{Advantages}
+\guidelinesubsubsection{Benefits}
 
 Reporting of the information described above is a prerequisite for the verification, reproduction, and replication of LLM-based studies under the same or similar conditions.
 As mentioned before, LLMs are inherently non-deterministic. 
@@ -104,3 +104,7 @@ Depending on the specific study type, researchers \should provide additional inf
 For example, when \llmusage by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers \must be as specific as possible in describing their study setup.
 The configured model name, version, and the date when the experiment was conducted \must always be reported.
 In those cases, reporting other aspects, such as prompts and interaction logs, is essential.
+
+\guidelinesubsubsection{Advice for Reviewers}
+
+\added{In most cases, reviewer should simply make a list of missing information about versions, configurations, parameters, etc. and request that the missing information be added. Such requests are typical of minor revisions unless the reviewer suspects that missing information obscures deeper methodological problems. Before rejecting a paper over missing information reviewers \textit{must} thoroughly read the paper and check appendices and supplementary materials. \textit{Many} papers are rejected for ``missing'' information that has been clearly disclosed in an appendix or online supplement and the structure of our review processes makes such mistakes easy to rectify in a revision but impossible in a rejection. Reviewers should therefore exercise caution in rejecting papers over missing details. If the paper provides source code to voluminous for the reviewer to inspect, the reviewer should ask ``if this code compiles, must it include the seemingly missing details?''} 
