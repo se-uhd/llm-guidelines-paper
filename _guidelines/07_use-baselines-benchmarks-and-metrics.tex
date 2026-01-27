@@ -1,13 +1,16 @@
 \guidelinesubsubsection{Recommendations}
 
-Benchmarks, baselines, and metrics play an important role in assessing the effectiveness of LLMs or LLM-based tools.
+Benchmarks, baselines, and metrics play an important role in assessing the effectiveness of LLMs and LLM-based tools. \added{A Benchmark is a ``standard tool for the com-
+petitive evaluation and comparison of competing systems
+or components according to specific characteristics, such as
+performance, dependability, or security''~\cite{} }
 Benchmarks are model- and tool-independent standardized tests used to assess the performance of LLMs on specific tasks such as code summarization, code generation, \added{and static analysis}.
 A benchmark consists of multiple standardized test cases, each with at least one task and a corresponding expected result.
 Metrics are used to quantify performance on benchmark tasks, enabling a comparison.
 A baseline represents a reference point for the measured LLM.
 Since LLMs require substantial hardware resources, baselines serve as a comparison to assess their performance against traditional algorithms with lower computational costs.
 
-When selecting benchmarks, it is important to fully understand the benchmark tasks and the expected results because they determine what the benchmark actually assesses.
+When selecting benchmarks, it is important to fully understand the benchmark tasks and the expected results because these determine what the benchmark actually assesses.
 Researchers \must briefly summarize why they selected certain benchmarks in the \paper, 
 They \should also summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases.
 Researchers \should also discuss the limitations of the selected benchmark(s).
