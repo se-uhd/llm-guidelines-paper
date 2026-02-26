@@ -53,15 +53,19 @@
 %\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
 \newcommand{\added}[1]{{\textcolor{blue}{#1}}}
 \newcommand{\removed}[1]{\textcolor{blue}{\sout{#1}}}
-% RFC 2119 (https://www.rfc-editor.org/rfc/rfc2119)
+\newcommand{\reviewText}[1]{{\textcolor{purple}{#1}}}
+
 % MUST: absolute requirement
 \newcommand{\must}{\textsc{must}\xspace}
 % MUST NOT: absolute prohibition
 \newcommand{\mustnot}{\textsc{must not}\xspace}
-% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course
+% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course. Authors who  deviate should briefly justify the deviation in the paper.
 \newcommand{\should}{\textsc{should}\xspace}
 % SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
 \newcommand{\shouldnot}{\textsc{should not}\xspace}
+% MAY — DEPRECATED: retained only for backward compatibility during
+% the revision.  All former MAY items All former MAY items should be reworded as plain
+% suggestions (e.g., "researchers may / can …"), without small capitals formatting.
 % MAY: an item is truly optional
 \newcommand{\may}{\textsc{may}\xspace}
 
