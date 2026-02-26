@@ -94,7 +94,15 @@ For example, OpenAI provides a model version and a system fingerprint describing
 However, in fact, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint.
 As a beta feature, OpenAI lets users set a seed parameter to receive ``(mostly) consistent output''~\cite{OpenAI23}.
 However, the seed value does not allow for full reproducibility and the fingerprint changes frequently. 
-While, as motivated above, open models significantly simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see \href{https://github.com/ollama/ollama/issues/5321}{GitHub issue for Llama3}).
+Although, as motivated above, open models significantly simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see \href{https://github.com/ollama/ollama/issues/5321}{GitHub issue for Llama3}).
+Setting the temperature to 0 configures greedy decoding, i.e., always selecting the most probable next token, which minimizes output variability across runs.
+However, this involves a trade-off: greedy decoding can degrade output quality by producing repetitive text and missing higher-quality responses that lie outside the single most probable token path.
+
+Moreover, even with a temperature of 0, full determinism is rarely guaranteed.
+Floating-point arithmetic on GPUs is sensitive to hardware and parallelization strategies, causing slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, and architectural choices such as Sparse Mixture-of-Experts routing amplify this effect~\cite{Chann2023}.
+For commercial APIs, silent backend changes can produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
+\added{Researchers should therefore not treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several---including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
+When chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.}
 %\comment{Should we also address how API rate limits and usage constraints can affect experiments?}
 
 \guidelinesubsubsection{Study Types}

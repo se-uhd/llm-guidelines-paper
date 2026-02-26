@@ -6,6 +6,8 @@ The output can be unstructured text or a structured format such as JSON.
 Prompts significantly influence the quality of the output of a model, and understanding how exactly they were formatted and integrated into an LLM-based study is essential to ensure transparency, verifiability, and reproducibility.
 \added{\citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.}
 
+\todo{}
+
 \guidelinesubsubsection{Recommendations}
 
 Researchers \must report the all prompts that were used for an empirical study, including all instructions, context, input data, and output indicators.
@@ -41,7 +43,7 @@ In cases where prompts are generated dynamically, such as through preprocessing,
 This includes explaining any automated algorithms or rules that influenced prompt generation.
 For studies involving human participants who create or modify prompts, researchers \must describe how these prompts were collected and analyzed.
 
-To ensure full reproducibility, researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial.
+To ensure complete reproducibility, researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial.
 If the complete set of prompts cannot be included in the \paper, researchers \should provide summaries and representative examples.
 This also applies if complete disclosure is not possible due to privacy or confidentiality concerns.
 For prompts containing sensitive information, researchers \must: (1) anonymize personal identifiers, (ii) replace proprietary code with placeholders, and (iii) clearly highlight modified sections.
@@ -52,9 +54,9 @@ Thus, in order to enable other researchers to verify the conclusions that resear
 Reporting this is especially important for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT.
 %or novel tools that integrate LLMs via cloud APIs where there is even less guarantee of reproducing the state of the LLM-powered system at a later point by a reader of the study who wants to verify, reproduce, or replicate it. 
 The rationale for this is similar to the rationale for reporting interview transcripts in qualitative research.
-In both cases, it is important to document the entire interaction between the interviewer and the participant.
 Just as a human participant might give different answers to the same question asked two months apart, the responses from ChatGPT can also vary over time (see also Section \subjects).
-Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
+Therefore, it is important to document the entire interaction.
+%Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
 
 We remind the reader that these guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
 This implies that our guidelines do not recommend that researcher disclose the prompts they have used for such tasks.

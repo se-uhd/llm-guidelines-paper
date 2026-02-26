@@ -7,11 +7,11 @@ This uncertainty poses significant challenges for researchers and practitioners 
 
 Open science practices and documenting a study's setup are necessary to facilitate reproduction and replication~\cite{DBLP:journals/corr/abs-2412-17859}.
 Studies involving LLMs may be irreproducible and irreplicable due to not only their inherent non-determinism  causing variability in model performance but also differences in configuration, training data, model architecture, or evaluation metrics.
-Slight changes can lead to significantly different results.
+Slight changes can lead to significantly different results~\cite{DBLP:journals/corr/abs-2412-12509, DBLP:conf/naacl/SongWLL25, DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}.
 For replication, researchers need detailed information on the exact study setup, evaluation procedures, benchmarks, and metrics used. 
 These issues highlight the need for clear guidelines and best practices for designing and reporting studies involving LLMs.
 
-While the SE research community has developed guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g.,~\cite{DBLP:books/sp/WohlinRHORW24, DBLP:books/sp/08/SSS2008}), their replications (e.g.,~\cite{DBLP:journals/tse/SantosVOJ21}), or empirical studies in general (e.g. the \emph{ACM SIGSOFT Empirical Standards}~\cite{ralph2021empiricalstandardssoftwareengineering}), there has been no guidance for using LLMs in empirical studies.
+Although the SE research community has developed guidelines for conducting and reporting specific types of empirical studies such as controlled experiments (e.g.,~\cite{DBLP:books/sp/WohlinRHORW24, DBLP:books/sp/08/SSS2008}), their replications (e.g.,~\cite{DBLP:journals/tse/SantosVOJ21}), or empirical studies in general (e.g., the \emph{ACM SIGSOFT Empirical Standards}~\cite{ralph2021empiricalstandardssoftwareengineering}), there has been no guidance for using LLMs in empirical studies.
 LLMs have characteristics that require specific guidelines vis-\'a-vis reproducibility and replicability~\cite{DBLP:conf/wsese/0001BFB25}.
 For example, even if we knew the specific version of a commercial LLM used for an empirical study, the reported task performance could still change over time, since commercial models evolve beyond version identifiers~\cite{DBLP:journals/corr/abs-2307-09009}.
 Moreover, commercial providers do not guarantee the availability of old model or tool versions indefinitely.
