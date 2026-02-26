@@ -3,6 +3,8 @@ While Section~\toolarchitecture addresses how LLMs are integrated into larger sy
 Whether only this guideline or also the following one applies for a particular study depends on the exact study setup and tool architecture.
 In any event, as soon as an LLM is involved, the information outlined in this guideline is essential for reproducibility.
 
+\todo{Mention that model quantization should also be reported (for open models, regardless if self-hosted or cloud-based) \url{https://developer.nvidia.com/blog/model-quantization-concepts-methods-and-why-it-matters/}}
+
 \guidelinesubsubsection{Recommendations}
 
 LLMs or LLM-based tools, especially those offered as services, are frequently updated; different versions may produce different results for the same input.
@@ -27,8 +29,8 @@ In summary, our recommendation is to report:
 \item Model/tool name and version (\must in \paper);
 \item All relevant configured parameters that affect output generation (\must in \paper);
 \item Default values of all available parameters (\should);
-\item Checksum/fingerprint of used model version and configuration (\may);
-\item Additional properties such as context window size (\may).
+\item Checksum/fingerprint of used model version and configuration (\added{\should});
+\item Additional properties such as context window size (\added{\should}).
 \end{enumerate*}
 
 For fine-tuned models, additional recommendations apply:
