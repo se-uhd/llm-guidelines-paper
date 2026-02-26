@@ -45,12 +45,15 @@ The resulting pass rates range from $0$ to $1$.
 A pass rate of $0$ indicates that the model was unable to generate a single correct solution within $k$ tries; a rate of $1$ indicates that the model successfully generated at least one correct solution in $k$ tries.
 
 The \emph{pass@k} metric is defined as:
-
-\begin{equation}
-\text{pass@}k = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}
-\end{equation}
-
-where $n$ is the total number of generated samples per prompt, $c$ is the number of correct samples among  $n$, and $k$ is the number of samples.
+\[
+\text{pass@}k = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}\,,
+\]
+where:
+\begin{itemize}
+  \item $n$ is the total number of generated samples per prompt,
+  \item $c$ is the number of correct samples among $n$, and
+  \item $k$ is the number of samples drawn.
+\end{itemize}
 
 Choosing an appropriate value for \emph{k} depends on the downstream task of the model and how end-users interact with it.
 % k= 1 -- pass@1
@@ -102,7 +105,7 @@ For classification tasks, classical machine learning metrics such as \emph{Preci
 %Code snippets provided by benchmarks contain untrusted code, making sandboxing recommendable.
 %To avoid potential security risks, execute untrusted code in an isolated environment, such as a virtual machine or containerization, instead of your own environment.
 
-Benchmarks used for code generation incldue \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
+Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
 % Both benchmarks consist of code snippets written in Python sourced from publicly available repositories.
 % Each snippet consists of four parts: a prompt containing a function definition and a corresponding description of what the function should accomplish, a canonical solution, an entry point for execution, and test cases.
 % The input of the LLM is the entire prompt.
@@ -115,7 +118,7 @@ Given the generative nature of LLMs, most benchmarks focus on generation tasks, 
 For classification tasks such as vulnerability detection, \emph{DiverseVul} (available on \href{https://github.com/wagner-group/diversevul}{GitHub})~\cite{DBLP:conf/raid/0001DACW23} provides a dataset of vulnerable and non-vulnerable functions.
 They evaluate the binary classification using  \emph{Accuracy}, \emph{Precision}, \emph{Recall}, \emph{F1-score} and \emph{False Positive Rate}.
 For recommendation tasks such as code search, \emph{CodeSearchNet} (available on \href{https://github.com/github/CodeSearchNet}{GitHub})~\cite{DBLP:journals/corr/abs-1909-09436} contains code-documentation pairs across multiple programming languages.
-The recommendations are evaluated using \emph{Mean Reciprocal Rank}.
+The recommendations were evaluated using \emph{Mean Reciprocal Rank}.
 
 \guidelinesubsubsection{Benefits}
 
