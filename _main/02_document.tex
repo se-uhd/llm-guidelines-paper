@@ -20,7 +20,7 @@ These discussions resulted in a position paper published at the \emph{\nth{2} In
 The first and last author presented a preprint of that paper at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), forming a workstream to lead the collaborative refinement and extension of the preliminary guidelines presented in the position paper.
 
 We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
-During these discussions, we added a new study type (\synthesis), refined the guidelines to \modelversion and to \toolarchitecture, extended the guideline to \prompts, and added the new guidelines to \benchmarksmetrics and to \limitationsmitigations.
+During these discussions, we added a new study type (\synthesis), refined the guidelines to \modelversion and to \toolarchitecture, extended the guidelines to \prompts, and added the new guidelines to \benchmarksmetrics and to \limitationsmitigations.
 Then, at least two co-authors were assigned to each study type and guideline.
 They refined and extended the content to align with the intended structure, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
@@ -96,10 +96,19 @@ For each recommendation below, we begin with a brief \underline{\emph{tl;dr}} su
 
 \added{Broadly, reviewers should use our guidelines to help them interrogate the extent to which a manuscript's authors have done what was practically possible to improve reproducibility. We must neither accept research absent reasonable efforts to improve reproducibility, nor reject research for failing to obtain an impossible goal. We borrow this principle of ``reasonable efforts'' from the SIGSOFT Empirical Standards work~\cite{ralph2021empiricalstandardssoftwareengineering}, where it applies to methodological rigor more generally. Of course papers should acknowledge their limitations, but to determine whether these limitations are reasonable, reviewers should ask ``have the authors done what they could to minimize limitations?'' The guidelines presented next attempt to nail down what ``reasonable efforts'' and ``done what they could'' practically mean in an LLM-enabled context. Lastly, reviewers should be cognizant that this is all very new and be patient with authors as consensus emerges.}
 
-\textcolor{red}{Here we will refer to ACM empirical guidelines, meniton the attributes, say that we map the attributes to the MUST SHOULD MAY, and then continue the paragraph as it is. Maybe we can add a small footnote that explain that we are aware that this wording can be bold but we argue that it is important for reading and clarity reasons.}
-The wording of our guidelines (\must, \should, \may) follows RFC 2119~\citep{rfc2119} and RFC 8174~\citep{rfc8174}.
+%\textcolor{red}{Here we will refer to ACM empirical guidelines, mentioning the attributes, say that we map the attributes to the MUST SHOULD MAY, and then continue the paragraph as it is. Maybe we can add a small footnote that explain that we are aware that this wording can be bold but we argue that it is important for reading and clarity reasons.}
+%The wording of our guidelines (\must, \should, \may) follows RFC 2119~\citep{rfc2119} and RFC 8174~\citep{rfc8174}.
+\added{
+To distinguish essential criteria from recommendations, our guidelines use two tiers.
+A~\must criterion is a \emph{requirement}. Studies that intend to follow these
+guidelines are expected to meet all \must criteria.
+A~\should criterion represents a desired practice that strengthens a study's rigor or transparency.
+However, there may be valid reasons to deviate in particular circumstances (e.g., resource constraints, inapplicability to a specific study context or type).
+Nonetheless, studies that deviate from a \should criterion should briefly justify the
+deviation and discuss its potential impact (e.g., on validity or reproducibility).
+}
 The following sections indicate which information we expect researchers to report, and whether it should be in the \paper or \supplementarymaterial. Where a publication venue's page limits hinder reporting all expected elements in the \paper, it is better to report essential information in the \supplementarymaterial than not at all.
-The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+The \supplementarymaterial should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
 
 The remainder of this section presents our eight guidelines and is structured as follows:
 
@@ -207,7 +216,7 @@ The remainder of this section presents our eight guidelines and is structured as
 
 \section{Conclusion}
 
-This paper organizes the landscape of empirical studies involving LLMs in software engineering along seven study types and distills eight guidelines aimed at improving their validity, transparency, and reproducibility.
+This paper organizes the landscape of empirical studies involving LLMs in SE along seven study types and distills eight guidelines aimed at improving their validity, transparency, and reproducibility.
 Our guidelines recommend that researchers:
 \begin{enumerate*}[label=(\arabic*)]
 \item explicitly declare when and how LLMs are used;
@@ -220,10 +229,22 @@ Our guidelines recommend that researchers:
 \item report study limitations and mitigations, including costs, potential biases, and environmental impact.
 \end{enumerate*}
 Adopting these practices will not eliminate LLM non-determinism, but it will make claims auditable, and results easier to replicate and compare across studies. 
-By consistently applying our recommendations, the community can produce more reliable evidence on what LLM can and cannot deliver for software engineering research and practice.
-Our guidelines complement existing empirical software engineering guidance while addressing LLM-specific challenges.
+By consistently applying our recommendations, the community can produce more reliable evidence on what LLM can and cannot deliver for SE research and practice.
+Our guidelines complement existing empirical SE guidance while addressing LLM-specific challenges.
 Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them at \href{https://llm-guidelines.org/}{llm-guidelines.org}.
 
+\todo{integrate the following paragraph from the response letter:}
+
+However, the guidelines exhibit high face validity in that subject matter experts in both SE and AI have derived these guidelines. Also, the process for establishing the guidelines is similar to that of guidelines with similar goals in other disciplines (see, e.g.,~\cite{Begg1996}).
+
+\todo{Discuss quality of the guidelines along the following dimensions outlined in the SIGSOFT Empirical Standards \url{https://www2.sigsoft.org/EmpiricalStandards/docs/standards?standard=MetaScience}}
+
+\begin{itemize}
+    \item comprehensiveness of analysis or guidance provided
+    \item usefulness to the research community
+    \item quality of argumentation supporting analysis of guidance
+    \item degree of integration with previous work, both in software engineering and in reference disciplines
+\end{itemize}
 
 \section*{Acknowledgments}
 

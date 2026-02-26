@@ -12,17 +12,17 @@ They prompted the LLM with the text below, where the words in braces reflect the
 
 \judgesexample
 
-\citeauthor{DBLP:conf/re/LubosFTGMEL24} evaluated the LLM's output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, \citeauthor{wang2025multimodalrequirementsdatabasedacceptance}~\cite{wang2025multimodalrequirementsdatabasedacceptance} used an LLM to  generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4). 
+\citeauthor{DBLP:conf/re/LubosFTGMEL24} evaluated the LLM's output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, \citeauthor{wang2025multimodalrequirementsdatabasedacceptance}~\cite{wang2025multimodalrequirementsdatabasedacceptance} used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4). 
  
 
 \studytypeparagraph{Advantages}
 
-Like with annotation, LLMs are often faster and cheaper than human judges, \added{so they support larger datasets for judgment studies}. However, the main constraint that varies by model and budget is the input context size, (the number of tokens one can pass into a model). For example, the upper bound of the context that can be passed to OpenAi's \textsf{o1-mini} model is \href{https://help.openai.com/en/articles/9855712-openai-o1-models-faq-chatgpt-enterprise-and-edu}{32k tokens}. Some people argue that LLMs could be more reliable or less biased than human annotators, but no one has provided any compelling evidence to support these claim.    
+Like with annotation, LLMs are often faster and cheaper than human judges, \added{so they support larger datasets for judgment studies}. However, the main constraint that varies by model and budget is the input context size, (the number of tokens one can pass into a model). For example, the upper bound of the context that can be passed to OpenAI's \textsf{o1-mini} model is \href{https://help.openai.com/en/articles/9855712-openai-o1-models-faq-chatgpt-enterprise-and-edu}{32k tokens}. Some people argue that LLMs could be more reliable or less biased than human annotators, but no one has provided any compelling evidence to support this claim.    
 
 
 \studytypeparagraph{Challenges}
 
-Conceptualizing LLM-as-judge as a measurement instrument (e.g. using an LLM to generate quality ratings for code snippets is akin to measuring the quality of the snippet) gives us a language for evaluating LLM-judges. The LLM-judge should exhibit validity, test-retest reliability, inter-rater reliability, minimal random and systematic error, measurement invariance, etc.~\cite{ralph2024teaching} 
+Conceptualizing LLM-as-judge as a measurement instrument (e.g., using an LLM to generate quality ratings for code snippets is akin to measuring the quality of the snippet) gives us a language for evaluating LLM-judges. The LLM-judge should exhibit validity, test-retest reliability, inter-rater reliability, minimal random and systematic error, measurement invariance, etc.~\cite{ralph2024teaching} 
 
 When relying on the judgment of LLMs, researchers must build a \textit{reliable} process for generating judgment labels that considers the non-deterministic nature of LLMs and report the intricacies of that process transparently~\cite{DBLP:journals/corr/abs-2412-12509}.
 For example, the order of options has been shown to affect LLM outputs in multiple-choice settings~\cite{DBLP:conf/naacl/PezeshkpourH24}. Additionally, LLMs can behave differently when reviewing their own outputs~\cite{NEURIPS2024_7f1f0218}.
@@ -33,7 +33,7 @@ The underlying statistical framework of an LLM usually pushes outputs towards th
 
 Meanwhile, evaluating and judging large numbers of items, for example, to perform fault localization on the thousands of bugs in large open-source projects, has significant clock time, compute time, and carbon footprint.
 
-Regarding systematic error, LLMs may suffer from well-documented biases and issues with fairness~\cite{Gallegos2024BiasAF} (e.g. assessing discussions of pull requests). 
+Regarding systematic errors, LLMs may suffer from well-documented biases and issues with fairness~\cite{Gallegos2024BiasAF} (e.g., in assessing discussions of pull requests). 
 
 Beyond questions of technical capacity, ethical questions remain, particularly if there is some implicit expectation that a human is judging the output. Involving a human in the judgment loop, for example, to contextualize the scoring, is one approach~\cite{panHumanCenteredDesignRecommendations2024}. 
 However, the lack of large-scale ground truth datasets for benchmarking LLM performance in judgment studies hinders progress in this area. There is simply no evidence that LLMs can accurately and reliably judge most relevant properties of SE artifacts, or that offering LLM-based support to human judges improves any specific outcomes.  

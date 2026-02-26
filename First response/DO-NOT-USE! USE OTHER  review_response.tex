@@ -52,6 +52,13 @@ The reviewers all recommend a major revision of the paper. For the revision, ple
 \begin{revresponse}[We appreciate your quick handling of the review process.]
 We addressed your focused points in the following way:
 
+\begin{itemize}
+    \item Structure \& Presentation. We conducted a comprehensive edit for conciseness, focus on deduplication. %Paul: I think Reviewer 1 wanted a checklist for reviewers which I argue is out of scope, but if the editor just wants a summary table, that does seem reasonable, except it'll be like 3 pages long. 
+    \item Terminology \#1. 
+    \item Terminology \#2. 
+    \item Methodological Improvements. 
+\end{itemize}
+
 \todo{Add list of how we addressed the above list.}
 
 We provide more detailed responses to the individual reviewer comments below.
@@ -77,7 +84,9 @@ This is worthwhile work that can benefit from a number of improvements mainly it
 \begin{revcomment}
 Regarding significance, the motivation behind this work is clearly set in the introduction. The presented contributions can clearly impact the field of software engineering theory and practice as described in the concluding sections.
 \end{revcomment}
+
 \begin{revresponse}
+We thank the reviewer for these supportive comments.
 \end{revresponse}
 
 % R1 C2
@@ -85,9 +94,7 @@ Regarding significance, the motivation behind this work is clearly set in the in
 Regarding novelty, the work's contributions are original with respect to the state-of-the-art. Existing work in the area is coherently analyzed and synthesized, and the study's contributions are clearly identified in its context.
 \end{revcomment}
 \begin{revresponse}
-%	\begin{changes}
-%		This really important sentence was added to the paper.
-%	\end{changes}
+We thank the reviewer for these supportive comments.
 \end{revresponse}
 
 % R1 C3
@@ -95,10 +102,20 @@ Regarding novelty, the work's contributions are original with respect to the sta
     Regarding soundness, the study's contributions address its research questions, but in some cases the applied research methods lack the required rigor. In particular the methods described in Section 3 could be improved by having the process informed in a systematic way from other disciplines. The contribution's evaluation can be improved perhaps with a provision (as an appendix) of a model study following the recommendations, in order to judge the recommendations' practicality and value. Threats to validity and their effect on the results' soundness are not explicitly presented.
 \end{revcomment}
 \begin{revresponse}
+
+This is a metascience paper. It doesn't have ``threats to validity'' or ``soundness'' in the same sense as an empirical paper. The SIGSOFT Empirical Standards  suggest the following quality criteria for metascience: 
+    ``comprehensiveness of analysis or guidance provided; 
+    usefulness to the research community;
+    quality of argumentation supporting analysis of guidance;
+    degree of integration with previous work, both in software engineering and in reference disciplines;'' (https://www2.sigsoft.org/EmpiricalStandards/docs/standards?standard=MetaScience#)
+
+\todo{Add a section to the conclusion discussing each of these criteria. It's not easy to discuss quality of arguments - it's more that the reviewer should let us know if they spot any bad arguments.}
+
 \todo{Should we add an example application?}
 
 \CA{Chetan (CA): I agree. I went through all studies that cite the Arxiv version of this paper, but couldn't find any paper that applies the guidelines.}
-\todo{Florian: Found one new paper that claimed to follow the guidelines for their evaluation: https://aet.cit.tum.de/research/publications/soelch2026icse.pdf}
+\todo{Florian: Found one new paper that claimed to follow the guidelines for their evaluation: https://aet.cit.tum.de/research/publications/soelch2026icse.pdf  
+BRIAN: I am not sure about the value of adding the Soelche 2026 paper as an example application. It is a very *light* engagement with the Guidelines in the context of student assessments}
 
 
 \todo{Should we add threats to validity? Something like the following:}
@@ -119,6 +136,7 @@ Given the secondary nature of this study – guidelines for research rather than
 \begin{revresponse}
     We believe the contribution can only be evaluated long-term by applying it to many studies.
     \todo{FLORIAN ANGERMEIR – I'd add the following angle: As well as through the lens of a starting point for further analyses, such as https://arxiv.org/pdf/2601.01954 and https://arxiv.org/pdf/2510.25506.}
+    %Paul would argue that verifiability doesn't apply to meta-scientific contributions.
 \end{revresponse}
 
 % R1 C6
@@ -127,6 +145,9 @@ Given the secondary nature of this study – guidelines for research rather than
 \end{revcomment}
 
 \begin{revresponse}
+
+    We conducted a comprehensive edit of the paper, streamlining text, condensing wordy sections and reducing repetition. We added text discussing how many challenges can be mitigated, but we believe it is important to acknowledge challenges even if no one currently knows how to address them. 
+    
     \todo{Codifying and referencing challenges?}
 
     \todo{Referencing challenges to guidelines?}
@@ -153,15 +174,16 @@ Given the secondary nature of this study – guidelines for research rather than
 
 \end{revcomment}
 \begin{revresponse}
-    \todo{Not sure what ``using recommendations as each paragraph's thematic sentence.'' means.}
+    \todo{Not sure what ``using recommendations as each paragraph's thematic sentence.'' means. Paul: the reviewer means ``topic sentence''---practically state the recommendation in the paragraph's first sentence and then explain. My condensing sorted out some of this already but someone should take a second look.
+    BRIAN: I looked at this section, and think it is very good overall. I suggest some very minor edits. Most significant is removing the *strong* criticism of SE researchers not understanding the vocabulary of research quality. That paragraph doesn't need to be included here in my opinion}
 
     \todo{Check and fix capitalization.}
 
     \todo{Consider to make MUST/SHALL/MAY to lowercase. Maybe italics instead? Bold? Also use Lutz's suggestion to clarify what we mean with MUST/SHALL/MAY. Agree. Explaining the intended meaning but using lower case, probably without italics, would be less 'intrusive' for the reader}
 
-    \todo{Reduce in-text cross-references. Or move to separate section.}
+    \todo{Reduce in-text cross-references. Or move to separate section. Change them to ``See Section 1.1" instead of "See Section WHOLE PILE OF WORDS"}
 
-    \todo{What figures could help to navigate it?}
+    \todo{What figures could help to navigate it? Paul: The only thing I can think of is a figure mapping guidelines into study types and even that wouldn't add much. }
 \end{revresponse}
 
 % R1 C8
@@ -232,6 +254,7 @@ Page 5, line 23: Also data generation, as in 4.1.4
     
     STEFANO LAMBIASE — I agree with the simple change to "data collection/generation..."
     FLORIAN ANGERMEIR – Sounds good.
+    Paul: Note that generating synthetic data using LLMs is EXTREMELY CONTROVERSIAL with many people worried LLMs underpin vast research fraud that's nearly undetectable by conventional statistical methods of identifying synthetic data.
     }
     
 \end{revresponse}
@@ -249,7 +272,7 @@ Page 6, line 29: The numbering is wrong.
 Page 7, line 38: Consider changing "inter-rater agreement" into "accuracy". 
 \end{revcomment}
 \begin{revresponse}
-    We kept ``inter-rater agreement'' here because we are referring to a specific paper in which they use that term.
+    We kept ``inter-rater agreement'' here because we are referring to a specific paper in which they use that term. %IRA is *not* the same as accuracy. 
 \end{revresponse}
 
 % R1 C17
@@ -262,10 +285,10 @@ We have now clarified it further and added an example to improve the sentence's 
     Studies have shown that LLMs can be unreliable for high-stakes labeling, i.e., labels where misclassification has substantial downstream consequences (e.g., safety-critical or compliance-related decisions). In addition, LLMs can exhibit uneven per-class performance, with accuracy differing markedly across label categories, often performing worse on rare or ambiguous labels and systematically over- or under-assigning specific annotation categories.
     \end{changes}
     
-    \todo{I don't understand what to clarify.}
-    \todo{STEFANO LAMBIASE — I think we are talking of the following phrase "Challenges: Challenges of using LLMs as annotators include reliability issues, human-LLM interaction challenges, biases, errors, and resource considerations." Right? I also can not find the problem.}
-    \todo{FLORIAN ANGERMEIR – I assume its about "Studies have shown that LLMs are especially unreliable for high-stakes labeling tasks [128] and that LLMs can have notable performance disparities between label categories [144]." But I don't know how to clarify this even more.}
-    \CA{CHETAN: I agree with Florian. I think it is about this sentence. I attempted to clarify it further.}
+    % \todo{I don't understand what to clarify.}
+    % \todo{STEFANO LAMBIASE — I think we are talking of the following phrase "Challenges: Challenges of using LLMs as annotators include reliability issues, human-LLM interaction challenges, biases, errors, and resource considerations." Right? I also can not find the problem.}
+    % \todo{FLORIAN ANGERMEIR – I assume its about "Studies have shown that LLMs are especially unreliable for high-stakes labeling tasks [128] and that LLMs can have notable performance disparities between label categories [144]." But I don't know how to clarify this even more.}
+    % \CA{CHETAN: I agree with Florian. I think it is about this sentence. I attempted to clarify it further. BRIAN: I think the issue is well clarified in the above edit}
 \end{revresponse}
 
 % R1 C18
@@ -356,15 +379,14 @@ Page 16, line 44: Please … and replicability.
     We added this point on replicability to the list of challenges.
 \end{revresponse}
 
-% R1 C27
+% R1 C27 - DONE
 \begin{revcomment}
-Section 5: Consider also including guidelines for reviewing papers that use LLMs. Following the providing guidelines is a start, but there are also things the reviewers should avoid, such as excessive requirements regarding verification. Furthermore, consider the space needed for fullfilling all the requirments; could much of the data be supplied as part of a replication package? If so which?
+Section 5: Consider also including guidelines for reviewing papers that use LLMs. Following the providing guidelines is a start, but there are also things the reviewers should avoid, such as excessive requirements regarding verification. Furthermore, consider the space needed for fulfilling all the requirements; could much of the data be supplied as part of a replication package? If so which?
 \end{revcomment}
 \begin{revresponse}
-    This is an interesting and important idea. We have added the following to the start of Section 5.
-    \begin{changes}
-        Finally, for \emph{peer review of LLM papers}, we suggest reviewers can simply check the provided guidelines as a start. However, there are also things reviewers should avoid, such as excessive requirements regarding verification. Future work for these guidelines should include \emph{invalid critiques} as well, as is done in the SIGSOFT Empirical Standards work~\cite{ralph2021empiricalstandardssoftwareengineering}.
-        \end{changes}
+   We added a paragraph to Section 5. indicating that reviewers should use the guidelines to help write reviews, emphasizing a focus on doing what is practically possible rather than ideal in principle. 
+
+   We also added detailed new ``advice for reviewers'' subsections to each guideline advising reviewers on what to focus on, how to deal with common problems, and how to differentiate minor vs. major problems. We use these sections to encourage good reviewing thinking rather than repeat each guideline's individual must/should items.  
 \end{revresponse}
 
 % R1 C28
@@ -539,10 +561,10 @@ Page 40, line 18: This is one of the most important issues. Consider placing it 
 Page 42, line 7: GPT-4o is a very coarse model identifier. Clarify whether the problem also applies to models sharing the same fingerprint.
 \end{revcomment}
 \begin{revresponse}
-    \todo{Florian Angermeir: 
-    1. Removed GPT-4o as example. It did not add any value. 
-    2. Replaced ''the same model version'' with ''the same precise model version (including minor version)''. 
-    3. Not sure the fingerprint refers to the minor version (e.g. GPT-4o-2023-10-03) or to the system\_fingerprint. If the first we answer it with the changes already. If the second: Those values are in the consumer OpenAI API read-only. For business OpenAI API I don't know. To my limited knowledge there is not investigation on the impact of fixed fingerprint on performance regressions.}
+    % \todo{Florian Angermeir: 
+    % 1. Removed GPT-4o as example. It did not add any value. 
+    % 2. Replaced ''the same model version'' with ''the same precise model version (including minor version)''. 
+    % 3. Not sure the fingerprint refers to the minor version (e.g. GPT-4o-2023-10-03) or to the system\_fingerprint. If the first we answer it with the changes already. If the second: Those values are in the consumer OpenAI API read-only. For business OpenAI API I don't know. To my limited knowledge there is not investigation on the impact of fixed fingerprint on performance regressions.}
     \todo{Florian Angermeir: Anybody as an opinion on the fingerprinting statement?}
     \todo{(Response Draft) Thank you for raising this issue. We adjusted the formulation to be more precise. TODO: Fingerprinting response....}
 \end{revresponse}
@@ -553,7 +575,7 @@ Page 42, line 35: Please start the paragraph with a thematic sentence.
 \end{revcomment}
 \begin{revresponse}
     %Florian
-    \todo{Done}
+    % \todo{Done}
     Thank you for supporting us in enhancing the readability of our manuscript.
 \end{revresponse}
 
@@ -581,7 +603,7 @@ Section 5.8: Given that its benefits are very difficult to judge, I am not convi
 \end{revcomment}
 \begin{revresponse}
     % Florian: Softened this from should to may. But given the environmental impact of LLMs, it would IMO be unethical to not at least nudge researchers to think about it, even if only with MAY recommendation.}
-    The reviewer raises an important point here. We agree, that SHOULD was too strong and changed it to MAY. Given the increased environmental impact of LLM-focused research compared to traditional research, we nevertheless deem it noteworthy to raise awareness.
+    The reviewer raises an important point here. We agree, that SHOULD was too strong. Given the increased environmental impact of LLM-focused research compared to traditional research, we nevertheless deem it noteworthy to raise awareness, and hence change it from a recommendation to regular text.
 \end{revresponse}
 
 \begin{concludingresponse}[]
@@ -632,7 +654,7 @@ Lack of overview: we should be able to read the paper in one page. Consolidate a
 %	And btw, your \autoref{comment:work-not-good} was mean! (We can use the \verb|\autoref| command.)
 \todo{STEFANO LAMBIASE — I imagine that by reducing the TLDRs, we could obtain a table or an image. Perhaps it could be a summary image that opens the paper (similar to what is done for some HCI papers). I can take care of that but I suggest doing so AFTER we have sorted out all the comments on the guidelines.}
 \todo{STEFANO LAMBIASE (Potential Answer) — We agree with the reviewer. We have summarised the guidelines in an image at the beginning of the paper.}
-\todo{Florian Angermeir – Great suggestion! I started with a collection of all recommendations for 08-Report Limitations under 08_report-limitations-and-mitigations-summary_latex.tex}
+\todo{Florian Angermeir – Great suggestion! I started with a collection of all recommendations for 08-Report Limitations under 08\_report-limitations-and-mitigations-summary\_latex.tex}
 \end{revresponse}
 
 % R2 C3
@@ -673,7 +695,7 @@ If some guidelines are too strong, it decreases the credibility of the whole eff
 \end{revcomment}
 \begin{revresponse}
 \todo{STEFANO LAMBIASE — This is a valid point, and I can empathise with the reviewer's position. I see two options: (1) we identify these guidelines and soften them, or (2) for some of these guidelines, we change them from MUST to SHOULD, with a recommendation to do so if you have the resources, in order to satisfy academic rigour (thus touching on the researcher's pride). What do you think?}
-\todo{Florian Angermeir – I see the reviewers point. Lets do a hybrid approach. Once we have the list of recommendations in the beginning lets go through them in a small team again and change or soften where necessary.}
+\todo{Florian Angermeir – I see the reviewer's point. Lets do a hybrid approach. Once we have the list of recommendations in the beginning lets go through them in a small team again and change or soften where necessary.}
 \end{revresponse}
 
 % R2 C6
@@ -693,8 +715,6 @@ Cherry-picking examples: there are many more example papers to cite, but it is n
 
 As correctly noted by the reviewer, the purpose of the examples was not to be systematic, but illustrative. Since this work is not intended to be a systematic review, we believe that this approach is appropriate and sufficient. Moreover, the involvement of multiple authors at different stages of the process helped mitigate individual bias and ensured a balanced selection of examples.
 }
-
-\todo{Florian Angermeir – Response sounds good. If we want to add, ChatGPT identified 13 references in which at least one of us was an author. So we could add, that less than 20 of the 150 references originated from us. (There will still be some changes to the bib)}
 \end{revresponse}
 
 % R2 C7
@@ -748,7 +768,7 @@ An Insufficient Treatment of Data Contamination and Leakage. While Section 5.8.1
 %STEFANO LAMBIASE — I have reread the section and see that we provide suggestions for dealing with this, although they are not extremely specific. In addition, the suggestions we provide are also more than just simple "report limitations" (es. “Hence, to ensure the validity of the evaluation results, researchers should carefully curate the fine-tuning and evaluation datasets to prevent inter-dataset duplication and must not leak their fine-tuned or evaluation datasets into LLM improvement processes.”. I therefore find myself somewhat at a loss in addressing this specific comment.
 % Florian Angermeir – Lukas and I sat together. He'll merge relevant parts from 5.8 into 5.7 and I'll adjust 5.8 accordingly once he's done.
 %Florian
-Thank you for highlighting this improvement point. We agree, that this topic a major challenge. To ensure this issue receives the necessary attention, we expanded the discussion of benchmark contamination and gave concrete mitigations in more detail in 5.7. In the same line, we streamlined the discussion in 5.8 on the broader topic of inter-dataset duplication, also here discussing the necessity of authors to discuss those threats to the validity while providing initial guidance for authors training LLMs from scratch. We hope this restructuring give the topic the appropriate attention and makes it more concrete for authors.
+Thank you for highlighting this improvement point. We agree, that this topic a major challenge. To ensure this issue receives the necessary attention, we expanded the discussion of benchmark contamination and gave concrete mitigations in more detail in 5.7. In the same line, we streamlined the discussion in 5.8 on the broader topic of inter-dataset duplication, also here discussing the necessity of authors to discuss those threats to the validity while providing initial guidance for authors training LLMs from scratch. We hope this restructuring gives the topic the appropriate attention and makes it more concrete for authors.
 \end{revresponse}
 
 % R3 C3
@@ -790,7 +810,7 @@ Several guidelines contain SHOULD recommendations that may be difficult to follo
 \begin{revresponse}
 
 \todo{MIRCEA LUNGU: 
-Guideline 5.4 ("Report full interaction logs") already addresses exceptional situations by specifying that: "If full prompt disclosure is not feasible... summaries or examples should be provided." 
+Guideline 5.4 ("Report full interaction logs") already addresses exceptional situations by specifying that: "If full prompt disclosure is not feasible... summaries or examples should be provided."
 
 However, the broader principle is that, when a paper's analysis is based on interaction logs, finding ways to share that data is a challenge to embrace, not avoid. Shared data enables verification of claims and follow-up research, and increases the value of the work itself, as every published dataset becomes a resource for meta-analyses and replication studies.
 
@@ -827,10 +847,21 @@ While Guideline 5.7 mentions repeating experiments due to non-determinism, there
 \todo{Florian Angermeir – Two arguments here. First, recommendation on sample size is out of scope. Second, general recommendation not possible. Third, add the problem of not being able to determine the sample size ad-hoc is discussed here (disclaimer: my paper): https://arxiv.org/pdf/2510.25506. Fourth, we could add one example of analyzing the required sample size for a specific task: https://arxiv.org/pdf/2410.03492}
 \end{revresponse}
 
-% R3 C7
+% R3 C7 - DONE
 \begin{revcomment}
-While the RFC 2119 distinction is clear in principle, how should it be enforced?  What constitutes an acceptable justification for not meeting "should" criteria? How should reviewers handle partial compliance? Provide reviewer guidance or a compliance checklist to operationalize the guidelines in peer review.
+While the RFC 2119 distinction is clear in principle, how should it be enforced?  What constitutes an acceptable justification for not meeting ``should'' criteria? How should reviewers handle partial compliance? Provide reviewer guidance or a compliance checklist to operationalize the guidelines in peer review.
 \end{revcomment}
+
+\begin{revresponse}
+   We added a paragraph to Section 5 indicating that reviewers should use the guidelines to help write reviews, emphasizing a focus on doing what is practically possible rather than ideal in principle. 
+
+   We also added detailed new ``advice for reviewers'' subsections to each guideline advising reviewers on what to focus on, how to deal with common problems, and how to differentiate minor vs. major problems. We use these sections to encourage good reviewing thinking rather than repeat each guideline's individual must/should items.  
+
+   While some of the authors are big fans of checklists and very much agree with Reviewer 3's instincts here, we think converting the current guidelines into a reviewer checklist is out of scope for this paper and possibly premature. If the reviewer compares our guidelines to one of the SIGSOFT empirical standards checklists, for example, three problems are apparent: (1) the sum of our `must' and `should' items would be much too long to compose a reviewer checklist; (2) our guidelines cover a wide variety of LLM uses in different study types, which all have to be disaggregated and organized into separate usable checklists; (3) guidelines phrases from the author perspective must be significantly reworded and reworked for a reviewer perspective. 
+
+   This is probably why other widely cited guidelines papers do not also provide reviewer checklists, and why synthesizing reviewer checklists based on them is so much work. In sum, we agree with R3 that reviewer checklists are a natural next step, but we hope R3 can see why we think it's out of scope for this revision. 
+\end{revresponse}
+
 \begin{revresponse}
 
 \todo{STEFANO LAMBIASE — In my view, there are two possible ways to address this point. 
