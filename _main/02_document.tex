@@ -37,28 +37,32 @@ Therefore, we created a taxonomy of study types to contextualize our recommendat
 %Note that our \guidelines refer to the \studytypes but not the other way around.
 
 Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond as well as the \textbf{advantages} and \textbf{challenges} of using LLMs for the respective study type.
+See Table~\ref{tab:study-types} for an overview of study types.
 
 %% This sub-table of contents is organizational overkill. 
-% The remainder of this section is structured as follows:
+%% I think it's  a good additional since the guidlines are already a wall of text.
 
-% \par\noindent\rule{\columnwidth}{0.5pt}
-% \begin{enumerate}[label=4.\arabic*]
-%     \item \textbf{\llmsforresearcher}
-%     \begin{enumerate}[label=4.1.\arabic*]
-%         \item \annotators
-%         \item \judges
-%         \item \synthesis
-%         \item \subjects
-%     \end{enumerate}
-%     \item \textbf{\llmsforengineers}
-%     \begin{enumerate}[label=4.2.\arabic*]
-%         %\setcounter{enumii}{4}
-%         \item \llmusage
-%         \item \newtools
-%         \item \benchmarkingtasks
-%     \end{enumerate}
-% \end{enumerate}
-% \par\noindent\rule{\columnwidth}{0.5pt}
+\begin{table}[h]
+\centering
+\caption{Overview of study types.}
+\label{tab:study-types}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Section} & \textbf{Topic} \\
+\midrule
+4.1   & \textbf{\llmsforresearcher} \\
+4.1.1 & \quad \annotators \\
+4.1.2 & \quad \judges \\
+4.1.3 & \quad \synthesis \\
+4.1.4 & \quad \subjects \\
+\midrule
+4.2   & \textbf{\llmsforengineers} \\
+4.2.1 & \quad \llmusage \\
+4.2.2 & \quad \newtools \\
+4.2.3 & \quad \benchmarkingtasks \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{LLMs as Tools for Software Engineering Researchers}
 \label{sec:llms-as-tools-for-software-engineering-researchers}
@@ -109,6 +113,8 @@ deviation and discuss its potential impact (e.g., on validity or reproducibility
 }
 The following sections indicate which information we expect researchers to report, and whether it should be in the \paper or \supplementarymaterial. Where a publication venue's page limits hinder reporting all expected elements in the \paper, it is better to report essential information in the \supplementarymaterial than not at all.
 The \supplementarymaterial should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+
+\todo{Move to table, use full section names here}
 
 The remainder of this section presents our eight guidelines and is structured as follows:
 
@@ -233,6 +239,8 @@ By consistently applying our recommendations, the community can produce more rel
 Our guidelines complement existing empirical SE guidance while addressing LLM-specific challenges.
 Because models and tools evolve, we maintain the guidelines as a living resource and invite the community to refine and extend them at \href{https://llm-guidelines.org/}{llm-guidelines.org}.
 
+\todo{clean up references}
+
 \todo{integrate the following paragraph from the response letter:}
 
 However, the guidelines exhibit high face validity in that subject matter experts in both SE and AI have derived these guidelines. Also, the process for establishing the guidelines is similar to that of guidelines with similar goals in other disciplines (see, e.g.,~\cite{Begg1996}).
@@ -246,7 +254,13 @@ However, the guidelines exhibit high face validity in that subject matter expert
     \item degree of integration with previous work, both in software engineering and in reference disciplines
 \end{itemize}
 
+
+
 \section*{Acknowledgments}
 
 Our study types and guidelines are based on discussion sessions with researchers at the \emph{2024 International Software Engineering Research Network} (ISERN) meeting and at the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI} (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
 ChatGPT with GPT-5 was used to generate initial versions of the abstract and conclusion sections of this paper.
+
+\section{Appendix}
+
+\input{_tldr/_checklist/checklist.tex}

@@ -7,6 +7,7 @@ They should not happen as an afterthought.
 
 \guidelinesubsubsection{Recommendations}
 Researchers \must make every effort to present the limitations of their work clearly without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g. data leakage), reliability (i.e. non-determinism), and reproducibility (e.g. resource requirements). 
+\added{When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings.}
 
 LLM-based studies may involve many kinds of generalization including the following:
 \begin{enumerate}
@@ -59,6 +60,8 @@ The primary threats to reliability and reproducibility are:
 \end{itemize}
 
 The non-deterministic nature of LLMs hinders reliable statements based on single LLM executions. Further, reproducibility is constrained by the dependence on infrastructure, model stability and unequal resource access (e.g., global south). Researchers \must discuss the measures to increase reliability and reproducibility.
+\added{However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through \emph{credibility}, \emph{transferability}, \emph{dependability}, and \emph{confirmability}~\cite{guba1981criteria}.
+SaaS-based LLM research faces analogous conditions, as providers frequently deprecate model versions without guaranteeing stable behavior.}
 
 \paragraph{Ethical \& Regulatory Boundaries}
 The primary concerns for ethical and regulatory matters are:
@@ -86,6 +89,9 @@ The following mitigation strategies may serve as inspiration to approach some of
 \textbf{Human Validation} of subjective constructs, following quality criteria known from qualitative research. See %TODO (Florian): Link to section 5.5
 
 \textbf{Longitudinal Re-Runs} to repeat experiments with LLMs over time, complemented by statistical analyses. See %TODO (Florian): Link to section 5.4?
+
+\textbf{Methodological Trustworthiness Measures}
+Researchers \should therefore consider triangulation, reflexivity, audit trails (see \prompts, and peer debriefing as complementary measures when deterministic reproduction is structurally impossible.
 
 \textbf{Triangulation} via multiple models (e.g., proprietary and open models), multiple independent datasets and multiple complementary metrics. See  %TODO (Florian): Link to sections 5.2,5.3,
 

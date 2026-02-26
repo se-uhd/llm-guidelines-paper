@@ -36,13 +36,15 @@ This agentic human-in-the-loop interaction approach is essentially a built-in hu
 
 \guidelinesubsubsection{Example(s)}
 
-\citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} evaluated how human annotations can be replaced by LLM generated labels.
-In their study, they explicitly report the calculated agreement metrics between the models and between humans. They found that three LLMs (GPT-4, Gemini, and Claude) had better agreement on some tasks than human annotators. Meanwhile, \citeauthor{DBLP:conf/icse/XueCBTH24}~\cite{DBLP:conf/icse/XueCBTH24} conducted a controlled experiment to evaluate the impact of ChatGPT on the performance and perceptions of students in an introductory programming course.
-They used multiple measures to judge LLM impacts from the human point of view including recording students' screens, evaluating their answers for given tasks, and distributing an opinion survey.
+\citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using model-to-model agreement as an initial screening criterion and model confidence for sample-level decisions. Notably, while three LLMs exhibited higher inter-model agreement than human annotators on some tasks, human-model agreement remained low on others.
+This illustrates that high model-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid.
+Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-%\citeauthor{hymel2025analysisllmsvshuman}~\cite{hymel2025analysisllmsvshuman} evaluated the capability of ChatGPT-4.0 to generate requirements documents. 
-%Specifically, they evaluated two requirements documents based on the same business use case, one document generated with the LLM and one document created by a human expert.
-%The documents were then reviewed by experts and judged in terms of alignment with the original business use case (scale of 1-10), requirements completion (Not Complete, Fairly Complete, Fully Complete), and whether they believed it was created by a human or an LLM.
+%Meanwhile, \citeauthor{DBLP:conf/icse/XueCBTH24}~\cite{DBLP:conf/icse/XueCBTH24} conducted a controlled experiment to evaluate the impact of ChatGPT on the performance and perceptions of students in an introductory programming course.
+%They used multiple measures to judge LLM impacts from the human point of view including recording students' screens, evaluating their answers for given tasks, and distributing an opinion survey.
+\citet{hymel2025analysisllmsvshuman}~\cite{hymel2025analysisllmsvshuman} evaluated the capability of ChatGPT-4.0 to generate requirements documents. 
+Specifically, they evaluated two requirements documents based on the same business use case, one document generated with the LLM and one document created by a human expert.
+The documents were then reviewed and judged by experts along with guessing whether the document was human- or machine produced.% and judged in terms of alignment with the original business use case (scale of 1-10), requirements completion (Not Complete, Fairly Complete, Fully Complete), and whether they believed it was created by a human or an LLM.
 %Finally, they analyzed the influence of the participants' familiarity with AI tools on the study results.
 %Participants self-reported their AI tool proficiency (Novice, Intermediate, Advanced, Expert) and usage frequency (Daily, Weekly, Monthly, Never), which were then correlated with their ratings of the requirements documents.
 
