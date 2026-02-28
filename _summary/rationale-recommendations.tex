@@ -1,0 +1,37 @@
+\begin{table}[tb]
+\caption{Rationale and key recommendations for each guideline. \iconM~=~\must, \iconS~=~\should.}
+\label{tab:rationale-recommendations}
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{ID} & \textbf{Rationale} & \textbf{Core Recommendations} \\
+\midrule
+G1 & Transparency enables informed assessment of scope and limitations. &
+\iconM Declare which LLM, how it was used, and where in the research process. \\
+\addlinespace
+G2 & Reproducibility requires precise identification of the system used in a study. &
+\iconM Report exact version, date, configuration, and fine-tuning details. \\
+\addlinespace
+G3 & Complex systems require holistic documentation beyond the model itself. &
+\iconM Describe full architecture, agent roles, and infrastructure. \\
+\addlinespace
+G4 & Prompts shape LLM behavior and must be verifiable. &
+\iconM Publish all prompts, context files, and development strategy.
+\newline \iconS Share interaction logs where feasible. \\
+\addlinespace
+G5 & Automated metrics alone cannot ensure validity of subjective constructs. &
+\iconS Validate against human judgment with inter-rater reliability, where applicable. \\
+\addlinespace
+G6 & Reproducibility depends on access to the model under study. &
+\iconS Include open LLM baseline; provide replication package. \\
+\addlinespace
+G7 & Meaningful evaluation requires reasoned valid measurement. &
+\iconM Justify metric and benchmark choices; discuss their validity.
+\newline \iconS Repeat experiments and report descriptive statistics. \\
+\addlinespace
+G8 & Honest acknowledgment of threats strengthens a study. &
+\iconM Report threats by validity type.
+\newline \iconS Employ mitigations where possible. \\
+\bottomrule
+\end{tabularx}
+\end{table}

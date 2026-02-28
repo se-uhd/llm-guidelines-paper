@@ -3,13 +3,11 @@
 \usepackage[square,numbers,sort&compress]{natbib}
 
 \usepackage[pagewise]{lineno}
-\usepackage[normalem]{ulem}
 % language and encoding
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
 
-\usepackage{authblk}
 \usepackage{float}
 %\usepackage{caption}
 \usepackage{manyfoot}
@@ -52,9 +50,6 @@
 % editorial commands
 \newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
 %\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
-\newcommand{\added}[1]{{\textcolor{blue}{#1}}}
-\newcommand{\removed}[1]{\textcolor{blue}{\sout{#1}}}
-\newcommand{\reviewText}[1]{{\textcolor{purple}{#1}}}
 
 % MUST: absolute requirement
 \newcommand{\must}{\textsc{must}\xspace}
@@ -64,11 +59,16 @@
 \newcommand{\should}{\textsc{should}\xspace}
 % SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
 \newcommand{\shouldnot}{\textsc{should not}\xspace}
-% MAY — DEPRECATED: retained only for backward compatibility during
-% the revision.  All former MAY items All former MAY items should be reworded as plain
-% suggestions (e.g., "researchers may / can …"), without small capitals formatting.
-% MAY: an item is truly optional
-\newcommand{\may}{\textsc{may}\xspace}
+% tl;dr label
+\newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
+
+% Icons for checklist and matrix (M = must, S = should)
+\newsavebox{\iconMbox}
+\savebox{\iconMbox}{\tikz[baseline=-0.5ex]\draw[fill=black] (0,0) circle (0.3em);}
+\newcommand{\iconM}{\usebox{\iconMbox}\xspace}
+\newsavebox{\iconSbox}
+\savebox{\iconSbox}{\tikz[baseline=-0.5ex]\draw[fill=gray!40, draw=gray!60] (0,0) circle (0.3em);}
+\newcommand{\iconS}{\usebox{\iconSbox}\xspace}
 
 % command to indicate where certain information should be reported
 \newcommand{\paper}{\emph{paper}\xspace}
@@ -129,7 +129,7 @@
 \usepackage{listings}
 \usepackage{textcomp} % fix single quotes in listings environments
 \lstset{
-  basicstyle=\ttfamily\scriptsize,
+  basicstyle=\ttfamily\small,
   showspaces=false,
   showstringspaces=false,
   showtabs=false,
@@ -203,11 +203,11 @@
     \hss}}
 \makeatother
 
-\date{Submitted: 26/08/2025}
+\date{Submitted: 26/08/2025\\Revised: 27/02/2026}
 
 \title{Guidelines for Empirical Studies in Software~Engineering involving Large~Language~Models}
 
-\author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Cristina~Martinez~Montes \and Lutz~Prechelt \and Paul~Ralph \and Rijnard~van~Tonder \and Christoph~Treude \and Stefan~Wagner}
+\author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Junda~He \and Christoph~Treude \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Cristina~Martinez~Montes \and Lutz~Prechelt \and Paul~Ralph  \and Rijnard~van~Tonder  \and Stefan~Wagner}
 
 \institute{%
   Sebastian~Baltes \at
@@ -224,7 +224,7 @@
   Monash University, Australia\\
   \email{chetan.arora@monash.edu}
   \and
-  Marvin~Muñoz~Barón \and Chunyang~Chen \at
+  Marvin~Muñoz~Barón  \and Chunyang~Chen \at
   Technical University of Munich, Germany\\
   \email{\{marvin.munoz-baron, chun-yang.chen\}@tum.de}
   \and
@@ -253,6 +253,10 @@
   Davide~Fucci \at
   Blekinge Institute of Technology, Sweden\\
   \email{davide.fucci@bth.se}
+  \and
+  Junda~He \and Christoph~Treude \at
+  Singapore Management University, Singapore\\
+  \email{\{jundahe, ctreude\}@smu.edu.sg}
   \and
   Marcos~Kalinowski \at
   PUC Rio de Janeiro, Brazil\\
@@ -283,10 +287,6 @@
   Independent Researcher, Antigua and Barbuda\\
   \email{rvantonder@gmail.com}
   \and
-  Christoph~Treude \at
-  Singapore Management University, Singapore\\
-  \email{ctreude@smu.edu.sg}
-  \and
   Stefan~Wagner \at
   Technical University of Munich, Germany\\
   \email{stefan.wagner@tum.de}
@@ -313,7 +313,7 @@
 \paragraph{Competing Interests:} The authors declare no competing interests. Multiple co-authors are members of the EMSE Editorial Board, which is disclosed here for transparency.
 
 %extra v-space will disappear when the "added" tag is deleted.
-\added{\paragraph{Authorship:} All authors of this paper not only contributed content but also stand behind the criteria outlined in the guidelines beyond their own contribution. }
+\paragraph{Authorship:} Each author contributed or reviewed content and, most importantly, read the complete guidelines and confirmed that they stand behind all recommendations, not only their own contributions.
 
 \paragraph{Funding:} No funding was received for writing this article. However, the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI}, which played a central role in forming the team of co-authors, was supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo.
 
