@@ -37,14 +37,7 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 \section{Study Types}
 \label{sec:study-types}
 
-Empirical guidelines are needed for SE studies involving LLMs to ensure the validity and reproducibility of their results.
-However, such guidelines must be tailored to different study types that each pose unique challenges.
-%Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
-Therefore, we created a taxonomy of study types to contextualize our recommendations.
-%Note that our \guidelines refer to the \studytypes but not the other way around.
-We use the term \emph{study type} to refer to categories of LLM involvement in empirical research, rather than to research methodologies (e.g., experiments, case studies). A single empirical study may involve multiple such study types.
-Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond. The \textbf{advantages} and \textbf{challenges} of using LLMs are discussed in a summary subsection at the end of this section, synthesizing cross-cutting themes across all study types.
-See Table~\ref{tab:study-types} for an overview of study types.
+\input{_main/study-types-intro.tex}
 
 %% This sub-table of contents is organizational overkill. 
 %% I think it's  a good additional since the guidlines are already a wall of text.
@@ -102,29 +95,7 @@ S7   & 4.2.3 & \quad \hyperref[sec:benchmarking-llms-for-software-engineering-ta
 \section{Guidelines}
 \label{sec:guidelines}
 
-A primary goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical SE studies involving LLMs. As repeating LLM-focused research to verify results lies somewhere between the ACM's definitions of reproducibility (different team, same research artifacts) and repeatability (different team, different research artifacts)~\cite{acm2020artifactreview} due to potential model changes and imperfect research artifacts, we follow \citeauthor{DBLP:journals/corr/abs-2510-25506}~\cite{DBLP:journals/corr/abs-2510-25506} and use the terms interchangeably. While previous guidelines regarding open science and empirical studies still apply, LLM-specific characteristics (e.g. inherent non-determinism~\cite{DBLP:conf/naacl/SongWLL25, YuanNondeterminismLLMInference}, opaque and proprietary models) present additional replicability challenges, which, in turn, demand new guidance.  
-
-Each guideline below begins with a brief \tldr summary, followed by its \textbf{rationale}, \textbf{recommendations}, \textbf{examples}, \textbf{benefits}, \textbf{challenges}, links to the relevant \textbf{study types}.
-The \emph{rationale} articulates the underlying principle, i.e., why the guideline matters, while the \emph{recommendations} provide concrete, actionable practices.
-Table~\ref{tab:rationale-recommendations} provides a compact overview of this mapping.
-
-The guidelines further contain \textbf{advice for reviewers}.
-Broadly, reviewers should use our guidelines to help them interrogate the extent to which a manuscript's authors have done what was practically possible to improve reproducibility. We must neither accept research absent reasonable efforts to improve reproducibility, nor reject research for failing to obtain an impossible goal. We borrow this principle of ``reasonable efforts'' from the SIGSOFT Empirical Standards~\cite{ralph2021empiricalstandardssoftwareengineering}, where it applies to methodological rigor more generally. Of course, papers should acknowledge their limitations, but to determine whether these limitations are reasonable, reviewers should ask ``have the authors done what they could to minimize limitations?'' Our guidelines attempt to capture what ``reasonable efforts'' practically means for LLM-based studies.
-
-To distinguish essential criteria from recommendations, our guidelines use two tiers.
-A~\must criterion is a \emph{requirement}. Studies that intend to follow these
-guidelines are expected to meet all \must criteria.
-A~\should criterion represents a desired practice that strengthens a study's rigor or transparency.
-However, there may be valid reasons to deviate in particular circumstances (e.g., resource constraints, inapplicability to a specific study context or type).
-Nonetheless, studies that deviate from a \should criterion should briefly justify the
-deviation and discuss its potential impact (e.g., on validity or reproducibility).
-Table~\ref{tab:guidelines} lists our eight guidelines.
-Table~\ref{tab:guideline-matrix} provides an overview of how each guideline applies to each study type.
-Cells marked \iconM indicate that the guideline is a \must requirement for the study type and cells marked \iconS indicate that the guideline \should be followed.
-Cells marked -- indicate that the guideline is typically not applicable or not feasible for the study type.
-
-The following sections indicate which information we expect researchers to report, and whether it should be in the \paper or \supplementarymaterial. Where a publication venue's page limits hinder reporting all expected elements in the \paper, it is better to report essential information in the \supplementarymaterial than not at all.
-The \supplementarymaterial should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
+\input{_main/guidelines-intro.tex}
 
 \begin{table}[tb]
 \caption{Overview of guidelines.}
