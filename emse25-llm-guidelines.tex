@@ -1,184 +1,47 @@
 % THIS IS THE VERSION OF THE PAPER SUBMITTED TO EMSE
 \documentclass[smallextended]{svjour3}
-\usepackage[square,numbers,sort&compress]{natbib}
 
-% language and encoding
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
+\newif\ifpaper\papertrue
+
+% Paper-only packages
 \usepackage[pagewise]{lineno}
-
-\usepackage{float}
 \usepackage{manyfoot}
 \usepackage[most]{tcolorbox}
-\usepackage{amsmath, amssymb, amsfonts}
-\usepackage{mathrsfs}
-\usepackage[title]{appendix}%
+\usepackage[title]{appendix}
 \usepackage{balance}
 \usepackage{algorithm}
-\usepackage{algorithmicx}%
-\usepackage{array}
+\usepackage{algorithmicx}
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-\usepackage{textcomp}
 \usepackage{stfloats}
-\usepackage{url}
-\usepackage{verbatim}
 \usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, fit, shadows}
+\usepackage[framemethod=tikz]{mdframed}
 
 \setlength{\marginparwidth}{2cm}
-\usepackage{hyperref}
-\usepackage{csquotes}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows, fit}
 
-\usepackage{colortbl}
-\usepackage{xcolor}
-\usepackage{multirow}
-\usepackage{tabularx}
-\usepackage{booktabs}
-\usepackage{xspace}
-\usepackage{dashrule}
-\usepackage[super]{nth}
+% Shared header (packages, commands, conditionals)
+\input{shared-header.tex}
 
-\setlength{\marginparwidth }{2cm}
-
-\renewcommand{\sectionautorefname}{Section}
-\renewcommand{\subsectionautorefname}{Section}
-\renewcommand{\subsubsectionautorefname}{Section}
-
-% editorial commands
-\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
-%\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
-
-% MUST: absolute requirement
-\newcommand{\must}{\textsc{must}\xspace}
-% MUST NOT: absolute prohibition
-\newcommand{\mustnot}{\textsc{must not}\xspace}
-% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course. Authors who  deviate should briefly justify the deviation in the paper.
-\newcommand{\should}{\textsc{should}\xspace}
-% SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
-\newcommand{\shouldnot}{\textsc{should not}\xspace}
-% tl;dr label
-\newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
-
-% Icons for checklist and matrix (M = must, S = should)
-\newsavebox{\iconMbox}
-\savebox{\iconMbox}{\tikz[baseline=-0.5ex]\draw[fill=black] (0,0) circle (0.3em);}
-\newcommand{\iconM}{\usebox{\iconMbox}\xspace}
-\newsavebox{\iconSbox}
-\savebox{\iconSbox}{\tikz[baseline=-0.5ex]\draw[fill=gray!40, draw=gray!60] (0,0) circle (0.3em);}
-\newcommand{\iconS}{\usebox{\iconSbox}\xspace}
-
-% command to indicate where certain information should be reported
-\newcommand{\paper}{\emph{paper}\xspace}
-\newcommand{\supplementarymaterial}{\emph{supplementary material}\xspace}
-
-% configure enumerate/itemize
-\usepackage[inline]{enumitem}
-
-% Get author names despite the fact that IEEEtran doesn't support it (it can't be used together with natbib)
-%\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
-%\addbibresource{literature.bib}
-
-\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
-
-% prevent single lines at the start of a paragraph (Schusterjungen)
-\clubpenalty = 10000
-% prevent single lines at the end of a paragraph (Hurenkinder)
-\widowpenalty = 10000 \displaywidowpenalty = 10000
-
-% commands to reference sections
-
-% scope
-\newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
-
-% study types
-\newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
-\newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
-\newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
-\newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
-\newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
-\newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
-\newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
-\newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
-\newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
-\newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
-
-%guidelines
-\newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
-\newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
-\newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
-\newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Architecture}}\xspace}
-\newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
-\newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Prompts and Logs}}\xspace}
-\newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
-\newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
-\newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
-
-% custom format for subsubsections and paragraphs
-\newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1:}}
-\newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
-\newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
-\newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
-
-
-\usepackage{listings}
-\usepackage{textcomp} % fix single quotes in listings environments
+% Paper-only: lstset color overrides (requires xcolor loaded above)
 \lstset{
-  basicstyle=\ttfamily\small,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=2,
-  breaklines=true,
-  breakatwhitespace=true,
-  aboveskip=0.5\baselineskip,
-  belowskip=0.5\baselineskip,
-  xleftmargin=0.5\parindent,
-  xrightmargin=0pt,
   keywordstyle=\color{blue},
   identifierstyle=\color{black},
   commentstyle=\color{gray},
   stringstyle=\color{gray},
   emphstyle=\color{red},
-  numbers=left,
-  numbersep=8pt,
-  upquote=true
-%  columns=flexible,
-%  numberstyle=\tiny,
-%  keepspaces=true
 }
 
-\lstnewenvironment{plain} {\lstset{
-  numbers=none
-}}{}
+% Paper-only settings
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
 
-% boxes for results
-\usetikzlibrary{shadows}
-\definecolor{framebg}{gray}{0.95}
-\usepackage[framemethod=tikz]{mdframed}
-\newmdenv[
-  leftmargin=0pt,
-  rightmargin=0pt,
-  usetwoside=false,
-  innerleftmargin=6pt,
-  innerrightmargin=6pt,
-  innertopmargin=4pt,
-  innerbottommargin=4pt,
-  skipabove=0.5\baselineskip plus 1pt,
-  skipbelow=0.5\baselineskip plus 2pt,
-  linecolor=black,
-  backgroundcolor=framebg,
-  linewidth=2pt,
-  roundcorner=0pt,
-  nobreak=false,
-  shadow=false,
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  leftline=true,
-  font=\itshape
-]{framed}
+% prevent single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+% prevent single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
 
 % Set title
 \makeatletter
