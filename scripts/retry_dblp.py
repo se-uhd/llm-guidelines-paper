@@ -12,7 +12,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.bwriter import BibTexWriter
 
-PROJECT = Path(__file__).resolve().parent
+PROJECT = Path(__file__).resolve().parent.parent
 BIB_FILE = PROJECT / "literature.bib"
 REPORT_FILE = PROJECT / "dblp_unmatched_report.txt"
 
