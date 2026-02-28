@@ -1,0 +1,49 @@
+\providecommand{\rot}[1]{\rotatebox{60}{\textbf{#1}}}
+
+\begin{table}[tb]
+\caption{Applicability of guidelines to study types. \iconM~=~\must, \iconS~=~\should.
+Study type IDs: S1~=~\annotators, S2~=~\judges, S3~=~\synthesis, S4~=~\subjects, S5~=~\llmusage, S6~=~\newtools, S7~=~\benchmarkingtasks.
+Each guideline's study-type-specific guidance is detailed in the corresponding subsections.}
+\label{tab:guideline-matrix}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{} l c c c c c c c @{}}
+\toprule
+& \rot{\hyperref[sec:llms-as-annotators]{S1}} & \rot{\hyperref[sec:llms-as-judges]{S2}} & \rot{\hyperref[sec:llms-for-synthesis]{S3}} & \rot{\hyperref[sec:llms-as-subjects]{S4}} & \rot{\hyperref[sec:studying-llm-usage-in-software-engineering]{S5}} & \rot{\hyperref[sec:llms-for-new-software-engineering-tools]{S6}} & \rot{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{S7}} \\
+\midrule
+\hyperref[sec:declare-llm-usage-and-role]{G1: Declare Usage}\hspace{12pt}
+  & \iconM & \iconM & \iconM
+  & \iconM & \iconM & \iconM
+  & \iconM \\
+\hyperref[sec:report-model-version-configuration-and-customizations]{G2: Model Version}
+  & \iconM & \iconM & \iconM
+  & \iconM & \iconM & \iconM
+  & \iconM \\
+\hyperref[sec:report-tool-architecture-beyond-models]{G3: Architecture}
+  & \iconS & \iconS & \iconS
+  & \iconS & \iconS & \iconM
+  & \iconS \\
+\hyperref[sec:report-prompts-their-development-and-interaction-logs]{G4: Prompts}
+  & \iconM & \iconM & \iconM
+  & \iconM & \iconM & \iconM
+  & \iconM \\
+\hyperref[sec:use-human-validation-for-llm-outputs]{G5: Human Valid.}
+  & \iconS & \iconS & \iconS
+  & \iconS & \iconS & \iconS
+  & \iconS \\
+\hyperref[sec:use-an-open-llm-as-a-baseline]{G6: Open LLM}
+  & \iconS & \iconS & \iconS
+  & -- & -- & \iconS
+  & \iconM \\
+\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{G7: Benchmarks}
+  & \iconS & \iconS & \iconS
+  & \iconS & \iconS & \iconS
+  & \iconM \\
+\hyperref[sec:report-limitations-and-mitigations]{G8: Limitations}
+  & \iconM & \iconM & \iconM
+  & \iconM & \iconM & \iconM
+  & \iconM \\
+\bottomrule
+\end{tabular}
+\end{table}
