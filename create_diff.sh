@@ -17,22 +17,6 @@ echo "Generating diff markup..."
 mkdir -p "$SCRIPT_DIR/versions"
 latexdiff /tmp/old_flat.tex /tmp/new_flat.tex > "$SCRIPT_DIR/versions/diff.tex"
 
-# Workaround: The \judgesexample command wraps a listings environment (plain)
-# inside \newcommand, which breaks when latexdiff's preamble packages (ulem,
-# color) are loaded. Replace the listings-based definition with a plain-TeX
-# version that renders identically but doesn't rely on verbatim catcodes.
-echo "Patching diff.tex (listings/newcommand compatibility)..."
-sed -i '' '/\\newcommand{\\judgesexample}/,/^[[:space:]]*}$/c\
-\\newcommand{\\judgesexample}{\\begin{quote}\\ttfamily\\small\\noindent\
-Your task is to evaluate the quality of a software requirement.\\\\\
-Evaluate whether the following requirement is \\{quality\\_characteristic\\}.\\\\\
-\\{quality\\_characteristic\\} means: \\{quality\\_characteristic\\_explanation\\}\\\\\
-The evaluation result must be: `yes'"'"' or `no'"'"'.\\\\\
-Request: Based on the following description of the project: \\{project\\_description\\}\\\\\
-Evaluate the quality of the following requirement: \\{requirement\\}.\\\\\
-Explain your decision and suggest an improved version.\
-\\end{quote}\
-}' "$SCRIPT_DIR/versions/diff.tex"
 
 # Merge bibliographies: the diff references citations from both old and new
 # versions. The current literature.bib may be missing entries that were removed
