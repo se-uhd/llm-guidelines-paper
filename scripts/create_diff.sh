@@ -3,7 +3,7 @@ set -euo pipefail
 
 OLD_DIR="${1:-../papers/llm-guidelines-paper}"
 MAIN_TEX="emse25-llm-guidelines.tex"
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 OLD_DIR="$(cd "$OLD_DIR" && pwd)"
 
@@ -11,11 +11,11 @@ echo "Flattening old version from $OLD_DIR..."
 (cd "$OLD_DIR" && latexpand "$MAIN_TEX" --output /tmp/old_flat.tex)
 
 echo "Flattening current version..."
-(cd "$SCRIPT_DIR" && latexpand "$MAIN_TEX" --output /tmp/new_flat.tex)
+(cd "$PROJECT_DIR" && latexpand "$MAIN_TEX" --output /tmp/new_flat.tex)
 
 echo "Generating diff markup..."
-mkdir -p "$SCRIPT_DIR/versions"
-latexdiff /tmp/old_flat.tex /tmp/new_flat.tex > "$SCRIPT_DIR/versions/diff.tex"
+mkdir -p "$PROJECT_DIR/versions"
+latexdiff /tmp/old_flat.tex /tmp/new_flat.tex > "$PROJECT_DIR/versions/diff.tex"
 
 
 # Merge bibliographies: the diff references citations from both old and new
@@ -37,7 +37,7 @@ def parse_entries(path):
     return entries
 
 old = parse_entries('$OLD_DIR/literature.bib')
-new = parse_entries('$SCRIPT_DIR/literature.bib')
+new = parse_entries('$PROJECT_DIR/literature.bib')
 
 # Start with all new entries, then add old entries that are missing
 merged = dict(new)
@@ -47,7 +47,7 @@ for key, entry in old.items():
         merged[key] = entry
         added += 1
 
-with open('$SCRIPT_DIR/versions/literature_merged.bib', 'w') as f:
+with open('$PROJECT_DIR/versions/literature_merged.bib', 'w') as f:
     f.write('\n\n'.join(merged.values()))
     f.write('\n')
 
@@ -55,13 +55,13 @@ print(f'Merged bibliography: {len(new)} current + {added} old-only = {len(merged
 "
 
 # Point diff.tex to the merged bibliography
-sed -i '' 's|\\bibliography{literature}|\\bibliography{versions/literature_merged}|' "$SCRIPT_DIR/versions/diff.tex"
+sed -i '' 's|\\bibliography{literature}|\\bibliography{versions/literature_merged}|' "$PROJECT_DIR/versions/diff.tex"
 
 # Clean stale build artifacts to ensure bibtex re-runs with the merged bib
-rm -f "$SCRIPT_DIR"/versions/diff.{bbl,aux,blg,log,fls,fdb_latexmk,out,pdf}
+rm -f "$PROJECT_DIR"/versions/diff.{bbl,aux,blg,log,fls,fdb_latexmk,out,pdf}
 
 echo "Compiling diff PDF..."
-cd "$SCRIPT_DIR"
+cd "$PROJECT_DIR"
 latexmk -pdf -jobname=versions/diff -silent versions/diff.tex
 # latexmk sometimes stops one pass short for the diff; run one extra pass
 # to ensure all \bibcite entries from the .aux are resolved
@@ -74,6 +74,6 @@ if [ "$UNDEF" -gt 0 ]; then
 fi
 
 echo "Cleaning auxiliary files..."
-rm -f "$SCRIPT_DIR"/versions/diff.{aux,bbl,blg,log,fls,fdb_latexmk,out,toc,lof,lot}
+rm -f "$PROJECT_DIR"/versions/diff.{aux,bbl,blg,log,fls,fdb_latexmk,out,toc,lof,lot}
 
 echo "Done: versions/diff.pdf"
