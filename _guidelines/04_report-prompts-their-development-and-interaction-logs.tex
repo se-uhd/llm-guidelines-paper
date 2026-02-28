@@ -63,11 +63,9 @@ For agentic systems that autonomously plan and execute tasks, the developed plan
 Interaction logs \should be generalized to include full interaction traces between humans and agentic systems, capturing human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
 These traces complement agent behavior traceability requirements and support the evaluation of agentic tool outputs.
 
-\paragraph{Context Files:}
-AI coding agents such as \emph{Claude Code} can be configured using version-controlled Markdown files (e.g., \texttt{CLAUDE.md} or \texttt{AGENTS.md}) that provide persistent, project-specific instructions to the agent~\cite{mohsenimofidi2026context}.
+Agentic coding tools can be configured using version-controlled Markdown files such as \texttt{CLAUDE.md} or \texttt{AGENTS.md}, which contain persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
 These \emph{context files} are automatically injected into agent prompts and can significantly influence agent behavior by specifying coding conventions, architectural constraints, tool preferences, and task-specific instructions.
 Researchers \must report all context files used to configure AI agent behavior as part of their \supplementarymaterial, as these files are a form of prompt artifact that shapes agent behavior similarly to system prompts.
-
 
 \guidelinesubsubsection{Example(s)}
 
