@@ -137,52 +137,67 @@
   \newcommand{\scope}{\href{/scope/}{\emph{Scope}}\xspace}
 \fi
 
+% Cross-reference helpers with optional ID prefix
+% Usage: \makepaperref{label}{Name}{ID} → "Name", \makepaperref[id]{label}{Name}{ID} → "ID: Name"
+\newcommand{\makepaperref}[4][]{%
+  \if\relax\detokenize{#1}\relax
+    \hyperref[#2]{\emph{#3}}%
+  \else
+    \hyperref[#2]{\emph{#4: #3}}%
+  \fi\xspace}
+\newcommand{\makewebref}[4][]{%
+  \if\relax\detokenize{#1}\relax
+    \href{#2}{\emph{#3}}%
+  \else
+    \href{#2}{\emph{#4: #3}}%
+  \fi\xspace}
+
 % Cross-references — study types
 \ifpaper
   \newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
   \newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
-  \newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
-  \newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
-  \newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
-  \newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\annotators}[1][]{\makepaperref[#1]{sec:llms-as-annotators}{LLMs as Annotators}{S1}}
+  \newcommand{\judges}[1][]{\makepaperref[#1]{sec:llms-as-judges}{LLMs as Judges}{S2}}
+  \newcommand{\synthesis}[1][]{\makepaperref[#1]{sec:llms-for-synthesis}{LLMs for Synthesis}{S3}}
+  \newcommand{\subjects}[1][]{\makepaperref[#1]{sec:llms-as-subjects}{LLMs as Subjects}{S4}}
   \newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
-  \newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
-  \newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
-  \newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
+  \newcommand{\llmusage}[1][]{\makepaperref[#1]{sec:studying-llm-usage-in-software-engineering}{Studying LLM Usage}{S5}}
+  \newcommand{\newtools}[1][]{\makepaperref[#1]{sec:llms-for-new-software-engineering-tools}{LLMs for Tools}{S6}}
+  \newcommand{\benchmarkingtasks}[1][]{\makepaperref[#1]{sec:benchmarking-llms-for-software-engineering-tasks}{Benchmarking LLMs}{S7}}
 \else
   \newcommand{\studytypes}{\href{/study-types}{\emph{Study Types}}\xspace}
   \newcommand{\llmsforresearcher}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineering-researchers}{\emph{LLMs for Research}}\xspace}
-  \newcommand{\annotators}{\href{/study-types\#llms-as-annotators}{\emph{LLMs as Annotators}}\xspace}
-  \newcommand{\judges}{\href{/study-types\#llms-as-judges}{\emph{LLMs as Judges}}\xspace}
-  \newcommand{\synthesis}{\href{/study-types\#llms-for-synthesis}{\emph{LLMs for Synthesis}}\xspace}
-  \newcommand{\subjects}{\href{/study-types\#llms-as-subjects}{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\annotators}[1][]{\makewebref[#1]{/study-types\#llms-as-annotators}{LLMs as Annotators}{S1}}
+  \newcommand{\judges}[1][]{\makewebref[#1]{/study-types\#llms-as-judges}{LLMs as Judges}{S2}}
+  \newcommand{\synthesis}[1][]{\makewebref[#1]{/study-types\#llms-for-synthesis}{LLMs for Synthesis}{S3}}
+  \newcommand{\subjects}[1][]{\makewebref[#1]{/study-types\#llms-as-subjects}{LLMs as Subjects}{S4}}
   \newcommand{\llmsforengineers}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineers}{\emph{LLMs for SE}}\xspace}
-  \newcommand{\llmusage}{\href{/study-types\#studying-llm-usage-in-software-engineering}{\emph{Studying LLM Usage}}\xspace}
-  \newcommand{\newtools}{\href{/study-types\#llms-for-new-software-engineering-tools}{\emph{LLMs for Tools}}\xspace}
-  \newcommand{\benchmarkingtasks}{\href{/study-types\#benchmarking-llms-for-software-engineering-tasks}{\emph{Benchmarking LLMs}}\xspace}
+  \newcommand{\llmusage}[1][]{\makewebref[#1]{/study-types\#studying-llm-usage-in-software-engineering}{Studying LLM Usage}{S5}}
+  \newcommand{\newtools}[1][]{\makewebref[#1]{/study-types\#llms-for-new-software-engineering-tools}{LLMs for Tools}{S6}}
+  \newcommand{\benchmarkingtasks}[1][]{\makewebref[#1]{/study-types\#benchmarking-llms-for-software-engineering-tasks}{Benchmarking LLMs}{S7}}
 \fi
 
 % Cross-references — guidelines
 \ifpaper
   \newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
-  \newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
-  \newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
-  \newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Architecture}}\xspace}
-  \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
-  \newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Prompts and Logs}}\xspace}
-  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
-  \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
-  \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
+  \newcommand{\usagerole}[1][]{\makepaperref[#1]{sec:declare-llm-usage-and-role}{Usage and Role}{G1}}
+  \newcommand{\modelversion}[1][]{\makepaperref[#1]{sec:report-model-version-configuration-and-customizations}{Version and Configuration}{G2}}
+  \newcommand{\toolarchitecture}[1][]{\makepaperref[#1]{sec:report-tool-architecture-beyond-models}{Architecture}{G3}}
+  \newcommand{\humanvalidation}[1][]{\makepaperref[#1]{sec:use-human-validation-for-llm-outputs}{Human Validation}{G5}}
+  \newcommand{\prompts}[1][]{\makepaperref[#1]{sec:report-prompts-their-development-and-interaction-logs}{Prompts and Logs}{G4}}
+  \newcommand{\openllm}[1][]{\makepaperref[#1]{sec:use-an-open-llm-as-a-baseline}{Open LLMs}{G6}}
+  \newcommand{\benchmarksmetrics}[1][]{\makepaperref[#1]{sec:use-suitable-baselines-benchmarks-and-metrics}{Benchmarks and Metrics}{G7}}
+  \newcommand{\limitationsmitigations}[1][]{\makepaperref[#1]{sec:report-limitations-and-mitigations}{Limitations and Mitigations}{G8}}
 \else
   \newcommand{\guidelines}{\href{/guidelines}{\emph{Guidelines}}\xspace}
-  \newcommand{\usagerole}{\href{/guidelines\#declare-llm-usage-and-role}{\emph{Usage and Role}}\xspace}
-  \newcommand{\modelversion}{\href{/guidelines\#report-model-version-configuration-and-customizations}{\emph{Version and Configuration}}\xspace}
-  \newcommand{\toolarchitecture}{\href{/guidelines\#report-tool-architecture-beyond-models}{\emph{Architecture}}\xspace}
-  \newcommand{\humanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{\emph{Human Validation}}\xspace}
-  \newcommand{\prompts}{\href{/guidelines\#report-prompts-their-development-and-interaction-logs}{\emph{Prompts and Logs}}\xspace}
-  \newcommand{\openllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{\emph{Open LLMs}}\xspace}
-  \newcommand{\benchmarksmetrics}{\href{/guidelines\#use-suitable-baselines-benchmarks-and-metrics}{\emph{Benchmarks and Metrics}}\xspace}
-  \newcommand{\limitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{\emph{Limitations and Mitigations}}\xspace}
+  \newcommand{\usagerole}[1][]{\makewebref[#1]{/guidelines\#declare-llm-usage-and-role}{Usage and Role}{G1}}
+  \newcommand{\modelversion}[1][]{\makewebref[#1]{/guidelines\#report-model-version-configuration-and-customizations}{Version and Configuration}{G2}}
+  \newcommand{\toolarchitecture}[1][]{\makewebref[#1]{/guidelines\#report-tool-architecture-beyond-models}{Architecture}{G3}}
+  \newcommand{\humanvalidation}[1][]{\makewebref[#1]{/guidelines\#use-human-validation-for-llm-outputs}{Human Validation}{G5}}
+  \newcommand{\prompts}[1][]{\makewebref[#1]{/guidelines\#report-prompts-their-development-and-interaction-logs}{Prompts and Logs}{G4}}
+  \newcommand{\openllm}[1][]{\makewebref[#1]{/guidelines\#use-an-open-llm-as-a-baseline}{Open LLMs}{G6}}
+  \newcommand{\benchmarksmetrics}[1][]{\makewebref[#1]{/guidelines\#use-suitable-baselines-benchmarks-and-metrics}{Benchmarks and Metrics}{G7}}
+  \newcommand{\limitationsmitigations}[1][]{\makewebref[#1]{/guidelines\#report-limitations-and-mitigations}{Limitations and Mitigations}{G8}}
 \fi
 
 % Section formatting
