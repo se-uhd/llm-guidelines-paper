@@ -1,4 +1,4 @@
-\studytypesubsection{LLMs for New Software Engineering Tools}
+\studytypesubsection{LLMs for New Software Engineering Tools (S6)}
 \label{sec:llms-for-new-software-engineering-tools}
 
 \studytypeparagraph{Description}
@@ -12,21 +12,8 @@ Researchers can also test and compare different tool architectures to increase a
 
 \studytypeparagraph{Example(s)}
 
-\citeauthor{DBLP:conf/chi/YanHWH24} proposed IVIE, a tool integrated into the VS Code graphical interface that generates and explains code using LLMs~\cite{DBLP:conf/chi/YanHWH24}.
+\citeauthor{DBLP:conf/chi/YanHWH24} proposed \emph{IVIE}, a tool integrated into the VS Code graphical interface that generates and explains code using LLMs~\cite{DBLP:conf/chi/YanHWH24}.
 The authors focused more on the presentation, providing a user-friendly interface to interact with the LLM. 
 \citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} presented a large-scale empirical evaluation on the effectiveness of LLMs for automated unit test generation.
-They presented TestPilot, a tool that implements an approach in which the LLM is provided with prompts that include the signature and implementation of a function under test, along with usage examples extracted from the documentation.
+They presented \emph{TestPilot}, a tool that implements an approach in which the LLM is provided with prompts that include the signature and implementation of a function under test, along with usage examples extracted from the documentation.
 \citeauthor{DBLP:conf/icsm/RichardsW24} introduced a preliminary GenAI agent designed to assist developers in understanding source code by incorporating a reasoning component grounded in the theory of mind~\cite{DBLP:conf/icsm/RichardsW24}.
-
-\studytypeparagraph{Advantages}
-
-From an engineering perspective, developing LLM-based tools is easier than implementing many traditional SE approaches such as static analysis or symbolic execution.
-Depending on the capabilities of the underlying model, it is also easier to build tools that are independent of a specific programming language.
-This enables researchers to build tools for more diverse tasks and test them in more varied contexts.
-
-\studytypeparagraph{Challenges}
-
-Evaluating tool effectiveness is challenging, as minor changes in input cause major differences in performance.
-Since training data is rarely published by model vendors, reliably assessing tool performance for unknown data is difficult.
-From an engineering perspective, while open models are available, the most capable ones require substantial hardware resources.
-The obvious solution---using cloud-based APIs or relying on third-party providers for hosting---introduces new concerns related to data privacy, security\added{, and replicability}.
