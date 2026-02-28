@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Academic paper submitted to Empirical Software Engineering (EMSE) journal, currently under major revision. The paper presents guidelines for empirical studies in software engineering involving LLMs. It is co-authored by 22 researchers and synced with Overleaf via git.
 
+**This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) copies the content files and references `shared-header.tex`. This repo will be added as a submodule of the website repo.
+
 ## Build Commands
 
 ```bash
@@ -34,7 +36,17 @@ PDF outputs (`emse25-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `res
 
 ### Main Paper
 
-The main entry point is `emse25-llm-guidelines.tex`, which defines the preamble (packages, custom commands) and includes content via `\input{}`:
+The main entry point is `emse25-llm-guidelines.tex`. Its preamble loads paper-only packages, then inputs the shared header:
+
+```
+\documentclass[smallextended]{svjour3}
+\newif\ifpaper\papertrue
+% paper-only packages (tikz, xcolor, mdframed, etc.)
+\input{shared-header.tex}
+% paper-only lstset color overrides and settings
+```
+
+Content is included via `\input{}`:
 
 - `_main/01_abstract.tex` — Abstract
 - `_main/02_document.tex` — Core document structure (Introduction, Methodology, all section includes)
@@ -43,8 +55,20 @@ The main entry point is `emse25-llm-guidelines.tex`, which defines the preamble 
 - `_guidelines/` — 8 reporting guidelines (numbered `01` through `08`)
 - `_tldr/` — TL;DR summaries of guidelines and study types (one per guideline, included inline before each guideline section)
 - `_summary/` — Applicability matrix (`matrix.tex`), rationale-recommendations table (`rationale-recommendations.tex`), and reporting checklist (`checklist.tex`)
-- `literature.bib` — Bibliography (~171 entries, sorted alphabetically by citation key)
+- `literature.bib` — Bibliography (sorted alphabetically by citation key)
 - `svjour3.cls`, `svglov3.clo`, `spbasic.bst` — Springer journal template and bibliography style (do not modify)
+
+### Shared Header Architecture
+
+The LaTeX preamble is shared with the website via `shared-header.tex` (lives in this repo's root). It uses `\ifpaper...\else...\fi` conditionals for commands that differ between paper and website:
+
+- RFC 2119 keywords (`\must`, `\should`, etc.) — paper: `\textsc`, website: `\textbf`
+- Cross-references (`\scope`, `\annotators`, etc.) — paper: `\hyperref[sec:...]`, website: `\href{/url}`
+- Section formatting (`\guidelinesubsubsection`, etc.) — different heading levels
+- Icons (`\iconM`, `\iconS`) — paper: TikZ circles, website: Unicode
+- Framed environment — paper: mdframed (gray bg, left border), website: quote
+
+**Important:** Paper-only packages (`tikz`, `xcolor`, `mdframed`) must be loaded *before* `\input{shared-header.tex}` so that `\ifpaper` branches can use them.
 
 ### Revision Artifacts
 
@@ -56,15 +80,29 @@ The main entry point is `emse25-llm-guidelines.tex`, which defines the preamble 
 
 ## Key Conventions
 
-**RFC 2119 terminology:** The paper uses custom commands for requirement levels — `\must`, `\mustnot`, `\should`, `\shouldnot`, `\may`. These render as small-caps. Note: `\may` is deprecated in the revision; reword as plain suggestions ("researchers may/can...") without small-caps.
+**RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render as small-caps in the paper. `\may` has been removed; reword as plain suggestions ("researchers may/can...").
 
-**Cross-reference macros:** Each study type and guideline has a shorthand command (e.g., `\annotators`, `\judges`, `\humanvalidation`, `\prompts`) that creates a hyperlinked italic reference to the corresponding section. These are defined in the preamble of `emse25-llm-guidelines.tex`.
+**Cross-reference macros:** Each study type and guideline has a shorthand command (e.g., `\annotators`, `\judges`, `\humanvalidation`, `\prompts`) that creates a hyperlinked italic reference to the corresponding section. Defined in `shared-header.tex` with `\ifpaper` conditionals.
 
 **File naming:** Content files use numeric prefixes for ordering (`01_`, `02_`, `01-02_`). Directories use underscore prefixes (`_guidelines/`, `_studytypes/`).
 
-**Reporting location macros:** `\paper` and `\supplementarymaterial` indicate where information should be reported (renders as italic "paper" / "supplementary material").
+**Reporting location macros:** `\paper` and `\supplementarymaterial` indicate where information should be reported (renders as italic in the paper).
 
 **Framed environments:** The `framed` mdframed environment is used for highlighted guideline text blocks (gray background, left border).
+
+## Syncing Content to Website
+
+After editing content files or `literature.bib`, copy them to the website repo:
+
+```bash
+cp _guidelines/*.tex ../llm-guidelines-website/guidelines/_sources/_guidelines/
+cp _studytypes/*.tex ../llm-guidelines-website/study-types/_sources/_studytypes/
+cp _scope/*.tex ../llm-guidelines-website/scope/_sources/_scope/
+cp _tldr/*.tex ../llm-guidelines-website/guidelines/_sources/_tldr/
+cp literature.bib ../llm-guidelines-website/
+```
+
+Then rebuild the website: `./compile-latex.sh && ./convert-and-merge-sources.sh`
 
 ## Bibliography Cleanup Scripts
 

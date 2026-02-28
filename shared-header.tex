@@ -1,0 +1,199 @@
+% Shared header for llm-guidelines paper and website
+% Requires: \newif\ifpaper (and \papertrue for paper) defined before \input
+
+%%% Packages %%%
+
+% Language and encoding
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% URL/hyperlinks (url before hyperref, natbib before hyperref)
+\usepackage[hyphens]{url}
+\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+% Formatting
+\usepackage{xspace}
+\usepackage[super]{nth}
+\usepackage[inline]{enumitem}
+
+% Math
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Tables
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% Code listings
+\usepackage{listings}
+\usepackage{textcomp} % for upquote=true
+
+%%% Listings configuration %%%
+\lstset{
+  basicstyle=\ttfamily\small,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true,
+  aboveskip=0.5\baselineskip,
+  belowskip=0.5\baselineskip,
+  xleftmargin=0.5\parindent,
+  xrightmargin=0pt,
+  numbers=left,
+  numbersep=8pt,
+  upquote=true
+}
+
+\lstnewenvironment{plain}{\lstset{numbers=none}}{}
+
+%%% Commands — identical in both %%%
+
+\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}}
+\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
+
+%%% Commands — conditional %%%
+
+% RFC 2119 keywords
+\ifpaper
+  \newcommand{\must}{\textsc{must}\xspace}
+  \newcommand{\mustnot}{\textsc{must not}\xspace}
+  \newcommand{\should}{\textsc{should}\xspace}
+  \newcommand{\shouldnot}{\textsc{should not}\xspace}
+\else
+  \newcommand{\must}{\textbf{MUST}\xspace}
+  \newcommand{\mustnot}{\textbf{MUST NOT}\xspace}
+  \newcommand{\should}{\textbf{SHOULD}\xspace}
+  \newcommand{\shouldnot}{\textbf{SHOULD NOT}\xspace}
+\fi
+
+% tl;dr label
+\ifpaper
+  \newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
+\else
+  \newcommand{\tldr}{\textbf{\emph{tl;dr}}\xspace}
+\fi
+
+% Reporting location
+\ifpaper
+  \newcommand{\paper}{\emph{paper}\xspace}
+  \newcommand{\supplementarymaterial}{\emph{supplementary material}\xspace}
+\else
+  \newcommand{\paper}{PAPER\xspace}
+  \newcommand{\supplementarymaterial}{SUPPLEMENTARY MATERIAL\xspace}
+\fi
+
+% Icons for matrix/checklist
+\ifpaper
+  \newsavebox{\iconMbox}
+  \savebox{\iconMbox}{\tikz[baseline=-0.5ex]\draw[fill=black] (0,0) circle (0.3em);}
+  \newcommand{\iconM}{\usebox{\iconMbox}\xspace}
+  \newsavebox{\iconSbox}
+  \savebox{\iconSbox}{\tikz[baseline=-0.5ex]\draw[fill=gray!40, draw=gray!60] (0,0) circle (0.3em);}
+  \newcommand{\iconS}{\usebox{\iconSbox}\xspace}
+\else
+  \newcommand{\iconM}{●\xspace}
+  \newcommand{\iconS}{○\xspace}
+\fi
+
+% Framed environment for guideline summaries
+\ifpaper
+  \definecolor{framebg}{gray}{0.95}
+  \newmdenv[
+    leftmargin=0pt,
+    rightmargin=0pt,
+    usetwoside=false,
+    innerleftmargin=6pt,
+    innerrightmargin=6pt,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    skipabove=0.5\baselineskip plus 1pt,
+    skipbelow=0.5\baselineskip plus 2pt,
+    linecolor=black,
+    backgroundcolor=framebg,
+    linewidth=2pt,
+    roundcorner=0pt,
+    nobreak=false,
+    shadow=false,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    leftline=true,
+    font=\itshape
+  ]{framed}
+\else
+  \newenvironment{framed}{\begin{quote}\itshape}{\end{quote}}
+\fi
+
+% Cross-references — scope
+\ifpaper
+  \newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
+\else
+  \newcommand{\scope}{\href{/scope/}{\emph{Scope}}\xspace}
+\fi
+
+% Cross-references — study types
+\ifpaper
+  \newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
+  \newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
+  \newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
+  \newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
+  \newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
+  \newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
+  \newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
+  \newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
+  \newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
+\else
+  \newcommand{\studytypes}{\href{/study-types}{\emph{Study Types}}\xspace}
+  \newcommand{\llmsforresearcher}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineering-researchers}{\emph{LLMs for Research}}\xspace}
+  \newcommand{\annotators}{\href{/study-types\#llms-as-annotators}{\emph{LLMs as Annotators}}\xspace}
+  \newcommand{\judges}{\href{/study-types\#llms-as-judges}{\emph{LLMs as Judges}}\xspace}
+  \newcommand{\synthesis}{\href{/study-types\#llms-for-synthesis}{\emph{LLMs for Synthesis}}\xspace}
+  \newcommand{\subjects}{\href{/study-types\#llms-as-subjects}{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\llmsforengineers}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineers}{\emph{LLMs for SE}}\xspace}
+  \newcommand{\llmusage}{\href{/study-types\#studying-llm-usage-in-software-engineering}{\emph{Studying LLM Usage}}\xspace}
+  \newcommand{\newtools}{\href{/study-types\#llms-for-new-software-engineering-tools}{\emph{LLMs for Tools}}\xspace}
+  \newcommand{\benchmarkingtasks}{\href{/study-types\#benchmarking-llms-for-software-engineering-tasks}{\emph{Benchmarking LLMs}}\xspace}
+\fi
+
+% Cross-references — guidelines
+\ifpaper
+  \newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
+  \newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
+  \newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
+  \newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Architecture}}\xspace}
+  \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
+  \newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Prompts and Logs}}\xspace}
+  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
+  \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
+  \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
+\else
+  \newcommand{\guidelines}{\href{/guidelines}{\emph{Guidelines}}\xspace}
+  \newcommand{\usagerole}{\href{/guidelines\#declare-llm-usage-and-role}{\emph{Usage and Role}}\xspace}
+  \newcommand{\modelversion}{\href{/guidelines\#report-model-version-configuration-and-customizations}{\emph{Version and Configuration}}\xspace}
+  \newcommand{\toolarchitecture}{\href{/guidelines\#report-tool-architecture-beyond-models}{\emph{Architecture}}\xspace}
+  \newcommand{\humanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{\emph{Human Validation}}\xspace}
+  \newcommand{\prompts}{\href{/guidelines\#report-prompts-their-development-and-interaction-logs}{\emph{Prompts and Logs}}\xspace}
+  \newcommand{\openllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{\emph{Open LLMs}}\xspace}
+  \newcommand{\benchmarksmetrics}{\href{/guidelines\#use-suitable-baselines-benchmarks-and-metrics}{\emph{Benchmarks and Metrics}}\xspace}
+  \newcommand{\limitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{\emph{Limitations and Mitigations}}\xspace}
+\fi
+
+% Section formatting
+\ifpaper
+  \newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1:}}
+  \newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
+  \newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
+  \newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
+\else
+  \newcommand{\guidelinesubsubsection}[1]{\subsubsection{#1}}
+  \newcommand{\studytypesubsection}[1]{\subsection{#1}}
+  \newcommand{\studytypeparagraph}[1]{\subsubsection{#1}}
+  \newcommand{\scopeparagraph}[1]{\subsubsection{#1}}
+\fi
