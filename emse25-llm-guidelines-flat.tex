@@ -1,151 +1,50 @@
-% THIS IS THE VERSION OF THE PAPER SUBMITTED TO EMSE
 \documentclass[smallextended]{svjour3}
-\usepackage[square,numbers,sort&compress]{natbib}
 
-\usepackage[pagewise]{lineno}
-% language and encoding
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} % set font encoding so that special characters are displayed correctly
+\newif\ifpaper\papertrue
 
-\usepackage{float}
-%\usepackage{caption}
 \usepackage{manyfoot}
 \usepackage[most]{tcolorbox}
-\usepackage{amsmath, amssymb, amsfonts}
-\usepackage{mathrsfs}
-\usepackage[title]{appendix}%
+\usepackage[title]{appendix}
 \usepackage{balance}
 \usepackage{algorithm}
-\usepackage{algorithmicx}%
-\usepackage{array}
+\usepackage{algorithmicx}
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-\usepackage{textcomp}
 \usepackage{stfloats}
-\usepackage{url}
-\usepackage{verbatim}
 \usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, fit, shadows}
+\usepackage[framemethod=tikz]{mdframed}
 
 \setlength{\marginparwidth}{2cm}
+
+
+
+
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[hyphens]{url}
+\usepackage[square,numbers,sort&compress]{natbib}
 \usepackage{hyperref}
 \usepackage{csquotes}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows, fit}
 
-\usepackage{colortbl}
-\usepackage{xcolor}
-\usepackage{multirow}
-\usepackage{tabularx}
-\usepackage{booktabs}
 \usepackage{xspace}
-\usepackage{dashrule}
 \usepackage[super]{nth}
-
-\setlength{\marginparwidth }{2cm}
-
-\renewcommand{\sectionautorefname}{Section}
-\renewcommand{\subsectionautorefname}{Section}
-\renewcommand{\subsubsectionautorefname}{Section}
-
-% editorial commands
-\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}} % command for TODOs
-%\newcommand{\comment}[1]{{\textbf{Comment:}\ \textit{#1}}} % command for review comments
-
-% MUST: absolute requirement
-\newcommand{\must}{\textsc{must}\xspace}
-% MUST NOT: absolute prohibition
-\newcommand{\mustnot}{\textsc{must not}\xspace}
-% SHOULD: there may exist valid reasons in particular circumstances to ignore a  particular item, but the full implications must be understood and carefully weighed before choosing a different course. Authors who  deviate should briefly justify the deviation in the paper.
-\newcommand{\should}{\textsc{should}\xspace}
-% SHOULD NOT: there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label
-\newcommand{\shouldnot}{\textsc{should not}\xspace}
-% tl;dr label
-\newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
-
-% Icons for checklist and matrix (M = must, S = should)
-\newsavebox{\iconMbox}
-\savebox{\iconMbox}{\tikz[baseline=-0.5ex]\draw[fill=black] (0,0) circle (0.3em);}
-\newcommand{\iconM}{\usebox{\iconMbox}\xspace}
-\newsavebox{\iconSbox}
-\savebox{\iconSbox}{\tikz[baseline=-0.5ex]\draw[fill=gray!40, draw=gray!60] (0,0) circle (0.3em);}
-\newcommand{\iconS}{\usebox{\iconSbox}\xspace}
-
-% command to indicate where certain information should be reported
-\newcommand{\paper}{\emph{paper}\xspace}
-\newcommand{\supplementarymaterial}{\emph{supplementary material}\xspace}
-
-% configure enumerate/itemize
 \usepackage[inline]{enumitem}
 
-% Get author names despite the fact that IEEEtran doesn't support it (it can't be used together with natbib)
-%\usepackage[style=ieee, backend=biber,sorting=nty, mincitenames=1, maxcitenames=2]{biblatex}
-%\addbibresource{literature.bib}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
-\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
-
-% prevent single lines at the start of a paragraph (Schusterjungen)
-\clubpenalty = 10000
-% prevent single lines at the end of a paragraph (Hurenkinder)
-\widowpenalty = 10000 \displaywidowpenalty = 10000
-
-% commands to reference sections
-
-% scope
-\newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
-
-% study types
-\newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
-\newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
-\newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
-\newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
-\newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
-\newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
-\newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
-\newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
-\newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
-\newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
-
-%guidelines
-\newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
-\newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
-\newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
-\newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Architecture}}\xspace}
-\newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
-\newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Prompts and Logs}}\xspace}
-\newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
-\newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
-\newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
-
-% custom format for subsubsections and paragraphs
-\newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1:}}
-\newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
-\newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
-\newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
-
-% adjust layout depending on document type
-\newcommand{\modelversionsummary}{In summary, our recommendation is to report:
-
-\begin{enumerate*}[label=(\arabic*)]
-\item Model/tool name and version (\must in \paper);
-\item All relevant configured parameters that affect output generation (\must in \paper);
-\item Default values of all available parameters (\should);
-\item Checksum/fingerprint of used model version and configuration (\should);
-\item Additional properties such as context window size (\should).
-\end{enumerate*}
-
-For fine-tuned models, additional recommendations apply:
-
-\begin{enumerate*}[label=(\arabic*)]
-\item Fine-tuning goal (\must in \paper);
-\item Fine-tuning dataset creation and characterization (\must in \paper);
-\item Fine-tuning parameters and procedure (\must in \paper);
-\item Fine-tuning dataset and fine-tuned model weights (\should);
-\item Validation metrics and benchmarks (\should).
-\end{enumerate*}
- }
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
 
 \usepackage{listings}
-\usepackage{textcomp} % fix single quotes in listings environments
+\usepackage{textcomp} 
+
 \lstset{
   basicstyle=\ttfamily\small,
   showspaces=false,
@@ -158,67 +57,171 @@ For fine-tuned models, additional recommendations apply:
   belowskip=0.5\baselineskip,
   xleftmargin=0.5\parindent,
   xrightmargin=0pt,
+  numbers=left,
+  numbersep=8pt,
+  upquote=true
+}
+
+\lstnewenvironment{plain}{\lstset{numbers=none}}{}
+
+
+
+\newcommand{\todo}[1]{{\textbf{TODO:}\ \textit{#1}}}
+\newcommand*{\enq}[1]{\enquote{{\itshape#1}}}
+
+
+
+\ifpaper
+  \newcommand{\must}{\textsc{must}\xspace}
+  \newcommand{\mustnot}{\textsc{must not}\xspace}
+  \newcommand{\should}{\textsc{should}\xspace}
+  \newcommand{\shouldnot}{\textsc{should not}\xspace}
+\else
+  \newcommand{\must}{\textbf{MUST}\xspace}
+  \newcommand{\mustnot}{\textbf{MUST NOT}\xspace}
+  \newcommand{\should}{\textbf{SHOULD}\xspace}
+  \newcommand{\shouldnot}{\textbf{SHOULD NOT}\xspace}
+\fi
+
+\ifpaper
+  \newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
+\else
+  \newcommand{\tldr}{\textbf{\emph{tl;dr}}\xspace}
+\fi
+
+\ifpaper
+  \newcommand{\paper}{\emph{paper}\xspace}
+  \newcommand{\supplementarymaterial}{\emph{supplementary material}\xspace}
+\else
+  \newcommand{\paper}{PAPER\xspace}
+  \newcommand{\supplementarymaterial}{SUPPLEMENTARY MATERIAL\xspace}
+\fi
+
+\ifpaper
+  \newsavebox{\iconMbox}
+  \savebox{\iconMbox}{\tikz[baseline=-0.5ex]\draw[fill=black] (0,0) circle (0.3em);}
+  \newcommand{\iconM}{\usebox{\iconMbox}\xspace}
+  \newsavebox{\iconSbox}
+  \savebox{\iconSbox}{\tikz[baseline=-0.5ex]\draw[fill=gray!40, draw=gray!60] (0,0) circle (0.3em);}
+  \newcommand{\iconS}{\usebox{\iconSbox}\xspace}
+\else
+  \newcommand{\iconM}{●\xspace}
+  \newcommand{\iconS}{○\xspace}
+\fi
+
+\ifpaper
+  \definecolor{framebg}{gray}{0.95}
+  \newmdenv[
+    leftmargin=0pt,
+    rightmargin=0pt,
+    usetwoside=false,
+    innerleftmargin=6pt,
+    innerrightmargin=6pt,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    skipabove=0.5\baselineskip plus 1pt,
+    skipbelow=0.5\baselineskip plus 2pt,
+    linecolor=black,
+    backgroundcolor=framebg,
+    linewidth=2pt,
+    roundcorner=0pt,
+    nobreak=false,
+    shadow=false,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    leftline=true,
+    font=\itshape
+  ]{framed}
+\else
+  \newenvironment{framed}{\begin{quote}\itshape}{\end{quote}}
+\fi
+
+\ifpaper
+  \newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
+\else
+  \newcommand{\scope}{\href{/scope/}{\emph{Scope}}\xspace}
+\fi
+
+\ifpaper
+  \newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
+  \newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
+  \newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
+  \newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
+  \newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
+  \newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
+  \newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
+  \newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
+  \newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
+\else
+  \newcommand{\studytypes}{\href{/study-types}{\emph{Study Types}}\xspace}
+  \newcommand{\llmsforresearcher}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineering-researchers}{\emph{LLMs for Research}}\xspace}
+  \newcommand{\annotators}{\href{/study-types\#llms-as-annotators}{\emph{LLMs as Annotators}}\xspace}
+  \newcommand{\judges}{\href{/study-types\#llms-as-judges}{\emph{LLMs as Judges}}\xspace}
+  \newcommand{\synthesis}{\href{/study-types\#llms-for-synthesis}{\emph{LLMs for Synthesis}}\xspace}
+  \newcommand{\subjects}{\href{/study-types\#llms-as-subjects}{\emph{LLMs as Subjects}}\xspace}
+  \newcommand{\llmsforengineers}{\href{/study-types/\#introduction-llms-as-tools-for-software-engineers}{\emph{LLMs for SE}}\xspace}
+  \newcommand{\llmusage}{\href{/study-types\#studying-llm-usage-in-software-engineering}{\emph{Studying LLM Usage}}\xspace}
+  \newcommand{\newtools}{\href{/study-types\#llms-for-new-software-engineering-tools}{\emph{LLMs for Tools}}\xspace}
+  \newcommand{\benchmarkingtasks}{\href{/study-types\#benchmarking-llms-for-software-engineering-tasks}{\emph{Benchmarking LLMs}}\xspace}
+\fi
+
+\ifpaper
+  \newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
+  \newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
+  \newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
+  \newcommand{\toolarchitecture}{\hyperref[sec:report-tool-architecture-beyond-models]{\emph{Architecture}}\xspace}
+  \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
+  \newcommand{\prompts}{\hyperref[sec:report-prompts-their-development-and-interaction-logs]{\emph{Prompts and Logs}}\xspace}
+  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
+  \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
+  \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
+\else
+  \newcommand{\guidelines}{\href{/guidelines}{\emph{Guidelines}}\xspace}
+  \newcommand{\usagerole}{\href{/guidelines\#declare-llm-usage-and-role}{\emph{Usage and Role}}\xspace}
+  \newcommand{\modelversion}{\href{/guidelines\#report-model-version-configuration-and-customizations}{\emph{Version and Configuration}}\xspace}
+  \newcommand{\toolarchitecture}{\href{/guidelines\#report-tool-architecture-beyond-models}{\emph{Architecture}}\xspace}
+  \newcommand{\humanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{\emph{Human Validation}}\xspace}
+  \newcommand{\prompts}{\href{/guidelines\#report-prompts-their-development-and-interaction-logs}{\emph{Prompts and Logs}}\xspace}
+  \newcommand{\openllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{\emph{Open LLMs}}\xspace}
+  \newcommand{\benchmarksmetrics}{\href{/guidelines\#use-suitable-baselines-benchmarks-and-metrics}{\emph{Benchmarks and Metrics}}\xspace}
+  \newcommand{\limitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{\emph{Limitations and Mitigations}}\xspace}
+\fi
+
+\ifpaper
+  \newcommand{\guidelinesubsubsection}[1]{\subsubsection{\bfseries #1:}}
+  \newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
+  \newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
+  \newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
+\else
+  \newcommand{\guidelinesubsubsection}[1]{\subsubsection{#1}}
+  \newcommand{\studytypesubsection}[1]{\subsection{#1}}
+  \newcommand{\studytypeparagraph}[1]{\subsubsection{#1}}
+  \newcommand{\scopeparagraph}[1]{\subsubsection{#1}}
+\fi
+ 
+\lstset{
   keywordstyle=\color{blue},
   identifierstyle=\color{black},
   commentstyle=\color{gray},
   stringstyle=\color{gray},
   emphstyle=\color{red},
-  numbers=left,
-  numbersep=8pt,
-  upquote=true
-%  columns=flexible,
-%  numberstyle=\tiny,
-%  keepspaces=true
 }
 
-\lstnewenvironment{plain} {\lstset{
-  numbers=none
-}}{}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
 
-% boxes for results
-\usetikzlibrary{shadows}
-\definecolor{framebg}{gray}{0.95}
-\usepackage[framemethod=tikz]{mdframed}
-\newmdenv[
-  leftmargin=0pt,
-  rightmargin=0pt,
-  usetwoside=false,
-  innerleftmargin=6pt,
-  innerrightmargin=6pt,
-  innertopmargin=4pt,
-  innerbottommargin=4pt,
-  skipabove=0.5\baselineskip plus 1pt,
-  skipbelow=0.5\baselineskip plus 2pt,
-  linecolor=black,
-  backgroundcolor=framebg,
-  linewidth=2pt,
-  roundcorner=0pt,
-  nobreak=false,
-  shadow=false,
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  leftline=true,
-  font=\itshape
-]{framed}
+\clubpenalty = 10000
+\widowpenalty = 10000 \displaywidowpenalty = 10000
 
-% Set title
 \makeatletter
-\def\makeheadbox{%
-  \hbox to0pt{%
-    \vbox{\baselineskip=10dd
+\def\makeheadbox{\hbox to0pt{\vbox{\baselineskip=10dd
       \hrule
-      \hbox to\hsize{%
-        \vrule\kern3pt
+      \hbox to\hsize{\vrule\kern3pt
         \vbox{\kern3pt
-          % ---- customise here -----------------
-          \hbox{\bfseries Empirical Software Engineering}%
-          \hbox{(submitted manuscript)}%
-          % --------------------------------------
-          \kern3pt}%
-        \hfil\kern3pt\vrule}%
-      \hrule}%
-    \hss}}
+\hbox{\bfseries Empirical Software Engineering}\hbox{(submitted manuscript)}\kern3pt}\hfil\kern3pt\vrule}\hrule}\hss}}
 \makeatother
 
 \date{Submitted: 26/08/2025\\Revised: 27/02/2026}
@@ -227,8 +230,7 @@ For fine-tuned models, additional recommendations apply:
 
 \author{Sebastian~Baltes \and Florian~Angermeir \and Chetan~Arora \and Marvin~Muñoz~Barón \and Chunyang~Chen \and Lukas~Böhme \and Fabio~Calefato \and Neil~Ernst \and Davide~Falessi \and Brian~Fitzgerald \and Davide~Fucci \and Junda~He \and Christoph~Treude \and Marcos~Kalinowski \and Stefano~Lambiase \and Daniel~Russo \and Mircea~Lungu \and Cristina~Martinez~Montes \and Lutz~Prechelt \and Paul~Ralph  \and Rijnard~van~Tonder  \and Stefan~Wagner}
 
-\institute{%
-  Sebastian~Baltes \at
+\institute{Sebastian~Baltes \at
   Heidelberg University, Germany\\
   \email{sebastian.baltes@uni-heidelberg.de}\\
   (corresponding author)
@@ -314,7 +316,7 @@ For fine-tuned models, additional recommendations apply:
 \titlerunning{Guidelines for Empirical Studies in SE involving LLMs}
 
 \begin{document}
-\linenumbers
+
 
 \maketitle
 
@@ -446,15 +448,12 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 Empirical guidelines are needed for SE studies involving LLMs to ensure the validity and reproducibility of their results.
 However, such guidelines must be tailored to different study types that each pose unique challenges.
-%Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
 Therefore, we created a taxonomy of study types to contextualize our recommendations.
-%Note that our \guidelines refer to the \studytypes but not the other way around.
 We use the term \emph{study type} to refer to categories of LLM involvement in empirical research, rather than to research methodologies (e.g., experiments, case studies). A single empirical study may involve multiple such study types.
 Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond. The \textbf{advantages} and \textbf{challenges} of using LLMs are discussed in a summary subsection at the end of this section, synthesizing cross-cutting themes across all study types.
 See Table~\ref{tab:study-types} for an overview of study types.
 
-%% This sub-table of contents is organizational overkill. 
-%% I think it's  a good additional since the guidlines are already a wall of text.
+
 
 \begin{table}[tb]
 \caption{Overview of study types.}
@@ -489,7 +488,6 @@ For example, LLMs can apply predefined coding guides to qualitative datasets (\a
 
 \studytypeparagraph{Description}
 In qualitative data analysis, manually annotating (``coding'') natural language text (e.g., requirements, interview transcripts, open-ended survey responses) is a time-consuming manual process~\cite{DBLP:journals/ase/BanoHZT24}. LLMs can augment human coding, suggest new codes, and label artifacts based on a pre-defined coding guide much faster than humans can~\cite{DBLP:conf/chi/HeHDRH24}. 
-%(see Section \synthesis), or even automate the entire qualitative data analysis process.
 The extent to which, or under what conditions, LLMs can perform these tasks \textit{effectively} remains an open research question~\cite{DBLP:conf/msr/AhmedDTP25}. Indeed, measuring their effectiveness is practically and philosophically challenging. From an interpretivist philosophical perspective, one cannot measure the quality of analysis by comparing one (human or machine) analyst's work to another. From a realist perspective, triangulating across multiple human judges, LLM judges, and other data sources (e.g., whether a pull request is marked as having resolved an issue) improves confidence in the findings but does not prove that any one judge is valid.
 
 \studytypeparagraph{Examples}
@@ -497,8 +495,6 @@ The extent to which, or under what conditions, LLMs can perform these tasks \tex
 They used three models of comparable size with an absolute majority voting rule (i.e., a label is only accepted if it receives more than half of the total votes from the models). This approach slightly outperformed the best individual model tested. 
 Meanwhile, \citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} examined LLMs as annotators in SE research across five datasets, six LLMs, and ten annotation tasks.
 They found that model-model agreement strongly correlates with human-model agreement; models performed poorly in tasks where humans also frequently disagreed. They proposed to use model confidence scores to identify specific samples that could be safely delegated to LLMs, potentially reducing human annotation effort without compromising inter-rater agreement.
-%% Reliabiltiy is a necessary condition for, but does not constitute, validity. We cannot infer that a statement is true just because several LLMs agree on it.  
-%Conversely, if multiple LLMs reach similar solutions independently, then LLMs are likely suitable for the annotation task.
  
 \studytypesubsection{LLMs as Judges (S2)}
 \label{sec:llms-as-judges}
@@ -521,7 +517,7 @@ Request: Based on the following description of the project: {project_description
 Evaluate the quality of the following requirement: {requirement}.
 Explain your decision and suggest an improved version.
 \end{plain}
- 
+
 They evaluated LLM output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, \citeauthor{wang2025multimodalrequirementsdatabasedacceptance}~\cite{wang2025multimodalrequirementsdatabasedacceptance} used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4). 
  
 \studytypesubsection{LLMs for Synthesis (S3)}
@@ -537,14 +533,10 @@ In this case, the synthesis is done primarily using the LLM and its training dat
 
 Published examples of applying LLMs for synthesis in SE remain scarce; however, some recent work in other domains is instructive~\cite{DBLP:journals/ase/BanoHZT24}.
 \citeauthor{barros2024largelanguagemodelqualitative}~\cite{barros2024largelanguagemodelqualitative} conducted a systematic mapping study on using LLMs for qualitative research and found that most studies focused on the healthcare and social sciences. In these studies, LLMs supported qualitative methods, such as grounded theory and thematic analysis, by aiding in pattern identification.
-%They identified examples in domains such as healthcare and social sciences (see, e.g., \cite{de2024performing,mathis2024inductive}) in which LLMs were used to support qualitative analysis, including grounded theory and thematic analysis.
-%Overall, the findings highlight the successful generation of preliminary coding schemes from interview transcripts, later refined by human researchers, along with support for pattern identification.This approach was reported not only to expedite the initial coding process but also to allow researchers to focus more on higher-level analysis and interpretation.
-%This particular paper suggests using LLMs to support tasks such as initial coding and theme identification while conservatively reserving interpretative or creative processes for human analysts.
 In SE, de Morais Leca et al. \cite{leça2024applicationsimplicationslargelanguage} explored how LLMs have been applied for qualitative data analysis (QDA) and proposed general strategies and guidelines for their application. Ornelas et al. \cite{ornelas2025llm} complemented this perspective by studying the opportunities and limitations of introducing LLM-based support into QDA, and by formulating recommendations for embedding human–AI collaboration across the thematic analysis phases. Building on these, subsequent work has proposed hybrid frameworks combining LLM support with human-led QDA. Rashid et al. \cite{DBLP:journals/corr/abs-2402-01386} designed an LLM-driven multi-agent system that integrates AI with human decision-making to automate qualitative data analysis methods. Their system generated initial codes, developed themes, and summarized text. Similarly, Montes et al. \cite{DBLP:journals/corr/abs-2510-18456} compared the performance of humans and LLMs in coding, theme development, definition, and refinement, creating guidelines for a hybrid-LLM framework.
 Finally, \citeauthor{DBLP:journals/corr/abs-2506-21138}'s work is an example of using LLMs to create synthetic datasets.
 They present an approach to generate synthetic requirements, showing that they \enq{can match or surpass human-authored requirements for specific classification tasks}~\cite{DBLP:journals/corr/abs-2506-21138}.
  
-% Reverted back to "subject", as participant seems to be primarily used for humans: see  https://dictionary.apa.org/subject and https://dictionary.apa.org/participant
 \studytypesubsection{LLMs as Subjects (S4)}
 \label{sec:llms-as-subjects}
 
@@ -564,7 +556,6 @@ To serve as virtual subjects, generated responses should be indistinguishable fr
 
 LLM-based assistants have become a widely adopted tool for software engineers~\cite{stackoverflow2025survey}, supporting them in various tasks such as code generation and debugging.
 Researchers have studied how software engineers use LLMs (\llmusage), developed new tools that integrate LLMs (\newtools), and benchmarked LLMs for software engineering tasks (\benchmarkingtasks).
-%Like in the previous section, we outline the advantages that studying LLMs in these contexts brings, but also point to specific challenges.
  
 \studytypesubsection{Studying LLM Usage in Software Engineering (S5)}
 \label{sec:studying-llm-usage-in-software-engineering}
@@ -582,7 +573,6 @@ They can also uncover risks or deficiencies of existing tools.
 Based on a convergent mixed-methods study, \citeauthor{russo2024navigating} has found that early adoption of generative AI by software engineers is primarily driven by compatibility with existing workflows~\cite{russo2024navigating}.
 \citeauthor{DBLP:journals/pacmse/KhojahM0N24} investigated the use of ChatGPT (GPT-3.5) by professional software engineers in a week-long observational study~\cite{DBLP:journals/pacmse/KhojahM0N24}.
 They found that most developers do not use the code generated by ChatGPT directly but instead use the output as a guide to implement their own solutions.
-%Furthermore, they recommend that future research investigate the use of ChatGPT in non code-related SE tasks and for training and learning SE concepts.
 \citeauthor{DBLP:conf/csee/AzanzaPIG24}'s case study found that LLMs could \enq{enhance personalized, instant onboarding support; however, relying on proprietary external LLMs poses significant data privacy risks}~\cite{DBLP:conf/csee/AzanzaPIG24}. 
  \citeauthor{DBLP:conf/icsa/JahicS24} found that most participants from 15 software companies they surveyed had already adopted AI (especially ChatGPT) for SE tasks; but cited copyright and privacy issues, as well as inconsistent or low-quality outputs, as barriers to adoption~\cite{DBLP:conf/icsa/JahicS24}. 
 Retrospective studies that analyze data generated while developers use LLMs can provide additional insights into human-LLM interactions.
@@ -614,8 +604,7 @@ They presented \emph{TestPilot}, a tool that implements an approach in which the
 
 \studytypeparagraph{Description}
 
-Benchmarking is the process of evaluating an LLM's performance on standardized tasks, using standardized metrics, on a standardized dataset. The LLM output is compared to a supposed ground truth from the benchmark dataset. Typical tasks include code generation, code summarization, code completion, and code repair, but also natural language processing tasks, such as anaphora resolution (i.e., the task of identifying the referring expression of a word or phrase occurring earlier in the text). %, interesting for subfields such a Requirements Engineering. 
-Metrics may include general metrics for text generation, such as \emph{ROUGE}, \emph{BLEU}, or \emph{METEOR}~\cite{10.1145/3695988}, or task-specific metrics, such as \emph{CodeBLEU} for code generation.  Benchmarking requires high-quality reference datasets.
+Benchmarking is the process of evaluating an LLM's performance on standardized tasks, using standardized metrics, on a standardized dataset. The LLM output is compared to a supposed ground truth from the benchmark dataset. Typical tasks include code generation, code summarization, code completion, and code repair, but also natural language processing tasks, such as anaphora resolution (i.e., the task of identifying the referring expression of a word or phrase occurring earlier in the text). Metrics may include general metrics for text generation, such as \emph{ROUGE}, \emph{BLEU}, or \emph{METEOR}~\cite{10.1145/3695988}, or task-specific metrics, such as \emph{CodeBLEU} for code generation.  Benchmarking requires high-quality reference datasets.
 
 \studytypeparagraph{Example(s)}
 
@@ -775,9 +764,7 @@ A sufficient declaration specifies not only \emph{that} an LLM was used, but als
 When the LLM plays a central role in the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \toolarchitecture, and \prompts).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
 In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
-% Related paper:
-% Artificial intelligence‑assisted academic writing: recommendations for ethical use
-% https://doi.org/10.1186/s41077-025-00350-6
+
 
 \guidelinesubsubsection{Example(s)}
 
@@ -906,7 +893,7 @@ Given suitable hardware, running the model is then as easy as executing the foll
 \guidelinesubsubsection{Benefits}
 
 Reporting this information is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, reporting the information outlined in this guideline helps researchers come as close as possible to that standard.
-%However, that information alone is generally not sufficient.
+
 
 \guidelinesubsubsection{Challenges}
 
@@ -921,7 +908,7 @@ Setting the temperature to 0 configures greedy decoding (always selecting the mo
 Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
 Researchers should therefore not treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
 When a temperature of 0 is chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.
-%\comment{Should we also address how API rate limits and usage constraints can affect experiments?}
+
 
 \guidelinesubsubsection{Study Types}
 
@@ -969,7 +956,7 @@ This section provides guidelines for documenting these broader architectures.
 
 \guidelinesubsubsection{Recommendations}
 
-%\paragraph{General Requirements:}
+
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper.
 Researchers \should provide a high-level architectural diagram to improve transparency.
@@ -988,7 +975,7 @@ For agent-based systems that use external tools (e.g., Claude Code and its \href
 Researchers \should report complete execution traces that show the sequence and causality between these components, including inputs and outputs of all external tool calls.
 This traceability is essential for determining whether task success is attributable to the LLM's output and tool-calling capabilities, the external tools' functionality, or their interaction patterns.
 When full tool call logging is not feasible due to privacy or proprietary constraints, researchers \should provide representative examples or anonymized traces that demonstrate the agent's decision-making process.
-%Researchers \mustnot present an agent-based system without detailing how it makes decisions and executes tasks.
+
 
 \paragraph{Retrieval, Augmentation, and Ensembles:}
 If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
@@ -1027,8 +1014,6 @@ For \benchmarkingtasks, researchers \should describe the evaluation harness and 
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
 For \annotators, \judges, \synthesis, and \subjects, if the research setup involves a custom pipeline (e.g., retrieval-augmented generation for annotation or chained prompts for synthesis), the architecture \should also be reported.
 
-%% Changed: Fixed "not the only supplement" → "not only the supplement".
-%% Suggestion: Consider restructuring the proprietary-components paragraph into clearer tiers: (1) evaluating opaque artifacts is a valid scientific contribution, (2) inscrutability weakens the contribution, (3) scientific instruments must be fully disclosed.
 \guidelinesubsubsection{Advice for Reviewers}
 
 As with other guidelines, missing architectural information is typically a minor revision request unless so much is missing that methodological rigor cannot be assessed. Reviewers may ask authors to move key details from supplements into the paper body to ensure the main text is self-contained.
@@ -1067,7 +1052,6 @@ Prompt development is often iterative, involving collaboration between human res
 Researchers \should report any instances in which LLMs were used to suggest prompt refinements and how these suggestions were incorporated.
 Prompts may need revision in response to failure cases, and pilot testing is vital to ensure reliable results.
 If such testing was conducted, researchers \should summarize key insights, including how different prompt variations affected output quality and which criteria were used to finalize the prompt design.
-%Iterative changes based on human feedback and pilot testing results \should be included in the documentation.
 A prompt changelog can track prompt evolution, including key revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses).
 Since prompt effectiveness varies between models and model versions, researchers \must make clear which prompts were used for which models in which versions and with which configuration.
 
@@ -1096,10 +1080,9 @@ When trying to verify results, even with the exact same prompts, decoding strate
 Non-determinism can arise from batching, input preprocessing, and floating point arithmetic on GPUs~\cite{Chann2023}.
 Thus, in order to enable other researchers to verify the conclusions that researchers have drawn from LLM interactions, researchers \should report the full interaction logs (prompts and responses) as part of their \supplementarymaterial.
 Reporting this is especially important for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT.
-%or novel tools that integrate LLMs via cloud APIs where there is even less guarantee of reproducing the state of the LLM-powered system at a later point by a reader of the study who wants to verify, reproduce, or replicate it. 
 The rationale for this is similar to the rationale for reporting interview transcripts in qualitative research.
 Just as a human participant might give different answers to the same question asked two months apart, the responses from tools such as ChatGPT can also vary over time.
-%Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
+
 
 \paragraph{Agentic Systems:}
 For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported if available, as they document the sequence of actions the system chose to pursue and the intermediate goals it set.
@@ -1160,8 +1143,6 @@ For \subjects (e.g., simulating human participants), researchers \must report an
 For \benchmarkingtasks studies using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench}), researchers \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
 If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
 
-%% Suggestion: Consider integrating the footnote defining "over-rationalized" into the main text for smoother reading.
-%% Suggestion: Consider splitting into two paragraphs: (1) what NOT to demand from authors; (2) what TO focus on (reproducibility + bias transparency).
 \guidelinesubsubsection{Advice for Reviewers}
 
 As with other guidelines, missing prompt information is typically a minor revision request unless so much is missing that methodological rigor cannot be assessed. The most challenging aspect is the description of prompt development, which is inherently iterative and creative. Reviewers should \textit{not} expect justification of each word choice or post-hoc rationalized accounts of prompt generation. Instead, reviewers should focus on whether (1) a new research team could \textit{use} (not reproduce) exactly the same prompts in exactly the same way; and (2) potential biases or validity issues are transparent.
@@ -1230,11 +1211,7 @@ This agentic human-in-the-loop interaction approach is essentially a built-in hu
 This illustrates that high model-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid.
 Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-%Meanwhile, \citeauthor{DBLP:conf/icse/XueCBTH24}~\cite{DBLP:conf/icse/XueCBTH24} conducted a controlled experiment to evaluate the impact of ChatGPT on the performance and perceptions of students in an introductory programming course.
-%They used multiple measures to judge LLM impacts from the human point of view including recording students' screens, evaluating their answers for given tasks, and distributing an opinion survey.
-\citet{hymel2025analysisllmsvshuman}~\cite{hymel2025analysisllmsvshuman} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.% and judged in terms of alignment with the original business use case (scale of 1-10), requirements completion (Not Complete, Fairly Complete, Fully Complete), and whether they believed it was created by a human or an LLM.
-%Finally, they analyzed the influence of the participants' familiarity with AI tools on the study results.
-%Participants self-reported their AI tool proficiency (Novice, Intermediate, Advanced, Expert) and usage frequency (Daily, Weekly, Monthly, Never), which were then correlated with their ratings of the requirements documents.
+\citet{hymel2025analysisllmsvshuman}~\cite{hymel2025analysisllmsvshuman} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
 
 \guidelinesubsubsection{Benefits}
 
@@ -1248,7 +1225,7 @@ Human judgments exhibit variability due to differences in experience, expertise,
 
 Researchers must weigh the cost and time need for human validation against the expected corresponding improvement in validity over machine-generated measures. 
 
-%For example, LLM results vary significantly in natural language processing tasks, casting doubt on their reliability and the possibiltiy of replacing human judges~\cite{DBLP:journals/corr/abs-2406-18403}. Moreover, LLMs do not match human annotation in labeling tasks for natural language inference, position detection, semantic change, and hate speech detection~\cite{DBLP:conf/chi/Wang0RMM24}.
+
 
 \guidelinesubsubsection{Study Types}
 
@@ -1284,7 +1261,7 @@ Including an open LLM as a baseline ensures that at least part of the study can 
 
 Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement.
 We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible.
-Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal. %, or strict reproducibility of the LLM portion of the results is not necessary.
+Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal. 
 
 Open models allow other researchers to verify research results and build upon them, even without access to commercial models.
 A comparison of commercial and open models also allows researchers to contextualize model performance.
@@ -1355,7 +1332,7 @@ Reviewers should \textit{not} penalize studies for performance differences betwe
 \begin{framed}
 \tldr: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain why the selected metrics are suitable for the specific study. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. \end{framed}
 
-% \todo{Paul Ralph: Moving this guideline (use suitable baselines, etc.) above guideline 5 (Use human validation) would enable a cleaner presentation because we'd be able to explain about validating benchmarks here, then say "and if you don't have a validated benchmark then use humans".}
+
 
 \guidelinesubsubsection{Rationale}
 
@@ -1425,10 +1402,6 @@ Common problem types for LLM-based studies are classification, recommendation, a
 \paragraph{Benchmark Examples:}
 
 Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
-% Both benchmarks consist of code snippets written in Python sourced from publicly available repositories.
-% Each snippet consists of four parts: a prompt containing a function definition and a corresponding description of what the function should accomplish, a canonical solution, an entry point for execution, and test cases.
-% The input of the LLM is the entire prompt.
-% The output of the LLM is then evaluated against the canonical solution using metrics or against a test suite.
 \emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:journals/corr/abs-2308-01861}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
 An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:journals/corr/abs-2006-03511} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
 
@@ -1453,11 +1426,7 @@ Benchmarks and metrics also have generalizability problems. Prominent LLM benchm
 Execution-based metrics such as \emph{pass@k} directly evaluate correctness by running test cases, but they require a setup with an execution environment.
 When researchers observe unexpected values for certain metrics, the specific results should be investigated in more detail to uncover potential problems.
 
-% Many closed-source models, such as those released by \emph{OpenAI}, achieve exceptional performance on certain tasks but lack transparency and reproducibility~\cite{DBLP:conf/nips/00110ZZDJLHL24, DBLP:journals/corr/abs-2308-01861, DBLP:journals/corr/abs-2406-15877}.
-% Benchmark leaderboards, particularly for code generation, are led by closed-source models~\cite{DBLP:journals/corr/abs-2308-01861, DBLP:journals/corr/abs-2406-15877}.
-% While researchers \should compare performance against these models, they must consider that providers might discontinue them or apply undisclosed pre- or post-processing beyond the researchers' control (see \openllm).
-%The lack of transparency introduces challenges in analyzing mistakes, limiting the understanding of model failures.
-%Open-source models offer greater transparency since the entire process is under the researcher's control; however, they require appropriate hardware.
+
 
 Finally, benchmark data contamination---where the benchmark itself is part of the training data---may lead to artificially high performance if the model remembers the solution from the training data rather than actually solving the task based on the input data~\cite{DBLP:journals/corr/abs-2406-04244}. Therefore, for proprietary LLMs that do not release their training data, researchers \should consider using human validation, curating new data, or refactoring existing data~\cite{DBLP:journals/corr/abs-2406-04244}. 
 
@@ -1484,9 +1453,6 @@ For \subjects, researchers \should compare simulated and real human responses us
 If researchers assess a well-established task such as code generation, they \should report standard metrics such as \emph{pass@k} and compare the performance between models.
 If non-standard metrics are used, researchers \must state their reasoning.
 
-%% Changed: Softened "must not tolerate" → "should not accept" (advisory tone).
-%% Changed: Simplified "ambivalence toward construct validity or obfuscation of validity concerns" → "dismissive or evasive treatment of construct validity".
-%% Suggestion: Consider breaking the closing paragraph into shorter sentences for readability.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should expect manuscripts to:
@@ -1621,8 +1587,6 @@ For \llmusage, researchers \must discuss generalizability constraints across dif
 For \newtools, researchers \must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates on tool behavior, and limitations of the evaluation setup.
 For \benchmarkingtasks, researchers \must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes to real-world tasks.
 
-%% Suggestion: Consider softening "perfunctory or defensive" → "formulaic or insufficiently engaged with the study's specific threats".
-%% Suggestion: Consider adding a bridging sentence connecting back to the "request additions first" principle used in other guidelines.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should verify that the limitation section is comprehensive and appropriate for the specific study type, checking that:
@@ -1826,7 +1790,6 @@ Each item references its source guideline (G1--G8).
 
 \paragraph{Competing Interests:} The authors declare no competing interests. Multiple co-authors are members of the EMSE Editorial Board, which is disclosed here for transparency.
 
-%extra v-space will disappear when the "added" tag is deleted.
 \paragraph{Authorship:} Each author contributed or reviewed content and, most importantly, read the complete guidelines and confirmed that they stand behind all recommendations, not only their own contributions.
 
 \paragraph{Funding:} No funding was received for writing this article. However, the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI}, which played a central role in forming the team of co-authors, was supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo.
