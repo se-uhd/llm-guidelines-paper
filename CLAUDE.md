@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Academic paper submitted to Empirical Software Engineering (EMSE) journal, currently under major revision. The paper presents guidelines for empirical studies in software engineering involving LLMs. It is co-authored by 22 researchers and synced with Overleaf via git.
 
-**This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) copies the content files and references `shared-header.tex`. This repo is included as a git submodule in the website repo at `llm-guidelines-paper/`.
+**This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) references all content directly via a git submodule at `llm-guidelines-paper/`.
 
 ## Build Commands
 
@@ -92,17 +92,13 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 ## Syncing Content to Website
 
-After editing content files or `literature.bib`, copy them to the website repo:
+The website references all content directly from this repo via a git submodule. After editing content files or `literature.bib`, update the submodule pointer in the website repo:
 
 ```bash
-cp _guidelines/*.tex ../llm-guidelines-website/guidelines/_sources/_guidelines/
-cp _studytypes/*.tex ../llm-guidelines-website/study-types/_sources/_studytypes/
-cp _scope/*.tex ../llm-guidelines-website/scope/_sources/_scope/
-cp _tldr/*.tex ../llm-guidelines-website/guidelines/_sources/_tldr/
-cp literature.bib ../llm-guidelines-website/
+cd ../llm-guidelines-website
+git submodule update --remote
+./compile-latex.sh && ./convert-and-merge-sources.sh
 ```
-
-Then rebuild the website: `./compile-latex.sh && ./convert-and-merge-sources.sh`
 
 ## Bibliography Cleanup Scripts
 
