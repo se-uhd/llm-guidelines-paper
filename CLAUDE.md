@@ -28,9 +28,12 @@ latexmk -pdf response-letter.tex
 
 # Generate diff PDF against old submission (requires latexpand, latexdiff)
 ./scripts/create_diff.sh [path/to/old/version]
+
+# Flatten all \input files into a single .tex file
+./scripts/flatten.sh
 ```
 
-PDF outputs (`emse25-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git.
+PDF outputs (`emse25-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git. `emse25-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
 
 ## Document Structure
 
@@ -41,7 +44,8 @@ The main entry point is `emse25-llm-guidelines.tex`. Its preamble loads paper-on
 ```
 \documentclass[smallextended]{svjour3}
 \newif\ifpaper\papertrue
-% paper-only packages (tikz, xcolor, mdframed, etc.)
+% paper-only packages (lineno, manyfoot, tcolorbox, appendix, balance,
+% algorithm, algorithmicx, subfig, stfloats, graphicx, xcolor, tikz, mdframed)
 \input{shared-header.tex}
 % paper-only lstset color overrides and settings
 ```
@@ -50,10 +54,12 @@ Content is included via `\input{}`:
 
 - `_main/01_abstract.tex` — Abstract
 - `_main/02_document.tex` — Core document structure (Introduction, Methodology, all section includes)
+- `_main/guidelines-intro.tex` — Guidelines section introduction
+- `_main/study-types-intro.tex` — Study types section introduction
 - `_scope/` — Motivation (`01_motivation.tex`) and scope definition (`02_scope.tex`)
-- `_studytypes/` — Taxonomy of 7 LLM study types, organized hierarchically (e.g., `01-02-llms-as-judges.tex`). Category 01 = LLMs as tools for researchers, Category 02 = LLMs as tools for engineers
+- `_studytypes/` — Taxonomy of 7 LLM study types, organized hierarchically (e.g., `01-02-llms-as-judges.tex`). Category 01 = LLMs as tools for researchers (S1–S4), Category 02 = LLMs as tools for engineers (S5–S7). Also includes `01-05-advantages-and-challenges.tex` (cross-cutting section)
 - `_guidelines/` — 8 reporting guidelines (numbered `01` through `08`)
-- `_tldr/` — TL;DR summaries of guidelines and study types (one per guideline, included inline before each guideline section)
+- `_tldr/` — TL;DR summaries (one per guideline, included inline before each guideline section)
 - `_summary/` — Applicability matrix (`matrix.tex`), rationale-recommendations table (`rationale-recommendations.tex`), and reporting checklist (`checklist.tex`)
 - `literature.bib` — Bibliography (sorted alphabetically by citation key)
 - `svjour3.cls`, `svglov3.clo`, `spbasic.bst` — Springer journal template and bibliography style (do not modify)
@@ -76,13 +82,21 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 - `emse-reviews.md` — Raw reviewer comments in markdown (reference copy for context)
 - `title-page.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class)
 - `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
+- `scripts/flatten.sh` — Flattens all `\input` files into `emse25-llm-guidelines-flat.tex` via `latexpand`
 - `versions/` — Contains original submission PDF (`EMSE-D-25-00637.pdf`) and diff output
 
 ## Key Conventions
 
 **RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render as small-caps in the paper. `\may` has been removed; reword as plain suggestions ("researchers may/can...").
 
-**Cross-reference macros:** Each study type and guideline has a shorthand command (e.g., `\annotators`, `\judges`, `\humanvalidation`, `\prompts`) that creates a hyperlinked italic reference to the corresponding section. Defined in `shared-header.tex` with `\ifpaper` conditionals.
+**Cross-reference macros:** Each study type and guideline has a shorthand command that creates a hyperlinked italic reference to the corresponding section. All accept an optional `[id]` argument for in-text identifiers. Defined in `shared-header.tex` with `\ifpaper` conditionals.
+- Study types (S1–S7): `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
+- Guidelines (G1–G8): `\usagerole`, `\modelversion`, `\toolarchitecture`, `\prompts`, `\humanvalidation`, `\openllm`, `\benchmarksmetrics`, `\limitationsmitigations`
+- Umbrella: `\scope`, `\studytypes`, `\guidelines`, `\llmsforresearcher`, `\llmsforengineers`
+
+**Inline quotes:** `\enq{...}` renders typographically correct quotes with italics.
+
+**TL;DR label:** `\tldr` renders the inline "tl;dr" label.
 
 **File naming:** Content files use numeric prefixes for ordering (`01_`, `02_`, `01-02_`). Directories use underscore prefixes (`_guidelines/`, `_studytypes/`).
 
