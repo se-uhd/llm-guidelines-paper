@@ -25,7 +25,7 @@ texcount -inc emse25-llm-guidelines.tex
 latexmk -pdf response-letter.tex
 
 # Generate diff PDF against old submission (requires latexpand, latexdiff)
-./create_diff.sh [path/to/old/version]
+./scripts/create_diff.sh [path/to/old/version]
 ```
 
 PDF outputs (`emse25-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git.
@@ -51,7 +51,7 @@ The main entry point is `emse25-llm-guidelines.tex`, which defines the preamble 
 - `response-letter.tex` — Point-by-point response to reviewers (standalone document, uses `literature.bib`). Structured with custom `reviewcomment`/`response` environments, one `\review` section per reviewer. Build with `latexmk -pdf response-letter.tex`.
 - `emse-reviews.md` — Raw reviewer comments in markdown (reference copy for context)
 - `title-page.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class)
-- `create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
+- `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
 - `versions/` — Contains original submission PDF (`EMSE-D-25-00637.pdf`) and diff output
 
 ## Key Conventions
@@ -68,15 +68,15 @@ The main entry point is `emse25-llm-guidelines.tex`, which defines the preamble 
 
 ## Bibliography Cleanup Scripts
 
-Three Python scripts (requires `bibtexparser` package) were used to clean `literature.bib`. They are kept for reference and potential re-runs but are not part of the paper build.
+All scripts live in the `scripts/` directory. Three Python scripts (requires `bibtexparser` package) were used to clean `literature.bib`. They are kept for reference and potential re-runs but are not part of the paper build.
 
-- **`clean_bibliography.py`** — Initial cleanup: removes unreferenced entries (cross-checked against `.tex` and `.aux` files), then queries DBLP for each remaining entry to upgrade metadata (e.g., arXiv preprints promoted to published venue entries). Writes `literature.bib` in-place (backs up to `literature.bib.backup` first) and generates `dblp_unmatched_report.txt`.
+- **`scripts/clean_bibliography.py`** — Initial cleanup: removes unreferenced entries (cross-checked against `.tex` and `.aux` files), then queries DBLP for each remaining entry to upgrade metadata (e.g., arXiv preprints promoted to published venue entries). Writes `literature.bib` in-place (backs up to `literature.bib.backup` first) and generates `dblp_unmatched_report.txt`.
 
-- **`retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., due to rate limiting or transient errors). Reads failed keys from `dblp_unmatched_report.txt`, re-fetches from DBLP, upgrades if better, and appends results to the report.
+- **`scripts/retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., due to rate limiting or transient errors). Reads failed keys from `dblp_unmatched_report.txt`, re-fetches from DBLP, upgrades if better, and appends results to the report.
 
-- **`handle_remaining.py`** — Handles entries that DBLP couldn't match (non-CS journals, gray literature, arXiv preprints). Step 1: enriches entries with DOIs via Crossref (adds publisher, ISSN, pages, normalizes DOI format). Step 2: fuzzy DBLP title search for CS/SE papers that exact-match missed. Step 3: validates URLs in `@misc` entries. Appends a categorized summary to `dblp_unmatched_report.txt`.
+- **`scripts/handle_remaining.py`** — Handles entries that DBLP couldn't match (non-CS journals, gray literature, arXiv preprints). Step 1: enriches entries with DOIs via Crossref (adds publisher, ISSN, pages, normalizes DOI format). Step 2: fuzzy DBLP title search for CS/SE papers that exact-match missed. Step 3: validates URLs in `@misc` entries. Appends a categorized summary to `dblp_unmatched_report.txt`.
 
-**Run order:** `clean_bibliography.py` → `retry_dblp.py` → `handle_remaining.py`
+**Run order:** `scripts/clean_bibliography.py` → `scripts/retry_dblp.py` → `scripts/handle_remaining.py`
 
 **Supporting files:**
 - `literature.bib.backup` — Pre-cleanup backup of the bibliography (tracked by git)

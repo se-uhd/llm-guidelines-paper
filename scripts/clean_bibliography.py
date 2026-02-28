@@ -14,7 +14,7 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from bibtexparser.bwriter import BibTexWriter
 
-PROJECT = Path(__file__).resolve().parent
+PROJECT = Path(__file__).resolve().parent.parent
 BIB_FILE = PROJECT / "literature.bib"
 AUX_FILE = PROJECT / "emse25-llm-guidelines.aux"
 BACKUP_FILE = PROJECT / "literature.bib.backup"
