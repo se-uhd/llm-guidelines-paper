@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Academic paper submitted to Empirical Software Engineering (EMSE) journal, currently under major revision. The paper presents guidelines for empirical studies in software engineering involving LLMs. It is co-authored by 22 researchers and synced with Overleaf via git.
 
-**This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) copies the content files and references `shared-header.tex`. This repo will be added as a submodule of the website repo.
+**This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) copies the content files and references `shared-header.tex`. This repo is included as a git submodule in the website repo at `llm-guidelines-paper/`.
 
 ## Build Commands
 
