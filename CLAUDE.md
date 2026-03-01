@@ -104,6 +104,8 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Framed environments:** The `framed` mdframed environment is used for highlighted guideline text blocks (gray background, left border).
 
+**Applicability matrix (`_summary/matrix.tex`):** Table 1 maps guidelines (G1–G8) to study types (S1–S7) using `\iconM` (must), `\iconS` (should), or `--` (not applicable). Cell values must match the RFC 2119 language in each guideline's "Study Types" subsection (the `\guidelinesubsubsection` in `_guidelines/0X_*.tex`). When editing guideline text that changes `\must`/`\should` for a study type, update the matrix to match.
+
 ## Syncing Content to Website
 
 The website references all content directly from this repo via a git submodule. After editing content files or `literature.bib`, update the submodule pointer in the website repo:
