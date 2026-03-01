@@ -1,7 +1,10 @@
 \providecommand{\rot}[1]{\rotatebox{60}{\textbf{#1}}}
 
 \begin{table}[tb]
-\caption{Guidelines by study type. \iconM~=~\must, \iconS~=~\should.
+\caption{Applicability of guidelines to study types.
+\iconM~=~the guideline's core recommendation \must be followed for this study type,
+\iconS~=~\should be followed,
+--~=~not directly applicable.
 Study type IDs: S1~=~\annotators, S2~=~\judges, S3~=~\synthesis, S4~=~\subjects, S5~=~\llmusage, S6~=~\newtools, S7~=~\benchmarkingtasks.
 Each guideline's study-type-specific guidance is detailed in the corresponding subsections.}
 \label{tab:guideline-matrix}
@@ -37,7 +40,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & -- & -- & \iconS
   & \iconM \\
 \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{G7: Benchmarks}
-  & \iconS & \iconS & \iconS
+  & \iconM & \iconS & \iconS
   & \iconS & \iconS & \iconS
   & \iconM \\
 \hyperref[sec:report-limitations-and-mitigations]{G8: Limitations}
