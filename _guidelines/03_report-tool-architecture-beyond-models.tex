@@ -35,7 +35,7 @@ When full tool call logging is not feasible due to privacy or proprietary constr
 If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
 This includes specifying the type of storage or database used (e.g., vector databases, relational databases, knowledge graphs) and how the retrieved information is selected and used.
 Stored data used for context augmentation \must be reported, including details on data preprocessing, versioning, and update frequency.
-If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available.
+If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available as \supplementarymaterial.
 For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, the researchers \must describe the architecture that connects the models.
 The \paper \must at least contain a high-level description, and details can be reported in the \supplementarymaterial.
 Aspects to consider include documenting the logic that determines which model handles which input, the interaction between models, and the architecture for combining outputs (e.g., majority voting, weighted averaging, sequential processing).
