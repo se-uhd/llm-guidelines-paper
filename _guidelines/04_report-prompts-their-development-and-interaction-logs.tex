@@ -59,9 +59,9 @@ Just as a human participant might give different answers to the same question as
 %Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
 
 \paragraph{Agentic Systems:}
-For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported if available, as they document the sequence of actions the system chose to pursue and the intermediate goals it set.
+For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available, as they document the sequence of actions the system chose to pursue and the intermediate goals it set.
 Interaction logs \should be generalized to include full interaction traces between humans and agentic systems, capturing human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
-These traces complement agent behavior traceability requirements and support the evaluation of agentic tool outputs.
+These traces \should also be reported as \supplementarymaterial so that readers can reconstruct which actions the agent took, verify human oversight decisions, and assess the quality of tool-generated outputs.
 
 Agentic coding tools can be configured using version-controlled Markdown files such as \texttt{AGENTS.md}, which contain persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
 These \emph{context files} are automatically injected into prompts and can significantly influence agent behavior by specifying coding conventions, architectural constraints, tool preferences, and task-specific instructions.
