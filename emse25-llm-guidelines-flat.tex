@@ -819,7 +819,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits. When the LLM plays a central role, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices. \end{framed}
+\tldr: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits in the \paper. When the LLM plays a central role, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -894,7 +894,7 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must report the exact LLM model or tool version, configuration, and experiment date in the \paper. When using quantized models, researchers \should report the quantization level and method. For fine-tuned models, they \must describe the fine-tuning goal, dataset, and procedure. Researchers \should include default parameters, explain model choices, compare base- and fine-tuned model using suitable metrics and benchmarks, and share fine-tuning data and weights (or alternatively justify why they cannot share them). \end{framed}
+\tldr: Researchers \must report the exact LLM model or tool version, configuration, and experiment date in the \paper. When using quantized models, researchers \should report the quantization level and method. For fine-tuned models, they \must describe the fine-tuning goal, dataset, and procedure in the \paper. Researchers \should include default parameters, explain model choices, compare base- and fine-tuned model using suitable metrics and benchmarks, and share fine-tuning data and weights as \supplementarymaterial (or alternatively justify in the \paper why they cannot share them). \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1018,7 +1018,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must describe the full architecture of LLM-based tools that they develop in their \paper. This includes the role of the LLM, interactions with other components, and the overall system behavior. If autonomous agents are used, researchers \must specify agent roles, reasoning frameworks, and communication flows. Hosting, hardware setup, and latency implications \must be reported. For tools using retrieval or augmentation methods, data sources, integration mechanisms, and update and versioning strategies \must be described. For ensemble architectures, the coordination logic between models \must be explained. Researchers \should include architectural diagrams and justify design decisions. Non-disclosed confidential or proprietary components \must be acknowledged as reproducibility limitations. \end{framed}
+\tldr: Researchers \must describe the full architecture of LLM-based tools that they develop in their \paper. This includes the role of the LLM, interactions with other components, and the overall system behavior. If autonomous agents are used, researchers \must specify agent roles, reasoning frameworks, and communication flows. Hosting, hardware setup, and latency implications \must be reported. For tools using retrieval or augmentation methods, data sources, integration mechanisms, and update and versioning strategies \must be described. For ensemble architectures, the coordination logic between models \must be explained in the \paper. Researchers \should include architectural diagrams and justify design decisions. Non-disclosed confidential or proprietary components \must be acknowledged as reproducibility limitations. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1057,7 +1057,7 @@ When full tool call logging is not feasible due to privacy or proprietary constr
 If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
 This includes specifying the type of storage or database used (e.g., vector databases, relational databases, knowledge graphs) and how the retrieved information is selected and used.
 Stored data used for context augmentation \must be reported, including details on data preprocessing, versioning, and update frequency.
-If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available.
+If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available as \supplementarymaterial.
 For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, the researchers \must describe the architecture that connects the models.
 The \paper \must at least contain a high-level description, and details can be reported in the \supplementarymaterial.
 Aspects to consider include documenting the logic that determines which model handles which input, the interaction between models, and the architecture for combining outputs (e.g., majority voting, weighted averaging, sequential processing).
@@ -1102,12 +1102,15 @@ Regarding proprietary or confidential components, three principles apply: (1) em
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must publish all prompts, including their structure, content, formatting, and dynamic components. If full prompt disclosure is not feasible, for example, due to privacy or confidentiality concerns, summaries or examples \should be provided. Prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process \must be described. When prompts are long or complex, input handling and token optimization strategies \must be documented. For dynamically generated or user-authored prompts, generation and collection processes \must be reported. Prompt reuse across models and configurations \must be specified. Researchers \should report prompt revisions and pilot testing insights. For agentic systems, developed plans \should be reported and interaction logs \should be generalized to include human-agent interaction traces. For studies using AI coding agents, all context files used to configure agent behavior \must be reported as part of the \supplementarymaterial. To address model non-determinism and ensure reproducibility, especially when targeting SaaS-based commercial tools, full interaction logs (prompts and responses) \should be included if privacy and confidentiality can be ensured. \end{framed}
+\tldr: Researchers \must publish all prompts and prompt templates, including their structure, content, formatting, and dynamic components, as \supplementarymaterial. If full prompt disclosure is not feasible, for example, due to privacy or confidentiality concerns, summaries or examples \should be provided. Prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process \must be described in the \paper. When prompts are long or complex, input handling and token optimization strategies \must be documented. For dynamically generated or user-authored prompts, generation and collection processes \must be reported. Prompt reuse across models and configurations \must be specified. Researchers \should report prompt revisions and pilot testing insights. For agentic systems, developed plans \should be reported as \supplementarymaterial and interaction logs \should be generalized to include human-agent interaction traces as \supplementarymaterial. All context files used to configure AI agent behavior \should be reported as \supplementarymaterial. To address model non-determinism and ensure reproducibility, especially when targeting SaaS-based commercial tools, full interaction logs (prompts and responses) \should be included as \supplementarymaterial if privacy and confidentiality can be ensured. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
 Prompts are critical for any study involving LLMs~\cite{DBLP:conf/iclr/Sclar0TS24}.
-Depending on the task, they may include instructions, context (e.g., source code, execution traces, error messages), input data, and output indicators, with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
+Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), context (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
+In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts significantly influence the quality of the output of a model, and understanding how exactly they were formatted and integrated into an LLM-based study is essential to ensure transparency, verifiability, and reproducibility.
 \citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.
 We remind the reader that these guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
@@ -1118,7 +1121,7 @@ This implies that our guidelines do not recommend that researcher disclose the p
 \paragraph{Prompt Reporting:}
 Researchers \must report all prompts that were used for an empirical study, including all instructions, context, input data, and output indicators.
 The only exception to this is if transcripts might identify anonymous participants or reveal personal or confidential information, for example, when working with industry partners.
-Prompts can be reported using a structured template that contains placeholders for dynamically added content.
+When prompt templates are used, researchers \must report them alongside representative prompt instances, specifying which parts are static and which are dynamically filled.
 Moreover, researchers \should specify the exact formatting of prompts, including how code snippets were enclosed (e.g., markdown-style code blocks, triple backticks), whether whitespace was preserved, and how other artifacts such as error messages and stack traces were presented.
 
 \paragraph{Prompt Development:}
@@ -1165,9 +1168,9 @@ Just as a human participant might give different answers to the same question as
 %Therefore, keeping a record of the actual conversation is crucial for accuracy and context and shows depth of engagement for transparency.
 
 \paragraph{Agentic Systems:}
-For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported if available, as they document the sequence of actions the system chose to pursue and the intermediate goals it set.
+For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available, as they document the sequence of actions the system chose to pursue and the intermediate goals it set.
 Interaction logs \should be generalized to include full interaction traces between humans and agentic systems, capturing human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
-These traces complement agent behavior traceability requirements and support the evaluation of agentic tool outputs.
+These traces \should also be reported as \supplementarymaterial so that readers can reconstruct which actions the agent took, verify human oversight decisions, and assess the quality of tool-generated outputs.
 
 Agentic coding tools can be configured using version-controlled Markdown files such as \texttt{AGENTS.md}, which contain persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
 These \emph{context files} are automatically injected into prompts and can significantly influence agent behavior by specifying coding conventions, architectural constraints, tool preferences, and task-specific instructions.
@@ -1241,7 +1244,7 @@ As with other guidelines, missing prompt information is typically a minor revisi
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: If assessing the quality of generated artifacts is important and no reference datasets or suitable comparison metrics exist, researchers \should use human validation for LLM outputs. If they do, they \must define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper. Researchers \should consider human validation early in the study design (not as an afterthought), build on established reference models for human-LLM comparison, and share their instruments as \supplementarymaterial. When aggregating LLM judgments, methods and rationale \should be reported and inter-rater agreement \should be assessed. Confounding factors \should be controlled for, and power analysis \should be conducted to ensure statistical robustness. \end{framed}
+\tldr: If assessing the quality of generated artifacts is important and no reference datasets or suitable comparison metrics exist, researchers \should use human validation for LLM outputs. If they do, they \must define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper. Researchers \should consider human validation early in the study design (not as an afterthought) and build on established reference models for human-LLM comparison. When developing or adapting measurement instruments, researchers \must share them. When aggregating LLM judgments, methods and rationale \should be reported and inter-rater agreement \should be assessed. Confounding factors \should be controlled for, and power analysis \should be conducted to ensure statistical robustness. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1255,8 +1258,8 @@ When LLMs are used to automate research or software development tasks previously
 \paragraph{Study Design Considerations:}
 Integrating human participants in the study design will require additional considerations, including a recruitment strategy, annotation guidelines, training sessions, or ethical approvals.
 Therefore, researchers \should consider human validation early in the study design, not as an afterthought.
-Authors \must clearly define the constructs that the human and LLM annotators evaluate~\cite{DBLP:conf/ease/RalphT18}.
-When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments, for example in the \supplementarymaterial.
+Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate~\cite{DBLP:conf/ease/RalphT18}.
+When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments.
 
 \paragraph{Subjective Judgment and Agreement:}
 When the judgment is subjective (i.e., depends on the judge's values or theories), the LLM output \should be evaluated against judgments aggregated from multiple human judges, and researchers \should clearly describe their aggregation method and reasoning. The preferred method is to randomly order the objects requiring judgment and put them in groups small enough to judge in one to three hours. Two or three human experts review the first group together, simultaneously judging, discussing, and creating a set of decision rules documenting their reasoning. Then, the experts iterate among rounds of:
@@ -1414,7 +1417,7 @@ Reviewers should \textit{not} penalize studies for performance differences betwe
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain why the selected metrics are suitable for the specific study. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. \end{framed}
+\tldr: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain in the \paper why the selected metrics are suitable for the specific study; prior adoption in related work alone does not constitute sufficient justification. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. If comparing models or tools, researchers \must use appropriate inferential statistics rather than relying solely on summary statistics. Researchers \should justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics. \end{framed}
 
 % \todo{Paul Ralph: Moving this guideline (use suitable baselines, etc.) above guideline 5 (Use human validation) would enable a cleaner presentation because we'd be able to explain about validating benchmarks here, then say "and if you don't have a validated benchmark then use humans".}
 
@@ -1444,8 +1447,9 @@ To compare traditional and LLM-based approaches or different LLM-based tools, re
 They can, of course, report additional metrics that they consider appropriate.
 We briefly discuss common metrics in the Example(s) subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
+Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
 
-Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}. When comparing models or tools, researchers \should use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics.
+Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics.
 
 The number of required repetitions depends on factors such as the study type, the variability of the task, and the desired precision of estimates. As with sample sizes for human validation (\humanvalidation), researchers \should justify their chosen number of repetitions, for example, through a power analysis~\cite{Cohen1992, bjarnason2026randomnessagenticevals} or by monitoring the convergence of descriptive statistics across incremental runs~\cite{blackwell2024towards}. A pilot study can help estimate the expected variability and inform this decision.
 
@@ -1558,7 +1562,7 @@ Reviewers should expect manuscripts to:
     \item discuss \textit{in detail} the assumptions, reliability, and validity---\textit{especially construct validity}---of each benchmark and metric;
     \item articulate any limitations regarding construct and measurement validity.
 \end{enumerate*}
-As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
+As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark or metric does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
@@ -1571,7 +1575,7 @@ As with other guidelines, missing information about baselines or metrics is typi
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: Researchers \must transparently report study limitations, including the impact of non-determinism and generalizability constraints. The \paper~\must specify whether generalization across LLMs or across time was assessed, and discuss model and version differences. Authors \must describe measurement constructs and methods, disclose any data leakage risks, and avoid leaking evaluation data into LLM improvement pipelines. They \must provide model outputs, discuss sensitive data handling, and justify LLM usage in light of its resource demands. Mitigation strategies such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis \should be employed and reported where applicable. Where full data sharing is not possible, a subset of the validation data \should be included to enable partial replication. \end{framed}
+\tldr: Researchers \must transparently report study limitations, including the impact of non-determinism and generalizability constraints. The \paper~\must specify whether generalization across LLMs or across time was assessed, and discuss model and version differences. Authors \must describe measurement constructs and methods, disclose any data leakage risks, and avoid leaking evaluation data into LLM improvement pipelines. They \must provide model outputs and discuss sensitive data handling. They \should justify LLM usage in light of its resource demands. Mitigation strategies such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis \should be employed and reported where applicable. Where full data sharing is not possible, a subset of the validation data \should be included to enable partial replication. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1802,85 +1806,89 @@ The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes acti
 The checklist is organized along typical paper sections.
 Items marked \iconM are requirements (\must); items marked \iconS are recommendations (\should).
 Each item references its source guideline (G1--G8).
+Items annotated with \paper or \supplementarymaterial indicate where information should be reported; unmarked items may be reported in either.
 
 \paragraph{\textbf{Introduction}}
 \begin{itemize}[label=$\square$]
-    \item \iconM Disclose any use of LLMs, specifying which LLM, how, and where it was used~(G1).
-    \item \iconS Report the purpose of using LLMs, automated tasks, and expected benefits~(G1).
+    \item \iconM Disclose any use of LLMs in the empirical study, specifying which LLM, how, and where it was used~(G1).
+    \item \iconS Report the purpose of using LLMs, automated tasks, and expected benefits in the \paper~(G1).
 \end{itemize}
 
 \paragraph{\textbf{Research Design and Methods}}\mbox{}\\
 \noindent\textit{Model Selection and Configuration}
 \begin{itemize}[label=$\square$]
     \item \iconM Report the exact LLM model or tool version, configuration, and experiment date in the \paper~(G2).
-    \item \iconM For fine-tuned models, describe the fine-tuning goal, dataset, and procedure~(G2).
+    \item \iconM For fine-tuned models, describe the fine-tuning goal, dataset, and procedure in the \paper~(G2).
     \item \iconS Report default parameters and explain model and version choices~(G2).
-    \item \iconS For quantized models, report the quantization level and method~(G2).
-    \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights (or justify why they cannot be shared)~(G2).
+    \item \iconS For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ)~(G2).
+    \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(G2).
 \end{itemize}
 
 \noindent\textit{Architecture}
 \begin{itemize}[label=$\square$]
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
+    \item \iconM For ensemble architectures, explain the coordination logic between models in the \paper~(G3).
     \item \iconM If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(G3).
     \item \iconM Report hosting, hardware setup, and latency implications~(G3).
     \item \iconM For tools using retrieval or augmentation methods, describe data sources, integration mechanisms, and update and versioning strategies~(G3).
-    \item \iconM For ensemble architectures, explain the coordination logic between models~(G3).
     \item \iconS Include architectural diagrams and justify design decisions~(G3).
 \end{itemize}
 
 \noindent\textit{Prompts and Interactions}
 \begin{itemize}[label=$\square$]
-    \item \iconM Publish all prompts, including their structure, content, formatting, and dynamic components~(G4).
-    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process~(G4).
+    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process in the \paper~(G4).
+    \item \iconM Publish all prompts and prompt templates, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G4).
     \item \iconM Document input handling and token optimization strategies when prompts are long or complex~(G4).
     \item \iconM Report generation and collection processes for dynamically generated or user-authored prompts~(G4).
     \item \iconM Specify prompt reuse across models and configurations~(G4).
-    \item \iconM Report all context files (e.g., \texttt{CLAUDE.md}, \texttt{.cursorrules}) used to configure AI coding agents as \supplementarymaterial~(G4).
     \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G4).
     \item \iconS Report prompt revisions and pilot testing insights~(G4).
-    \item \iconS For agentic systems, report developed plans and generalize interaction logs to include human-agent interaction traces~(G4).
-    \item \iconS Include full interaction logs (prompts and responses) if privacy and confidentiality can be ensured~(G4).
+    \item \iconS Include full interaction logs (prompts and responses) as \supplementarymaterial if privacy and confidentiality can be ensured~(G4).
+    \item \iconS For agentic systems, report all context files (e.g., \texttt{AGENTS.md}) used to configure AI agents as \supplementarymaterial~(G4).
+    \item \iconS For agentic systems, report developed plans and generalize interaction logs to include human-agent interaction traces as \supplementarymaterial~(G4).
 \end{itemize}
 
 \noindent\textit{Human Validation}
 \begin{itemize}[label=$\square$]
     \item \iconM If using human validation, define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper~(G5).
-    \item \iconS Consider human validation early in the study design, build on established reference models for human-LLM comparison, and share instruments as \supplementarymaterial~(G5).
-    \item \iconS When aggregating LLM judgments, report methods and rationale and assess inter-rater agreement~(G5).
+    \item \iconM When developing or adapting measurement instruments, share them~(G5).
+    \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(G5).
+    \item \iconS Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(G5).
     \item \iconS Control for confounding factors and conduct power analysis to ensure statistical robustness~(G5).
 \end{itemize}
 
 \noindent\textit{Benchmarks and Metrics}
 \begin{itemize}[label=$\square$]
     \item \iconM Justify all benchmark and metric choices in the \paper~(G7).
-    \item \iconM Explain why the selected metrics are suitable for the specific study~(G7).
+    \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(G7).
     \item \iconS Include an open LLM as a baseline when using commercial models and report inter-model agreement~(G6).
     \item \iconS Summarize benchmark structure, task types, and limitations~(G7).
+    \item \iconS Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics~(G7).
 \end{itemize}
 
 \noindent\textit{Reproducibility, Ethics, and Resources}
 \begin{itemize}[label=$\square$]
-    \item \iconM Provide model outputs and discuss sensitive data handling~(G8).
-    \item \iconM Justify LLM usage in light of its resource demands~(G8).
-    \item \iconS Provide a full replication package with step-by-step instructions as part of the \supplementarymaterial~(G6).
-    \item \iconS Include a subset of the validation data for partial replication~(G8).
+    \item \iconM Provide raw LLM outputs for reproducibility and discuss sensitive data handling~(G8).
+    \item \iconS Justify LLM usage in light of its resource demands~(G8).
+    \item \iconS If full data sharing is not possible, include a subset of the validation data for partial replication~(G8).
+    \item \iconS Provide a full replication package with step-by-step instructions as \supplementarymaterial~(G6).
 \end{itemize}
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label=$\square$]
-    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported as appropriate~(G7).
+    \item \iconM If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(G7).
     \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(G7).
     \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(G7).
+    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(G7).
 \end{itemize}
 
 \paragraph{\textbf{Limitations and Threats to Validity}}
 \begin{itemize}[label=$\square$]
+    \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(G8).
     \item \iconM Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(G3).
     \item \iconM Transparently report study limitations, including the impact of non-determinism and generalizability constraints~(G8).
     \item \iconM Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences~(G8).
-    \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(G8).
-    \item \iconS Employ and report mitigation strategies where applicable, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(G8).
+    \item \iconS Employ and report strategies to mitigate identified validity and reproducibility threats, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(G8).
 \end{itemize} 
 \end{appendices} 
 \section{Statements and Declarations}
