@@ -26,10 +26,13 @@ texcount -inc emse25-llm-guidelines.tex
 # Response letter build
 latexmk -pdf response-letter.tex
 
+# Compile and flatten into a single .tex file
+./compile_and_flatten.sh
+
 # Generate diff PDF against old submission (requires latexpand, latexdiff)
 ./scripts/create-diff.sh [path/to/old/version]
 
-# Flatten all \input files into a single .tex file
+# Flatten all \input files into a single .tex file (without compiling)
 ./scripts/flatten.sh
 ```
 
