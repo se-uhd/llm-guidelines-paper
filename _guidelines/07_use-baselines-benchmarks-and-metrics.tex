@@ -26,6 +26,7 @@ To compare traditional and LLM-based approaches or different LLM-based tools, re
 They can, of course, report additional metrics that they consider appropriate.
 We briefly discuss common metrics in the Example(s) subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
+Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
 
 Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics.
 
@@ -140,7 +141,7 @@ Reviewers should expect manuscripts to:
     \item discuss \textit{in detail} the assumptions, reliability, and validity---\textit{especially construct validity}---of each benchmark and metric;
     \item articulate any limitations regarding construct and measurement validity.
 \end{enumerate*}
-As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
+As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark or metric does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]

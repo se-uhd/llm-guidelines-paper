@@ -1,7 +1,10 @@
 \guidelinesubsubsection{Rationale}
 
 Prompts are critical for any study involving LLMs~\cite{DBLP:conf/iclr/Sclar0TS24}.
-Depending on the task, they may include instructions, context (e.g., source code, execution traces, error messages), input data, and output indicators, with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
+Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), context (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
+In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts significantly influence the quality of the output of a model, and understanding how exactly they were formatted and integrated into an LLM-based study is essential to ensure transparency, verifiability, and reproducibility.
 \citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.
 We remind the reader that these guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
@@ -12,7 +15,7 @@ This implies that our guidelines do not recommend that researcher disclose the p
 \paragraph{Prompt Reporting:}
 Researchers \must report all prompts that were used for an empirical study, including all instructions, context, input data, and output indicators.
 The only exception to this is if transcripts might identify anonymous participants or reveal personal or confidential information, for example, when working with industry partners.
-Prompts can be reported using a structured template that contains placeholders for dynamically added content.
+When prompt templates are used, researchers \must report them alongside representative prompt instances, specifying which parts are static and which are dynamically filled.
 Moreover, researchers \should specify the exact formatting of prompts, including how code snippets were enclosed (e.g., markdown-style code blocks, triple backticks), whether whitespace was preserved, and how other artifacts such as error messages and stack traces were presented.
 
 \paragraph{Prompt Development:}
