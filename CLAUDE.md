@@ -106,6 +106,8 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Applicability matrix (`_summary/matrix.tex`):** Table 1 maps guidelines (G1–G8) to study types (S1–S7) using `\iconM` (must), `\iconS` (should), or `--` (not applicable). Cell values must match the RFC 2119 language in each guideline's "Study Types" subsection (the `\guidelinesubsubsection` in `_guidelines/0X_*.tex`). When editing guideline text that changes `\must`/`\should` for a study type, update the matrix to match.
 
+**Reporting checklist (`_summary/checklist.tex`):** Items within each section are ordered by severity first, then by reporting location: `\iconM` before `\iconS`, and within each severity level: `\paper` → unspecified → `\supplementarymaterial`. Maintain this ordering when adding or reordering checklist items.
+
 ## Syncing Content to Website
 
 The website references all content directly from this repo via a git submodule. After editing content files or `literature.bib`, update the submodule pointer in the website repo:

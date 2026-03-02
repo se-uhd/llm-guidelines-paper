@@ -5,83 +5,87 @@ The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes acti
 The checklist is organized along typical paper sections.
 Items marked \iconM are requirements (\must); items marked \iconS are recommendations (\should).
 Each item references its source guideline (G1--G8).
+Items annotated with \paper or \supplementarymaterial indicate where information should be reported; unmarked items may be reported in either.
 
 \paragraph{\textbf{Introduction}}
 \begin{itemize}[label=$\square$]
-    \item \iconM Disclose any use of LLMs, specifying which LLM, how, and where it was used~(G1).
-    \item \iconS Report the purpose of using LLMs, automated tasks, and expected benefits~(G1).
+    \item \iconM Disclose any use of LLMs in the empirical study, specifying which LLM, how, and where it was used~(G1).
+    \item \iconS Report the purpose of using LLMs, automated tasks, and expected benefits in the \paper~(G1).
 \end{itemize}
 
 \paragraph{\textbf{Research Design and Methods}}\mbox{}\\
 \noindent\textit{Model Selection and Configuration}
 \begin{itemize}[label=$\square$]
     \item \iconM Report the exact LLM model or tool version, configuration, and experiment date in the \paper~(G2).
-    \item \iconM For fine-tuned models, describe the fine-tuning goal, dataset, and procedure~(G2).
+    \item \iconM For fine-tuned models, describe the fine-tuning goal, dataset, and procedure in the \paper~(G2).
     \item \iconS Report default parameters and explain model and version choices~(G2).
     \item \iconS For quantized models, report the quantization level and method~(G2).
-    \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights (or justify why they cannot be shared)~(G2).
+    \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(G2).
 \end{itemize}
 
 \noindent\textit{Architecture}
 \begin{itemize}[label=$\square$]
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
+    \item \iconM For ensemble architectures, explain the coordination logic between models in the \paper~(G3).
     \item \iconM If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(G3).
     \item \iconM Report hosting, hardware setup, and latency implications~(G3).
     \item \iconM For tools using retrieval or augmentation methods, describe data sources, integration mechanisms, and update and versioning strategies~(G3).
-    \item \iconM For ensemble architectures, explain the coordination logic between models~(G3).
     \item \iconS Include architectural diagrams and justify design decisions~(G3).
 \end{itemize}
 
 \noindent\textit{Prompts and Interactions}
 \begin{itemize}[label=$\square$]
-    \item \iconM Publish all prompts, including their structure, content, formatting, and dynamic components~(G4).
-    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process~(G4).
+    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process in the \paper~(G4).
+    \item \iconM Publish all prompts, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G4).
     \item \iconM Document input handling and token optimization strategies when prompts are long or complex~(G4).
     \item \iconM Report generation and collection processes for dynamically generated or user-authored prompts~(G4).
     \item \iconM Specify prompt reuse across models and configurations~(G4).
-    \item \iconM Report all context files (e.g., \texttt{CLAUDE.md}, \texttt{.cursorrules}) used to configure AI coding agents as \supplementarymaterial~(G4).
     \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G4).
     \item \iconS Report prompt revisions and pilot testing insights~(G4).
-    \item \iconS For agentic systems, report developed plans and generalize interaction logs to include human-agent interaction traces~(G4).
-    \item \iconS Include full interaction logs (prompts and responses) if privacy and confidentiality can be ensured~(G4).
+    \item \iconS Include full interaction logs (prompts and responses) as \supplementarymaterial if privacy and confidentiality can be ensured~(G4).
+    \item \iconS For agentic systems, report all context files (e.g., \texttt{AGENTS.md}) used to configure AI agents as \supplementarymaterial~(G4).
+    \item \iconS For agentic systems, report developed plans and generalize interaction logs to include human-agent interaction traces as \supplementarymaterial~(G4).
 \end{itemize}
 
 \noindent\textit{Human Validation}
 \begin{itemize}[label=$\square$]
     \item \iconM If using human validation, define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper~(G5).
-    \item \iconS Consider human validation early in the study design, build on established reference models for human-LLM comparison, and share instruments as \supplementarymaterial~(G5).
-    \item \iconS When aggregating LLM judgments, report methods and rationale and assess inter-rater agreement~(G5).
+    \item \iconM When developing or adapting measurement instruments, share them~(G5).
+    \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(G5).
+    \item \iconS Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(G5).
     \item \iconS Control for confounding factors and conduct power analysis to ensure statistical robustness~(G5).
 \end{itemize}
 
 \noindent\textit{Benchmarks and Metrics}
 \begin{itemize}[label=$\square$]
     \item \iconM Justify all benchmark and metric choices in the \paper~(G7).
-    \item \iconM Explain why the selected metrics are suitable for the specific study~(G7).
+    \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(G7).
     \item \iconS Include an open LLM as a baseline when using commercial models and report inter-model agreement~(G6).
     \item \iconS Summarize benchmark structure, task types, and limitations~(G7).
+    \item \iconS Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics~(G7).
 \end{itemize}
 
 \noindent\textit{Reproducibility, Ethics, and Resources}
 \begin{itemize}[label=$\square$]
-    \item \iconM Provide model outputs and discuss sensitive data handling~(G8).
-    \item \iconM Justify LLM usage in light of its resource demands~(G8).
-    \item \iconS Provide a full replication package with step-by-step instructions as part of the \supplementarymaterial~(G6).
-    \item \iconS Include a subset of the validation data for partial replication~(G8).
+    \item \iconM Provide raw LLM outputs for reproducibility and discuss sensitive data handling~(G8).
+    \item \iconS Justify LLM usage in light of its resource demands~(G8).
+    \item \iconS If full data sharing is not possible, include a subset of the validation data for partial replication~(G8).
+    \item \iconS Provide a full replication package with step-by-step instructions as \supplementarymaterial~(G6).
 \end{itemize}
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label=$\square$]
-    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported as appropriate~(G7).
+    \item \iconM If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(G7).
     \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(G7).
     \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(G7).
+    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(G7).
 \end{itemize}
 
 \paragraph{\textbf{Limitations and Threats to Validity}}
 \begin{itemize}[label=$\square$]
+    \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(G8).
     \item \iconM Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(G3).
     \item \iconM Transparently report study limitations, including the impact of non-determinism and generalizability constraints~(G8).
     \item \iconM Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences~(G8).
-    \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(G8).
-    \item \iconS Employ and report mitigation strategies where applicable, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(G8).
+    \item \iconS Employ and report strategies to mitigate identified validity and reproducibility threats, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(G8).
 \end{itemize}
