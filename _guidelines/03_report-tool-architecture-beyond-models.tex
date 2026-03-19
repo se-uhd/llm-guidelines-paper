@@ -64,7 +64,7 @@ They must also balance transparency with data privacy concerns, adapt to the evo
 This guideline \must be followed for all studies that involve tools with system-level components beyond bare LLMs, from lightweight wrappers that pre-process user input or post-process model outputs, to systems employing retrieval-augmented methods or complex agent-based architectures.
 
 For \newtools, this guideline is of primary importance: researchers \must describe the tool's full architecture, including the role of each LLM, interactions with other components, and the overall system behavior.
-For \benchmarkingtasks, researchers \should describe the evaluation harness and infrastructure if it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines).
+For \benchmarkingtasks, researchers \should describe the evaluation harness and infrastructure if it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines); see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
 For \annotators, \judges, \synthesis, and \subjects, if the research setup involves a custom pipeline (e.g., retrieval-augmented generation for annotation or chained prompts for synthesis), the architecture \should also be reported.
 
