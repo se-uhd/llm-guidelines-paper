@@ -1,0 +1,171 @@
+\guidelinesubsubsection{Rationale}
+
+LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: the \emph{software layers} around the model(s) and the \emph{content} those layers feed into each call.
+Software layers pre-process data, prepare prompts, filter user requests, or post-process responses. Content includes prompt templates, context files, tool and skill schemas, and the retrieval mechanisms that bring external data into the call.
+For example, ChatGPT and GitHub Copilot use the same underlying models, but their outputs differ substantially because Copilot automatically adds project context. Researchers can also build tools using models directly via APIs.
+Infrastructure and business logic around the bare model can contribute substantially to the performance of a tool for a given task. RAG pipelines, output parsers, and retry logic all shape the final output independently of the model itself.
+
+Prompts are central to any LLM-based study~\cite{DBLP:conf/iclr/Sclar0TS24}.
+A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
+Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), context (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
+In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
+Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
+\citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.
+
+This section addresses everything researchers put in place before runs begin, complementing \modelversion, which focuses on model-specific details, and \traces, which covers what happens at runtime.
+Standalone LLMs require limited architectural documentation, while study setups that integrate LLMs with other components, configure agents, or depend on particular context files or tool schemas require more detailed reporting.
+
+These guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
+Researchers are not expected to disclose prompts used only for such tasks.
+
+\guidelinesubsubsection{Recommendations}
+
+Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper.
+Researchers \should provide a high-level architectural diagram to improve transparency.
+Researchers \should explain design decisions, particularly how the models were hosted and accessed (API-based, self-hosted, etc.) and which retrieval mechanisms were implemented (keyword search, semantic similarity matching, rule-based extraction, etc.).
+Researchers \mustnot omit critical architectural details that could affect reproducibility, such as dependencies on proprietary tools that influence tool behavior.
+For \emph{time-sensitive measurements}, the description of the hosting environment is central, as it can substantially impact the results.
+Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
+
+\paragraph{Agent-Based and Complex Systems:}
+If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-4o model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation of this approach is usually sufficient.
+However, if LLMs are integrated into more \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, researchers \must provide a detailed description of the system architecture in the \paper.
+Aspects to consider are how the LLM interacts with other components such as databases, external APIs, and frameworks.
+If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
+For agent-based systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must describe \emph{agent behavior traceability} by delineating the distinct components that contribute to behavior: (1) \emph{LLM Input/Output}, the internal deliberation, planning, and interpretation performed by the model; (2) \emph{External tool calls}, specific invocations of APIs, databases, file systems, or other external services that the agent explicitly triggers (e.g., via the \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)}); (3) \emph{User or system interactions}, human-in-the-loop feedback, environment responses, or multi-agent communication.
+Separating these components in the architectural description lets readers later assess whether task success is attributable to the LLM's output, the external tools' functionality, or their interaction patterns. Runtime trace-reporting requirements for these components are covered in \traces.
+
+\paragraph{Retrieval, Augmentation, and Ensembles:}
+If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
+This includes specifying the type of storage or database used (e.g., vector databases, relational databases, knowledge graphs) and how the retrieved information is selected and used.
+Stored data used for context augmentation \must be reported, including details on data preprocessing, versioning, and update frequency.
+If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available as \supplementarymaterial.
+For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, the researchers \must describe the architecture that connects the models.
+The \paper \must at least contain a high-level description, and details can be reported in the \supplementarymaterial.
+Aspects to consider include documenting the logic that determines which model handles which input, the interaction between models, and the architecture for combining outputs (e.g., majority voting, weighted averaging, sequential processing).
+
+\paragraph{Context Files and Agent Configuration:}
+Agentic coding tools can be configured using version-controlled Markdown files such as \texttt{AGENTS.md}, \texttt{CLAUDE.md}, or \texttt{.cursorrules}, which contain persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
+These \emph{context files} are automatically injected into prompts and can strongly influence agent behavior by specifying coding conventions, architectural constraints, tool preferences, or task-specific instructions.
+Researchers \must describe which context-file mechanisms were used in their setup and \should publish the full contents of those files as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
+
+\paragraph{Tool Catalog and Skill Definitions:}
+Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
+The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
+Researchers \must report in the \paper the list of tools and skills that were exposed to the model, giving each a name and a one-line purpose.
+Researchers \should include the complete tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
+Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
+
+\paragraph{Prompt Reporting:}
+Researchers \must report all prompts that were used for an empirical study, including all instructions, context, input data, and output indicators.
+The only exception is when transcripts might identify anonymous participants or reveal personal or confidential information, for example when working with industry partners.
+When prompt templates are used, researchers \must report them alongside representative prompt instances, specifying which parts are static and which are dynamically filled.
+Researchers \should specify the exact formatting of prompts, including how code snippets were enclosed (e.g., Markdown-style code blocks, triple backticks), whether whitespace was preserved, and how other artifacts such as error messages and stack traces were presented.
+
+\paragraph{Prompt Development:}
+Researchers \must explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies.
+If prompts from the early phases of a research project are unavailable, researchers \must at least summarize the prompt evolution.
+Because prompts can be stored as plain text, established SE techniques such as version control can collect the required provenance information.
+
+Prompt development is often iterative, involving collaboration between human researchers and AI tools.
+Researchers \should report any instances in which LLMs were used to suggest prompt refinements and how these suggestions were incorporated.
+Prompts may need revision in response to failure cases, and pilot testing is vital for reliable results.
+If such testing was conducted, researchers \should summarize key insights, including how different prompt variations affected output quality and which criteria were used to finalize the prompt design.
+A prompt changelog can track prompt evolution, including key revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses).
+Because prompt effectiveness varies between models and model versions, researchers \must make clear which prompts were used for which models in which versions and with which configuration.
+
+\paragraph{Prompting Strategy and Input Handling:}
+Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was used.
+For few-shot prompts, the examples provided to the model \should be clearly outlined, along with the rationale for selecting them.
+If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated and how the final design was chosen.
+
+When dealing with extensive or complex prompt context, researchers \must describe the strategies they used to handle input length constraints.
+Approaches might include truncating, summarizing, or splitting prompts into multiple parts.
+Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \must also be documented if applied.
+
+\paragraph{Dynamic and User-Authored Prompts:}
+When prompts are generated dynamically, for example through preprocessing, template structures, or retrieval-augmented generation (RAG), the process \must be thoroughly documented.
+This includes any automated algorithms or rules that shaped prompt generation.
+For studies involving human participants who create or modify prompts, researchers \must describe how these prompts were collected and analyzed.
+
+\paragraph{Supplementary Material and Anonymization:}
+For complete reproducibility, researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial.
+If the complete set of prompts cannot be included in the \paper, researchers \should provide summaries and representative examples.
+This also applies when complete disclosure is not possible because of privacy or confidentiality concerns.
+For prompts containing sensitive information, researchers \must anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
+
+\guidelinesubsubsection{Example(s)}
+
+\citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration.
+They also detail the datasets used, including sources, selection criteria, and preprocessing steps.
+
+A second example is \citeauthor{DBLP:conf/chi/YanHWH24}'s \emph{IVIE} tool~\cite{DBLP:conf/chi/YanHWH24}, which integrates LLMs into the VS Code interface.
+The authors document the tool architecture, detailing the IDE integration, context extraction from code editors, and the formatting pipeline for LLM-generated explanations.
+This documentation illustrates how architectural components beyond the core LLM affect the overall tool performance and user experience.
+
+A paper by \citeauthor{anandayuvaraj2024fail}~\cite{anandayuvaraj2024fail} is a good example of making prompts available online.
+The authors analyze software failures reported in news articles and use prompting to automate tasks such as filtering relevant articles, merging reports, and extracting detailed failure information.
+Their online appendix contains all the prompts used in the study, supporting transparency and reproducibility.
+
+\citeauthor{Liang2024}'s paper~\cite{Liang2024} is another good example of comprehensive prompt reporting.
+The authors make the exact prompts available in their \supplementarymaterial on Figshare, including details such as code blocks enclosed in triple backticks.
+The \paper explains the rationale behind the prompt design and the data output format, and it includes an overview figure and two concrete examples, keeping the main text concise while remaining reproducible.
+
+\guidelinesubsubsection{Benefits}
+
+The software layers around bare LLMs substantially impact tool performance and hence need detailed documentation.
+Documenting the architecture and supplemental data of LLM-based systems strengthens reproducibility and transparency~\cite{DBLP:journals/software/LuZXXW24}, enabling experiment replication, result validation, and cross-study comparison.
+
+Detailed prompt documentation strengthens verifiability, reproducibility, and comparability of LLM-based studies, letting other researchers replicate studies, refine prompts, and evaluate how different content types and formatting choices influence LLM behavior.
+Reporting the tool catalog and context files enables other researchers to reconstruct the exact surface the model saw, which is often the dominant factor in agent behavior.
+
+\guidelinesubsubsection{Challenges}
+
+Documenting LLM-based architectures involves challenges such as proprietary APIs and dependencies that restrict disclosure, managing large-scale retrieval databases, and ensuring efficient query execution.
+Researchers must also balance transparency with data privacy concerns, adapt to the evolving nature of LLM integrations, and handle the complexity of multi-agent interactions and decision-making logic, all of which can impact reproducibility and system clarity.
+
+Prompts themselves are challenging to document because they often combine multiple components, such as code, error messages, and explanatory text.
+Formatting differences (e.g., Markdown versus plain text) can affect how LLMs interpret input.
+Prompt length constraints may require careful context management, particularly for tasks involving extensive artifacts such as large codebases.
+Privacy and confidentiality concerns can hinder prompt sharing, especially when sensitive data is involved.
+
+Not all systems allow reporting of complete (system) prompts, context files, and tool schemas.
+For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations.
+Understanding suggestions of commercial tools such as \emph{GitHub Copilot} might require recreating the exact state of the codebase at the time the suggestion was made, which is a challenging context to report.
+One solution is to use version control to capture the exact state of the codebase when a recommendation was made, keeping track of the files that were automatically added as context.
+We also recommend exploring open-source tools such as \emph{OpenCode}~\cite{opencode}, which expose more of the configuration that shapes agent behavior.
+
+\guidelinesubsubsection{Study Types}
+
+This guideline \must be followed for all studies that involve tools with system-level components beyond bare LLMs, from lightweight wrappers that pre-process user input or post-process model outputs, to systems employing retrieval-augmented methods or complex agent-based architectures.
+It also \must be followed by all studies that use concrete prompts or prompt templates.
+
+For \newtools, this guideline is of primary importance: researchers \must describe the tool's full architecture, explain how prompts were generated and structured within the tool, report the context files, tool catalog, and skill definitions used, and document how the role of each LLM fits into the overall system behavior.
+For \benchmarkingtasks, researchers \should describe the evaluation harness and infrastructure if it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines); see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
+Researchers using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench}) \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
+If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
+For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
+For controlled experiments under \llmusage, exact prompts \must be reported for all conditions.
+For \annotators, researchers \must document any predefined coding guides or instructions included in prompts, as these influence how the model labels artifacts.
+For \judges, researchers \must report the evaluation criteria, scales, and examples embedded in the prompt to ensure consistent interpretation.
+For \synthesis tasks (e.g., summarization, aggregation), researchers \must document the sequence of prompts used to generate and refine outputs, including follow-ups and clarification queries.
+For \subjects (e.g., simulating human participants), researchers \must report any role-playing instructions, constraints, or personas used to guide LLM behavior.
+For \annotators, \judges, \synthesis, and \subjects, if the research setup involves a custom pipeline (e.g., retrieval-augmented generation for annotation or chained prompts for synthesis), the architecture \should also be reported.
+
+\guidelinesubsubsection{Advice for Reviewers}
+
+As with other guidelines, missing architectural or prompt information is typically a minor revision request unless so much is missing that methodological rigor cannot be assessed. Reviewers may ask authors to move key details from supplements into the paper body to ensure the main text is self-contained.
+
+Regarding proprietary or confidential components, three principles apply: (1) empirically evaluating an opaque artifact is a valid scientific contribution; (2) the less available and inspectable the artifact, the weaker the contribution; (3) \textit{scientific instruments} including tools, metrics, scales, and experimental materials must be fully disclosed, even when the object under study cannot be.
+
+The most challenging aspect of prompt reporting is the description of prompt development, which is inherently iterative and creative. Reviewers should \textit{not} expect justification of each word choice or post-hoc rationalized accounts of prompt generation. Instead, reviewers should focus on whether (1) a new research team could \textit{use} (not reproduce) exactly the same prompts in exactly the same way, and (2) potential biases or validity issues are transparent.
+
+\guidelinesubsubsection{See Also}
+\begin{itemize}[label=$\rightarrow$]
+    \item Section~\modelversion: model versions and configuration for prompt-model mapping.
+    \item Section~\traces: runtime reporting of interaction logs, tool-call traces, and usage traces that correspond to the static artifacts reported here.
+    \item Section~\humanvalidation: evaluation of agentic tool outputs.
+    \item Section~\openllm: open-source tools for transparent configuration and prompt logging.
+    \item Section~\limitationsmitigations: reporting limitations of commercial tool transparency.
+\end{itemize}

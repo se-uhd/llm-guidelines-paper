@@ -12,7 +12,7 @@ For authoring scientific articles, this transparency is, for example, required b
 Beyond generic declarations, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
 A sufficient declaration specifies not only \emph{that} an LLM was used, but also \emph{which} LLM (name and version), \emph{how} it was used (e.g., as an annotator, code generator, or judge), and \emph{where} in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM plays a central role in the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \toolarchitecture, and \prompts).
+When the LLM plays a central role in the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
 In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
 % Related paper:
@@ -63,6 +63,6 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
     \item Section~\modelversion: model version and configuration details.
-    \item Section~\toolarchitecture: system-level role documentation.
-    \item Section~\prompts: prompt documentation and interaction logs.
+    \item Section~\design: system-level role documentation, prompts, and agent configuration.
+    \item Section~\traces: interaction logs and runtime traces.
 \end{itemize}

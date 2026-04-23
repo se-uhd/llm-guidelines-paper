@@ -23,28 +23,34 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(G2).
 \end{itemize}
 
-\noindent\textit{Architecture}
+\noindent\textit{System and Prompt Design}
 \begin{itemize}[label=$\square$]
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
     \item \iconM For ensemble architectures, explain the coordination logic between models in the \paper~(G3).
     \item \iconM If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(G3).
     \item \iconM Report hosting, hardware setup, and latency implications~(G3).
     \item \iconM For tools using retrieval or augmentation methods, describe data sources, integration mechanisms, and update and versioning strategies~(G3).
+    \item \iconM Describe any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md}) in the \paper~(G3).
+    \item \iconM Report the list of tools and skills exposed to the model (names and purposes) in the \paper~(G3).
+    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process in the \paper~(G3).
+    \item \iconM Document input handling and token optimization strategies when prompts are long or complex~(G3).
+    \item \iconM Report generation and collection processes for dynamically generated or user-authored prompts~(G3).
+    \item \iconM Specify prompt reuse across models and configurations~(G3).
+    \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G3).
     \item \iconS Include architectural diagrams and justify design decisions~(G3).
+    \item \iconS Include context-file contents as \supplementarymaterial~(G3).
+    \item \iconS Include complete tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(G3).
+    \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G3).
+    \item \iconS Report prompt revisions and pilot testing insights~(G3).
 \end{itemize}
 
-\noindent\textit{Prompts and Interactions}
+\noindent\textit{Session Traces}
 \begin{itemize}[label=$\square$]
-    \item \iconM Describe prompt development strategies (e.g., zero-shot, few-shot), rationale, and selection process in the \paper~(G4).
-    \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G4).
-    \item \iconM Document input handling and token optimization strategies when prompts are long or complex~(G4).
-    \item \iconM Report generation and collection processes for dynamically generated or user-authored prompts~(G4).
-    \item \iconM Specify prompt reuse across models and configurations~(G4).
-    \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G4).
-    \item \iconS Report prompt revisions and pilot testing insights~(G4).
     \item \iconS Include full interaction logs (prompts and responses) as \supplementarymaterial if privacy and confidentiality can be ensured~(G4).
-    \item \iconS For agentic systems, report all context files (e.g., \texttt{AGENTS.md}) used to configure AI agents as \supplementarymaterial~(G4).
-    \item \iconS For agentic systems, report developed plans and generalize interaction logs to include human-agent interaction traces as \supplementarymaterial~(G4).
+    \item \iconS For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as \supplementarymaterial~(G4).
+    \item \iconS For agentic systems, report tool-call traces (tool name, arguments, result, ordering) as \supplementarymaterial~(G4).
+    \item \iconS Report usage traces showing which skills, context files, sub-agents, and tools were actually picked up during a run as \supplementarymaterial~(G4).
+    \item \iconS For agentic systems, report developed plans as \supplementarymaterial if available~(G4).
 \end{itemize}
 
 \noindent\textit{Human Validation}
