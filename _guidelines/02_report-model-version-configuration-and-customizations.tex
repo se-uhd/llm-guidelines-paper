@@ -1,7 +1,7 @@
 \guidelinesubsubsection{Rationale}
 
 LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation. 
-This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the \toolarchitecture section addresses system-level integration, the information outlined here is always essential for reproducibility whenever an LLM is involved.
+This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the \design section addresses system-level integration and the authored artifacts (including prompts) that shape each call, the information outlined here is always essential for reproducibility whenever an LLM is involved.
 
 \guidelinesubsubsection{Recommendations}
 
@@ -92,7 +92,7 @@ When a temperature of 0 is chosen primarily for reproducibility, this motivation
 
 This guideline \must be followed for all study types for which the researcher has access to (parts of) the model's configuration.
 They \must always report the configuration that is visible to them, acknowledging the reproducibility challenges of commercial tools and models that are offered as-a-service.
-Depending on the specific study type, researchers \should provide additional information on the architecture of a tool they built (see \toolarchitecture), prompts and interactions logs (see \prompts), and specific limitations and mitigations (see \limitationsmitigations).
+Depending on the specific study type, researchers \should provide additional information on the system and prompt design (see \design), session traces (see \traces), and specific limitations and mitigations (see \limitationsmitigations).
 
 For example, when \llmusage by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers \must be as specific as possible in describing their study setup.
 The configured model name, version, and the date when the experiment was conducted \must always be reported.
@@ -109,8 +109,8 @@ Missing version, configuration, or parameter information is typically a minor re
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\toolarchitecture: system-level architecture beyond the model.
-    \item Section~\prompts: prompt reporting and development.
+    \item Section~\design: system architecture, agent configuration, and prompt design.
+    \item Section~\traces: interaction logs and runtime traces.
     \item Section~\benchmarksmetrics: benchmarks for comparing base and fine-tuned models.
     \item Section~\openllm: open models for self-hosted reproducibility.
     \item Section~\limitationsmitigations: reporting reproducibility limitations.

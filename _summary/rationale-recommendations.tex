@@ -12,12 +12,11 @@ G1 & Transparency enables informed assessment of scope and limitations. &
 G2 & Reproducibility requires precise identification of the system used in a study. &
 \iconM Report exact version, date, configuration, and fine-tuning details. \\
 \addlinespace
-G3 & Complex systems require holistic documentation beyond the model itself. &
-\iconM Describe full architecture, agent roles, and infrastructure. \\
+G3 & Static artifacts, from system architecture to prompt templates, determine what the model sees on every call and must be documented in full. &
+\iconM Describe full architecture, agent roles, infrastructure, context files, tool catalog, and all prompts or prompt templates with their development strategy. \\
 \addlinespace
-G4 & Prompts shape LLM behavior and must be verifiable. &
-\iconM Publish all prompts, context files, and development strategy.
-\newline \iconS Share interaction logs where feasible. \\
+G4 & Runtime traces make LLM and agent behavior verifiable despite non-determinism and commercial-tool opacity. &
+\iconS Share full interaction logs; for agentic runs, share tool-call traces, usage traces, and plans where feasible. \\
 \addlinespace
 G5 & Automated metrics alone cannot ensure validity of subjective constructs. &
 \iconS Validate against human judgment with inter-rater reliability, where applicable. \\
