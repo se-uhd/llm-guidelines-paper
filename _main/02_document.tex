@@ -17,7 +17,7 @@ These discussions led to a position paper at \emph{WSESE 2025}~\citep{DBLP:conf/
 Our process follows an established tradition of developing reporting guidelines through expert collaboration, as exemplified by CONSORT for clinical trials~\citep{Begg1996} and, more recently, TRIPOD-LLM for LLM-based prediction studies in medicine~\citep{Gallifant2025}.
 
 We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
-During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \toolarchitecture, \prompts) and covered \benchmarksmetrics as well as \limitationsmitigations.
+During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \design, \traces) and covered \benchmarksmetrics as well as \limitationsmitigations.
 
 Then, at least two co-authors were assigned to each study type and guideline to refine and extend the content, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
@@ -106,8 +106,8 @@ S7   & 4.2.3 & \quad \hyperref[sec:benchmarking-llms-for-software-engineering-ta
 \midrule
 G1 & \ref*{sec:declare-llm-usage-and-role} & \hyperref[sec:declare-llm-usage-and-role]{Declare LLM Usage and Role} \\
 G2 & \ref*{sec:report-model-version-configuration-and-customizations} & \hyperref[sec:report-model-version-configuration-and-customizations]{Report Model Version, Configuration, and Customizations} \\
-G3 & \ref*{sec:report-tool-architecture-beyond-models} & \hyperref[sec:report-tool-architecture-beyond-models]{Report Tool Architecture Beyond Models} \\
-G4 & \ref*{sec:report-prompts-their-development-and-interaction-logs} & \hyperref[sec:report-prompts-their-development-and-interaction-logs]{Report Prompts, their Development, and Interaction Logs} \\
+G3 & \ref*{sec:report-system-and-prompt-design} & \hyperref[sec:report-system-and-prompt-design]{Report System and Prompt Design} \\
+G4 & \ref*{sec:report-session-traces} & \hyperref[sec:report-session-traces]{Report Session Traces} \\
 G5 & \ref*{sec:use-human-validation-for-llm-outputs} & \hyperref[sec:use-human-validation-for-llm-outputs]{Use Human Validation for LLM Outputs} \\
 G6 & \ref*{sec:use-an-open-llm-as-a-baseline} & \hyperref[sec:use-an-open-llm-as-a-baseline]{Use an Open LLM as a Baseline} \\
 G7 & \ref*{sec:use-suitable-baselines-benchmarks-and-metrics} & \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Use Suitable Baselines, Benchmarks, and Metrics} \\
@@ -138,25 +138,25 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/02_report-model-version-configuration-and-customizations.tex}
 
-\subsection{Report Tool Architecture Beyond Models (G3)}
-\label{sec:report-tool-architecture-beyond-models}
+\subsection{Report System and Prompt Design (G3)}
+\label{sec:report-system-and-prompt-design}
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: \input{_tldr/03_report-tool-architecture-beyond-models-tldr.tex} 
+\tldr: \input{_tldr/03_report-system-and-prompt-design-tldr.tex}
 \end{framed}
 
-\input{_guidelines/03_report-tool-architecture-beyond-models.tex}
+\input{_guidelines/03_report-system-and-prompt-design.tex}
 
-\subsection{Report Prompts, their Development, and Interaction Logs (G4)}
-\label{sec:report-prompts-their-development-and-interaction-logs}
+\subsection{Report Session Traces (G4)}
+\label{sec:report-session-traces}
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\tldr: \input{_tldr/04_report-prompts-their-development-and-interaction-logs-tldr.tex}
+\tldr: \input{_tldr/04_report-session-traces-tldr.tex}
 \end{framed}
 
-\input{_guidelines/04_report-prompts-their-development-and-interaction-logs.tex}
+\input{_guidelines/04_report-session-traces.tex}
 
 \subsection{Use Human Validation for LLM Outputs (G5)}
 \label{sec:use-human-validation-for-llm-outputs}
