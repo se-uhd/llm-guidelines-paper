@@ -5,7 +5,7 @@ A \emph{session trace} records everything that crosses the LLM boundary or is pr
 
 Two kinds of session trace are important to capture.
 An \emph{interaction log} captures what humans or other software tools sent to the LLM and what the LLM returned.
-A \emph{tool-call trace} captures what the LLM called out to: external APIs, file systems, databases, MCP servers. Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
+A \emph{tool-call trace} captures what the LLM called out to: external APIs, file systems, databases, MCP servers, sub-agents, or other agents. Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically.
 Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching, input preprocessing, and floating-point arithmetic on GPUs~\cite{Chann2023}.
@@ -65,6 +65,7 @@ For commercial tools, researchers \must report all available information and ack
 Tool-call traces for commercial SaaS agents are often opaque: the user sees the final response but not the sequence of internal tool calls.
 When this is the case, authors should document what was and was not observable.
 For agents running locally or via open-source tools, these traces are usually more accessible and \should be reported whenever available.
+Agent-to-agent communication is not yet covered by widely-accepted formats or schemas (and the tooling that would build on them), so reporting practices vary across frameworks.
 
 \guidelinesubsubsection{Study Types}
 
