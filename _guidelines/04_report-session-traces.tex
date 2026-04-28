@@ -40,6 +40,7 @@ For agents that selectively load context (e.g., on-demand subagent spawning), us
 \paragraph{Agentic Plans:}
 For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available.
 Plans document the sequence of actions the system chose to pursue and the intermediate goals it set, which is often more informative than the final output alone.
+Storage conventions vary across tools: Claude Code stores plans as Markdown files that users can open and edit in their default editor during a session, whereas other frameworks (e.g., LangGraph) keep plans inside the agent's internal execution state.
 
 \paragraph{Supplementary Material and Anonymization:}
 For complete reproducibility, researchers \must make the supplementary traces publicly available, subject to privacy and confidentiality constraints.
