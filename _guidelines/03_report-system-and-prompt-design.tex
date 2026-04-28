@@ -25,7 +25,7 @@ Researchers are not expected to disclose prompts used only for such tasks.
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper.
 Researchers \should explain design decisions, particularly how the models were hosted and accessed (API-based, self-hosted, etc.) and which retrieval mechanisms were implemented (keyword search, semantic similarity matching, rule-based extraction, etc.).
 Researchers \mustnot omit critical architectural details that could affect reproducibility, such as dependencies on proprietary tools that influence tool behavior.
-For \emph{time-sensitive measurements}, the description of the hosting environment is central, as it can substantially impact the results.
+For \emph{time-sensitive measurements}, the description of the hosting environment is central, as different hosting choices (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact the results.
 Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
 
 \paragraph{Agent-Based and Complex Systems:}
@@ -56,8 +56,8 @@ Agentic systems expose a set of callable tools, skills, and sub-agents to the mo
 Tools vary in granularity: some expose one operation per tool, while others provide generic execution interfaces.
 Claude Code, for example, does not register individual command-line utilities; it instead defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
 The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
-Researchers \must report in the \paper the list of tools and skills that were exposed to the model, giving each a name and a one-line purpose.
-Researchers \should include the complete tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
+Researchers \must summarize in the \paper which tools and skills were exposed to the model.
+Researchers \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
 Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
 
 \paragraph{Prompt Reporting:}
