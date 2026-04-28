@@ -50,7 +50,7 @@ Aspects to consider include documenting the logic that determines which model ha
 Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
 Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
 They are automatically included in the context on each call and instruct the agent on coding conventions, architectural constraints, tool preferences, or task-specific requirements.
-Researchers \must describe which context-file mechanisms were used in their setup and \should publish the full contents of those files as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
+Researchers \must describe which context-file mechanisms were used in their setup and \should publish the full contents (snapshot at study time) as \supplementarymaterial, because they shape agent behavior similarly to system prompts. Mid-session edits to context files (e.g., when agents update \texttt{CLAUDE.md} during a run) are tool calls and are reported under \traces.
 
 \paragraph{Tool Catalog and Skill Definitions:}
 Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
