@@ -3,7 +3,7 @@
 A \emph{session} is any bounded stretch of activity during which an LLM is invoked. Sessions cover one-shot prompts, batch runs, multi-turn conversations, and agentic runs that span many tool calls.
 A \emph{session trace} records everything that crosses the LLM boundary or is produced around the model during that stretch: prompts received, responses returned, tool calls the model made together with their arguments and results, plans the model developed, and which of the statically configured artifacts (skills, context files, sub-agents, tools) were actually picked up at runtime.
 
-Two kinds of session trace are called out separately because they are coordinate, not nested.
+Two kinds of session trace are important to capture.
 An \emph{interaction log} captures what humans or other software tools sent to the LLM and what the LLM returned.
 A \emph{tool-call trace} captures what the LLM called out to: external APIs, file systems, databases, MCP servers. Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
 
