@@ -1,13 +1,14 @@
 \guidelinesubsubsection{Rationale}
 
-LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: the \emph{software layers} around the model(s) and the \emph{content} those layers feed into each call.
-Software layers pre-process data, prepare prompts, filter user requests, or post-process responses. Content includes prompt templates, context files, tool and skill schemas, and the retrieval mechanisms that bring external data into the call.
+LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: the \emph{software layers} around the model(s) and the \emph{context} those layers feed into each call.
+We use \emph{context} to mean the input to a single model call~\cite{galster2026configuring}.
+Software layers pre-process data, prepare prompts, filter user requests, or post-process responses. Context includes prompt templates, context files, tool and skill schemas, and the retrieval mechanisms that bring external data into the call.
 For example, ChatGPT and GitHub Copilot use the same underlying models, but their outputs differ substantially because Copilot automatically adds project context. Researchers can also build tools using models directly via APIs.
 Infrastructure and business logic around the bare model can contribute substantially to the performance of a tool for a given task. RAG pipelines, output parsers, and retry logic all shape the final output independently of the model itself.
 
 Prompts are central to any LLM-based study~\cite{DBLP:conf/iclr/Sclar0TS24}.
 A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
-Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), context (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), background information (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
 A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
 In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
@@ -46,8 +47,9 @@ The \paper \must at least contain a high-level description, and details can be r
 Aspects to consider include documenting the logic that determines which model handles which input, the interaction between models, and the architecture for combining outputs (e.g., majority voting, weighted averaging, sequential processing).
 
 \paragraph{Context Files and Agent Configuration:}
-Agentic coding tools can be configured using version-controlled Markdown files such as \texttt{AGENTS.md}, \texttt{CLAUDE.md}, or \texttt{.cursorrules}, which contain persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
-These \emph{context files} are automatically injected into prompts and can strongly influence agent behavior by specifying coding conventions, architectural constraints, tool preferences, or task-specific instructions.
+Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
+Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions~\cite{mohsenimofidi2026context}.
+They are automatically included in the context on each call and instruct the agent on coding conventions, architectural constraints, tool preferences, or task-specific requirements.
 Researchers \must describe which context-file mechanisms were used in their setup and \should publish the full contents of those files as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
 
 \paragraph{Tool Catalog and Skill Definitions:}
@@ -58,7 +60,7 @@ Researchers \should include the complete tool schemas, skill definitions, sub-ag
 Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
 
 \paragraph{Prompt Reporting:}
-Researchers \must report all prompts that were used for an empirical study, including all instructions, context, input data, and output indicators.
+Researchers \must report all prompts that were used for an empirical study, including all instructions, background information, input data, and output indicators.
 The only exception is when transcripts might identify anonymous participants or reveal personal or confidential information, for example when working with industry partners.
 When prompt templates are used, researchers \must report them alongside representative prompt instances, specifying which parts are static and which are dynamically filled.
 Researchers \should specify the exact formatting of prompts, including how code snippets were enclosed (e.g., Markdown-style code blocks, triple backticks), whether whitespace was preserved, and how other artifacts such as error messages and stack traces were presented.
@@ -118,7 +120,7 @@ The software layers around bare LLMs substantially impact tool performance and h
 Documenting the architecture and supplemental data of LLM-based systems strengthens reproducibility and transparency~\cite{DBLP:journals/software/LuZXXW24}, enabling experiment replication, result validation, and cross-study comparison.
 
 Detailed prompt documentation strengthens verifiability, reproducibility, and comparability of LLM-based studies, letting other researchers replicate studies, refine prompts, and evaluate how different content types and formatting choices influence LLM behavior.
-Reporting the tool catalog and context files enables other researchers to reconstruct the exact surface the model saw, which is often the dominant factor in agent behavior.
+Reporting the tool catalog and context files enables other researchers to reconstruct the exact context the model saw, which is often the dominant factor in agent behavior.
 
 \guidelinesubsubsection{Challenges}
 
