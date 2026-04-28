@@ -38,7 +38,7 @@ For agent-based systems that use external tools (e.g., Claude Code and its \href
 Separating these components in the architectural description lets readers later assess whether task success is attributable to the LLM's output, the external tools' functionality, or their interaction patterns. Runtime trace-reporting requirements for these components are covered in \traces.
 
 \paragraph{Retrieval, Augmentation, and Ensembles:}
-If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \should describe how external data is retrieved, stored, and integrated into the LLM's responses.
+If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
 This includes specifying the type of storage or database used (e.g., vector databases, relational databases, knowledge graphs) and how the retrieved information is selected and used.
 Stored data used for context augmentation \should be reported, including details on data preprocessing, versioning, and update frequency.
 If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available as \supplementarymaterial.
@@ -89,7 +89,7 @@ Approaches might include truncating, summarizing, or splitting prompts into mult
 Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \should also be documented if applied.
 
 \paragraph{Dynamic and User-Authored Prompts:}
-When prompts are generated dynamically, for example through preprocessing, template structures, or retrieval-augmented generation (RAG), the process \should be thoroughly documented.
+When prompts are generated dynamically, for example through preprocessing, template structures, or retrieval-augmented generation (RAG), the process \must be thoroughly documented.
 This includes any automated algorithms or rules that shaped prompt generation.
 For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed.
 
