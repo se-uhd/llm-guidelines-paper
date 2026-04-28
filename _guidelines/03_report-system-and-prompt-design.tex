@@ -8,7 +8,7 @@ Infrastructure and business logic around the bare model can contribute substanti
 
 Prompts are central to any LLM-based study~\cite{DBLP:conf/iclr/Sclar0TS24}.
 A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
-Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), background information (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON.\footnote{\url{https://www.promptingguide.ai/introduction/elements}}
+Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), background information (e.g., a taxonomy of bug categories, related source code), input data (e.g., the bug report text), and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON~\cite{promptingguide_elements}.
 A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for dynamic content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
 In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
@@ -54,7 +54,7 @@ Researchers \must describe which context-file mechanisms were used in their setu
 \paragraph{Tool Catalog and Skill Definitions:}
 Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
 Tools vary in granularity: some expose one operation per tool, while others provide generic execution interfaces.
-Claude Code, for example, does not register individual command-line utilities; it instead defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}.\footnote{\url{https://code.claude.com/docs/en/tools-reference}}
+Claude Code, for example, does not register individual command-line utilities; it instead defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
 The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
 Researchers \must report in the \paper the list of tools and skills that were exposed to the model, giving each a name and a one-line purpose.
 Researchers \should include the complete tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
@@ -135,6 +135,8 @@ Privacy and confidentiality concerns can hinder prompt sharing, especially when 
 
 Not all systems allow reporting of complete (system) prompts, context files, and tool schemas.
 For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations.
+Disclosure practices vary across vendors: some publish their system prompts, others keep them proprietary.
+Where prompts are published, they also change between releases~\cite{willison2026opus}, so researchers \must record the tool version and date of use even when the prompt content itself is unavailable.
 Understanding suggestions of commercial tools such as \emph{GitHub Copilot} might require recreating the exact state of the codebase at the time the suggestion was made, which is a challenging context to report.
 One solution is to use version control to capture the exact state of the codebase when a recommendation was made, keeping track of the files that were automatically added as context.
 We also recommend exploring open-source tools such as \emph{OpenCode}~\cite{opencode}, which expose more of the configuration that shapes agent behavior.

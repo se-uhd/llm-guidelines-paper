@@ -111,6 +111,20 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Reporting checklist (`_summary/checklist.tex`):** Items within each section are ordered by severity first, then by reporting location: `\iconM` before `\iconS`, and within each severity level: `\paper` → unspecified → `\supplementarymaterial`. Maintain this ordering when adding or reordering checklist items.
 
+**Citation conventions for URLs and gray literature:** Pick one of three forms based on the URL's role in the prose, and use it consistently:
+
+| URL role | Form |
+|---|---|
+| Backs a substantive claim or argument | `\cite{key}` to a `@misc` entry in `literature.bib` |
+| Names a product, dataset, repository, or homepage in running prose | inline `\href{URL}{name}`; pair with `\cite{}` if a paper exists |
+| Project's own site (`llm-guidelines.org`) | inline `\href{https://llm-guidelines.org}{llm-guidelines.org}` |
+| Incidental utility URL not tied to a claim and not named in prose | `\footnote{\url{...}}` (rare, last-resort) |
+
+`@misc` bib-entry rules:
+- Web pages, blog posts, vendor docs: `howpublished = {\url{...}}` and `note = {Accessed YYYY-MM-DD}`
+- arXiv preprints: `url = {...}`, `archiveprefix = {arXiv}`, `eprint = {...}`, `primaryclass = {...}`
+- Sort fields alphabetically within an entry; sort entries alphabetically by citation key
+
 ## Syncing Content to Website
 
 The website references all content directly from this repo via a git submodule. After editing content files or `literature.bib`, update the submodule pointer in the website repo:
