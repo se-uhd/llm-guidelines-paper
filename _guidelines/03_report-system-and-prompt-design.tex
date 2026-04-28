@@ -38,11 +38,11 @@ For agent-based systems that use external tools (e.g., Claude Code and its \href
 Separating these components in the architectural description lets readers later assess whether task success is attributable to the LLM's output, the external tools' functionality, or their interaction patterns. Runtime trace-reporting requirements for these components are covered in \traces.
 
 \paragraph{Retrieval, Augmentation, and Ensembles:}
-If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses.
+If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \should describe how external data is retrieved, stored, and integrated into the LLM's responses.
 This includes specifying the type of storage or database used (e.g., vector databases, relational databases, knowledge graphs) and how the retrieved information is selected and used.
-Stored data used for context augmentation \must be reported, including details on data preprocessing, versioning, and update frequency.
+Stored data used for context augmentation \should be reported, including details on data preprocessing, versioning, and update frequency.
 If this data is not confidential, an anonymized snapshot of the data used for context augmentation \should be made available as \supplementarymaterial.
-For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, the researchers \must describe the architecture that connects the models.
+For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, the researchers \should describe the architecture that connects the models.
 The \paper \must at least contain a high-level description, and details can be reported in the \supplementarymaterial.
 Aspects to consider include documenting the logic that determines which model handles which input, the interaction between models, and the architecture for combining outputs (e.g., majority voting, weighted averaging, sequential processing).
 
@@ -68,8 +68,8 @@ When prompt templates are used, researchers \must report them alongside represen
 Researchers \should specify the exact formatting of prompts, including how code snippets were enclosed (e.g., Markdown-style code blocks, triple backticks), whether whitespace was preserved, and how other artifacts such as error messages and stack traces were presented.
 
 \paragraph{Prompt Development:}
-Researchers \must explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies.
-If prompts from the early phases of a research project are unavailable, researchers \must at least summarize the prompt evolution.
+Researchers \should explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies.
+If prompts from the early phases of a research project are unavailable, researchers \should at least summarize the prompt evolution.
 Because prompts can be stored as plain text, established SE techniques such as version control can collect the required provenance information.
 
 Prompt development is often iterative, involving collaboration between human researchers and AI tools.
@@ -84,14 +84,14 @@ Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was
 For few-shot prompts, the examples provided to the model \should be clearly outlined, along with the rationale for selecting them.
 If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated and how the final design was chosen.
 
-When dealing with extensive or complex prompt context, researchers \must describe the strategies they used to handle input length constraints.
+When dealing with extensive or complex prompt context, researchers \should describe the strategies they used to handle input length constraints.
 Approaches might include truncating, summarizing, or splitting prompts into multiple parts.
-Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \must also be documented if applied.
+Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \should also be documented if applied.
 
 \paragraph{Dynamic and User-Authored Prompts:}
-When prompts are generated dynamically, for example through preprocessing, template structures, or retrieval-augmented generation (RAG), the process \must be thoroughly documented.
+When prompts are generated dynamically, for example through preprocessing, template structures, or retrieval-augmented generation (RAG), the process \should be thoroughly documented.
 This includes any automated algorithms or rules that shaped prompt generation.
-For studies involving human participants who create or modify prompts, researchers \must describe how these prompts were collected and analyzed.
+For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed.
 
 \paragraph{Supplementary Material and Anonymization:}
 For complete reproducibility, researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial.
