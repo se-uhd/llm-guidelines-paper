@@ -4,11 +4,11 @@
 
 Meaningful evaluation requires well-understood, valid measurement instruments.
 Without justified benchmarks and metrics, claims about LLM performance lack the rigor needed for scientific comparison and cumulative progress.
-Benchmarks, baselines, and metrics play an important role in assessing the effectiveness of LLMs and LLM-based tools. A \textit{benchmark} is a ``standard tool for the competitive evaluation and comparison of competing systems or components according to specific characteristics, such as performance, dependability, or security''~\cite{Kistowski2015Benchmark}. Meanwhile, ``a \textit{metric} is a method, algorithm, or procedure for assigning one or more numbers to a phenomenon''~\cite{ralph2024teaching}. A baseline is a reference point, enabling comparison of LLMs against traditional algorithms with lower computational costs.
+A \textit{benchmark} is a ``standard tool for the competitive evaluation and comparison of competing systems or components according to specific characteristics, such as performance, dependability, or security''~\cite{Kistowski2015Benchmark}. ``A \textit{metric} is a method, algorithm, or procedure for assigning one or more numbers to a phenomenon''~\cite{ralph2024teaching}. A baseline is a reference point, enabling comparison of LLMs against traditional algorithms with lower computational costs.
 
 \guidelinesubsubsection{Recommendations}
 
-When selecting benchmarks and metrics, it is important to fully understand the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. If one or more metrics or benchmarks are used, researchers:
+Selecting benchmarks and metrics requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. If one or more metrics or benchmarks are used, researchers:
 \begin{itemize}
     \item \must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study;
     \item \must discuss the reliability and validity (especially construct validity) of selected metrics and benchmarks;
@@ -20,10 +20,10 @@ When selecting benchmarks and metrics, it is important to fully understand the b
 If multiple benchmarks exist for the same task, researchers \should compare performance between benchmarks.
 When selecting only a subset of all available benchmarks, researchers \should use the most specific benchmarks given the context.
 
-Furthermore, researchers \should check whether a less resource-intensive approach (e.g., for static analysis tasks or program repair) can serve as a baseline. If so, the LLM or LLM-based tool should be compared with such baselines using suitable metrics. Even if LLM-based tools outperform baselines, researchers \should discuss whether the resources consumed justify the (often marginal) improvements~\cite{DBLP:journals/cacm/Menzies25}.
+Furthermore, researchers \should check whether a less resource-intensive approach (e.g., for static analysis tasks or program repair) can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics. Even if LLM-based tools outperform baselines, researchers \should discuss whether the resources consumed justify the (often marginal) improvements~\cite{DBLP:journals/cacm/Menzies25}.
 
 To compare traditional and LLM-based approaches or different LLM-based tools, researchers \should report established metrics whenever possible, as this allows secondary research.
-They can, of course, report additional metrics that they consider appropriate.
+They can report additional metrics that they consider appropriate.
 We briefly discuss common metrics in the Example(s) subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
 Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
@@ -62,8 +62,7 @@ It requires a binary notion of correctness, making the metric appropriate for co
 A complementary perspective from industry practice is \emph{pass\textsuperscript{k}} (also written \emph{pass\^{}k}), which measures the probability that \emph{all} $k$ trials succeed rather than \emph{at least one}~\cite{Anthropic2025evals}. While \emph{pass@k} increases with $k$, \emph{pass\textsuperscript{k}} decreases, making it useful for assessing reliability in deployment scenarios where consistent success matters (e.g., customer-facing agents).
 
 If a study evaluates an LLM-based tool for supporting humans, a relevant metric is the acceptance rate, meaning the ratio of all accepted artifacts (e.g., test cases, code snippets) in relation to all artifacts that were generated and presented to the user.
-Another way of evaluating LLM-based tools is calculating inter-model agreement.
-This allows researchers to assess how dependent a tool's performance is on specific models and versions.
+Another way of evaluating LLM-based tools is calculating inter-model agreement, which reveals how much a tool's performance depends on specific models and versions.
 Metrics used to measure inter-model agreements include general agreement (percentage), \emph{Cohen's kappa}, and \emph{Krippendorff's $\alpha$} (see \humanvalidation for recommended thresholds and best practices for measuring agreement).
 
 Common problem types for LLM-based studies are classification, recommendation, and generation, each requiring different metrics~\cite{10.1145/3695988}. \citeauthor{hu2025assessingadvancingbenchmarksevaluating}~\cite{hu2025assessingadvancingbenchmarksevaluating} categorized 191 LLM benchmarks by SE task, providing a valuable reference. For an overview of code foundation models, agents, and their evaluation, see~\citeauthor{yang2025code}~\cite{yang2025code}. From a practitioner perspective, \citeauthor{Anthropic2025evals}~\cite{Anthropic2025evals} categorize evaluation approaches for LLM-based agents into code-based graders (e.g., test suite execution, static analysis), model-based graders (e.g., rubric-scored LLM judgments), and human graders---a taxonomy that may help researchers systematically design evaluation strategies for agent-based tools. Common metrics include \emph{BLEU}, \emph{pass@k}, \emph{Accuracy@k}, and \emph{Exact Match} for generation; \emph{Mean Reciprocal Rank} for recommendation; and \emph{Precision}, \emph{Recall}, \emph{F1-score}, and \emph{Accuracy} for classification.
@@ -88,7 +87,7 @@ Benchmarks and metrics improve reproducibility and comparability across studies,
 
 \guidelinesubsubsection{Challenges}
 
-Computer scientists have a long history of using oversimplified, unvalidated metrics~\cite{DBLP:conf/ease/RalphT18} (e.g., lines of code, CPU time) as proxies for complex, multidimensional latent variables (e.g., system size, environmental sustainability). In fields such as psychology, where measurement theory has a longer tradition~\cite{borsboom2005measuring}, metrics are backed by foundational theories or extensive empirical validation of their psychometric properties. The fundamental challenge with AI metrics and benchmarks is that many have neither firmly understood theoretical underpinnings nor extensive empirical validation of their construct, measurement, and ecological validity.
+Computer scientists have long used oversimplified, unvalidated metrics~\cite{DBLP:conf/ease/RalphT18} (e.g., lines of code, CPU time) as proxies for complex, multidimensional latent variables (e.g., system size, environmental sustainability). Unlike fields such as psychology where measurement theory has a longer tradition~\cite{borsboom2005measuring}, many AI metrics and benchmarks lack both theoretical underpinnings and empirical validation of their construct, measurement, and ecological validity.
 
 For example, \emph{pass@k} is intended to measure a model's \textit{functional correctness}, that is, its ability to generate code that produces the expected output for a given specification. However, functional correctness is only one dimension of code quality. \emph{pass@k} does not capture maintainability, readability, security, or efficiency of the generated code, all of which are critical for downstream use. Furthermore, ``correctness'' is defined entirely by test suites, whose coverage is itself unvalidated: a solution that passes all provided tests may still be incorrect for untested inputs. Whether a test suite adequately operationalizes correctness for a given task is a subjective judgment that is rarely examined.
 
@@ -98,12 +97,6 @@ Benchmarks and metrics also have generalizability problems. Prominent LLM benchm
 
 Execution-based metrics such as \emph{pass@k} directly evaluate correctness by running test cases, but they require a setup with an execution environment.
 When researchers observe unexpected values for certain metrics, the specific results should be investigated in more detail to uncover potential problems.
-
-% Many closed-source models, such as those released by \emph{OpenAI}, achieve exceptional performance on certain tasks but lack transparency and reproducibility~\cite{DBLP:conf/nips/00110ZZDJLHL24, DBLP:journals/corr/abs-2308-01861, DBLP:journals/corr/abs-2406-15877}.
-% Benchmark leaderboards, particularly for code generation, are led by closed-source models~\cite{DBLP:journals/corr/abs-2308-01861, DBLP:journals/corr/abs-2406-15877}.
-% While researchers \should compare performance against these models, they must consider that providers might discontinue them or apply undisclosed pre- or post-processing beyond the researchers' control (see \openllm).
-%The lack of transparency introduces challenges in analyzing mistakes, limiting the understanding of model failures.
-%Open-source models offer greater transparency since the entire process is under the researcher's control; however, they require appropriate hardware.
 
 Finally, benchmark data contamination---where the benchmark itself is part of the training data---may lead to artificially high performance if the model remembers the solution from the training data rather than actually solving the task based on the input data~\cite{DBLP:journals/corr/abs-2406-04244}. Therefore, for proprietary LLMs that do not release their training data, researchers \should consider using human validation, curating new data, or refactoring existing data~\cite{DBLP:journals/corr/abs-2406-04244}. 
 
@@ -130,9 +123,6 @@ For \subjects, researchers \should compare simulated and real human responses us
 If researchers assess a well-established task such as code generation, they \should report standard metrics such as \emph{pass@k} and compare the performance between models.
 If non-standard metrics are used, researchers \must state their reasoning.
 
-%% Changed: Softened "must not tolerate" → "should not accept" (advisory tone).
-%% Changed: Simplified "ambivalence toward construct validity or obfuscation of validity concerns" → "dismissive or evasive treatment of construct validity".
-%% Suggestion: Consider breaking the closing paragraph into shorter sentences for readability.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should expect manuscripts to:
