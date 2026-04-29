@@ -14,16 +14,15 @@ Prompts substantially influence a model's output, so how they are formatted and 
 This section addresses everything researchers put in place before runs begin, complementing \modelversion, which focuses on model-specific details, and \traces, which covers what happens at runtime.
 
 These guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
-Researchers are not expected to disclose prompts used only for such tasks.
 
 \guidelinesubsubsection{Recommendations}
-
-\textbf{Where to report.} Throughout this section, the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial. Standalone LLMs require limited architectural documentation, while study setups that integrate LLMs with other components, configure agents, or depend on particular context files or tool schemas require more detailed reporting.
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper, including any dependencies on proprietary tools that affect reproducibility.
 Researchers \should explain design decisions and which retrieval mechanisms were implemented (keyword search, semantic similarity matching, rule-based extraction, etc.).
 Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
+
+Standalone LLMs require limited architectural documentation, while study setups that integrate LLMs with other components, configure agents, or depend on particular context files or tool schemas require more detailed reporting. In the topic-specific paragraphs that follow, the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial.
 
 \paragraph{Prompt Reporting:}
 Researchers \must report all prompts used in an empirical study, including instructions, background information, input data, and output indicators.
@@ -52,13 +51,6 @@ If multiple versions of a prompt were tested, researchers \should describe how t
 When dealing with extensive or complex prompt context, researchers \should describe the strategies they used to handle input length constraints (e.g., truncating, summarizing, or splitting prompts into multiple parts).
 Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \should also be documented if applied.
 
-\paragraph{Agent-Based and Complex Systems:}
-If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-4o model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation is usually sufficient.
-For \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, aspects to consider include how the LLM interacts with other components such as databases, external APIs, and frameworks.
-If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
-For agent-based systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must describe \emph{agent behavior traceability} by delineating: (1) \emph{LLM Input/Output}, the internal deliberation, planning, and interpretation performed by the model; (2) \emph{External tool calls}, the agent's explicit invocations of APIs, databases, file systems, or other external services (e.g., via the \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)}); (3) \emph{User or system interactions}, human-in-the-loop feedback, environment responses, or multi-agent communication.
-This separation lets readers attribute task success to the LLM, the external tools, or their interaction; runtime trace-reporting for these components is covered in \traces.
-
 \paragraph{Context Files and Agent Configuration:}
 Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
 Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions automatically included in the context on each call~\cite{mohsenimofidi2026context}.
@@ -73,7 +65,14 @@ The catalog, the wording of descriptions, and the order in which tools are prese
 Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
 Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
 
-\paragraph{Retrieval, Augmentation, and Ensembles:}
+\paragraph{Agentic Systems and Pipelines:}
+If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-5 model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation is usually sufficient.
+For \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, aspects to consider include how the LLM interacts with other components such as databases, external APIs, and frameworks.
+If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
+For agent-based systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must describe \emph{agent behavior traceability} by delineating: (1) \emph{LLM Input/Output}, the internal deliberation, planning, and interpretation performed by the model; (2) \emph{External tool calls}, the agent's explicit invocations of APIs, databases, file systems, or other external services (e.g., via the \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)}); (3) \emph{User or system interactions}, human-in-the-loop feedback, environment responses, or multi-agent communication.
+This separation lets readers attribute task success to the LLM, the external tools, or their interaction; runtime trace-reporting for these components is covered in \traces.
+
+\paragraph{RAG and Ensembles:}
 If retrieval-augmented generation (RAG) or related methods were used (e.g., rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses, including the type of storage (e.g., vector databases, relational databases, knowledge graphs) and how retrieved information was selected.
 Stored data used for context augmentation \should be reported, including data preprocessing, versioning, and update frequency; if not confidential, an anonymized snapshot \should be made available as \supplementarymaterial.
 For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy (e.g., majority voting, weighted averaging, sequential processing).
