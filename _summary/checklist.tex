@@ -89,10 +89,8 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     % G4 Interaction Logs: "Researchers \should report the full interaction logs... as part of their \supplementarymaterial". (For S5 specifically the matrix elevates this to \must.)
     \item \iconS For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as \supplementarymaterial~(G4).
     % G4 Interaction Logs: "For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent... These \should also be reported as \supplementarymaterial".
-    \item \iconS For agentic systems, report tool-call traces (tool name, arguments, result, ordering) as \supplementarymaterial~(G4).
-    % G4 Tool-Call Traces: "Researchers \should report the complete tool-call trace as \supplementarymaterial, including for each call the tool name, arguments, result, and its ordering".
-    \item \iconS Report usage traces showing which skills, context files, sub-agents, and tools were actually picked up during a run as \supplementarymaterial~(G4).
-    % G4 Usage Traces: "Researchers \should report usage traces as \supplementarymaterial showing which skills were invoked, which context files were read or injected, which sub-agents were delegated to, and which tools were called during each run".
+    \item \iconS For agentic systems, report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, sub-agents) were activated~(G4).
+    % G4 Runtime Traces: "Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries". The merged trace covers both per-call detail and artifact activations.
     \item \iconS For agentic systems, report developed plans as \supplementarymaterial if available~(G4).
     % G4 Agentic Plans: "the developed plans \should be reported as \supplementarymaterial if available".
 \end{itemize}

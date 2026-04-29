@@ -30,10 +30,10 @@ G3 & Static artifacts, from system architecture to prompt templates, determine w
 \addlinespace
 % G4 Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself."
 % G4 \iconM line: G4 Study Types - "For \llmusage..., researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information".
-% G4 \iconS line: G4 Recommendations - "Researchers \should report the full interaction logs"; "Researchers \should report the complete tool-call trace"; "Researchers \should report usage traces"; "the developed plans \should be reported".
+% G4 \iconS line: G4 Recommendations - "Researchers \should report the full interaction logs"; "Researchers \should report the complete runtime trace" (broadly defined to cover tool calls and configured-artifact activations); "the developed plans \should be reported".
 G4 & Runtime traces make LLM and agent behavior verifiable despite non-determinism and commercial-tool opacity. &
 \iconM For studies of LLM usage (S5), share full interaction logs subject to privacy constraints.
-\newline \iconS Otherwise, share interaction logs, tool-call traces, usage traces, and plans where feasible. \\
+\newline \iconS Otherwise, share interaction logs, runtime traces, and plans where feasible. \\
 \addlinespace
 % G5 Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % G5 \iconM line: G5 Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".

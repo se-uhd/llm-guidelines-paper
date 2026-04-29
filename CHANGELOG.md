@@ -22,6 +22,7 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 - **G3 / G4:** Clarified phrasing and added concrete examples throughout, covering tool granularity, context files, agent-to-agent communication, plan storage, non-determinism sources, and hosting environments.
 - **G3:** Reordered Recommendations subheadings (universal and common topics first, specialized cases last), renamed two subheadings to *Agentic Systems and Pipelines* and *RAG and Ensembles*, and tightened prose throughout.
 - **G1:** Added a contemporary example declaration alongside the existing Llama 2 quote.
+- **G4:** Merged Tool-Call Traces and Usage Traces into a single *Runtime Traces* concept covering both tool calls and configured-artifact activations, consolidated the privacy fallback and anonymization rule into the relevant paragraphs, and rewrote the Agentic Plans description for concreteness.
 - **Tables:** Reconciled the applicability matrix, reporting checklist, and rationale and recommendations table with the current guideline bodies.
 - **Citations:** Standardized the convention for citing gray literature.
 

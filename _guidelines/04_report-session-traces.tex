@@ -5,7 +5,7 @@ A \emph{session trace} records everything that crosses the LLM boundary or is pr
 
 Two kinds of session trace are important to capture.
 An \emph{interaction log} captures what humans or other software tools sent to the LLM and what the LLM returned.
-A \emph{tool-call trace} captures what the LLM called out to: external APIs, file systems, databases, MCP servers, sub-agents, or other agents. Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
+A \emph{runtime trace} captures what the LLM did at runtime: calls to external tools (APIs, file systems, databases, MCP servers, sub-agents) and activations of configured artifacts (context files, skills). Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically.
 Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching, input preprocessing, and floating-point arithmetic on GPUs~\cite{Chann2023}.
@@ -21,31 +21,21 @@ This section addresses runtime reporting and complements \design, which covers t
 
 \paragraph{Interaction Logs:}
 Researchers \should report the full interaction logs (prompts sent to the LLM and responses returned) as part of their \supplementarymaterial.
-Reporting interaction logs is especially important for studies targeting commercial SaaS solutions.
 For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
 These \should also be reported as \supplementarymaterial so that readers can reconstruct the sequence of exchanges and assess human oversight decisions.
-When full logging is not feasible because of privacy or proprietary constraints, researchers \should provide representative examples or anonymized logs that demonstrate the relevant patterns.
+For traces containing sensitive information, researchers \must anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
 
-\paragraph{Tool-Call Traces:}
-When an LLM calls out to external tools (e.g., subagents, MCP servers, file systems, APIs, databases), the sequence of outbound calls forms a \emph{tool-call trace} distinct from the interaction log.
-Researchers \should report the complete tool-call trace as \supplementarymaterial, including for each call the tool name, arguments, result, and its ordering relative to surrounding interaction-log entries.
-This traceability is essential for determining whether task success is attributable to the LLM's output and tool-calling capabilities, the external tools' functionality, or their interaction patterns; the architectural categorization of these components is covered in \design.
-When full tool-call logging is not feasible because of privacy or proprietary constraints, researchers \should provide representative examples or anonymized traces that demonstrate the agent's decision-making process.
-
-\paragraph{Usage Traces:}
-Static artifacts reported under \design (skills, context files, sub-agents, tool schemas) describe what was \emph{available} to the model, not what the model actually did with them.
-Researchers \should report \emph{usage traces} as \supplementarymaterial showing which skills were invoked, which context files were read or injected, which sub-agents were delegated to, and which tools were called during each run.
-For agents that selectively load context (e.g., on-demand subagent spawning), usage traces let readers distinguish between artifacts that were configured and artifacts that actually influenced a given run.
+\paragraph{Runtime Traces:}
+When an LLM calls out to external tools (subagents, MCP servers, file systems, APIs, databases) or activates configured artifacts (context files, skills, sub-agents reported under \design), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
+Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries.
+This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
 
 \paragraph{Agentic Plans:}
 For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available.
-Plans document the sequence of actions the system chose to pursue and the intermediate goals it set, which is often more informative than the final output alone.
-Storage conventions vary across tools: Claude Code stores plans as Markdown files that users can open and edit in their default editor during a session, whereas other frameworks such as LangGraph keep plans inside the agent's internal execution state.
+In Claude Code, for example, a plan is a short Markdown document the user can open and edit during a session, listing the proposed steps and the files or commands the agent intends to touch.
+Other frameworks such as LangGraph keep plans inside the agent's internal execution state.
 
-\paragraph{Supplementary Material and Anonymization:}
-For complete reproducibility, researchers \must make the supplementary traces publicly available, subject to privacy and confidentiality constraints.
-If complete traces cannot be included, researchers \should provide summaries and representative examples.
-For traces containing sensitive information, researchers \must anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
+All reported traces \must be made publicly available as \supplementarymaterial, subject to privacy and confidentiality constraints. When full trace logging is not feasible, researchers \should provide representative examples or anonymized traces.
 
 \guidelinesubsubsection{Example(s)}
 
@@ -56,7 +46,7 @@ An example of reporting full interaction logs is the study by \citeauthor{ronank
 Unlike human participant conversations, which often cannot be reported because of confidentiality, LLM interaction logs can be shared.
 This enables reproduction studies, tracking of response changes over time or across model versions, and secondary research on LLM consistency for specific SE tasks.
 
-For agentic systems, reporting tool-call traces alongside interaction logs lets readers attribute task outcomes to the right component: the model, the tool, or the orchestration pattern.
+For agentic systems, reporting runtime traces alongside interaction logs lets readers attribute task outcomes to the right component: the model, the tool, or the orchestration pattern.
 Usage traces complement the static configuration reported under \design by showing which of the configured artifacts actually influenced a given run.
 
 \guidelinesubsubsection{Challenges}
@@ -74,9 +64,9 @@ Runtime trace reporting requirements depend heavily on the study type and on the
 
 For \llmusage, especially observational studies targeting commercial tools, researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information.
 If complete interaction logs cannot be shared (e.g., because they contain confidential information), the prompts and responses \must at least be summarized and described in the \paper.
-For \newtools that use agentic execution, researchers \should report tool-call traces and usage traces for the runs used to evaluate the tool.
-For \benchmarkingtasks that use agent-based harnesses, researchers \should report tool-call traces for representative runs, letting readers understand how task success depends on the agent's decision sequence rather than the model's raw output alone.
-For \annotators, \judges, \synthesis, and \subjects, when the research setup involves multi-turn interaction or agentic orchestration, researchers \should report the corresponding interaction logs and, where applicable, tool-call traces.
+For \newtools that use agentic execution, researchers \should report runtime traces for the runs used to evaluate the tool.
+For \benchmarkingtasks that use agent-based harnesses, researchers \should report runtime traces for representative runs, letting readers understand how task success depends on the agent's decision sequence rather than the model's raw output alone.
+For \annotators, \judges, \synthesis, and \subjects, when the research setup involves multi-turn interaction or agentic orchestration, researchers \should report the corresponding interaction logs and, where applicable, runtime traces.
 
 \guidelinesubsubsection{Advice for Reviewers}
 
