@@ -27,6 +27,7 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 - **G5:** Tightened slop phrasings ("it is essential to", "The preferred method is to", "is essentially"), fixed a missing colon in the *Agentic Tools* subheading, rephrased a lowercase prose "should" to avoid the modal, and removed leftover commented-out content.
 - **G8:** Fixed a missing colon in the *Mitigation Strategies* subheading, removed leftover AI-edit comments, tightened several slop phrasings ("it is important to", "make every effort", "faces analogous conditions", "tension field"), elevated a lowercase prose "should" to RFC 2119 `\should`, and flipped a passive-voice MUST to active.
 - **G2:** Tightened slop phrasings ("always essential", "always report", "Our suggestion is to", "However, in fact", "Our guidelines additionally suggest to"), elevated "should not" to `\shouldnot` for the temperature-0 caveat, removed a commented-out leftover sentence, and replaced an "is essential" assertion with a cross-reference to G3 (prompts) and G4 (interaction logs).
+- **G6:** Removed a commented-out leftover clause and tightened two wordy sentences in the Benefits section.
 - **Tables:** Reconciled the applicability matrix, reporting checklist, and rationale and recommendations table with the current guideline bodies.
 - **Citations:** Standardized the convention for citing gray literature.
 
