@@ -24,6 +24,7 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 - **G1:** Added a contemporary example declaration alongside the existing Llama 2 quote.
 - **G4:** Merged Tool-Call Traces and Usage Traces into a single *Runtime Traces* concept covering both tool calls and configured-artifact activations, consolidated the privacy fallback and anonymization rule into the relevant paragraphs, and rewrote the Agentic Plans description for concreteness.
 - **G7:** Removed editorial cruft (AI-edit comments and a commented-out paragraph), tightened slop phrasings ("play an important role", "it is important to fully understand", "of course"), elevated a lowercase "should" to RFC 2119 `\should`, and tightened the opening Challenges paragraph.
+- **G5:** Tightened slop phrasings ("it is essential to", "The preferred method is to", "is essentially"), fixed a missing colon in the *Agentic Tools* subheading, rephrased a lowercase prose "should" to avoid the modal, and removed leftover commented-out content.
 - **Tables:** Reconciled the applicability matrix, reporting checklist, and rationale and recommendations table with the current guideline bodies.
 - **Citations:** Standardized the convention for citing gray literature.
 
