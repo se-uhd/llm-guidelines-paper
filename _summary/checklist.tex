@@ -40,7 +40,7 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 \noindent\textit{System and Prompt Design}
 \begin{itemize}[label=$\square$]
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
-    % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; for complex systems "the \paper \must contain a high-level description of the system architecture".
+    % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; the section intro states the general rule that "the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial".
     \item \iconM Describe any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md}) in the \paper~(G3).
     % G3 Context Files: "Researchers \must describe which context-file mechanisms were used in their setup".
     \item \iconM Summarize which tools and skills were exposed to the model in the \paper~(G3).
@@ -56,13 +56,13 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconM For tools using retrieval or augmentation methods, describe how data is retrieved, stored, and integrated~(G3).
     % G3 Retrieval/Augmentation: "researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses".
     \item \iconM For dynamically generated prompts, document the generation process thoroughly~(G3).
-    % G3 Dynamic Prompts: "When prompts are generated dynamically..., the process \must be thoroughly documented".
+    % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
     \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G3).
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
     \item \iconS For ensemble architectures, explain the coordination logic between models in the \paper~(G3).
-    % G3 Ensembles: "researchers \should describe the architecture that connects the models" and the coordination logic; "the \paper \must at least contain a high-level description, and details can be reported in the \supplementarymaterial". Coordination-logic specifics are S.
+    % G3 Ensembles: "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split is stated in the section intro. Coordination-logic specifics are S.
     \item \iconS Justify design decisions~(G3).
-    % G3 Recommendations: "Researchers \should explain design decisions, particularly how the models were hosted and accessed... and which retrieval mechanisms were implemented".
+    % G3 Recommendations: "Researchers \should explain design decisions and which retrieval mechanisms were implemented"; hosting is covered by a separate \should clause in the same paragraph.
     \item \iconS Where legally possible, release the source code of the implementation under an open-source license~(G3).
     % G3 Recommendations: "Where legally possible..., researchers \should release the source code of their implementation under an open-source license".
     \item \iconS Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(G3).
@@ -75,8 +75,8 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     % G3 Dynamic/User-Authored Prompts: "For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed".
     \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G3).
     % G3 Supplementary Material: "If the complete set of prompts cannot be included in the \paper, researchers \should provide summaries and representative examples".
-    \item \iconS Report prompt revisions and pilot testing insights~(G3).
-    % G3 Prompt Development: "Researchers \should report any instances in which LLMs were used to suggest prompt refinements"; "If such testing was conducted, researchers \should summarize key insights".
+    \item \iconS Report prompt evolution and any LLM-suggested refinements~(G3).
+    % G3 Prompt Development: "researchers \should at least summarize the prompt evolution"; "Researchers \should report any instances in which LLMs were used to suggest prompt refinements".
     \item \iconS Include context-file contents as \supplementarymaterial~(G3).
     % G3 Context Files: researchers "\should publish the full contents of those files as \supplementarymaterial".
     \item \iconS Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(G3).
@@ -154,7 +154,7 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(G8).
     % G8 Internal Validity / Construct Validity: "researchers \must discuss potential data leakage effects and their impact on results"; "researchers \must discuss how they ensured quality of subjective results".
     \item \iconM Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(G3).
-    % G3 Recommendations: "Researchers \mustnot omit critical architectural details that could affect reproducibility"; G3 Challenges: "For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations".
+    % G3 Recommendations: "Researchers \must clearly describe the tool architecture..., including any dependencies on proprietary tools that affect reproducibility"; G3 Challenges: "For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations".
     \item \iconM Transparently report study limitations, including the impact of non-determinism and generalizability constraints~(G8).
     % G8 Recommendations / Reliability: "Researchers \must make every effort to present the limitations of their work clearly without defensiveness or obfuscation"; "Researchers \must discuss the measures taken to increase reliability and reproducibility".
     \item \iconM Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences~(G8).
