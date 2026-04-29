@@ -25,32 +25,6 @@ Researchers \should explain design decisions and which retrieval mechanisms were
 Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
 
-\paragraph{Agent-Based and Complex Systems:}
-If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-4o model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation is usually sufficient.
-For \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, aspects to consider include how the LLM interacts with other components such as databases, external APIs, and frameworks.
-If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
-For agent-based systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must describe \emph{agent behavior traceability} by delineating: (1) \emph{LLM Input/Output}, the internal deliberation, planning, and interpretation performed by the model; (2) \emph{External tool calls}, specific invocations of APIs, databases, file systems, or other external services the agent explicitly triggers (e.g., via the \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)}); (3) \emph{User or system interactions}, human-in-the-loop feedback, environment responses, or multi-agent communication.
-This separation lets readers attribute task success to the LLM, the external tools, or their interaction; runtime trace-reporting for these components is covered in \traces.
-
-\paragraph{Retrieval, Augmentation, and Ensembles:}
-If \emph{retrieval or augmentation methods} were used (e.g., retrieval-augmented generation (RAG), rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses, including the type of storage (e.g., vector databases, relational databases, knowledge graphs) and how retrieved information is selected.
-Stored data used for context augmentation \should be reported, including data preprocessing, versioning, and update frequency; if not confidential, an anonymized snapshot \should be made available as \supplementarymaterial.
-For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy (e.g., majority voting, weighted averaging, sequential processing).
-
-\paragraph{Context Files and Agent Configuration:}
-Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
-Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions automatically included in the context on each call~\cite{mohsenimofidi2026context}.
-Researchers \must describe which context-file mechanisms were used and \should publish the full contents as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
-Because context files are version-controlled, their evolution across a study is recoverable from the project's git history and from the runtime traces reported under \traces.
-
-\paragraph{Tool Catalog and Skill Definitions:}
-Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
-Tools vary in granularity, from one operation per tool to generic execution interfaces.
-Claude Code, for example, does not register individual command-line utilities but defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
-The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
-Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
-Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
-
 \paragraph{Prompt Reporting:}
 Researchers \must report all prompts used in an empirical study, including instructions, background information, input data, and output indicators.
 The complete set \must be made publicly available as \supplementarymaterial; when the paper cannot include all prompts in full, it \should provide summaries and representative examples.
@@ -77,6 +51,32 @@ If multiple versions of a prompt were tested, researchers \should describe how t
 
 When dealing with extensive or complex prompt context, researchers \should describe the strategies they used to handle input length constraints (e.g., truncating, summarizing, or splitting prompts into multiple parts).
 Token optimization measures, such as simplifying code formatting or removing unnecessary comments, \should also be documented if applied.
+
+\paragraph{Agent-Based and Complex Systems:}
+If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-4o model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation is usually sufficient.
+For \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, aspects to consider include how the LLM interacts with other components such as databases, external APIs, and frameworks.
+If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
+For agent-based systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must describe \emph{agent behavior traceability} by delineating: (1) \emph{LLM Input/Output}, the internal deliberation, planning, and interpretation performed by the model; (2) \emph{External tool calls}, the agent's explicit invocations of APIs, databases, file systems, or other external services (e.g., via the \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)}); (3) \emph{User or system interactions}, human-in-the-loop feedback, environment responses, or multi-agent communication.
+This separation lets readers attribute task success to the LLM, the external tools, or their interaction; runtime trace-reporting for these components is covered in \traces.
+
+\paragraph{Context Files and Agent Configuration:}
+Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
+Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions automatically included in the context on each call~\cite{mohsenimofidi2026context}.
+Researchers \must describe which context-file mechanisms were used and \should publish the full contents as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
+Because context files are version-controlled, their evolution across a study is recoverable from the project's git history and from the runtime traces reported under \traces.
+
+\paragraph{Tool Catalog and Skill Definitions:}
+Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
+Tools vary in granularity, from one operation per tool to generic execution interfaces.
+Claude Code, for example, does not register individual command-line utilities but defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
+The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
+Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
+Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
+
+\paragraph{Retrieval, Augmentation, and Ensembles:}
+If retrieval-augmented generation (RAG) or related methods were used (e.g., rule-based retrieval, structured query generation, or hybrid approaches), researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses, including the type of storage (e.g., vector databases, relational databases, knowledge graphs) and how retrieved information was selected.
+Stored data used for context augmentation \should be reported, including data preprocessing, versioning, and update frequency; if not confidential, an anonymized snapshot \should be made available as \supplementarymaterial.
+For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy (e.g., majority voting, weighted averaging, sequential processing).
 
 \guidelinesubsubsection{Example(s)}
 

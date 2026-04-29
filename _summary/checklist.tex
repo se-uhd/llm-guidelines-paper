@@ -42,7 +42,7 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
     % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; the section intro states the general rule that "the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial".
     \item \iconM Describe any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md}) in the \paper~(G3).
-    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used in their setup".
+    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
     \item \iconM Summarize which tools and skills were exposed to the model in the \paper~(G3).
     % G3 Tool Catalog: "Researchers \must summarize in the \paper which tools and skills were exposed to the model".
     \item \iconM Specify whether zero-shot, one-shot, or few-shot prompting was used in the \paper~(G3).
@@ -53,8 +53,8 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations".
     \item \iconM Specify prompt reuse across models and configurations~(G3).
     % G3 Prompt Development: "researchers \must make clear which prompts were used for which models in which versions and with which configuration".
-    \item \iconM For tools using retrieval or augmentation methods, describe how data is retrieved, stored, and integrated~(G3).
-    % G3 Retrieval/Augmentation: "researchers \must describe how external data is retrieved, stored, and integrated into the LLM's responses".
+    \item \iconM For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(G3).
+    % G3 Retrieval/Augmentation: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
     \item \iconM For dynamically generated prompts, document the generation process thoroughly~(G3).
     % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
     \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G3).
@@ -72,9 +72,9 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconS Document input handling and token optimization strategies when prompts are long or complex~(G3).
     % G3 Prompting Strategy: "researchers \should describe the strategies they used to handle input length constraints"; "Token optimization measures... \should also be documented".
     \item \iconS For user-authored prompts, describe how they were collected and analyzed~(G3).
-    % G3 Dynamic/User-Authored Prompts: "For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed".
+    % G3 Prompt Reporting: "For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed".
     \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(G3).
-    % G3 Supplementary Material: "If the complete set of prompts cannot be included in the \paper, researchers \should provide summaries and representative examples".
+    % G3 Prompt Reporting: "when the paper cannot include all prompts in full, it \should provide summaries and representative examples".
     \item \iconS Report prompt evolution and any LLM-suggested refinements~(G3).
     % G3 Prompt Development: "researchers \should at least summarize the prompt evolution"; "Researchers \should report any instances in which LLMs were used to suggest prompt refinements".
     \item \iconS Include context-file contents as \supplementarymaterial~(G3).

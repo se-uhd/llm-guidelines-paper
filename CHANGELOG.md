@@ -20,7 +20,7 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 - **G3:** Demoted several items from MUST to SHOULD after an internal discussion about the reporting burden.
 - **G5:** Reworded the clause for *LLMs for Tools* (S6) to state the recommendation explicitly as a SHOULD.
 - **G3 / G4:** Clarified phrasing and added concrete examples throughout, covering tool granularity, context files, agent-to-agent communication, plan storage, non-determinism sources, and hosting environments.
-- **G3:** Tightened prose without changing recommendations.
+- **G3:** Reordered Recommendations subheadings (prompts and strategy now precede agent and RAG specifics) and tightened prose throughout.
 - **Tables:** Reconciled the applicability matrix, reporting checklist, and rationale and recommendations table with the current guideline bodies.
 - **Citations:** Standardized the convention for citing gray literature.
 
