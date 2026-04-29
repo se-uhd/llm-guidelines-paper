@@ -40,7 +40,7 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 \noindent\textit{System and Prompt Design}
 \begin{itemize}[label=$\square$]
     \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(G3).
-    % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; the section intro states the general rule that "the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial".
+    % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; for the topic-specific paragraphs that follow, "the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial".
     \item \iconM Describe any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md}) in the \paper~(G3).
     % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
     \item \iconM Summarize which tools and skills were exposed to the model in the \paper~(G3).
@@ -48,25 +48,25 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     \item \iconM Specify whether zero-shot, one-shot, or few-shot prompting was used in the \paper~(G3).
     % G3 Prompting Strategy: "Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was used".
     \item \iconM If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(G3).
-    % G3 Agent-Based Systems: "researchers \must describe its exact architecture, including the agents' roles..., whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used".
+    % G3 Agentic Systems and Pipelines: "researchers \must describe its exact architecture, including the agents' roles..., whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used".
     \item \iconM Report hosting, hardware setup, and latency implications~(G3).
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations".
     \item \iconM Specify prompt reuse across models and configurations~(G3).
     % G3 Prompt Development: "researchers \must make clear which prompts were used for which models in which versions and with which configuration".
     \item \iconM For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(G3).
-    % G3 Retrieval/Augmentation: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
+    % G3 RAG and Ensembles: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
     \item \iconM For dynamically generated prompts, document the generation process thoroughly~(G3).
     % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
     \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(G3).
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
     \item \iconS For ensemble architectures, explain the coordination logic between models in the \paper~(G3).
-    % G3 Ensembles: "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split is stated in the section intro. Coordination-logic specifics are S.
+    % G3 RAG and Ensembles: "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split applies to the topic-specific paragraphs. Coordination-logic specifics are S.
     \item \iconS Justify design decisions~(G3).
     % G3 Recommendations: "Researchers \should explain design decisions and which retrieval mechanisms were implemented"; hosting is covered by a separate \should clause in the same paragraph.
     \item \iconS Where legally possible, release the source code of the implementation under an open-source license~(G3).
     % G3 Recommendations: "Where legally possible..., researchers \should release the source code of their implementation under an open-source license".
     \item \iconS Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(G3).
-    % G3 Retrieval/Augmentation: "Stored data used for context augmentation \should be reported, including details on data preprocessing, versioning, and update frequency".
+    % G3 RAG and Ensembles: "Stored data used for context augmentation \should be reported, including details on data preprocessing, versioning, and update frequency".
     \item \iconS Describe prompt development rationale and selection process~(G3).
     % G3 Prompt Development: "Researchers \should explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies"; "If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated".
     \item \iconS Document input handling and token optimization strategies when prompts are long or complex~(G3).
