@@ -1,12 +1,12 @@
 \guidelinesubsubsection{Rationale}
 
 When using LLMs for empirical studies in SE, researchers face unique challenges and potential limitations that can influence the validity, reliability, and reproducibility of their findings~\cite{sallou2024breaking}.
-It is important to openly discuss these limitations and explain how their impact was mitigated.
+Researchers must openly discuss these limitations and explain how their impact was mitigated.
 These limitations are relative to current LLM capabilities and tool architectures; speculating about future improvements is beyond the scope of a paper's limitation section.
-Nevertheless, risk management and threat mitigation should be planned during study design, not as an afterthought.
+Nevertheless, risk management and threat mitigation \should be planned during study design, not as an afterthought.
 
 \guidelinesubsubsection{Recommendations}
-Researchers \must make every effort to present the limitations of their work clearly without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g. data leakage), reliability (i.e. non-determinism), and reproducibility (e.g. resource requirements). 
+Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g. data leakage), reliability (i.e. non-determinism), and reproducibility (e.g. resource requirements). 
 When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings.
 LLM-based studies may involve many kinds of generalization including the following:
 \begin{enumerate}
@@ -49,7 +49,7 @@ The primary threats to external validity are:
     \item Cross-time instability (model evolution). Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411}.
 \end{itemize}
 
-Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time)~\cite{DBLP:journals/corr/abs-2307-09009}. The limitations and mitigations used for external validity \must be discussed by the researchers.
+Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time)~\cite{DBLP:journals/corr/abs-2307-09009}. Researchers \must discuss the limitations and mitigations of external validity.
 
 \paragraph{Reliability \& Reproducibility:}
 The primary threats to reliability and reproducibility are:
@@ -61,7 +61,7 @@ The primary threats to reliability and reproducibility are:
 
 Researchers \must discuss the measures taken to increase reliability and reproducibility.
 However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through \emph{credibility}, \emph{transferability}, \emph{dependability}, and \emph{confirmability}~\cite{guba1981criteria}.
-SaaS-based LLM research faces analogous conditions, as providers frequently deprecate model versions without guaranteeing stable behavior.
+The same applies to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
 
 \paragraph{Ethical \& Regulatory Boundaries:}
 The primary concerns for ethical and regulatory matters are:
@@ -76,12 +76,12 @@ Studies involving sensitive data \must discuss data governance mechanisms tailor
 \paragraph{Environmental \& Sustainability Constraints:}
 \begin{itemize}
     \item Energy consumption. With growing model size, the environmental impact of experiments with LLMs increases. Considering the environmental impact in the study design is important given the substantial energy costs of LLM experiments~\cite{strubell2019energy}.
-    \item Trade-off between repetition and sustainability. Increased reliability through repetition and the aim of cautious energy consumption pose an inherent tension field to navigate during the study design.
+    \item Trade-off between repetition and sustainability. Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 \end{itemize}
 
-The study findings \should be discussed in the context of the resource-intensiveness of LLMs to justify the increased resource consumption over traditional approaches.
+Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches.
 
-\paragraph{Mitigation Strategies}
+\paragraph{Mitigation Strategies:}
 The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
 
 \begin{itemize}
@@ -107,8 +107,6 @@ For \llmusage, researchers \must discuss generalizability constraints across dif
 For \newtools, researchers \must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates on tool behavior, and limitations of the evaluation setup.
 For \benchmarkingtasks, researchers \must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes to real-world tasks.
 
-%% Suggestion: Consider softening "perfunctory or defensive" → "formulaic or insufficiently engaged with the study's specific threats".
-%% Suggestion: Consider adding a bridging sentence connecting back to the "request additions first" principle used in other guidelines.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should verify that the limitation section is comprehensive and appropriate for the specific study type, checking that:
