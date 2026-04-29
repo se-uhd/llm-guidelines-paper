@@ -94,7 +94,7 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Cross-reference macros:** Each study type and guideline has a shorthand command that creates a hyperlinked italic reference to the corresponding section. All accept an optional `[id]` argument for in-text identifiers. Defined in `shared-header.tex` with `\ifpaper` conditionals.
 - Study types (S1–S7): `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
-- Guidelines (G1–G8): `\usagerole`, `\modelversion`, `\toolarchitecture`, `\prompts`, `\humanvalidation`, `\openllm`, `\benchmarksmetrics`, `\limitationsmitigations`
+- Guidelines (G1–G8): `\usagerole`, `\modelversion`, `\design`, `\traces`, `\benchmarksmetrics`, `\openllm`, `\humanvalidation`, `\limitationsmitigations`
 - Umbrella: `\scope`, `\studytypes`, `\guidelines`, `\llmsforresearcher`, `\llmsforengineers`
 
 **Inline quotes:** `\enq{...}` renders typographically correct quotes with italics.
