@@ -1,12 +1,12 @@
 \guidelinesubsubsection{Rationale}
 
 LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation. 
-This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the \design section addresses system-level integration and the authored artifacts (including prompts) that shape each call, the information outlined here is always essential for reproducibility whenever an LLM is involved.
+This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the \design section addresses system-level integration and the authored artifacts (including prompts) that shape each call, the information outlined here is essential for reproducibility whenever an LLM is involved.
 
 \guidelinesubsubsection{Recommendations}
 
 Researchers \must document in the \paper which model or tool version they used in their study, along with the date when the experiments were carried out and the configured parameters that affect output generation.
-Since default values might change over time, researchers \should always report all configuration values, even if they used the defaults.
+Since default values might change over time, researchers \should report all configuration values, even if they used the defaults.
 Checksums and fingerprints \should be reported since they identify specific versions and configurations.
 Depending on the study context, other properties such as the context window size (number of tokens) \should be reported.
 When using quantized models, researchers \should report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ), as different quantization approaches produce different outputs, affecting both output quality and reproducibility.
@@ -40,7 +40,7 @@ For fine-tuned models, additional recommendations apply:
 \end{enumerate*}
 
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information.
-Our suggestion is to report what is available and openly acknowledge limitations that hinder reproducibility.
+For these tools, researchers \should report what is available and openly acknowledge limitations that hinder reproducibility.
 
 \guidelinesubsubsection{Example(s)}
 
@@ -59,7 +59,7 @@ Based on the documentation that OpenAI and Azure provide~\cite{OpenAI25, Azure25
 ``We access OpenAI Codex via its closed beta API, using the code-davinci-002 model. For Codex, we set the temperature to 0.7, and the maximum number of tokens to 256.''
 \end{quote}
 
-Our guidelines additionally suggest to report a checksum/fingerprint and exact dates, but otherwise this example is close to our recommendations. 
+Our guidelines additionally recommend reporting a checksum/fingerprint and exact dates; otherwise, this example is close to our recommendations.
 
 \citeauthor{DBLP:conf/icsa/DharVV24}~\cite{DBLP:conf/icsa/DharVV24} assessed whether LLMs can generate architectural design decisions, detailing the system architecture and the LLM's role within it.
 They provide information on the fine-tuning approach and datasets, including the source of architectural decision records, preprocessing methods, and data selection criteria.
@@ -71,20 +71,19 @@ Given suitable hardware, running the model is then as easy as executing the foll
 \guidelinesubsubsection{Benefits}
 
 Reporting this information is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, reporting the information outlined in this guideline helps researchers come as close as possible to that standard.
-%However, that information alone is generally not sufficient.
 
 \guidelinesubsubsection{Challenges}
 
 Different model providers and modes of operating the models allow for varying degrees of information.
 For example, OpenAI provides a model version and a system fingerprint describing the backend configuration, which can also influence the output.
-However, in fact, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint.
+However, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint.
 As a beta feature, OpenAI lets users set a seed parameter to receive ``(mostly) consistent output''~\cite{OpenAI23}.
 However, the seed value does not allow for full reproducibility and the fingerprint changes frequently. 
 Although, as motivated above, open models significantly simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see \href{https://github.com/ollama/ollama/issues/5321}{GitHub issue for Llama3}).
 Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses~\cite{holtzman2020curious}.
 
 Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
-Researchers should therefore not treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
+Researchers \shouldnot treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
 When a temperature of 0 is chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.
 %\comment{Should we also address how API rate limits and usage constraints can affect experiments?}
 
@@ -96,7 +95,7 @@ Depending on the specific study type, researchers \should provide additional inf
 
 For example, when \llmusage by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers \must be as specific as possible in describing their study setup.
 The configured model name, version, and the date when the experiment was conducted \must always be reported.
-In those cases, reporting other aspects, such as prompts and interaction logs, is essential.
+See \design for prompt reporting and \traces for interaction logs.
 
 For \annotators, \judges, and \synthesis, researchers \must report the model configuration used for the respective annotation, judging, or synthesis tasks, including temperature and other sampling parameters that affect output variability.
 For \subjects, researchers \must report any persona-related configuration settings and parameters that shape the simulated behavior.
