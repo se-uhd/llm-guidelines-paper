@@ -97,30 +97,30 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 
 \noindent\textit{Human Validation}
 \begin{itemize}[label=$\square$]
-    \item \iconM If using human validation, define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper~(G5).
-    % G5 Study Design Considerations: "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate".
-    \item \iconM When developing or adapting measurement instruments, share them~(G5).
-    % G5 Study Design Considerations: "When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments".
-    \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(G5).
-    % G5 Recommendations: "researchers \should consider human validation early in the study design, not as an afterthought"; "Researchers \should use established reference models to compare humans with LLMs".
-    \item \iconS Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(G5).
-    % G5 Subjective Judgment and Agreement: "the LLM output \should be evaluated against judgments aggregated from multiple human judges, and researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
-    \item \iconS Discuss and, where feasible, control for confounding factors~(G5).
-    % G5 Subjective Judgment and Agreement: "Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise)". Power analysis is intentionally excluded here: G5 source uses plain "may" ("Where applicable, researchers may perform a power analysis...") and the next sentence explicitly notes "limited established guidance specific to determining sample sizes for LLM-human comparisons" - so it does not warrant a \should-level checklist item.
+    \item \iconM If using human validation, define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper~(G7).
+    % G7 Study Design Considerations: "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate".
+    \item \iconM When developing or adapting measurement instruments, share them~(G7).
+    % G7 Study Design Considerations: "When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments".
+    \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(G7).
+    % G7 Recommendations: "researchers \should consider human validation early in the study design, not as an afterthought"; "Researchers \should use established reference models to compare humans with LLMs".
+    \item \iconS Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(G7).
+    % G7 Subjective Judgment and Agreement: "the LLM output \should be evaluated against judgments aggregated from multiple human judges, and researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
+    \item \iconS Discuss and, where feasible, control for confounding factors~(G7).
+    % G7 Subjective Judgment and Agreement: "Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise)". Power analysis is intentionally excluded here: G7 source uses plain "may" ("Where applicable, researchers may perform a power analysis...") and the next sentence explicitly notes "limited established guidance specific to determining sample sizes for LLM-human comparisons" - so it does not warrant a \should-level checklist item.
 \end{itemize}
 
 \noindent\textit{Benchmarks and Metrics}
 \begin{itemize}[label=$\square$]
-    \item \iconM Justify all benchmark and metric choices in the \paper~(G7).
-    % G7 Recommendations: researchers "\must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study".
-    \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(G7).
-    % G7 Recommendations: "researchers \must motivate why they chose a certain metric or variant thereof for their particular study"; "Prior adoption alone does not constitute sufficient justification".
+    \item \iconM Justify all benchmark and metric choices in the \paper~(G5).
+    % G5 Recommendations: researchers "\must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study".
+    \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(G5).
+    % G5 Recommendations: "researchers \must motivate why they chose a certain metric or variant thereof for their particular study"; "Prior adoption alone does not constitute sufficient justification".
     \item \iconS Include an open LLM as a baseline when using commercial models and report inter-model agreement~(G6).
     % G6 Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement".
-    \item \iconS Summarize benchmark structure, task types, and limitations~(G7).
-    % G7 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)".
-    \item \iconS Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics~(G7).
-    % G7 Recommendations: "researchers \should justify their chosen number of repetitions, for example, through a power analysis... or by monitoring the convergence of descriptive statistics".
+    \item \iconS Summarize benchmark structure, task types, and limitations~(G5).
+    % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)".
+    \item \iconS Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics~(G5).
+    % G5 Recommendations: "researchers \should justify their chosen number of repetitions, for example, through a power analysis... or by monitoring the convergence of descriptive statistics".
 \end{itemize}
 
 \noindent\textit{Reproducibility, Ethics, and Resources}
@@ -137,14 +137,14 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label=$\square$]
-    \item \iconM If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(G7).
-    % G7 Recommendations: "If comparing models or tools, researchers \must use appropriate inferential statistics... rather than relying solely on differences in means or other summary statistics".
-    \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(G7).
-    % G7 Recommendations: "Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance".
-    \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(G7).
-    % G7 Recommendations: "researchers \should check whether a less resource-intensive approach... can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics".
-    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(G7).
-    % G7 Recommendations: "researchers \should report established metrics whenever possible, as this allows secondary research. They can report additional metrics".
+    \item \iconM If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(G5).
+    % G5 Recommendations: "If comparing models or tools, researchers \must use appropriate inferential statistics... rather than relying solely on differences in means or other summary statistics".
+    \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(G5).
+    % G5 Recommendations: "Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance".
+    \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(G5).
+    % G5 Recommendations: "researchers \should check whether a less resource-intensive approach... can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics".
+    \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(G5).
+    % G5 Recommendations: "researchers \should report established metrics whenever possible, as this allows secondary research. They can report additional metrics".
 \end{itemize}
 
 \paragraph{\textbf{Limitations and Threats to Validity}}

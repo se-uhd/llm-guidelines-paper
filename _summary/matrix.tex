@@ -60,15 +60,15 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % S6 newtools: "should report runtime traces for the runs used to evaluate the tool" (for agentic execution)
   & \iconS % S7 benchmarkingtasks: "should report runtime traces for representative runs" (for agent-based harnesses)
   \\
-% G5 (Human Validation): "applies to all study types, although the need for human validation varies"
-\hyperref[sec:use-human-validation-for-llm-outputs]{G5: Human Valid.}
-  & \iconS % S1 annotators: "should validate LLM-generated annotations against human annotators"
-  & \iconS % S2 judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"
-  & \iconS % S3 synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"
-  & \iconS % S4 subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"
-  & \iconS % S5 llmusage: "should carefully reflect on the validity of their evaluation criteria and validate subjective assessments with human experts"
-  & \iconS % S6 newtools: "For \newtools whose output is supposed to match human expectations, researchers \should validate the LLM output against human judgment"
-  & \iconS % S7 benchmarkingtasks: "should employ human validation when creating or adapting new benchmarks"
+% G5 (Benchmarks and Metrics): "must be followed for all study types that automatically evaluate the performance of LLMs or LLM-based tools"
+\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{G5: Benchmarks}
+  & \iconM % S1 annotators: "must justify their metric choice, explaining what aspects of the task it captures together with known limitations"
+  & \iconS % S2 judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
+  & \iconS % S3 synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
+  & \iconS % S4 subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
+  & \iconS % S5 llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
+  & \iconS % S6 newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
+  & \iconM % S7 benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics"
   \\
 % G6 (Open LLM Baseline): "applies primarily to study types in which the researcher controls which LLM is used"
 \hyperref[sec:use-an-open-llm-as-a-baseline]{G6: Open LLM}
@@ -80,15 +80,15 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % S6 newtools: "should use an open LLM as a baseline whenever it is technically feasible"
   & \iconM % S7 benchmarkingtasks: "an open LLM must be one of the models under evaluation"
   \\
-% G7 (Benchmarks and Metrics): "must be followed for all study types that automatically evaluate the performance of LLMs or LLM-based tools"
-\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{G7: Benchmarks}
-  & \iconM % S1 annotators: "must justify their metric choice, explaining what aspects of the task it captures together with known limitations"
-  & \iconS % S2 judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
-  & \iconS % S3 synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
-  & \iconS % S4 subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
-  & \iconS % S5 llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
-  & \iconS % S6 newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
-  & \iconM % S7 benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics"
+% G7 (Human Validation): "applies to all study types, although the need for human validation varies"
+\hyperref[sec:use-human-validation-for-llm-outputs]{G7: Human Valid.}
+  & \iconS % S1 annotators: "should validate LLM-generated annotations against human annotators"
+  & \iconS % S2 judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"
+  & \iconS % S3 synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"
+  & \iconS % S4 subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"
+  & \iconS % S5 llmusage: "should carefully reflect on the validity of their evaluation criteria and validate subjective assessments with human experts"
+  & \iconS % S6 newtools: "For \newtools whose output is supposed to match human expectations, researchers \should validate the LLM output against human judgment"
+  & \iconS % S7 benchmarkingtasks: "should employ human validation when creating or adapting new benchmarks"
   \\
 % G8 (Limitations and Mitigations): "Researchers must follow this guideline for all study types."
 \hyperref[sec:report-limitations-and-mitigations]{G8: Limitations}
