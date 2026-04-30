@@ -40,7 +40,7 @@ For such tools, it makes sense to separate textual output (e.g., file changes) f
 When evaluating agentic tools, researchers \should assess the feedback that users provided for proposed changes, report statistics on how frequently they accepted the content, and how they modified it.
 Agentic human-in-the-loop interaction is a built-in human validation, with larger degrees of freedom than traditional experiments that use LLMs directly.
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 \citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using model-to-model agreement as an initial screening criterion (with a threshold of $\alpha>0.5$) and model confidence for sample-level decisions. However, their threshold is well below the levels generally considered acceptable for inter-rater agreement.
 \citeauthor{Krippendorff2018} recommends discarding data with $\alpha<0.667$, considers $0.667 \leq \alpha < 0.8$ sufficient only for tentative conclusions, and requires $\alpha \geq 0.8$ for reliable data~\cite{Krippendorff2018}. Researchers adopting similar screening approaches should apply thresholds consistent with these established standards. Notably, while three LLMs exhibited higher inter-model agreement than human annotators on some tasks, human-model agreement remained low on others.
