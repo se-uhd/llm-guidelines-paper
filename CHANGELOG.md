@@ -11,22 +11,22 @@ This release accompanies the EMSE minor revision. Two independent threads: Revie
 
 ### Added
 
-- **G5:** Construct-validity recommendations: SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks; pointer to HOW2BENCH and Bean et al.'s checklists.
-- **G5:** For ratings that vary across raters or runs (human raters, LLM-as-judge), authors SHOULD report rating distributions per item rather than only point estimates.
-- **G7:** For value-laden or culturally contingent constructs, authors SHOULD describe rater demographics beyond expertise.
-- **G4:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
+- **Benchmarks:** Construct-validity recommendations: SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks; pointer to HOW2BENCH and Bean et al.'s checklists.
+- **Benchmarks:** For ratings that vary across raters or runs (human raters, LLM-as-judge), authors SHOULD report rating distributions per item rather than only point estimates.
+- **Human Validation:** For value-laden or culturally contingent constructs, authors SHOULD describe rater demographics beyond expertise.
+- **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 
 ### Changed
 
 - **RFC 2119 keywords:** Lowercase in body text (paper plain, website bold).
-- **Matrix:** Column headers replaced S1–S7 with short names (Annotator, Judge, Synthesis, Subject, Usage, Tools, Benchmarks).
-- **Summary boxes:** *tl;dr* renamed to *Summary*; macro renamed `\tldr` → `\summary`.
-- **Example(s) headings:** renamed *Examples* throughout.
-- **See Also blocks:** new format `Section X (Title): rationale`, where each rationale explains why the linked guideline is relevant from the source guideline's vantage point. A generic `\seesection{label}` macro pulls section titles via `\nameref*` so future renames propagate automatically.
-- **Checklist:** empty `\square` bullets dropped; `\iconM` / `\iconS` symbols now serve as bullet markers.
-- **G5 Challenges:** New evidence on benchmark-quality gaps from Cao et al.'s survey (84.2% ignore test-suite coverage; 64.0% are single-pass; 82.5% do not address contamination), with cross-domain confirmation from Bean et al.
-- **Tables:** Reporting checklist gains six new G5 items and one new G7 item; rationale-recommendations table extends G5 and G7 rows. Matrix severities unchanged.
-- **Bibliography:** proper nouns and acronyms in titles wrapped in `{}` to preserve capitalization through the bibstyle.
+- **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 restructured to Section / Title / Short Name; subsection titles drop the `(Gx)` / `(Sx)` parenthetical; matrix and rationale-recommendations rows use short names.
+- **Summary tables:** centered; matrix moved after the rationale-recommendations table so it no longer splits Section 5.1's summary box; `\toprule` dropped above the rotated matrix headers.
+- **Summary boxes:** *tl;dr* renamed to *Summary* (macro `\tldr` → `\summary`); `Examples` plural throughout.
+- **See Also blocks:** new `Section n (Title): rationale` format, written from the source guideline's perspective; new `\seesection` macro pulls titles via `\nameref*`.
+- **Checklist bullets:** empty `\square` dropped; `\iconM` / `\iconS` now mark must/should items.
+- **Benchmarks Challenges:** new benchmark-quality evidence from Cao et al. (84.2% ignore test-suite coverage; 64.0% single-pass; 82.5% do not address contamination), confirmed cross-domain by Bean et al.
+- **Reporting tables:** six new Benchmarks items and one new Human Validation item in the checklist; rationale-recommendations extends Benchmarks and Human Validation rows. Matrix severities unchanged.
+- **Bibliography:** title proper nouns and acronyms wrapped in `{}` to preserve capitalization.
 
 ## [2026.04]
 
