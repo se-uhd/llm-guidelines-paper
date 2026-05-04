@@ -7,21 +7,21 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ## [2026.05]
 
-This release accompanies the EMSE minor revision. It addresses Reviewer 1's stylistic feedback and strengthens construct-validity guidance, drawing on Cao et al.'s decade-scale survey of 572 code benchmarks and Bean et al.'s parallel review of 445 ML/NLP benchmarks.
+This release accompanies the EMSE minor revision. Two independent threads: Reviewer 1's stylistic feedback, and a construct-validity strengthening that emerged separately while preparing the revision (drawing on Cao et al.'s decade-scale survey of 572 code benchmarks and Bean et al.'s parallel review of 445 ML/NLP benchmarks).
 
 ### Added
 
-- **G5:** Construct-validity recommendations: SHOULD define the phenomenon, justify the sampling strategy (citing Baltes & Ralph 2022), isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks; pointer to HOW2BENCH and Bean et al.'s checklists.
+- **G5:** Construct-validity recommendations: SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks; pointer to HOW2BENCH and Bean et al.'s checklists.
 - **G5:** For ratings that vary across raters or runs (human raters, LLM-as-judge), authors SHOULD report rating distributions per item rather than only point estimates.
 - **G7:** For value-laden or culturally contingent constructs, authors SHOULD describe rater demographics beyond expertise.
 - **G4:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 
 ### Changed
 
-- **RFC 2119 keywords:** Lowercase in body text (paper plain, website bold); the Table 3 distinction is unchanged.
+- **RFC 2119 keywords:** Lowercase in body text (paper plain, website bold).
 - **Matrix:** Column headers replaced S1–S7 with short names (Annotator, Judge, Synthesis, Subject, Usage, Tools, Benchmarks).
 - **Summary boxes:** *tl;dr* renamed to *Summary*; macro renamed `\tldr` → `\summary`.
-- **Example(s) headings:** renamed *Examples* throughout (singular *Example* where a single example is given).
+- **Example(s) headings:** renamed *Examples* throughout.
 - **See Also blocks:** new format `Section X (Title): rationale`, where each rationale explains why the linked guideline is relevant from the source guideline's vantage point. A generic `\seesection{label}` macro pulls section titles via `\nameref*` so future renames propagate automatically.
 - **Checklist:** empty `\square` bullets dropped; `\iconM` / `\iconS` symbols now serve as bullet markers.
 - **G5 Challenges:** New evidence on benchmark-quality gaps from Cao et al.'s survey (84.2% ignore test-suite coverage; 64.0% are single-pass; 82.5% do not address contamination), with cross-domain confirmation from Bean et al.
@@ -30,7 +30,7 @@ This release accompanies the EMSE minor revision. It addresses Reviewer 1's styl
 
 ## [2026.04]
 
-This release incorporates feedback from the community session at ICSE 2026 in Rio de Janeiro.
+This release incorporates feedback from the community session at ICSE 2026 in Rio de Janeiro and subsequent discussions among the authors.
 
 ### Added
 
