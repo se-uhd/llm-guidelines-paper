@@ -11,9 +11,9 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 
 ### Added
 
-- **Benchmarks:** SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
-- **Benchmarks:** For ratings that vary across raters or runs, SHOULD report distributions per item rather than only point estimates.
-- **Human Validation:** For value-laden or culturally contingent constructs, SHOULD describe rater demographics beyond expertise.
+- **Benchmarks:** should define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
+- **Benchmarks:** For ratings that vary across raters or runs, should report distributions per item rather than only point estimates.
+- **Human Validation:** For value-laden or culturally contingent constructs, should describe rater demographics beyond expertise.
 - **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 
 ### Changed
