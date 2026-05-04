@@ -10,7 +10,7 @@
 \iconM~=~the guideline's core recommendations \must be followed for this study type,
 \iconS~=~\should be followed,
 --~=~are not directly applicable.
-Study type IDs: S1~=~\annotators, S2~=~\judges, S3~=~\synthesis, S4~=~\subjects, S5~=~\llmusage, S6~=~\newtools, S7~=~\benchmarkingtasks.
+Column headers: Annotator (\annotators), Judge (\judges), Synthesis (\synthesis), Subject (\subjects), Usage (\llmusage), Tools (\newtools), and Benchmarks (\benchmarkingtasks).
 Each guideline's study-type-specific guidance is detailed in the corresponding subsection.}
 \label{tab:guideline-matrix}
 \footnotesize
@@ -18,7 +18,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 \renewcommand{\arraystretch}{1.15}
 \begin{tabular}{@{} l c c c c c c c @{}}
 \toprule
-& \rot{\hyperref[sec:llms-as-annotators]{S1}} & \rot{\hyperref[sec:llms-as-judges]{S2}} & \rot{\hyperref[sec:llms-for-synthesis]{S3}} & \rot{\hyperref[sec:llms-as-subjects]{S4}} & \rot{\hyperref[sec:studying-llm-usage-in-software-engineering]{S5}} & \rot{\hyperref[sec:llms-for-new-software-engineering-tools]{S6}} & \rot{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{S7}} \\
+& \rot{\hyperref[sec:llms-as-annotators]{Annotator}} & \rot{\hyperref[sec:llms-as-judges]{Judge}} & \rot{\hyperref[sec:llms-for-synthesis]{Synthesis}} & \rot{\hyperref[sec:llms-as-subjects]{Subject}} & \rot{\hyperref[sec:studying-llm-usage-in-software-engineering]{Usage}} & \rot{\hyperref[sec:llms-for-new-software-engineering-tools]{Tools}} & \rot{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{Benchmarks}} \\
 \midrule
 % G1 (Declare LLM Usage and Role): "Researchers must follow this guideline for all study types."
 \hyperref[sec:declare-llm-usage-and-role]{G1: Declare Usage}\hspace{12pt}
@@ -68,7 +68,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % S4 subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
   & \iconS % S5 llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
   & \iconS % S6 newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
-  & \iconM % S7 benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics"
+  & \iconM % S7 benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics, and should report an error analysis of failure modes alongside the headline scores"
   \\
 % G6 (Open LLM Baseline): "applies primarily to study types in which the researcher controls which LLM is used"
 \hyperref[sec:use-an-open-llm-as-a-baseline]{G6: Open LLM}

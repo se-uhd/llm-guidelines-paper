@@ -42,7 +42,7 @@ For fine-tuned models, additional recommendations apply:
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information.
 For these tools, researchers \should report what is available and openly acknowledge limitations that hinder reproducibility.
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 Based on the documentation that OpenAI and Azure provide~\cite{OpenAI25, Azure25}, researchers might, for example, report:
 
@@ -108,9 +108,9 @@ Missing version, configuration, or parameter information is typically a minor re
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\design: system architecture, agent configuration, and prompt design.
-    \item Section~\traces: interaction logs and runtime traces.
-    \item Section~\benchmarksmetrics: benchmarks for comparing base and fine-tuned models.
-    \item Section~\openllm: open models for self-hosted reproducibility.
-    \item Section~\limitationsmitigations: reporting reproducibility limitations.
+    \item \seedesign: Beyond the model itself, authors must also document the architecture and prompts that use it.
+    \item \seetraces: Session traces show what the reported model and configuration produced at runtime.
+    \item \seebenchmarksmetrics: Benchmark comparisons require identifying the exact model version under test.
+    \item \seeopenllm: An open model gives full version visibility, which some commercial products do not.
+    \item \seelimitationsmitigations: Hidden or shifting commercial versions become reproducibility threats in their own right.
 \end{itemize}

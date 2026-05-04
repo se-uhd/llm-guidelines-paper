@@ -37,9 +37,11 @@ Other frameworks such as LangGraph keep plans inside the agent's internal execut
 
 All reported traces \must be made publicly available as \supplementarymaterial, subject to privacy and confidentiality constraints. When full trace logging is not feasible, researchers \should provide representative examples or anonymized traces.
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 An example of reporting full interaction logs is the study by \citeauthor{ronanki2023investigating}~\cite{ronanki2023investigating}, for which the authors reported the full answers of ChatGPT and uploaded them to \href{https://zenodo.org/records/8124936}{Zenodo}.
+
+For agentic systems, \citeauthor{DBLP:conf/kbse/BouzeniaP25}~\cite{DBLP:conf/kbse/BouzeniaP25} unified the runtime trajectories of three SE agents (\emph{RepairAgent}, \emph{AutoCodeRover}, \emph{OpenHands}) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
 
 \guidelinesubsubsection{Benefits}
 
@@ -76,9 +78,9 @@ When reviewing commercial-tool studies, reviewers should focus on whether author
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\design: static artifacts (prompts, templates, context files, tool and skill definitions) whose runtime use is traced here.
-    \item Section~\modelversion: model versions and configuration, needed for interpreting non-deterministic behavior across runs.
-    \item Section~\humanvalidation: evaluation of agentic tool outputs.
-    \item Section~\openllm: open-source tools that expose traces more fully than commercial SaaS.
-    \item Section~\limitationsmitigations: reporting limitations of commercial tool transparency.
+    \item \seedesign: Session traces show runtime behavior; system and prompt design covers the static artifacts that produce it.
+    \item \seemodelversion: A trace cannot be reproduced or compared across studies without the model identity that produced it.
+    \item \seehumanvalidation: Agentic traces produce outputs that often warrant human evaluation.
+    \item \seeopenllm: Open models let other researchers reproduce a reported trace on the exact same model weights.
+    \item \seelimitationsmitigations: When a tool hides parts of the trace, authors must report the gap as a limitation.
 \end{itemize}

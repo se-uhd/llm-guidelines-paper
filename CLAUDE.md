@@ -99,7 +99,9 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Inline quotes:** `\enq{...}` renders typographically correct quotes with italics.
 
-**TL;DR label:** `\tldr` renders the inline "tl;dr" label.
+**Summary label:** `\summary` renders the inline "Summary" label that opens each guideline's framed summary box.
+
+**See Also macros:** `\seesection{label}` (paper-side) renders `Section X: Full Title` with only the section number hyperlinked, pulling the title automatically via `\nameref*`. Per-guideline convenience macros (`\seeusagerole`, `\seemodelversion`, `\seedesign`, `\seetraces`, `\seebenchmarksmetrics`, `\seeopenllm`, `\seehumanvalidation`, `\seelimitationsmitigations`) take no arguments and target the corresponding guideline. Use these in `See Also` lists.
 
 **File naming:** Content files use numeric prefixes for ordering (`01_`, `02_`, `01-02_`). Directories use underscore prefixes (`_guidelines/`, `_studytypes/`).
 
