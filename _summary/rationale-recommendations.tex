@@ -4,62 +4,63 @@
 % a one-line summary; defer to the matrix for per-study-type severities.
 
 \begin{table}[tb]
+\centering
 \caption{Rationale and key recommendations for each guideline. \iconM~=~\must, \iconS~=~\should.}
 \label{tab:rationale-recommendations}
 \small
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
-\textbf{ID} & \textbf{Rationale} & \textbf{Core Recommendations} \\
+\textbf{Guideline} & \textbf{Rationale} & \textbf{Core Recommendations} \\
 \midrule
 % G1 Rationale: "Transparency about LLM involvement is a prerequisite for informed assessment of a study's scope, limitations, and potential biases."
 % G1 Core: Recommendations subsection - "researchers \must clearly declare that an LLM was used"; specifies which/how/where.
-G1 & Transparency enables informed assessment of scope and limitations. &
+Declare Usage & Transparency enables informed assessment of scope and limitations. &
 \iconM Declare which LLM, how it was used, and where in the research process. \\
 \addlinespace
 % G2 Rationale: "LLMs and LLM-based tools are frequently updated, and configuration parameters... affect content generation."
 % G2 Core: "Researchers \must document in the \paper which model or tool version they used... along with the date when the experiments were carried out and the configured parameters"; for fine-tuned models "must describe the fine-tuning goal..., procedure..., and dataset".
-G2 & Reproducibility requires precise identification of the system used in a study. &
+Model Version & Reproducibility requires precise identification of the system used in a study. &
 \iconM Report exact version, date, configuration, and fine-tuning details. \\
 \addlinespace
 % G3 Rationale: "LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: software layers that pre-process data, prepare prompts, filter user requests, or post-process responses, and the context those layers feed into each call."
 % G3 \iconM line: G3 Recommendations - explicit \must clauses for architecture, infrastructure, prompts/templates, prompt-development strategy, context files, tool catalog, agent architecture, and retrieval mechanisms.
 % G3 \iconS line: G3 Study Types - "For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible". The \must clause for exact prompts in controlled experiments under S5 still applies whenever researcher-authored prompts exist.
-G3 & Static artifacts, from system architecture to prompt templates, determine what the model sees on every call and must be documented in full. &
+Design & Static artifacts, from system architecture to prompt templates, determine what the model sees on every call and must be documented in full. &
 \iconM Describe full architecture, infrastructure, all prompts or prompt templates (with development strategy and reuse), context files, tool catalog, agent architecture, and retrieval mechanisms.
 \newline \iconS For studies of LLM usage (S5), describe the tool architecture only to the extent accessible. \\
 \addlinespace
 % G4 Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself."
 % G4 \iconM line: G4 Study Types - "For \llmusage..., researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information".
 % G4 \iconS line: G4 Recommendations - "Researchers \should report the full interaction logs"; "Researchers \should report the complete runtime trace" (broadly defined to cover tool calls and configured-artifact activations); "the developed plans \should be reported".
-G4 & Runtime traces make LLM and agent behavior verifiable despite non-determinism and commercial-tool opacity. &
+Traces & Runtime traces make LLM and agent behavior verifiable despite non-determinism and commercial-tool opacity. &
 \iconM For studies of LLM usage (S5), share full interaction logs subject to privacy constraints.
 \newline \iconS Otherwise, share interaction logs, runtime traces, and plans where feasible. \\
 \addlinespace
 % G5 Rationale: "Meaningful evaluation requires well-understood, valid measurement instruments. Without justified benchmarks and metrics, claims about LLM performance lack the rigor needed for scientific comparison and cumulative progress."
 % G5 \iconM line: G5 Recommendations - "\must briefly justify... why selected benchmarks and metrics are suitable"; "\must discuss the reliability and validity (especially construct validity)".
 % G5 \iconS line: G5 Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the strategy used to sample benchmark items"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should conduct an error analysis covering common failure modes"; "\should repeat experiments and report descriptive statistics".
-G5 & Meaningful evaluation requires reasoned valid measurement. &
+Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 \iconM Justify metric and benchmark choices; discuss their validity.
 \newline \iconS Define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis; repeat experiments and report distributions. \\
 \addlinespace
 % G6 Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
 % G6 \iconM line: G6 Study Types - "In formal benchmarking studies and controlled experiments..., an open LLM \must be one of the models under evaluation".
 % G6 \iconS line: G6 Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package".
-G6 & Reproducibility depends on access to the model under study. &
+Open LLM & Reproducibility depends on access to the model under study. &
 \iconM For benchmarking studies (S7), include an open LLM among the models evaluated.
 \newline \iconS Otherwise, include an open LLM as a baseline; provide a replication package. \\
 \addlinespace
 % G7 Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % G7 \iconM line: G7 Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
 % G7 \iconS line: G7 Subjective Judgment and Agreement - "the LLM output \should be evaluated against judgments aggregated from multiple human judges"; "Researchers \should report measures of IRA or IRR"; "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise ... and discuss potential demographic biases".
-G7 & Automated metrics alone cannot ensure validity of subjective constructs. &
+Human Validation & Automated metrics alone cannot ensure validity of subjective constructs. &
 \iconM Define the measured construct and share any custom measurement instruments.
 \newline \iconS Validate against human judgment with inter-rater reliability; describe rater demographics for value-laden constructs. \\
 \addlinespace
 % G8 Rationale: "When using LLMs for empirical studies in SE, researchers face unique challenges and potential limitations... Researchers must openly discuss these limitations and explain how their impact was mitigated."
 % G8 \iconM line: G8 Recommendations - "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; \must clauses for internal/construct/external validity, reliability, ethical/regulatory.
 % G8 \iconS line: G8 Mitigation Strategies - bullet list (replication packages, human validation, longitudinal re-runs, triangulation, sensitivity analysis); "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing".
-G8 & Honest acknowledgment of threats strengthens a study. &
+Limitations & Honest acknowledgment of threats strengthens a study. &
 \iconM Report threats by validity type.
 \newline \iconS Employ mitigations where possible. \\
 \bottomrule

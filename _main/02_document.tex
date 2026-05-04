@@ -43,22 +43,23 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 %% I think it's  a good additional since the guidlines are already a wall of text.
 
 \begin{table}[tb]
+\centering
 \caption{Overview of study types.}
 \label{tab:study-types}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{ID} & \textbf{Section} & \textbf{Topic} \\
+\textbf{Section} & \textbf{Title} & \textbf{Short Name} \\
 \midrule
-     & 4.1   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{LLMs as Tools for Software Engineering Researchers}} \\
-S1   & 4.1.1 & \quad \hyperref[sec:llms-as-annotators]{LLMs as Annotators} \\
-S2   & 4.1.2 & \quad \hyperref[sec:llms-as-judges]{LLMs as Judges} \\
-S3   & 4.1.3 & \quad \hyperref[sec:llms-for-synthesis]{LLMs for Synthesis} \\
-S4   & 4.1.4 & \quad \hyperref[sec:llms-as-subjects]{LLMs as Subjects} \\
+4.1   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{LLMs as Tools for Software Engineering Researchers}}                 &            \\
+4.1.1 & \quad \hyperref[sec:llms-as-annotators]{LLMs as Annotators}                                                                                  & Annotator  \\
+4.1.2 & \quad \hyperref[sec:llms-as-judges]{LLMs as Judges}                                                                                          & Judge      \\
+4.1.3 & \quad \hyperref[sec:llms-for-synthesis]{LLMs for Synthesis}                                                                                  & Synthesis  \\
+4.1.4 & \quad \hyperref[sec:llms-as-subjects]{LLMs as Subjects}                                                                                      & Subject    \\
 \midrule
-     & 4.2   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineers]{LLMs as Tools for Software Engineers}} \\
-S5   & 4.2.1 & \quad \hyperref[sec:studying-llm-usage-in-software-engineering]{Studying LLM Usage in Software Engineering} \\
-S6   & 4.2.2 & \quad \hyperref[sec:llms-for-new-software-engineering-tools]{LLMs for New Software Engineering Tools} \\
-S7   & 4.2.3 & \quad \hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{Benchmarking LLMs for Software Engineering Tasks} \\
+4.2   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineers]{LLMs as Tools for Software Engineers}}                                           &            \\
+4.2.1 & \quad \hyperref[sec:studying-llm-usage-in-software-engineering]{Studying LLM Usage in Software Engineering}                                  & Usage      \\
+4.2.2 & \quad \hyperref[sec:llms-for-new-software-engineering-tools]{LLMs for New Software Engineering Tools}                                        & Tools      \\
+4.2.3 & \quad \hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{Benchmarking LLMs for Software Engineering Tasks}                      & Benchmarks \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -98,27 +99,26 @@ S7   & 4.2.3 & \quad \hyperref[sec:benchmarking-llms-for-software-engineering-ta
 \input{_main/guidelines-intro.tex}
 
 \begin{table}[tb]
+\centering
 \caption{Overview of guidelines.}
 \label{tab:guidelines}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\textbf{ID} & \textbf{Section} & \textbf{Guideline} \\
+\textbf{Section} & \textbf{Title} & \textbf{Short Name} \\
 \midrule
-G1 & \ref*{sec:declare-llm-usage-and-role} & \hyperref[sec:declare-llm-usage-and-role]{Declare LLM Usage and Role} \\
-G2 & \ref*{sec:report-model-version-configuration-and-customizations} & \hyperref[sec:report-model-version-configuration-and-customizations]{Report Model Version, Configuration, and Customizations} \\
-G3 & \ref*{sec:report-system-and-prompt-design} & \hyperref[sec:report-system-and-prompt-design]{Report System and Prompt Design} \\
-G4 & \ref*{sec:report-session-traces} & \hyperref[sec:report-session-traces]{Report Session Traces} \\
-G5 & \ref*{sec:use-suitable-baselines-benchmarks-and-metrics} & \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Use Suitable Baselines, Benchmarks, and Metrics} \\
-G6 & \ref*{sec:use-an-open-llm-as-a-baseline} & \hyperref[sec:use-an-open-llm-as-a-baseline]{Use an Open LLM as a Baseline} \\
-G7 & \ref*{sec:use-human-validation-for-llm-outputs} & \hyperref[sec:use-human-validation-for-llm-outputs]{Use Human Validation for LLM Outputs} \\
-G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limitations-and-mitigations]{Report Limitations and Mitigations} \\
+\ref*{sec:declare-llm-usage-and-role}                            & \hyperref[sec:declare-llm-usage-and-role]{Declare LLM Usage and Role}                                          & Declare Usage    \\
+\ref*{sec:report-model-version-configuration-and-customizations} & \hyperref[sec:report-model-version-configuration-and-customizations]{Report Model Version, Configuration, and Customizations} & Model Version    \\
+\ref*{sec:report-system-and-prompt-design}                       & \hyperref[sec:report-system-and-prompt-design]{Report System and Prompt Design}                                & Design           \\
+\ref*{sec:report-session-traces}                                 & \hyperref[sec:report-session-traces]{Report Session Traces}                                                    & Traces           \\
+\ref*{sec:use-suitable-baselines-benchmarks-and-metrics}         & \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Use Suitable Baselines, Benchmarks, and Metrics}  & Benchmarks       \\
+\ref*{sec:use-an-open-llm-as-a-baseline}                         & \hyperref[sec:use-an-open-llm-as-a-baseline]{Use an Open LLM as a Baseline}                                    & Open LLM         \\
+\ref*{sec:use-human-validation-for-llm-outputs}                  & \hyperref[sec:use-human-validation-for-llm-outputs]{Use Human Validation for LLM Outputs}                      & Human Validation \\
+\ref*{sec:report-limitations-and-mitigations}                    & \hyperref[sec:report-limitations-and-mitigations]{Report Limitations and Mitigations}                          & Limitations      \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\input{_summary/matrix.tex}
-
-\subsection{Declare LLM Usage and Role (G1)}
+\subsection{Declare LLM Usage and Role}
 \label{sec:declare-llm-usage-and-role}
 
 \vspace{0.5\baselineskip}
@@ -128,7 +128,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/01_declare-llm-usage-and-role}
 
-\subsection{Report Model Version, Configuration, and Customizations (G2)}
+\subsection{Report Model Version, Configuration, and Customizations}
 \label{sec:report-model-version-configuration-and-customizations}
 
 \vspace{0.5\baselineskip}
@@ -138,7 +138,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/02_report-model-version-configuration-and-customizations.tex}
 
-\subsection{Report System and Prompt Design (G3)}
+\subsection{Report System and Prompt Design}
 \label{sec:report-system-and-prompt-design}
 
 \vspace{0.5\baselineskip}
@@ -148,7 +148,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/03_report-system-and-prompt-design.tex}
 
-\subsection{Report Session Traces (G4)}
+\subsection{Report Session Traces}
 \label{sec:report-session-traces}
 
 \vspace{0.5\baselineskip}
@@ -158,7 +158,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/04_report-session-traces.tex}
 
-\subsection{Use Suitable Baselines, Benchmarks, and Metrics (G5)}
+\subsection{Use Suitable Baselines, Benchmarks, and Metrics}
 \label{sec:use-suitable-baselines-benchmarks-and-metrics}
 
 \vspace{0.5\baselineskip}
@@ -168,7 +168,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/05_use-baselines-benchmarks-and-metrics.tex}
 
-\subsection{Use an Open LLM as a Baseline (G6)}
+\subsection{Use an Open LLM as a Baseline}
 \label{sec:use-an-open-llm-as-a-baseline}
 
 \vspace{0.5\baselineskip}
@@ -178,7 +178,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/06_use-an-open-llm-as-a-baseline.tex}
 
-\subsection{Use Human Validation for LLM Outputs (G7)}
+\subsection{Use Human Validation for LLM Outputs}
 \label{sec:use-human-validation-for-llm-outputs}
 
 \vspace{0.5\baselineskip}
@@ -188,7 +188,7 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 
 \input{_guidelines/07_use-human-validation-for-llm-outputs.tex}
 
-\subsection{Report Limitations and Mitigations (G8)}
+\subsection{Report Limitations and Mitigations}
 \label{sec:report-limitations-and-mitigations}
 
 \vspace{0.5\baselineskip}
@@ -197,6 +197,8 @@ G8 & \ref*{sec:report-limitations-and-mitigations} & \hyperref[sec:report-limita
 \end{framed}
 
 \input{_guidelines/08_report-limitations-and-mitigations.tex}
+
+\input{_summary/matrix.tex}
 
 \input{_summary/rationale-recommendations.tex}
 
