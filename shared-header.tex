@@ -205,7 +205,7 @@
 % truth at the section heading. Website version hardcodes title and URL per guideline since
 % labels do not survive the pandoc conversion to Markdown.
 \ifpaper
-  \newcommand{\seesection}[1]{Section~\hyperref[#1]{\ref*{#1}}: \nameref*{#1}}
+  \newcommand{\seesection}[1]{Section~\hyperref[#1]{\ref*{#1}} (\nameref*{#1})}
   \newcommand{\seeusagerole}{\seesection{sec:declare-llm-usage-and-role}}
   \newcommand{\seemodelversion}{\seesection{sec:report-model-version-configuration-and-customizations}}
   \newcommand{\seedesign}{\seesection{sec:report-system-and-prompt-design}}
