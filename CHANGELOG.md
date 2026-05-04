@@ -11,14 +11,14 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 
 ### Added
 
-- **Benchmarks:** should define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
-- **Benchmarks:** For ratings that vary across raters or runs, should report distributions per item rather than only point estimates.
-- **Human Validation:** For value-laden or culturally contingent constructs, should describe rater demographics beyond expertise.
+- **Benchmarks:** **should** define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
+- **Benchmarks:** For ratings that vary across raters or runs, **should** report distributions per item rather than only point estimates.
+- **Human Validation:** For value-laden or culturally contingent constructs, **should** describe rater demographics beyond expertise.
 - **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 
 ### Changed
 
-- **RFC 2119 keywords:** lowercase in body text (paper plain, website bold).
+- **must** / **should** keywords lowercased in body text.
 - **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 use Section / Title / Short Name; matrix moved after the rationale-recommendations table.
 - **Summary boxes:** *tl;dr* renamed to *Summary*; *Examples* used as the plural heading.
 - **See Also blocks:** `Section n (Title): rationale` format.
