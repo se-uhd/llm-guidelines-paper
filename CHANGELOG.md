@@ -7,25 +7,23 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ## [2026.05]
 
-This release accompanies the EMSE minor revision. Two independent threads: Reviewer 1's stylistic feedback, and a construct-validity strengthening that emerged separately while preparing the revision (drawing on Cao et al.'s decade-scale survey of 572 code benchmarks and Bean et al.'s parallel review of 445 ML/NLP benchmarks).
+EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity strengthening drawing on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review.
 
 ### Added
 
-- **Benchmarks:** Construct-validity recommendations: SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks; pointer to HOW2BENCH and Bean et al.'s checklists.
-- **Benchmarks:** For ratings that vary across raters or runs (human raters, LLM-as-judge), authors SHOULD report rating distributions per item rather than only point estimates.
-- **Human Validation:** For value-laden or culturally contingent constructs, authors SHOULD describe rater demographics beyond expertise.
+- **Benchmarks:** SHOULD define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
+- **Benchmarks:** For ratings that vary across raters or runs, SHOULD report distributions per item rather than only point estimates.
+- **Human Validation:** For value-laden or culturally contingent constructs, SHOULD describe rater demographics beyond expertise.
 - **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 
 ### Changed
 
-- **RFC 2119 keywords:** Lowercase in body text (paper plain, website bold).
-- **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 restructured to Section / Title / Short Name; subsection titles drop the `(Gx)` / `(Sx)` parenthetical; matrix and rationale-recommendations rows use short names.
-- **Summary tables:** centered; matrix moved after the rationale-recommendations table so it no longer splits Section 5.1's summary box; `\toprule` dropped above the rotated matrix headers.
-- **Summary boxes:** *tl;dr* renamed to *Summary* (macro `\tldr` → `\summary`); `Examples` plural throughout.
-- **See Also blocks:** new `Section n (Title): rationale` format, written from the source guideline's perspective; new `\seesection` macro pulls titles via `\nameref*`.
-- **Checklist bullets:** empty `\square` dropped; `\iconM` / `\iconS` now mark must/should items.
-- **Benchmarks Challenges:** new benchmark-quality evidence from Cao et al. (84.2% ignore test-suite coverage; 64.0% single-pass; 82.5% do not address contamination), confirmed cross-domain by Bean et al.
-- **Reporting tables:** six new Benchmarks items and one new Human Validation item in the checklist; rationale-recommendations extends Benchmarks and Human Validation rows. Matrix severities unchanged.
+- **RFC 2119 keywords:** lowercase in body text (paper plain, website bold).
+- **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 use Section / Title / Short Name; matrix moved after the rationale-recommendations table.
+- **Summary boxes:** *tl;dr* renamed to *Summary*; *Examples* used as the plural heading.
+- **See Also blocks:** `Section n (Title): rationale` format.
+- **Checklist bullets:** `\iconM` / `\iconS` replace empty `\square`.
+- **Benchmarks Challenges:** new evidence from Cao et al. (84.2% ignore test-suite coverage, 64.0% single-pass, 82.5% no contamination handling), confirmed by Bean et al.
 - **Bibliography:** title proper nouns and acronyms wrapped in `{}` to preserve capitalization.
 
 ## [2026.04]
