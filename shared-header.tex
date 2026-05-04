@@ -59,24 +59,25 @@
 
 %%% Commands — conditional %%%
 
-% RFC 2119 keywords
+% RFC 2119 keywords (lowercase per EMSE Reviewer 1; this paper is not a standard).
+% Paper: plain text. Website: bold for quick scanning.
 \ifpaper
-  \newcommand{\must}{\textsc{must}\xspace}
-  \newcommand{\mustnot}{\textsc{must not}\xspace}
-  \newcommand{\should}{\textsc{should}\xspace}
-  \newcommand{\shouldnot}{\textsc{should not}\xspace}
+  \newcommand{\must}{must\xspace}
+  \newcommand{\mustnot}{must not\xspace}
+  \newcommand{\should}{should\xspace}
+  \newcommand{\shouldnot}{should not\xspace}
 \else
-  \newcommand{\must}{\textbf{MUST}\xspace}
-  \newcommand{\mustnot}{\textbf{MUST NOT}\xspace}
-  \newcommand{\should}{\textbf{SHOULD}\xspace}
-  \newcommand{\shouldnot}{\textbf{SHOULD NOT}\xspace}
+  \newcommand{\must}{\textbf{must}\xspace}
+  \newcommand{\mustnot}{\textbf{must not}\xspace}
+  \newcommand{\should}{\textbf{should}\xspace}
+  \newcommand{\shouldnot}{\textbf{should not}\xspace}
 \fi
 
-% tl;dr label
+% Summary label (per EMSE Reviewer 1: avoid the cute "tl;dr").
 \ifpaper
-  \newcommand{\tldr}{\underline{\emph{tl;dr}}\xspace}
+  \newcommand{\summary}{\underline{\emph{Summary}}\xspace}
 \else
-  \newcommand{\tldr}{\textbf{\emph{tl;dr}}\xspace}
+  \newcommand{\summary}{\textbf{\emph{Summary}}\xspace}
 \fi
 
 % Reporting location
@@ -211,4 +212,30 @@
   \newcommand{\studytypesubsection}[1]{\subsection{#1}}
   \newcommand{\studytypeparagraph}[1]{\subsubsection{#1}}
   \newcommand{\scopeparagraph}[1]{\subsubsection{#1}}
+\fi
+
+% See Also entries: "Section X (Full Title)" (paper) or hyperlinked full title (website).
+% Followed by ": reason for cross-link." in the See Also list.
+% Paper version uses \nameref* to pull the section title automatically — single source of
+% truth at the section heading. Website version hardcodes title and URL per guideline since
+% labels do not survive the pandoc conversion to Markdown.
+\ifpaper
+  \newcommand{\seesection}[1]{Section~\hyperref[#1]{\ref*{#1}} (\nameref*{#1})}
+  \newcommand{\seeusagerole}{\seesection{sec:declare-llm-usage-and-role}}
+  \newcommand{\seemodelversion}{\seesection{sec:report-model-version-configuration-and-customizations}}
+  \newcommand{\seedesign}{\seesection{sec:report-system-and-prompt-design}}
+  \newcommand{\seetraces}{\seesection{sec:report-session-traces}}
+  \newcommand{\seebenchmarksmetrics}{\seesection{sec:use-suitable-baselines-benchmarks-and-metrics}}
+  \newcommand{\seeopenllm}{\seesection{sec:use-an-open-llm-as-a-baseline}}
+  \newcommand{\seehumanvalidation}{\seesection{sec:use-human-validation-for-llm-outputs}}
+  \newcommand{\seelimitationsmitigations}{\seesection{sec:report-limitations-and-mitigations}}
+\else
+  \newcommand{\seeusagerole}{\href{/guidelines\#declare-llm-usage-and-role}{Declare LLM Usage and Role}}
+  \newcommand{\seemodelversion}{\href{/guidelines\#report-model-version-configuration-and-customizations}{Report Model Version, Configuration, and Customizations}}
+  \newcommand{\seedesign}{\href{/guidelines\#report-system-and-prompt-design}{Report System and Prompt Design}}
+  \newcommand{\seetraces}{\href{/guidelines\#report-session-traces}{Report Session Traces}}
+  \newcommand{\seebenchmarksmetrics}{\href{/guidelines\#use-suitable-baselines-benchmarks-and-metrics}{Use Suitable Baselines, Benchmarks, and Metrics}}
+  \newcommand{\seeopenllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{Use an Open LLM as a Baseline}}
+  \newcommand{\seehumanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{Use Human Validation for LLM Outputs}}
+  \newcommand{\seelimitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{Report Limitations and Mitigations}}
 \fi

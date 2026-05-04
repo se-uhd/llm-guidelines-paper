@@ -37,10 +37,10 @@ G4 & Runtime traces make LLM and agent behavior verifiable despite non-determini
 \addlinespace
 % G5 Rationale: "Meaningful evaluation requires well-understood, valid measurement instruments. Without justified benchmarks and metrics, claims about LLM performance lack the rigor needed for scientific comparison and cumulative progress."
 % G5 \iconM line: G5 Recommendations - "\must briefly justify... why selected benchmarks and metrics are suitable"; "\must discuss the reliability and validity (especially construct validity)".
-% G5 \iconS line: G5 Recommendations - "researchers \should repeat experiments and report descriptive statistics".
+% G5 \iconS line: G5 Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the strategy used to sample benchmark items"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should conduct an error analysis covering common failure modes"; "\should repeat experiments and report descriptive statistics".
 G5 & Meaningful evaluation requires reasoned valid measurement. &
 \iconM Justify metric and benchmark choices; discuss their validity.
-\newline \iconS Repeat experiments and report descriptive statistics. \\
+\newline \iconS Define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis; repeat experiments and report distributions. \\
 \addlinespace
 % G6 Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
 % G6 \iconM line: G6 Study Types - "In formal benchmarking studies and controlled experiments..., an open LLM \must be one of the models under evaluation".
@@ -51,10 +51,10 @@ G6 & Reproducibility depends on access to the model under study. &
 \addlinespace
 % G7 Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % G7 \iconM line: G7 Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
-% G7 \iconS line: G7 Subjective Judgment and Agreement - "the LLM output \should be evaluated against judgments aggregated from multiple human judges"; "Researchers \should report measures of IRA or IRR".
+% G7 \iconS line: G7 Subjective Judgment and Agreement - "the LLM output \should be evaluated against judgments aggregated from multiple human judges"; "Researchers \should report measures of IRA or IRR"; "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise ... and discuss potential demographic biases".
 G7 & Automated metrics alone cannot ensure validity of subjective constructs. &
 \iconM Define the measured construct and share any custom measurement instruments.
-\newline \iconS Validate against human judgment with inter-rater reliability, where applicable. \\
+\newline \iconS Validate against human judgment with inter-rater reliability; describe rater demographics for value-laden constructs. \\
 \addlinespace
 % G8 Rationale: "When using LLMs for empirical studies in SE, researchers face unique challenges and potential limitations... Researchers must openly discuss these limitations and explain how their impact was mitigated."
 % G8 \iconM line: G8 Recommendations - "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; \must clauses for internal/construct/external validity, reliability, ethical/regulatory.

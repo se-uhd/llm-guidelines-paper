@@ -19,7 +19,7 @@ In either case, the disclosure \must be specific enough for readers to assess ho
 % Artificial intelligence‑assisted academic writing: recommendations for ethical use
 % https://doi.org/10.1186/s41077-025-00350-6
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 The \emph{ACM Policy on Authorship}~\cite{ACM2023} suggests disclosing GenAI usage in the acknowledgments section of the \paper, advising to ``err on the side of caution, and include a disclosure in the acknowledgments section of the Work'' when uncertain about the need~\cite{ACM2023}.
 For double-blind review, researchers can add a temporary ``AI Disclosure'' section where the acknowledgments would appear.
@@ -69,7 +69,7 @@ If undisclosed LLM use is suspected, the reviewer should similarly consult their
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\modelversion: model version and configuration details.
-    \item Section~\design: system-level role documentation, prompts, and agent configuration.
-    \item Section~\traces: interaction logs and runtime traces.
+    \item \seemodelversion: Disclosing that an LLM was used is incomplete without naming which model and version.
+    \item \seedesign: When the LLM lives inside a tool or agent, authors must also describe that tool's architecture and prompts.
+    \item \seetraces: Session traces show what the LLM did during the study.
 \end{itemize}

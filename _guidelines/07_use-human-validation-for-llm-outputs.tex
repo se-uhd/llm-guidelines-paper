@@ -27,6 +27,7 @@ The goal is to reach a target IRA or IRR (e.g., Krippendorff's $\alpha>0.8$), in
 Researchers \should report measures of IRA or IRR, preferably broken down by round.
 
 Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise).
+For value-laden or culturally contingent constructs (e.g., judging code-style appropriateness or comment helpfulness), researchers \should describe rater demographics beyond expertise (e.g., geographic, linguistic, or professional background) and discuss potential demographic biases in rater recruitment and instructions~\cite{bean2025measuring}.
 Where applicable, researchers may perform a power analysis~\cite{Cohen1992,DBLP:journals/infsof/DybaKS06} to estimate the required sample size, ensuring sufficient statistical power in their experimental design.
 However, we also note that to our knowledge, there is limited established guidance specific to determining sample sizes for LLM-human comparisons. In other fields, 100 comparisons are often made without further explanation~\cite{tam2024framework}.
 
@@ -40,7 +41,7 @@ For such tools, it makes sense to separate textual output (e.g., file changes) f
 When evaluating agentic tools, researchers \should assess the feedback that users provided for proposed changes, report statistics on how frequently they accepted the content, and how they modified it.
 Agentic human-in-the-loop interaction is a built-in human validation, with larger degrees of freedom than traditional experiments that use LLMs directly.
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 \citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using model-to-model agreement as an initial screening criterion (with a threshold of $\alpha>0.5$) and model confidence for sample-level decisions. However, their threshold is well below the levels generally considered acceptable for inter-rater agreement.
 \citeauthor{Krippendorff2018} recommends discarding data with $\alpha<0.667$, considers $0.667 \leq \alpha < 0.8$ sufficient only for tentative conclusions, and requires $\alpha \geq 0.8$ for reliable data~\cite{Krippendorff2018}. Researchers adopting similar screening approaches should apply thresholds consistent with these established standards. Notably, while three LLMs exhibited higher inter-model agreement than human annotators on some tasks, human-model agreement remained low on others.

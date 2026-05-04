@@ -77,7 +77,7 @@ If retrieval-augmented generation (RAG) or related methods were used (e.g., rule
 Stored data used for context augmentation \should be reported, including data preprocessing, versioning, and update frequency; if not confidential, an anonymized snapshot \should be made available as \supplementarymaterial.
 For \emph{ensemble models}, in addition to following the \modelversion guideline for each model, researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy (e.g., majority voting, weighted averaging, sequential processing).
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 \citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration.
 They also detail the datasets used, including sources, selection criteria, and preprocessing steps.
@@ -138,9 +138,9 @@ A challenging aspect of prompt reporting is the description of prompt developmen
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\modelversion: model versions and configuration for prompt-model mapping.
-    \item Section~\traces: runtime reporting of interaction logs and runtime traces that correspond to the static artifacts reported here.
-    \item Section~\humanvalidation: evaluation of agentic tool outputs.
-    \item Section~\openllm: open-source tools for transparent configuration and prompt logging.
-    \item Section~\limitationsmitigations: reporting limitations of commercial tool transparency.
+    \item \seemodelversion: Every architecture runs on at least one specific model; name its version.
+    \item \seetraces: Architecture and prompts are static; session traces show how they behave at runtime.
+    \item \seehumanvalidation: Human evaluation often complements automated metrics for tool outputs.
+    \item \seeopenllm: Open models let other researchers run the reported prompts and schemas on the exact same model weights.
+    \item \seelimitationsmitigations: When a tool hides internal prompts or schemas, authors must report the gap as a limitation.
 \end{itemize}

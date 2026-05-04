@@ -10,30 +10,41 @@ Selecting benchmarks and metrics requires understanding the benchmark tasks, wha
 \begin{itemize}
     \item \must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study;
     \item \must discuss the reliability and validity (especially construct validity) of selected metrics and benchmarks;
+    \item \should provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components~\cite{bean2025measuring};
     \item \should summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
-    \item \should discuss the limitations of the selected benchmark(s) (e.g. widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} Python functions assess a very specific part of software development, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks}).
+    \item \should describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in \emph{HumanEval}, GitHub issues in \emph{SWE-bench}, vulnerable functions in \emph{DiverseVul}); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions~\cite{DBLP:journals/ese/BaltesR22, bean2025measuring};
+    \item \should discuss the limitations of the selected benchmark(s) (e.g. widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} Python functions assess a very specific part of software development, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks});
     \item \should include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
 \end{itemize}
 
-If multiple benchmarks exist for the same task, researchers \should compare performance between benchmarks.
+If multiple benchmarks exist for the same task, researchers \should compare both performance and design choices (task selection, scoring, scope) across benchmarks~\cite{bean2025measuring}.
 When selecting only a subset of all available benchmarks, researchers \should use the most specific benchmarks given the context.
+When adapting an existing benchmark, researchers \should document what was changed and why, and \should report performance on both the original and the adapted version where feasible~\cite{bean2025measuring}.
+
+Benchmark scores often confound the target capability with unrelated abilities the task happens to require. For code-generation benchmarks, prompt formatting alone can shift code-translation performance by up to 40\%~\cite{DBLP:journals/corr/abs-2411-10541, cao2025should}, conflating prompt-format sensitivity with translation skill. More broadly, output-format compliance (e.g., specific JSON schemas or unit-test conventions) and general instruction-following ability are routinely bundled into the score~\cite{bean2025measuring}. Researchers \should identify which capabilities a benchmark conflates, isolate the target capability where possible (e.g., by reporting per-subtask breakdowns or by adopting benchmarks designed to test the target capability in isolation), and acknowledge remaining confounders as threats to construct validity.
+
+After running a benchmark, researchers \should perform an error analysis by categorizing the failures observed and reporting the relative frequency of each category. If failures concentrate on inputs that demand abilities other than the target phenomenon (e.g., reading across many files rather than fixing the bug the benchmark targets), this is a construct-validity threat and \should be reported alongside the primary scores~\cite{bean2025measuring}.
+
+In addition to disclosing data sources and collection dates (see Challenges below), researchers creating or releasing a new benchmark \should adopt concrete contamination-prevention mechanisms: maintaining a held-out subset of items for ongoing, uncontaminated evaluation; embedding canary strings, that is, unique markers that downstream tools can later search for in model outputs to detect inclusion in training data; and investigating whether the benchmark's source materials may already appear in common LLM training corpora~\cite{bean2025measuring, cao2025should}. Researchers using existing benchmarks \should additionally discuss contamination as a study limitation (\limitationsmitigations).
 
 Furthermore, researchers \should check whether a less resource-intensive approach (e.g., for static analysis tasks or program repair) can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics. Even if LLM-based tools outperform baselines, researchers \should discuss whether the resources consumed justify the (often marginal) improvements~\cite{DBLP:journals/cacm/Menzies25}.
 
 To compare traditional and LLM-based approaches or different LLM-based tools, researchers \should report established metrics whenever possible, as this allows secondary research.
 They can report additional metrics that they consider appropriate.
-We briefly discuss common metrics in the Example(s) subsection below.
+We briefly discuss common metrics in the Examples subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
 Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
 
-Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics.
+Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics. When scoring uses ratings that vary across raters or runs (e.g., human raters, LLM-as-judge), researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement, since aggregation can mask systematic disagreement~\cite{bean2025measuring}.
 
 The number of required repetitions depends on factors such as the study type, the variability of the task, and the desired precision of estimates. As with sample sizes for human validation (\humanvalidation), researchers \should justify their chosen number of repetitions, for example, through a power analysis~\cite{Cohen1992, bjarnason2026randomnessagenticevals} or by monitoring the convergence of descriptive statistics across incremental runs~\cite{blackwell2024towards}. A pilot study can help estimate the expected variability and inform this decision.
 
 From a measurement perspective, researchers \should reflect on the theories, values, and measurement models on which the benchmarks and metrics they have selected for their study are based.
 For example, the phenomena labeled ``bugs'' in a large open dataset of software bugs are according to a certain theory of what constitutes a bug, and from the values and perspectives of the people who labeled the dataset. Reflecting on the context in which these labels were assigned and discussing whether and how the labels generalize to a new study context is crucial.
 
-\guidelinesubsubsection{Example(s)}
+Researchers building or releasing new SE benchmarks \should consult operational checklists. \citeauthor{cao2025should}~\cite{cao2025should} provide \emph{HOW2BENCH}, a 55-item checklist covering benchmark design, construction, evaluation, analysis, and release. \citeauthor{bean2025measuring}~\cite{bean2025measuring} provide a complementary domain-agnostic checklist organized around the construct-validity recommendations summarized above.
+
+\guidelinesubsubsection{Examples}
 
 \paragraph{Common Metrics:}
 
@@ -87,9 +98,11 @@ Benchmarks and metrics improve reproducibility and comparability across studies,
 
 Computer scientists have long used oversimplified, unvalidated metrics~\cite{DBLP:conf/ease/RalphT18} (e.g., lines of code, CPU time) as proxies for complex, multidimensional latent variables (e.g., system size, environmental sustainability). Unlike fields such as psychology where measurement theory has a longer tradition~\cite{borsboom2005measuring}, many AI metrics and benchmarks lack both theoretical underpinnings and empirical validation of their construct, measurement, and ecological validity.
 
+These validity issues are widespread, not isolated. In a survey of 572 code benchmarks released between 2014 and 2025, \citeauthor{cao2025should}~\cite{cao2025should} found that 84.2\% did not consider test-suite coverage when constructing test cases, 64.0\% reported single-pass evaluations without controlling for randomness, and 82.5\% did not address data contamination. \citeauthor{bean2025measuring}~\cite{bean2025measuring} reported comparable patterns in a parallel review of 445 LLM benchmarks from ML and NLP venues. As a result, model performance on these benchmarks can reflect benchmark artifacts rather than the capability the benchmark claims to test.
+
 For example, \emph{pass@k} is intended to measure a model's \textit{functional correctness}, that is, its ability to generate code that produces the expected output for a given specification. However, functional correctness is only one dimension of code quality. \emph{pass@k} does not capture maintainability, readability, security, or efficiency of the generated code, all of which are critical for downstream use. Furthermore, ``correctness'' is defined entirely by test suites, whose coverage is itself unvalidated: a solution that passes all provided tests may still be incorrect for untested inputs. Whether a test suite adequately operationalizes correctness for a given task is a subjective judgment that is rarely examined.
 
-Similarly, \emph{HumanEval} is intended to measure a model's ability to \textit{synthesize short Python functions from docstring specifications}. This operationalizes a narrow slice of ``code generation ability'': it covers neither multi-file tasks, nor debugging, nor the use of existing codebases---tasks that dominate real-world software engineering~\cite{Chandra2025benchmarks, yang2025code}. Notably, neither \emph{pass@k} nor \emph{HumanEval} has undergone rigorous empirical validation of its construct validity; their widespread adoption rests on face validity and convenience rather than on evidence that they reliably measure what researchers intend them to measure~\cite{cao2025should}.
+Similarly, \emph{HumanEval} is intended to measure a model's ability to \textit{synthesize short Python functions from docstring specifications}. This operationalizes a narrow slice of ``code generation ability'': it covers neither multi-file tasks, nor debugging, nor the use of existing codebases---tasks that dominate real-world software engineering~\cite{Chandra2025benchmarks, yang2025code}. Notably, neither \emph{pass@k} nor \emph{HumanEval} has undergone rigorous empirical validation of its construct validity; their widespread adoption rests on face validity and convenience rather than on evidence that they reliably measure what researchers intend them to measure~\cite{cao2025should}. \emph{HumanEval} also contains implementation, documentation, and test-case bugs in its original release, which directly affect score interpretation~\cite{DBLP:conf/nips/LiuXW023}; comparable issues have been documented in other widely-used code benchmarks~\cite{cao2025should}.
 
 Benchmarks and metrics also have generalizability problems. Prominent LLM benchmarks such as \emph{HumanEval} and \emph{MBPP} use Python, so researchers can optimize for Python's idiosyncrasies, creating illusory improvements that do not generalize to other languages. Similarly, the metric \emph{BLEU-N} is a syntactic metric, so code can score highly without being executable. The metric \emph{Exact Match}, meanwhile, does not account for functional equivalence of syntactically different code. Both \emph{BLEU-N} and \emph{Exact Match} are influenced by code formatting, which confounds their intended use.
 
@@ -107,7 +120,7 @@ This guideline \must be followed for all study types that automatically evaluate
 The design of a benchmark and the selection of appropriate metrics are highly dependent on the specific study type and research goal.
 Recommending specific metrics for specific study types is beyond the scope of these guidelines, but \citeauthor{hu2025assessingadvancingbenchmarksevaluating} provide a good overview of existing metrics for evaluating LLMs~\cite{hu2025assessingadvancingbenchmarksevaluating}.
 
-For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, and \must report standard metrics to enable cross-study comparison.
+For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores so that readers can assess whether reported gains reflect the target capability or other abilities the task happens to require.
 For \annotators, the research goal might be to assess which model comes close to a ground truth dataset created by human annotators.
 Especially for open annotation tasks, selecting suitable metrics to compare LLM-generated and human-generated labels is important.
 In general, annotation tasks can vary significantly.
@@ -135,7 +148,7 @@ As with other guidelines, missing information about baselines or metrics is typi
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\openllm: open models for inter-model comparison.
-    \item Section~\humanvalidation: human evaluation to complement automated metrics.
-    \item Section~\limitationsmitigations: reporting construct and measurement validity limitations.
+    \item \seeopenllm: Using an open LLM as a baseline supports reproducible benchmark comparisons across studies.
+    \item \seehumanvalidation: Human evaluation captures aspects of LLM outputs that automated metrics cannot measure.
+    \item \seelimitationsmitigations: Every benchmark and metric choice carries construct-validity threats that authors must discuss.
 \end{itemize}

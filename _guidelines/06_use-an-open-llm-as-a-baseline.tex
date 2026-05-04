@@ -22,7 +22,7 @@ The \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024} defines open-source AI 
 
 Researchers can also explore open-source tools such as Continue, Cline, and opencode as alternatives to commercial tools like GitHub Copilot and Claude Code, enabling instrumentation, architectural transparency, and detailed telemetry collection.
 
-\guidelinesubsubsection{Example(s)}
+\guidelinesubsubsection{Examples}
 
 An increasing number of studies have adopted open LLMs as baseline models.
 For example, \citeauthor{wang2024and} evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion~\cite{wang2024and}.
@@ -66,8 +66,8 @@ Reviewers should \textit{not} penalize studies for performance differences betwe
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]
-    \item Section~\modelversion: model version, configuration, and parameter settings.
-    \item Section~\design: hardware and hosting requirements for open models.
-    \item Section~\benchmarksmetrics: metrics for inter-model agreement and benchmarking.
-    \item Section~\limitationsmitigations: reporting limitations when open baselines are absent.
+    \item \seemodelversion: Authors must report version, configuration, and parameters for open models, not just commercial ones.
+    \item \seedesign: Self-hosting an open model adds hardware, hosting, and infrastructure to document.
+    \item \seebenchmarksmetrics: Inter-model agreement metrics make open-vs-commercial comparisons interpretable.
+    \item \seelimitationsmitigations: When using an open LLM as a baseline is impractical, authors must report this as a limitation.
 \end{itemize}
