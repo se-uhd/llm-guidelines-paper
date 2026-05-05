@@ -54,7 +54,7 @@ Token optimization measures, such as simplifying code formatting or removing unn
 \paragraph{Context Files and Agent Configuration:}
 Agentic coding tools expose a range of configuration and extension mechanisms including \emph{context files}, skills, subagents, hooks, settings, rules, and Model Context Protocol (MCP) servers~\cite{galster2026configuring}.
 Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions automatically included in the context on each call~\cite{mohsenimofidi2026context}.
-Researchers \must describe which context-file mechanisms were used and \should publish the full contents as \supplementarymaterial, because they shape agent behavior similarly to system prompts.
+Researchers \must describe which context-file mechanisms were used and \should publish the full contents as \supplementarymaterial, because they steer agent behavior similarly to system prompts.
 Because context files are version-controlled, their evolution across a study is recoverable from the project's git history and from the runtime traces reported under \traces.
 
 \paragraph{Tool Catalog and Skill Definitions:}
@@ -109,7 +109,7 @@ Disclosure practices vary across vendors: some publish their system prompts, oth
 Where prompts are published, they also change between releases~\cite{willison2026opus}, so researchers \should record the tool version and date of use even when the prompt content itself is unavailable.
 Understanding suggestions of commercial tools such as \emph{GitHub Copilot} might require recreating the exact state of the codebase at the time the suggestion was made, which is a challenging context to report.
 One solution is to use version control to capture the exact state of the codebase when a recommendation was made, keeping track of the files that were automatically added as context.
-We also recommend exploring open-source tools such as \emph{OpenCode}~\cite{opencode}, which expose more of the configuration that shapes agent behavior.
+We also recommend exploring open-source tools such as \emph{OpenCode}~\cite{opencode}, which expose more of the configuration that controls agent behavior.
 
 \guidelinesubsubsection{Study Types}
 

@@ -1,7 +1,7 @@
 Since the release of ChatGPT in November 2022, large language models (LLMs) have rapidly become a major focus of software engineering (SE) research~\cite{10.1145/3695988}, yet the reproducibility and replicability of empirical studies involving LLMs remains uncertain.
 Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}.
 Three characteristics of LLMs make this particularly challenging:
-their inherent non-determinism causes variability across runs, with slight changes leading to significantly different results~\cite{DBLP:journals/corr/abs-2412-12509, DBLP:conf/naacl/SongWLL25, DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals};
+their inherent non-determinism causes variability across runs, with slight changes leading to substantially different results~\cite{DBLP:journals/corr/abs-2412-12509, DBLP:conf/naacl/SongWLL25, DBLP:conf/nips/AgarwalSCCB21, bjarnason2026randomnessagenticevals};
 commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009};
 and even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
 Moreover, prompt formatting choices alone can shift accuracy by tens of percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
