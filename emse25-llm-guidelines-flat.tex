@@ -90,18 +90,11 @@
 %%% Commands — conditional %%%
 
 % RFC 2119 keywords (lowercase per EMSE Reviewer 1; this paper is not a standard).
-% Paper: plain text. Website: bold for quick scanning.
-\ifpaper
-  \newcommand{\must}{must\xspace}
-  \newcommand{\mustnot}{must not\xspace}
-  \newcommand{\should}{should\xspace}
-  \newcommand{\shouldnot}{should not\xspace}
-\else
-  \newcommand{\must}{\textbf{must}\xspace}
-  \newcommand{\mustnot}{\textbf{must not}\xspace}
-  \newcommand{\should}{\textbf{should}\xspace}
-  \newcommand{\shouldnot}{\textbf{should not}\xspace}
-\fi
+% Bolded in both paper and website for consistent quick scanning.
+\newcommand{\must}{\textbf{must}\xspace}
+\newcommand{\mustnot}{\textbf{must not}\xspace}
+\newcommand{\should}{\textbf{should}\xspace}
+\newcommand{\shouldnot}{\textbf{should not}\xspace}
 
 % Summary label (per EMSE Reviewer 1: avoid the cute "tl;dr").
 \ifpaper
@@ -155,10 +148,9 @@
     bottomline=false,
     rightline=false,
     leftline=true,
-    font=\itshape
   ]{framed}
 \else
-  \newenvironment{framed}{\begin{quote}\itshape}{\end{quote}}
+  \newenvironment{framed}{\begin{quote}}{\end{quote}}
 \fi
 
 % Cross-references — scope
