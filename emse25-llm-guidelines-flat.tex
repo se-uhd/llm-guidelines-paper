@@ -22,6 +22,11 @@
 
 \setlength{\marginparwidth}{2cm}
 
+% Preview at Springer's printed Royal Octavo dimensions (~178x254mm)
+% rather than A4, so the on-screen page reflects the journal's printed
+% margins. Body block kept at svjour3's smallextended size (119x194mm).
+\usepackage[paperwidth=178mm,paperheight=254mm,textwidth=119mm,textheight=194mm]{geometry}
+
 % Shared header (packages, commands, conditionals)
 % Shared header for llm-guidelines paper and website
 % Requires: \newif\ifpaper (and \papertrue for paper) defined before \input
