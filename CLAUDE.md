@@ -8,7 +8,7 @@ Academic paper submitted to Empirical Software Engineering (EMSE) journal, curre
 
 **This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) references all content directly via a git submodule at `llm-guidelines-paper/`.
 
-**Writing rules:** Apply the prose conventions in `WRITING.md` (banned/restricted words, em-dash budget, citation grounding, statistical formatting, etc.) to any LaTeX prose you write or edit.
+**Writing rules:** Apply the prose conventions in `WRITING.md` (banned/restricted words, em-dash budget, citation grounding, statistical formatting, etc.) to any prose you write or edit, whether in LaTeX, Markdown, code comments, or commit messages.
 
 ## Build Commands
 
