@@ -13,7 +13,7 @@
 \usepackage{algorithmicx}
 \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 \usepackage{stfloats}
-\usepackage{float}
+\usepackage{capt-of}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{tikz}
@@ -1772,8 +1772,8 @@ LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6 and 4.7), w
 
 \begin{appendices}
 
-\clearpage
 \section{Applicability Matrix}
+\nopagebreak
 \providecommand{\rot}[1]{\rotatebox{60}{\textbf{#1}}}
 
 % NOTE: Each cell below carries a non-rendered comment justifying its severity
@@ -1781,9 +1781,8 @@ LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6 and 4.7), w
 % in _guidelines/. Update both the cell and the comment when the guideline
 % text changes.
 
-\begin{table}[H]
-\centering
-\caption{Applicability of guidelines to study types.
+\begin{center}
+\captionof{table}{Applicability of guidelines to study types.
 \iconM~=~the guideline's core recommendations \must be followed for this study type,
 \iconS~=~\should be followed,
 --~=~are not directly applicable.
@@ -1877,18 +1876,17 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
  
-\clearpage
 \section{Rationale and Recommendations}
+\nopagebreak
 % NOTE: Each row carries a non-rendered comment justifying the rationale phrase
 % and the chosen severity, citing the Rationale and Recommendations subsections
 % of the matching _guidelines/0X_*.tex file. The Core Recommendations column is
 % a one-line summary; defer to the matrix for per-study-type severities.
 
-\begin{table}[H]
-\centering
-\caption{Rationale and key recommendations for each guideline. \iconM~=~\must, \iconS~=~\should.}
+\begin{center}
+\captionof{table}{Rationale and key recommendations for each guideline. \iconM~=~\must, \iconS~=~\should.}
 \label{tab:rationale-recommendations}
 \small
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
@@ -1948,9 +1946,8 @@ Limitations & Honest acknowledgment of threats strengthens a study. &
 \newline \iconS Employ mitigations where possible. \\
 \bottomrule
 \end{tabularx}
-\end{table}
+\end{center}
  
-\clearpage
 \section{Reporting Checklist}
 \label{sec:checklist}
 
