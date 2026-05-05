@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Academic paper submitted to Empirical Software Engineering (EMSE) journal, currently under major revision. The paper presents guidelines for empirical studies in software engineering involving LLMs. It is co-authored by 22 researchers and synced with Overleaf via git.
+Academic paper submitted to Empirical Software Engineering (EMSE) journal, currently under minor revision (Reviewer 1, round 2). The paper presents guidelines for empirical studies in software engineering involving LLMs. It is co-authored by 22 researchers and synced with Overleaf via git.
 
 **This repo is authoritative** for all content tex files (`_guidelines/`, `_studytypes/`, `_scope/`, `_tldr/`), `literature.bib`, and `shared-header.tex`. The companion website (`../llm-guidelines-website/`) references all content directly via a git submodule at `llm-guidelines-paper/`.
 
@@ -49,10 +49,15 @@ The main entry point is `emse25-llm-guidelines.tex`. Its preamble loads paper-on
 ```
 \documentclass[smallextended]{svjour3}
 \newif\ifpaper\papertrue
-% paper-only packages (lineno, manyfoot, tcolorbox, appendix, balance,
-% algorithm, algorithmicx, subfig, stfloats, graphicx, xcolor, tikz, mdframed)
+% paper-only packages (manyfoot, tcolorbox, appendix, balance,
+% algorithm, algorithmicx, subfig, stfloats, capt-of, graphicx,
+% xcolor, tikz, mdframed)
+% geometry override sets the page to ~Royal Octavo (178x254mm) so
+% the preview matches Springer's printed trim
 \input{shared-header.tex}
-% paper-only lstset color overrides and settings
+% paper-only lstset color overrides
+% needspace + etoolbox \pretocmd to keep section headings off the
+% bottom of pages
 ```
 
 Content is included via `\input{}`:
@@ -73,18 +78,18 @@ Content is included via `\input{}`:
 
 The LaTeX preamble is shared with the website via `shared-header.tex` (lives in this repo's root). It uses `\ifpaper...\else...\fi` conditionals for commands that differ between paper and website:
 
-- RFC 2119 keywords (`\must`, `\should`, etc.) — paper: `\textsc`, website: `\textbf`
+- RFC 2119 keywords (`\must`, `\should`, etc.) — bold in both paper and website
 - Cross-references (`\scope`, `\annotators`, etc.) — paper: `\hyperref[sec:...]`, website: `\href{/url}`
 - Section formatting (`\guidelinesubsubsection`, etc.) — different heading levels
 - Icons (`\iconM`, `\iconS`) — paper: TikZ circles, website: Unicode
-- Framed environment — paper: mdframed (gray bg, left border), website: quote
+- Framed environment — paper: mdframed (gray bg, left border); website: quote. Body is upright in both.
 
 **Important:** Paper-only packages (`tikz`, `xcolor`, `mdframed`) must be loaded *before* `\input{shared-header.tex}` so that `\ifpaper` branches can use them.
 
 ### Revision Artifacts
 
-- `response-letter.tex` — Point-by-point response to reviewers (standalone document, uses `literature.bib`). Structured with custom `reviewcomment`/`response` environments, one `\review` section per reviewer. Build with `latexmk -pdf response-letter.tex`.
-- `emse-reviews.md` — Raw reviewer comments in markdown (reference copy for context)
+- `reviews-and-response/response-letter.tex` and `response-letter-r1.tex` — Point-by-point responses to reviewers (`response-letter.tex` is the major-revision response; `response-letter-r1.tex` is the minor-revision R1 response). Each is a standalone document using `literature.bib`, with custom `reviewcomment`/`response` environments and one `\review` section per reviewer. Build with `latexmk -pdf reviews-and-response/response-letter-r1.tex` (similarly for the major-revision file).
+- `reviews-and-response/emse-reviews.md`, `emse-reviews-r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
 - `title-page.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class)
 - `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
 - `scripts/flatten.sh` — Flattens all `\input` files into `emse25-llm-guidelines-flat.tex` via `latexpand`
@@ -92,7 +97,7 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 ## Key Conventions
 
-**RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render as small-caps in the paper. `\may` has been removed; reword as plain suggestions ("researchers may/can...").
+**RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render bold in both paper and website (per Reviewer 1's stylistic ask: lowercase, not small-caps; this paper is not a standard). `\may` has been removed; reword as plain suggestions ("researchers may/can...").
 
 **Cross-reference macros:** Each study type and guideline has a shorthand command that creates a hyperlinked italic reference to the corresponding section. All accept an optional `[id]` argument for in-text identifiers. Defined in `shared-header.tex` with `\ifpaper` conditionals.
 - Study types: `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
@@ -107,9 +112,9 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **File naming:** Content files use numeric prefixes for ordering (`01_`, `02_`, `01-02_`). Directories use underscore prefixes (`_guidelines/`, `_studytypes/`).
 
-**Reporting location macros:** `\paper` and `\supplementarymaterial` indicate where information should be reported (renders as italic in the paper).
+**Reporting location macros:** `\paper` and `\supplementarymaterial` indicate where information should be reported (renders as italic in both paper and website).
 
-**Framed environments:** The `framed` mdframed environment is used for highlighted guideline text blocks (gray background, left border).
+**Framed environments:** The `framed` mdframed environment is used for highlighted guideline text blocks (gray background, left border, upright body text). The website renders the same `framed` as a plain blockquote.
 
 **Applicability matrix (`_summary/matrix.tex`):** Maps the eight guidelines to the seven study types using `\iconM` (must), `\iconS` (should), or `--` (not applicable). Cell values must match the RFC 2119 language in each guideline's "Study Types" subsection (the `\guidelinesubsubsection` in `_guidelines/0X_*.tex`). When editing guideline text that changes `\must`/`\should` for a study type, update the matrix to match.
 
