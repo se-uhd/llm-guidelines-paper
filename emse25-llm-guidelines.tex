@@ -48,6 +48,12 @@
 \clubpenalty = 10000
 % prevent single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
+% allow line breaks at explicit hyphens (sub-components, retrieval-augmented, ...)
+\exhyphenpenalty = 0
+% give LaTeX more flexibility on tight lines so it does not overrun the margin
+\setlength{\emergencystretch}{3em}
+% allow break inside camel-case names that recur in tight columns
+\hyphenation{Hu-man-Eval}
 % prevent section headings from ending up at the bottom of a page.
 % values include the heading plus what reliably follows it (e.g.,
 % the framed summary box after a guideline \subsection, the
