@@ -31,18 +31,24 @@ We use \paper to refer to the manuscript PDF, including any appendices bound wit
 This paper is structured to support different reading strategies depending on the reader's goal.
 \emph{Researchers planning a new study} may start with the taxonomy of
 study types (see \studytypes) to identify which types apply
-to their planned work, then consult Table~\ref{tab:guideline-matrix} to
-determine which guidelines are requirements (\must) and which are
+to their planned work, then consult
+\ifpaper Table~\ref{tab:guideline-matrix} \else the \href{/guidelines/\#guidelines-by-study-type}{applicability matrix} \fi
+to determine which guidelines are requirements (\must) and which are
 recommendations (\should) for those study types. Each guideline section
 opens with a brief summary in a shaded box, allowing
 readers to quickly assess relevance before reading the full text.
 \emph{Researchers writing up results} may prefer to start with the
-checklist in Appendix~\ref{sec:checklist}, which organizes actionable items
+\ifpaper checklist in Appendix~\ref{sec:checklist}, \else \href{/checklist/}{checklist}, \fi
+which organizes actionable items
 by typical paper sections (Introduction, Research Design and Methods, Results, etc.).
+\ifpaper
 Table~\ref{tab:guidelines} provides a quick reference to all eight
 guidelines, and Table~\ref{tab:rationale-recommendations} maps each
 guideline's rationale to its key recommendations.
+\fi
 \emph{Reviewers} can use the \emph{Advice for Reviewers} subsection at the
 end of each guideline for targeted guidance on assessing manuscripts.
+\ifpaper
 Table~\ref{tab:guideline-matrix} helps reviewers identify which guidelines
 apply to the study type under review.
+\fi
