@@ -1,8 +1,8 @@
 # Writing Rules for Software Engineering Research Papers
 
-This file assumes LaTeX manuscripts. Notation like `\cite{}`, `\textbf{}`, and `%` comments refers to LaTeX conventions.
+These rules apply to all prose authored or edited in this project: LaTeX paper sources, Markdown website pages and changelogs, code comments, and committed documentation. LaTeX-specific notation (`\cite{}`, `\textbf{}`, `%` comments, BibTeX) appears in examples where the rule depends on the format; the underlying principle is format-agnostic.
 
-Any text written or edited for this paper must follow the rules below. A research paper that reads like AI-generated output undermines its credibility. These rules draw on empirical studies of AI-to-human word frequency ratios, APA style guidelines (7th ed.), and IEEE/ACM conventions for SE publications.
+Any text written or edited must follow the rules below. A research paper that reads like AI-generated output undermines its credibility, and the same wording habits cheapen project documentation. These rules draw on empirical studies of AI-to-human word frequency ratios, APA style guidelines (7th ed.), and IEEE/ACM conventions for SE publications.
 
 ## Interaction Style
 
