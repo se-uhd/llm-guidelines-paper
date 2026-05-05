@@ -19,85 +19,85 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 \begin{tabular}{@{} l c c c c c c c @{}}
 & \rot{\hyperref[sec:llms-as-annotators]{Annotator}} & \rot{\hyperref[sec:llms-as-judges]{Judge}} & \rot{\hyperref[sec:llms-for-synthesis]{Synthesis}} & \rot{\hyperref[sec:llms-as-subjects]{Subject}} & \rot{\hyperref[sec:studying-llm-usage-in-software-engineering]{Usage}} & \rot{\hyperref[sec:llms-for-new-software-engineering-tools]{Tools}} & \rot{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{Benchmarks}} \\
 \midrule
-% G1 (Declare LLM Usage and Role): "Researchers must follow this guideline for all study types."
+% Declare LLM Usage and Role: "Researchers must follow this guideline for all study types."
 \hyperref[sec:declare-llm-usage-and-role]{Declare Usage}\hspace{12pt}
-  & \iconM % S1 annotators: "must declare the specific role assigned to the LLM (e.g., annotator)"
-  & \iconM % S2 judges: "must declare the specific role assigned to the LLM (e.g., judge)"
-  & \iconM % S3 synthesis: "must declare the specific role assigned to the LLM (e.g., synthesizer)"
-  & \iconM % S4 subjects: "must declare the specific role assigned to the LLM (e.g., simulated participant)"
-  & \iconM % S5 llmusage: "must clarify which LLM(s) the observed participants used and under which conditions"
-  & \iconM % S6 newtools: "must declare the LLM's role within the tool architecture and its contribution"
-  & \iconM % S7 benchmarkingtasks: "must declare which LLMs were benchmarked and for which tasks"
+  & \iconM % annotators: "must declare the specific role assigned to the LLM (e.g., annotator)"
+  & \iconM % judges: "must declare the specific role assigned to the LLM (e.g., judge)"
+  & \iconM % synthesis: "must declare the specific role assigned to the LLM (e.g., synthesizer)"
+  & \iconM % subjects: "must declare the specific role assigned to the LLM (e.g., simulated participant)"
+  & \iconM % llmusage: "must clarify which LLM(s) the observed participants used and under which conditions"
+  & \iconM % newtools: "must declare the LLM's role within the tool architecture and its contribution"
+  & \iconM % benchmarkingtasks: "must declare which LLMs were benchmarked and for which tasks"
   \\
-% G2 (Report Model Version): "must be followed for all study types for which the researcher has access to (parts of) the model's configuration"
+% Report Model Version: "must be followed for all study types for which the researcher has access to (parts of) the model's configuration"
 \hyperref[sec:report-model-version-configuration-and-customizations]{Model Version}
-  & \iconM % S1 annotators: "must report the model configuration used for the respective annotation tasks, including temperature and other sampling parameters"
-  & \iconM % S2 judges: "must report the model configuration used for the respective judging tasks"
-  & \iconM % S3 synthesis: "must report the model configuration used for the respective synthesis tasks"
-  & \iconM % S4 subjects: "must report any persona-related configuration settings and parameters that shape the simulated behavior"
-  & \iconM % S5 llmusage: "must be as specific as possible"; model name, version, date "must always be reported"
-  & \iconM % S6 newtools: "must report the configuration for each model integrated in the tool's architecture"
-  & \iconM % S7 benchmarkingtasks: "must report the configuration for all benchmarked models to enable fair cross-model comparisons"
+  & \iconM % annotators: "must report the model configuration used for the respective annotation tasks, including temperature and other sampling parameters"
+  & \iconM % judges: "must report the model configuration used for the respective judging tasks"
+  & \iconM % synthesis: "must report the model configuration used for the respective synthesis tasks"
+  & \iconM % subjects: "must report any persona-related configuration settings and parameters that shape the simulated behavior"
+  & \iconM % llmusage: "must be as specific as possible"; model name, version, date "must always be reported"
+  & \iconM % newtools: "must report the configuration for each model integrated in the tool's architecture"
+  & \iconM % benchmarkingtasks: "must report the configuration for all benchmarked models to enable fair cross-model comparisons"
   \\
-% G3 (System and Prompt Design): "must be followed for all studies that involve tools with system-level components beyond bare LLMs"
+% System and Prompt Design: "must be followed for all studies that involve tools with system-level components beyond bare LLMs"
 \hyperref[sec:report-system-and-prompt-design]{Design}
-  & \iconM % S1 annotators: "must document any predefined coding guides or instructions included in prompts"
-  & \iconM % S2 judges: "must report the evaluation criteria, scales, and examples embedded in the prompt"
-  & \iconM % S3 synthesis: "must document the sequence of prompts used to generate and refine outputs"
-  & \iconM % S4 subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
-  & \iconS % S5 llmusage: "should describe the tool architecture of the studied tool to the extent that it is accessible"; the must clause applies only to controlled experiments
-  & \iconM % S6 newtools: "of primary importance: must describe the tool's full architecture, prompts, context files, tool catalog, skill definitions"
-  & \iconM % S7 benchmarkingtasks: "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
+  & \iconM % annotators: "must document any predefined coding guides or instructions included in prompts"
+  & \iconM % judges: "must report the evaluation criteria, scales, and examples embedded in the prompt"
+  & \iconM % synthesis: "must document the sequence of prompts used to generate and refine outputs"
+  & \iconM % subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
+  & \iconS % llmusage: "should describe the tool architecture of the studied tool to the extent that it is accessible"; the must clause applies only to controlled experiments
+  & \iconM % newtools: "of primary importance: must describe the tool's full architecture, prompts, context files, tool catalog, skill definitions"
+  & \iconM % benchmarkingtasks: "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
   \\
-% G4 (Session Traces): runtime trace reporting requirements depend heavily on the study type and the accessibility of the underlying system
+% Session Traces: runtime trace reporting requirements depend heavily on the study type and the accessibility of the underlying system
 \hyperref[sec:report-session-traces]{Traces}
-  & \iconS % S1 annotators: "should report the corresponding interaction logs and, where applicable, runtime traces" when the setup involves multi-turn or agentic orchestration
-  & \iconS % S2 judges: same as S1 (multi-turn / agentic case)
-  & \iconS % S3 synthesis: same as S1 (multi-turn / agentic case)
-  & \iconS % S4 subjects: same as S1 (multi-turn / agentic case)
-  & \iconM % S5 llmusage: "must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal/confidential information"
-  & \iconS % S6 newtools: "should report runtime traces for the runs used to evaluate the tool" (for agentic execution)
-  & \iconS % S7 benchmarkingtasks: "should report runtime traces for representative runs" (for agent-based harnesses)
+  & \iconS % annotators: "should report the corresponding interaction logs and, where applicable, runtime traces" when the setup involves multi-turn or agentic orchestration
+  & \iconS % judges: same as annotators (multi-turn / agentic case)
+  & \iconS % synthesis: same as annotators (multi-turn / agentic case)
+  & \iconS % subjects: same as annotators (multi-turn / agentic case)
+  & \iconM % llmusage: "must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal/confidential information"
+  & \iconS % newtools: "should report runtime traces for the runs used to evaluate the tool" (for agentic execution)
+  & \iconS % benchmarkingtasks: "should report runtime traces for representative runs" (for agent-based harnesses)
   \\
-% G5 (Benchmarks and Metrics): "must be followed for all study types that automatically evaluate the performance of LLMs or LLM-based tools"
+% Benchmarks and Metrics: "must be followed for all study types that automatically evaluate the performance of LLMs or LLM-based tools"
 \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Benchmarks}
-  & \iconM % S1 annotators: "must justify their metric choice, explaining what aspects of the task it captures together with known limitations"
-  & \iconS % S2 judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
-  & \iconS % S3 synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
-  & \iconS % S4 subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
-  & \iconS % S5 llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
-  & \iconS % S6 newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
-  & \iconM % S7 benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics, and should report an error analysis of failure modes alongside the headline scores"
+  & \iconM % annotators: "must justify their metric choice, explaining what aspects of the task it captures together with known limitations"
+  & \iconS % judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
+  & \iconS % synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
+  & \iconS % subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
+  & \iconS % llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
+  & \iconS % newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
+  & \iconM % benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics, and should report an error analysis of failure modes alongside the headline scores"
   \\
-% G6 (Open LLM Baseline): "applies primarily to study types in which the researcher controls which LLM is used"
+% Open LLM Baseline: "applies primarily to study types in which the researcher controls which LLM is used"
 \hyperref[sec:use-an-open-llm-as-a-baseline]{Open LLM}
-  & \iconS % S1 annotators: "should compare annotation quality from open vs. commercial models"
-  & \iconS % S2 judges: "should compare judgment quality from open vs. commercial models"
-  & \iconS % S3 synthesis: "should compare synthesis results from open and commercial models"
-  & --     % S4 subjects: G6 source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by G8's \must clauses for S4 (G8 row marks S4 as \iconM).
-  & --     % S5 llmusage: G6 source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by G8's \must clauses for S5 (G8 row marks S5 as \iconM).
-  & \iconS % S6 newtools: "should use an open LLM as a baseline whenever it is technically feasible"
-  & \iconM % S7 benchmarkingtasks: "an open LLM must be one of the models under evaluation"
+  & \iconS % annotators: "should compare annotation quality from open vs. commercial models"
+  & \iconS % judges: "should compare judgment quality from open vs. commercial models"
+  & \iconS % synthesis: "should compare synthesis results from open and commercial models"
+  & --     % subjects: Open LLM source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by Limitations' \must clauses for subjects (Limitations row marks subjects as \iconM).
+  & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM).
+  & \iconS % newtools: "should use an open LLM as a baseline whenever it is technically feasible"
+  & \iconM % benchmarkingtasks: "an open LLM must be one of the models under evaluation"
   \\
-% G7 (Human Validation): "applies to all study types, although the need for human validation varies"
+% Human Validation: "applies to all study types, although the need for human validation varies"
 \hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}
-  & \iconS % S1 annotators: "should validate LLM-generated annotations against human annotators"
-  & \iconS % S2 judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"
-  & \iconS % S3 synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"
-  & \iconS % S4 subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"
-  & \iconS % S5 llmusage: "should carefully reflect on the validity of their evaluation criteria and validate subjective assessments with human experts"
-  & \iconS % S6 newtools: "For \newtools whose output is supposed to match human expectations, researchers \should validate the LLM output against human judgment"
-  & \iconS % S7 benchmarkingtasks: "should employ human validation when creating or adapting new benchmarks"
+  & \iconS % annotators: "should validate LLM-generated annotations against human annotators"
+  & \iconS % judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"
+  & \iconS % synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"
+  & \iconS % subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"
+  & \iconS % llmusage: "should carefully reflect on the validity of their evaluation criteria and validate subjective assessments with human experts"
+  & \iconS % newtools: "For \newtools whose output is supposed to match human expectations, researchers \should validate the LLM output against human judgment"
+  & \iconS % benchmarkingtasks: "should employ human validation when creating or adapting new benchmarks"
   \\
-% G8 (Limitations and Mitigations): "Researchers must follow this guideline for all study types."
+% Limitations and Mitigations: "Researchers must follow this guideline for all study types."
 \hyperref[sec:report-limitations-and-mitigations]{Limitations}
-  & \iconM % S1 annotators: "must discuss potential biases in label assignment, label reliability limitations, and sensitivity to prompt wording and model choice"
-  & \iconM % S2 judges: "must address measurement validity concerns, known biases such as position bias or verbosity bias"
-  & \iconM % S3 synthesis: "must discuss the risk of contextual misinterpretation, potential loss of nuance, and reflexivity limitations"
-  & \iconM % S4 subjects: "must discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification"
-  & \iconM % S5 llmusage: "must discuss generalizability constraints across different tools and user populations"
-  & \iconM % S6 newtools: "must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates"
-  & \iconM % S7 benchmarkingtasks: "must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes"
+  & \iconM % annotators: "must discuss potential biases in label assignment, label reliability limitations, and sensitivity to prompt wording and model choice"
+  & \iconM % judges: "must address measurement validity concerns, known biases such as position bias or verbosity bias"
+  & \iconM % synthesis: "must discuss the risk of contextual misinterpretation, potential loss of nuance, and reflexivity limitations"
+  & \iconM % subjects: "must discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification"
+  & \iconM % llmusage: "must discuss generalizability constraints across different tools and user populations"
+  & \iconM % newtools: "must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates"
+  & \iconM % benchmarkingtasks: "must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes"
   \\
 \bottomrule
 \end{tabular}

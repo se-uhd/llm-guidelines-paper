@@ -60,7 +60,7 @@ Content is included via `\input{}`:
 - `_main/guidelines-intro.tex` — Guidelines section introduction
 - `_main/study-types-intro.tex` — Study types section introduction
 - `_scope/` — Motivation (`01_motivation.tex`) and scope definition (`02_scope.tex`)
-- `_studytypes/` — Taxonomy of 7 LLM study types, organized hierarchically (e.g., `01-02-llms-as-judges.tex`). Category 01 = LLMs as tools for researchers (S1–S4), Category 02 = LLMs as tools for engineers (S5–S7). Also includes `01-05-advantages-and-challenges.tex` (cross-cutting section)
+- `_studytypes/` — Taxonomy of 7 LLM study types, organized hierarchically (e.g., `01-02-llms-as-judges.tex`). Category 01 = LLMs as tools for researchers (annotators, judges, synthesis, subjects); Category 02 = LLMs as tools for engineers (LLM usage, new tools, benchmarking tasks). Also includes `01-05-advantages-and-challenges.tex` (cross-cutting section)
 - `_guidelines/` — 8 reporting guidelines (numbered `01` through `08`)
 - `_tldr/` — TL;DR summaries (one per guideline, included inline before each guideline section)
 - `_summary/` — Applicability matrix (`matrix.tex`), rationale-recommendations table (`rationale-recommendations.tex`), and reporting checklist (`checklist.tex`)
@@ -93,8 +93,8 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 **RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render as small-caps in the paper. `\may` has been removed; reword as plain suggestions ("researchers may/can...").
 
 **Cross-reference macros:** Each study type and guideline has a shorthand command that creates a hyperlinked italic reference to the corresponding section. All accept an optional `[id]` argument for in-text identifiers. Defined in `shared-header.tex` with `\ifpaper` conditionals.
-- Study types (S1–S7): `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
-- Guidelines (G1–G8): `\usagerole`, `\modelversion`, `\design`, `\traces`, `\benchmarksmetrics`, `\openllm`, `\humanvalidation`, `\limitationsmitigations`
+- Study types: `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
+- Guidelines: `\usagerole`, `\modelversion`, `\design`, `\traces`, `\benchmarksmetrics`, `\openllm`, `\humanvalidation`, `\limitationsmitigations`
 - Umbrella: `\scope`, `\studytypes`, `\guidelines`, `\llmsforresearcher`, `\llmsforengineers`
 
 **Inline quotes:** `\enq{...}` renders typographically correct quotes with italics.
@@ -109,7 +109,7 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 **Framed environments:** The `framed` mdframed environment is used for highlighted guideline text blocks (gray background, left border).
 
-**Applicability matrix (`_summary/matrix.tex`):** Table 1 maps guidelines (G1–G8) to study types (S1–S7) using `\iconM` (must), `\iconS` (should), or `--` (not applicable). Cell values must match the RFC 2119 language in each guideline's "Study Types" subsection (the `\guidelinesubsubsection` in `_guidelines/0X_*.tex`). When editing guideline text that changes `\must`/`\should` for a study type, update the matrix to match.
+**Applicability matrix (`_summary/matrix.tex`):** Maps the eight guidelines to the seven study types using `\iconM` (must), `\iconS` (should), or `--` (not applicable). Cell values must match the RFC 2119 language in each guideline's "Study Types" subsection (the `\guidelinesubsubsection` in `_guidelines/0X_*.tex`). When editing guideline text that changes `\must`/`\should` for a study type, update the matrix to match.
 
 **Reporting checklist (`_summary/checklist.tex`):** Items within each section are ordered by severity first, then by reporting location: `\iconM` before `\iconS`, and within each severity level: `\paper` → unspecified → `\supplementarymaterial`. Maintain this ordering when adding or reordering checklist items.
 
