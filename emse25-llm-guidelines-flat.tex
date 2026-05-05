@@ -267,6 +267,17 @@
 \clubpenalty = 10000
 % prevent single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
+% prevent section headings from ending up at the bottom of a page.
+% values include the heading plus what reliably follows it (e.g.,
+% the framed summary box after a guideline \subsection, the
+% \studytypeparagraph that immediately follows each \subsubsection).
+% \paragraph is intentionally not patched: its own needspace would
+% override the \nobreak inserted by the preceding \subsubsection.
+\usepackage{needspace}
+\usepackage{etoolbox}
+\pretocmd{\section}{\needspace{6\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{10\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{8\baselineskip}}{}{}
 
 % Set title
 \makeatletter
