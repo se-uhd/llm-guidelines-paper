@@ -19,7 +19,8 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 ### Changed
 
 - **must** / **should** keywords lowercased in body text.
-- **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 use Section / Title / Short Name; matrix moved after the rationale-recommendations table.
+- **S1–S7 / G1–G8 IDs dropped throughout.** Tables 1 and 2 use Section / Title / Short Name; applicability matrix and rationale-recommendations table moved to the appendix.
+- **Prose:** swept restricted wording (utilize, leverage, foster, facilitate), reserved *significant* for statistical results, removed em-dashes, replaced abstract "shape" verbs, and restructured participial sentence openings.
 - **Summary boxes:** *tl;dr* renamed to *Summary*; *Examples* used as the plural heading.
 - **See Also blocks:** `Section n (Title): rationale` format.
 - **Checklist bullets:** `\iconM` / `\iconS` replace empty `\square`.
