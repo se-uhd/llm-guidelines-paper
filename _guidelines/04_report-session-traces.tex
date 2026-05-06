@@ -29,6 +29,7 @@ For traces containing sensitive information, researchers \must anonymize persona
 When an LLM calls out to external tools (subagents, MCP servers, file systems, APIs, databases) or activates configured artifacts (context files, skills, sub-agents reported under \design), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
 Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries.
 This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
+Researchers \should record runtime traces in an open format compatible with the OpenTelemetry Protocol (OTLP), such as the OpenTelemetry GenAI semantic conventions~\cite{otel_genai_semconv} or OpenInference~\cite{openinference_spec}, and report the version used, rather than a study-specific schema.
 
 \paragraph{Agentic Plans:}
 For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available.
