@@ -15,6 +15,7 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 - **Benchmarks:** For ratings that vary across raters or runs, **should** report distributions per item rather than only point estimates.
 - **Human Validation:** For value-laden or culturally contingent constructs, **should** describe rater demographics beyond expertise.
 - **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
+- **Traces:** **should** record runtime traces in an OTLP-compatible format such as the OpenTelemetry GenAI semantic conventions or OpenInference, and report the version used.
 
 ### Changed
 
