@@ -146,16 +146,17 @@ git submodule update --remote
 
 ## Bibliography Cleanup Scripts
 
-All scripts live in the `scripts/` directory. Three Python scripts (requires `bibtexparser` package) were used to clean `literature.bib`. They are kept for reference and potential re-runs but are not part of the paper build.
+All scripts live in the `scripts/` directory (requires `bibtexparser`).
 
-- **`scripts/clean_bibliography.py`** — Initial cleanup: removes unreferenced entries (cross-checked against `.tex` and `.aux` files), then queries DBLP for each remaining entry to upgrade metadata (e.g., arXiv preprints promoted to published venue entries). Writes `literature.bib` in-place (backs up to `literature.bib.backup` first) and generates `dblp_unmatched_report.txt`.
+- **`scripts/clean_bibliography.py`** — Validates each entry against DBLP (and Crossref as fallback). For entries with an arXiv id (detected from `eprint`, DBLP CoRR key, `url`, `volume = abs/...`, or arXiv DOI), queries DBLP for all records of that work; if a non-CoRR record exists (conference, journal, workshop), the entry is upgraded and its citation key is renamed to the new DBLP key. For already-published entries that still carry leftover arXiv metadata (`eprint`, `archiveprefix`, `primaryclass`, `eprinttype`, redundant arXiv `url`), strips those fields. After bib changes, rewrites `\cite` sites in all source `.tex` files for renamed keys. A persistent JSON cache (`scripts/.bib_validation_cache.json`) records last-validation timestamp, content hash, and outcome per entry; subsequent runs skip cached entries that are fresh and unchanged. Removing unreferenced entries is opt-in via `--remove-unref` (default off, since stale `.aux` files can drop in-progress citations).
 
-- **`scripts/retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., due to rate limiting or transient errors). Reads failed keys from `dblp_unmatched_report.txt`, re-fetches from DBLP, upgrades if better, and appends results to the report.
+  CLI flags: `--force` (ignore cache), `--only KEY[,KEY...]`, `--max-age-days N` (default 30), `--remove-unref`, `--no-rename`, `--no-tex-update`, `--no-strip`, `--dry-run`, `--limit N`. The script writes `literature.bib` in place (backs up to `literature.bib.backup` first), updates `.tex` cite sites, refreshes the cache, and writes a per-run report at `dblp_unmatched_report.txt`. After a run that renames keys, regenerate `emse25-llm-guidelines-flat.tex` via `./scripts/flatten.sh`.
 
-- **`scripts/handle_remaining.py`** — Handles entries that DBLP couldn't match (non-CS journals, gray literature, arXiv preprints). Step 1: enriches entries with DOIs via Crossref (adds publisher, ISSN, pages, normalizes DOI format). Step 2: fuzzy DBLP title search for CS/SE papers that exact-match missed. Step 3: validates URLs in `@misc` entries. Appends a categorized summary to `dblp_unmatched_report.txt`.
+- **`scripts/retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., 429s or transient errors). Reads failed keys from `dblp_unmatched_report.txt` and appends results. Largely superseded by `clean_bibliography.py`'s built-in retry, but kept for targeted reruns.
 
-**Run order:** `scripts/clean_bibliography.py` → `scripts/retry_dblp.py` → `scripts/handle_remaining.py`
+- **`scripts/handle_remaining.py`** — One-off handler for the entries that DBLP couldn't match during the initial cleanup (non-CS journals, gray literature, etc.). Crossref enrichment, fuzzy DBLP search, and `@misc` URL validation. Kept for historical reference; the categorized lists at the top of the file are frozen at the state of the original cleanup.
 
 **Supporting files:**
-- `literature.bib.backup` — Pre-cleanup backup of the bibliography (tracked by git)
-- `dblp_unmatched_report.txt` — Cumulative log of all cleanup actions and remaining entry status (generated on demand, not tracked)
+- `literature.bib.backup` — Backup written before each `clean_bibliography.py` run (tracked by git).
+- `dblp_unmatched_report.txt` — Per-run report with old → new key map, stripped fields, and unmatched entries (overwritten each run; not tracked).
+- `scripts/.bib_validation_cache.json` — Persistent validation cache (not tracked).
