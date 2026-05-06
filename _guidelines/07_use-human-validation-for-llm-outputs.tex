@@ -29,10 +29,10 @@ Researchers \should report measures of IRA or IRR, preferably broken down by rou
 Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise).
 For value-laden or culturally contingent constructs (e.g., judging code-style appropriateness or comment helpfulness), researchers \should describe rater demographics beyond expertise (e.g., geographic, linguistic, or professional background) and discuss potential demographic biases in rater recruitment and instructions~\cite{bean2025measuring}.
 Where applicable, researchers may perform a power analysis~\cite{Cohen1992,DBLP:journals/infsof/DybaKS06} to estimate the required sample size, ensuring sufficient statistical power in their experimental design.
-However, we also note that to our knowledge, there is limited established guidance specific to determining sample sizes for LLM-human comparisons. In other fields, 100 comparisons are often made without further explanation~\cite{tam2024framework}.
+However, we also note that to our knowledge, there is limited established guidance specific to determining sample sizes for LLM-human comparisons. In other fields, 100 comparisons are often made without further explanation~\cite{DBLP:journals/npjdm/TamSKSPMOWVFMCSPW24}.
 
 Researchers \should use established reference models to compare humans with LLMs.
-For example, \citeauthor{Schneider2025ReferenceModel}~\cite{Schneider2025ReferenceModel} outline design considerations for studies comparing LLMs with humans.
+For example, \citeauthor{DBLP:conf/icse/SchneiderFW25}~\cite{DBLP:conf/icse/SchneiderFW25} outline design considerations for studies comparing LLMs with humans.
 If studies aim to automate annotating software artifacts using an LLM, researchers \should follow systematic approaches to decide whether and how human annotators can be replaced (e.g., showing that a jury of three LLMs exhibit model-to-model agreement comparable to trained human annotators, such as Krippendorff's $\alpha>0.8$). Model-to-model agreement requires the same threshold as human-to-human agreement, since low thresholds may simply reflect shared model biases rather than annotation quality.
 
 \paragraph{Agentic Tools:}
@@ -48,7 +48,7 @@ Agentic human-in-the-loop interaction is a built-in human validation, with large
 This illustrates that high model-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid.
 Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-\citet{hymel2025analysisllmsvshuman}~\cite{hymel2025analysisllmsvshuman} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
+\citet{DBLP:journals/corr/abs-2501-19297}~\cite{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
 
 \guidelinesubsubsection{Benefits}
 
@@ -56,7 +56,7 @@ Validation against human judgments builds confidence in the LLM's accuracy and v
 
 \guidelinesubsubsection{Challenges}
 
-Assessment of a construct such as LLM performance is challenging because ensuring that a construct is defined well and operationalized using an appropriate measurement model requires a deep understanding of (1) the construct, (2) construct validity in general, and (3) instrumentation~\cite{DBLP:journals/tse/SjobergB23,ralph2024teaching}. Comparing an LLM to human judges is typically slower and more expensive than machine-generated measures. More fundamentally, neither human judgment nor machine-generated measures provides an objective ground truth against which LLM accuracy can be firmly determined.   
+Assessment of a construct such as LLM performance is challenging because ensuring that a construct is defined well and operationalized using an appropriate measurement model requires a deep understanding of (1) the construct, (2) construct validity in general, and (3) instrumentation~\cite{DBLP:journals/tse/SjobergB23,DBLP:books/sp/24/RalphKAA24}. Comparing an LLM to human judges is typically slower and more expensive than machine-generated measures. More fundamentally, neither human judgment nor machine-generated measures provides an objective ground truth against which LLM accuracy can be firmly determined.   
 
 Human judgments exhibit variability due to differences in experience, expertise, interpretations, and personal biases~\cite{DBLP:journals/pacmhci/McDonaldSF19}. When diverse humans rate items reliably given clear decision rules, we assume that reliability implies validity, but it does not. Measuring reliability is \textit{much} easier than measuring validity, and often the best researchers can do is argue conceptually for why their judges, decision rules, and constructs \textit{should} produce valid ratings.
 
