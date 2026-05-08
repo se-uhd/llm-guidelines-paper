@@ -434,13 +434,13 @@
 \maketitle
 
 \begin{abstract}
-Large Language Models (LLMs) are now ubiquitous in software engineering (SE)
+Large Language Models (LLMs) are widely used in software engineering (SE)
 research and practice, yet their non-determinism, opaque training data, and
 rapidly evolving models threaten the reproducibility and replicability of
 empirical studies.
 We address this challenge through a collaborative effort of 22 researchers,
-presenting a taxonomy of seven study types that organizes the landscape of
-LLM involvement in SE research, together with eight guidelines for designing
+presenting a taxonomy of seven study types that organizes how LLMs are
+involved in SE research, together with eight guidelines for designing
 and reporting such studies.
 Each guideline distinguishes requirements (\must) from recommended practices
 (\should) and is contextualized by the study types it applies to.
@@ -466,10 +466,10 @@ community to use and shape
 \label{sec:introduction}
 
 
-Since the release of ChatGPT in November 2022, large language models (LLMs) have rapidly become a major focus of software engineering (SE) research~\cite{DBLP:journals/tosem/HouZLYWLLLGW24}, yet the reproducibility and replicability of empirical studies involving LLMs remains uncertain.
+Since the release of ChatGPT in November 2022, large language models (LLMs) have been adopted widely across software engineering (SE) research~\cite{DBLP:journals/tosem/HouZLYWLLLGW24}, yet the reproducibility and replicability of empirical studies involving LLMs remains uncertain.
 Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}.
 Three characteristics of LLMs make this particularly challenging:
-their inherent non-determinism causes variability across runs, with slight changes leading to substantially different results~\cite{DBLP:journals/corr/abs-2412-12509, DBLP:conf/naacl/SongWLL25, DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2602-07150};
+their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, with slight changes leading to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509};
 commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009};
 and even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
 Moreover, prompt formatting choices alone can shift accuracy by tens of percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
@@ -489,7 +489,7 @@ We maintain the guidelines online as a living resource for the community to use 
 
 \scopeparagraph{Software Engineering as our Target Discipline}
 
-We target SE research because existing cross-disciplinary guidelines do not address its needs. For instance, Gallifant et al.'s~\cite{Gallifant2025} guidelines for LLM use in healthcare research include discipline-specific items irrelevant to most SE studies (e.g., clinical-care usability) while lacking guidance on tool architectures, benchmarking, and code-specific evaluation that SE research requires.
+We target SE research because existing cross-disciplinary guidelines do not address its needs. For instance, \citeauthor{Gallifant2025}'s~\cite{Gallifant2025} guidelines for LLM use in healthcare research include discipline-specific items irrelevant to most SE studies (e.g., clinical-care usability) while lacking guidance on tool architectures, benchmarking, and code-specific evaluation that SE research requires.
 Moreover, SE research employs a wide variety of empirical methods~\cite{ralph2021empiricalstandardssoftwareengineering, DBLP:books/sp/WohlinRHORW24}. Our work builds on \citeauthor{DBLP:conf/icse/SallouDP24}'s vision paper on mitigating validity threats in LLM-based SE research~\cite{DBLP:conf/icse/SallouDP24} and our own position paper~\cite{DBLP:conf/wsese/0001BFB25}, providing more detailed advice for a wider variety of research methods organized into a taxonomy of \studytypes\ifpaper~(Section~\ref{sec:study-types})\fi.
 
 \scopeparagraph{Focus on Text-Based Use Cases}
@@ -533,7 +533,7 @@ by typical paper sections (Introduction, Research Design and Methods, Results, e
 \ifpaper
 Table~\ref{tab:guidelines} provides a quick reference to all eight
 guidelines, and Table~\ref{tab:rationale-recommendations} maps each
-guideline's rationale to its key recommendations.
+guideline's rationale to its recommendations.
 \fi
 \emph{Reviewers} can use the \emph{Advice for Reviewers} subsection at the
 end of each guideline for targeted guidance on assessing manuscripts.
@@ -668,7 +668,7 @@ Published examples of applying LLMs for synthesis in SE remain scarce; however, 
 %They identified examples in domains such as healthcare and social sciences (see, e.g., \cite{de2024performing,mathis2024inductive}) in which LLMs were used to support qualitative analysis, including grounded theory and thematic analysis.
 %Overall, the findings highlight the successful generation of preliminary coding schemes from interview transcripts, later refined by human researchers, along with support for pattern identification.This approach was reported not only to expedite the initial coding process but also to allow researchers to focus more on higher-level analysis and interpretation.
 %This particular paper suggests using LLMs to support tasks such as initial coding and theme identification while conservatively reserving interpretative or creative processes for human analysts.
-In SE, de Morais Leca et al. \cite{DBLP:conf/wsese/LecaVSS25} explored how LLMs have been applied for qualitative data analysis (QDA) and proposed general strategies and guidelines for their application. Ornelas et al. \cite{DBLP:journals/corr/abs-2511-14528} complemented this perspective by studying the opportunities and limitations of introducing LLM-based support into QDA, and by formulating recommendations for embedding human–AI collaboration across the thematic analysis phases. Building on these, subsequent work has proposed hybrid frameworks combining LLM support with human-led QDA. Rashid et al. \cite{DBLP:journals/corr/abs-2402-01386} designed an LLM-driven multi-agent system that integrates AI with human decision-making to automate qualitative data analysis methods. Their system generated initial codes, developed themes, and summarized text. Similarly, Montes et al. \cite{DBLP:journals/corr/abs-2510-18456} compared the performance of humans and LLMs in coding, theme development, definition, and refinement, creating guidelines for a hybrid-LLM framework.
+In SE, \citeauthor{DBLP:conf/wsese/LecaVSS25}~\cite{DBLP:conf/wsese/LecaVSS25} explored how LLMs have been applied for qualitative data analysis (QDA) and proposed general strategies and guidelines for their application. \citeauthor{DBLP:journals/corr/abs-2511-14528}~\cite{DBLP:journals/corr/abs-2511-14528} complemented this perspective by studying the opportunities and limitations of introducing LLM-based support into QDA, and by formulating recommendations for embedding human–AI collaboration across the thematic analysis phases. Building on these, subsequent work has proposed hybrid frameworks combining LLM support with human-led QDA. \citeauthor{DBLP:journals/corr/abs-2402-01386}~\cite{DBLP:journals/corr/abs-2402-01386} designed an LLM-driven multi-agent system that integrates AI with human decision-making to automate qualitative data analysis methods. Their system generated initial codes, developed themes, and summarized text. Similarly, \citeauthor{DBLP:journals/corr/abs-2510-18456}~\cite{DBLP:journals/corr/abs-2510-18456} compared the performance of humans and LLMs in coding, theme development, definition, and refinement, creating guidelines for a hybrid-LLM framework.
 Finally, \citeauthor{DBLP:journals/corr/abs-2506-21138}'s work is an example of using LLMs to create synthetic datasets.
 They present an approach to generate synthetic requirements, showing that they \enq{can match or surpass human-authored requirements for specific classification tasks}~\cite{DBLP:journals/corr/abs-2506-21138}.
  
@@ -840,7 +840,7 @@ The \supplementarymaterial should be published according to the \emph{ACM SIGSOF
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits in the \paper. When the LLM plays a central role, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices. \end{framed}
+\summary: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits in the \paper. When the LLM is central to the study, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -856,7 +856,7 @@ For authoring scientific articles, this transparency is, for example, required b
 Beyond generic declarations, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
 A sufficient declaration specifies not only \emph{that} an LLM was used, but also \emph{which} LLM (name and version), \emph{how} it was used (e.g., as an annotator, code generator, or judge), and \emph{where} in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
-When the LLM plays a central role in the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
+When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
 In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
 % Related paper:
@@ -1090,7 +1090,7 @@ If prompts from the early phases of a research project are unavailable, research
 
 Prompt development is often iterative, involving collaboration between human researchers and AI tools.
 Researchers \should report any instances in which LLMs were used to suggest prompt refinements and how these suggestions were incorporated.
-A prompt changelog can track prompt evolution, including key revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses).
+A prompt changelog can track prompt evolution, including revisions and reasons for changes (e.g., v1.0: initial prompt; v2.0: incorporated examples of ideal responses).
 Because prompt effectiveness varies between models and model versions, researchers \must make clear which prompts were used for which models in which versions and with which configuration.
 
 \paragraph{Prompting Strategy and Input Handling:}
@@ -1364,7 +1364,7 @@ The \emph{pass@k} metric is defined as:
   \item $k$ is the number of samples drawn.
 \end{itemize}
 
-The choice of $k$ depends on the downstream task: \emph{pass@1} is critical for single-suggestion scenarios like code completion, while higher $k$ values (e.g., $2$, $5$, $10$) assess multi-attempt capability~\cite{DBLP:journals/corr/abs-2308-12950, DBLP:journals/corr/abs-2401-14196, DBLP:journals/corr/abs-2409-12186, DBLP:journals/tmlr/LiAZMKMMALCLZZW23}.
+The choice of $k$ depends on the downstream task: \emph{pass@1} is critical for single-suggestion scenarios such as code completion, while higher $k$ values (e.g., $2$, $5$, $10$) assess multi-attempt capability and are commonly reported in technical reports of recent code LLMs (e.g., Code Llama~\cite{DBLP:journals/corr/abs-2308-12950}, DeepSeek-Coder~\cite{DBLP:journals/corr/abs-2401-14196}, Qwen2.5-Coder~\cite{DBLP:journals/corr/abs-2409-12186}, StarCoder~\cite{DBLP:journals/tmlr/LiAZMKMMALCLZZW23}).
 However, \emph{pass@k} is not a universal metric suitable for all generation tasks.
 It requires a binary notion of correctness, making the metric appropriate for code synthesis evaluated via unit tests, but unsuitable for open-ended generation tasks such as comment generation, where multiple valid outputs exist.
 
@@ -1490,7 +1490,7 @@ For example, \citeauthor{DBLP:journals/corr/abs-2406-09834} evaluated seven adva
 \citeauthor{DBLP:journals/corr/abs-2408-04430} compared four LLMs on a cross-language code clone detection task~\cite{DBLP:journals/corr/abs-2408-04430}.
 Three evaluated models were open-source.
 \citeauthor{DBLP:conf/eicc/GoncalvesSC0MPS25} fine-tuned the open LLM \emph{LLaMA} 3.2 on a refined version of the \emph{DiverseVul} dataset to benchmark vulnerability detection performance~\cite{DBLP:conf/eicc/GoncalvesSC0MPS25}.
-\emph{CodeBERT}, a bimodal transformer pre-trained by Microsoft Research, has been widely used as an open baseline~\cite{DBLP:journals/jss/YangZCZHC23, DBLP:conf/gaiis/XiaSD24, DBLP:conf/kbse/SonnekalbGBM22, DBLP:conf/icse/CaiYMMN24}, with model weights, source code, and data-processing scripts published on GitHub~\cite{codebert}.
+\emph{CodeBERT}, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data-processing scripts on GitHub~\cite{codebert}. It has been used as an open baseline across diverse SE tasks, including exploit code generation~\cite{DBLP:journals/jss/YangZCZHC23}, vulnerability detection~\cite{DBLP:conf/gaiis/XiaSD24}, code clone detection~\cite{DBLP:conf/kbse/SonnekalbGBM22}, and programming assistance for exception handling~\cite{DBLP:conf/icse/CaiYMMN24}.
 
 \guidelinesubsubsection{Benefits}
 
@@ -1590,7 +1590,7 @@ Agentic human-in-the-loop interaction is a built-in human validation, with large
 This illustrates that high model-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid.
 Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-\citet{DBLP:journals/corr/abs-2501-19297}~\cite{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
+\citeauthor{DBLP:journals/corr/abs-2501-19297}~\cite{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
 
 \guidelinesubsubsection{Benefits}
 

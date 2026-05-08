@@ -64,7 +64,7 @@ The \emph{pass@k} metric is defined as:
   \item $k$ is the number of samples drawn.
 \end{itemize}
 
-The choice of $k$ depends on the downstream task: \emph{pass@1} is critical for single-suggestion scenarios like code completion, while higher $k$ values (e.g., $2$, $5$, $10$) assess multi-attempt capability~\cite{DBLP:journals/corr/abs-2308-12950, DBLP:journals/corr/abs-2401-14196, DBLP:journals/corr/abs-2409-12186, DBLP:journals/tmlr/LiAZMKMMALCLZZW23}.
+The choice of $k$ depends on the downstream task: \emph{pass@1} is critical for single-suggestion scenarios such as code completion, while higher $k$ values (e.g., $2$, $5$, $10$) assess multi-attempt capability and are commonly reported in technical reports of recent code LLMs (e.g., Code Llama~\cite{DBLP:journals/corr/abs-2308-12950}, DeepSeek-Coder~\cite{DBLP:journals/corr/abs-2401-14196}, Qwen2.5-Coder~\cite{DBLP:journals/corr/abs-2409-12186}, StarCoder~\cite{DBLP:journals/tmlr/LiAZMKMMALCLZZW23}).
 However, \emph{pass@k} is not a universal metric suitable for all generation tasks.
 It requires a binary notion of correctness, making the metric appropriate for code synthesis evaluated via unit tests, but unsuitable for open-ended generation tasks such as comment generation, where multiple valid outputs exist.
 
