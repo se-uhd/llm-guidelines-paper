@@ -105,7 +105,7 @@
 % inside HTML comments becomes an en-dash. `@@` has no special meaning to
 % pandoc and survives verbatim.
 \ifpaper
-  \newcommand{\condition}[1]{\textsf{\small[#1]}\,}
+  \newcommand{\condition}[1]{\texttt{\small[#1]}\,}
 \else
   \newcommand{\condition}[1]{@@cond:#1@@}
 \fi
@@ -181,6 +181,17 @@
   \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
   \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
   \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
+  % Short-name references for the reporting checklist (parenthetical citations
+  % that link to the corresponding guideline). Plain (non-italic) hyperlinks
+  % since they serve as citations in trailing parens, not in-prose mentions.
+  \newcommand{\refdeclareusage}{\hyperref[sec:declare-llm-usage-and-role]{Declare Usage}}
+  \newcommand{\refmodelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{Model Version}}
+  \newcommand{\refdesign}{\hyperref[sec:report-system-and-prompt-design]{Design}}
+  \newcommand{\reftraces}{\hyperref[sec:report-session-traces]{Traces}}
+  \newcommand{\refbenchmarks}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Benchmarks}}
+  \newcommand{\refopenllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{Open LLM}}
+  \newcommand{\refhumanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}}
+  \newcommand{\reflimitations}{\hyperref[sec:report-limitations-and-mitigations]{Limitations}}
 \else
   \newcommand{\guidelines}{\href{/guidelines}{\emph{Guidelines}}\xspace}
   \newcommand{\usagerole}{\href{/guidelines\#declare-llm-usage-and-role}{\emph{Usage and Role}}\xspace}
@@ -191,6 +202,14 @@
   \newcommand{\openllm}{\href{/guidelines\#use-an-open-llm-as-a-baseline}{\emph{Open LLMs}}\xspace}
   \newcommand{\humanvalidation}{\href{/guidelines\#use-human-validation-for-llm-outputs}{\emph{Human Validation}}\xspace}
   \newcommand{\limitationsmitigations}{\href{/guidelines\#report-limitations-and-mitigations}{\emph{Limitations and Mitigations}}\xspace}
+  \newcommand{\refdeclareusage}{\href{/guidelines/declare-llm-usage-and-role/}{Declare Usage}}
+  \newcommand{\refmodelversion}{\href{/guidelines/report-model-version-configuration-and-customizations/}{Model Version}}
+  \newcommand{\refdesign}{\href{/guidelines/report-system-and-prompt-design/}{Design}}
+  \newcommand{\reftraces}{\href{/guidelines/report-session-traces/}{Traces}}
+  \newcommand{\refbenchmarks}{\href{/guidelines/use-suitable-baselines-benchmarks-and-metrics/}{Benchmarks}}
+  \newcommand{\refopenllm}{\href{/guidelines/use-an-open-llm-as-a-baseline/}{Open LLM}}
+  \newcommand{\refhumanvalidation}{\href{/guidelines/use-human-validation-for-llm-outputs/}{Human Validation}}
+  \newcommand{\reflimitations}{\href{/guidelines/report-limitations-and-mitigations/}{Limitations}}
 \fi
 
 % Section formatting
