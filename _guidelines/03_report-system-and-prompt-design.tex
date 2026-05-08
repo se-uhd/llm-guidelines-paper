@@ -18,7 +18,7 @@ These guidelines do not apply when LLMs are used solely for language polishing, 
 \guidelinesubsubsection{Recommendations}
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper, including any dependencies on proprietary tools that affect reproducibility.
-Researchers \should explain design decisions and which retrieval mechanisms were implemented (keyword search, semantic similarity matching, rule-based extraction, etc.).
+Researchers \should explain design decisions and which retrieval mechanisms were implemented (e.g., keyword search, semantic similarity matching, rule-based extraction).
 Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
 
@@ -65,7 +65,7 @@ The catalog, the wording of descriptions, and the order in which tools are prese
 Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
 Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
 
-\paragraph{Agentic Systems and Pipelines:}
+\paragraph{Pipelines and Agentic Systems:}
 If an LLM is used as a \emph{standalone system}, for example by sending prompts directly to a GPT-5 model via the OpenAI API without pre-processing the prompts or post-processing the responses, a brief explanation is usually sufficient.
 For \emph{complex systems} with pre-processing, retrieval mechanisms, or autonomous agents, aspects to consider include how the LLM interacts with other components such as databases, external APIs, and frameworks.
 If the LLM is part of an \emph{agent-based system} that autonomously plans or executes tasks, researchers \must describe its exact architecture, including the agents' roles (e.g., planner, executor, coordinator), whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
