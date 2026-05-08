@@ -95,6 +95,21 @@
   \newcommand{\iconS}{○\xspace}
 \fi
 
+% Conditional-applicability tag for checklist items.
+% Renders as a small bracketed chip in both paper and website. The website
+% emits an @@-delimited sentinel that convert-and-merge-sources.sh's perl
+% post-processing converts into a styled <span> with a data-condition
+% attribute for filtering. The @@ form was chosen because pandoc's
+% markdown_strict output (with smart typography on by default) corrupts
+% other plausible sentinels: `[[...]]` becomes `\[\[...\]\]`, and the `--`
+% inside HTML comments becomes an en-dash. `@@` has no special meaning to
+% pandoc and survives verbatim.
+\ifpaper
+  \newcommand{\condition}[1]{\textsf{\small[#1]}\,}
+\else
+  \newcommand{\condition}[1]{@@cond:#1@@}
+\fi
+
 % Framed environment for guideline summaries
 \ifpaper
   \definecolor{framebg}{gray}{0.95}
