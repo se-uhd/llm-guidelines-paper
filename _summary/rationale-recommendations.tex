@@ -24,14 +24,14 @@ Model Version & Reproducibility requires precise identification of the system us
 % Design Rationale: "LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: software layers that pre-process data, prepare prompts, filter user requests, or post-process responses, and the context those layers feed into each call."
 % Design \iconM line: Recommendations - explicit \must clauses for architecture, infrastructure, prompts/templates, prompt-development strategy, context files, tool catalog, agent architecture, and retrieval mechanisms.
 % Design \iconS line: Study Types - "For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible". The \must clause for exact prompts in controlled experiments under \llmusage still applies whenever researcher-authored prompts exist.
-Design & Static artifacts, from system architecture to prompt templates, determine what the model sees on every call and must be documented in full. &
-\iconM Describe full architecture, infrastructure, all prompts or prompt templates (with development strategy and reuse), context files, tool catalog, agent architecture, and retrieval mechanisms.
-\newline \iconS For studies of LLM usage, describe the tool architecture only to the extent accessible. \\
+Design & Static artifacts determine what the model sees on every call and must be documented in full. &
+\iconM Describe architecture, infrastructure, prompts and templates (with development strategy), context files, tool catalog, agent architecture, and retrieval mechanisms.
+\newline \iconS For LLM usage, describe the tool architecture to the extent accessible. \\
 \addlinespace
 % Traces Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself."
 % Traces \iconM line: Study Types - "For \llmusage..., researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information".
 % Traces \iconS line: Recommendations - "Researchers \should report the full interaction logs"; "Researchers \should report the complete runtime trace" (broadly defined to cover tool calls and configured-artifact activations); "the developed plans \should be reported".
-Traces & Runtime traces make LLM and agent behavior verifiable despite non-determinism and commercial-tool opacity. &
+Traces & Runtime traces make LLM and agent behavior verifiable despite non-determinism and tool opacity. &
 \iconM For studies of LLM usage, share full interaction logs subject to privacy constraints.
 \newline \iconS Otherwise, share interaction logs, runtime traces, and plans where feasible. \\
 \addlinespace
@@ -40,13 +40,13 @@ Traces & Runtime traces make LLM and agent behavior verifiable despite non-deter
 % Benchmarks \iconS line: Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the strategy used to sample benchmark items"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should conduct an error analysis covering common failure modes"; "\should repeat experiments and report descriptive statistics".
 Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 \iconM Justify metric and benchmark choices; discuss their validity.
-\newline \iconS Define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis; repeat experiments and report distributions. \\
+\newline \iconS Define the phenomenon and sampling strategy; isolate confounders; analyze errors; repeat experiments and report distributions. \\
 \addlinespace
 % Open LLM Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
 % Open LLM \iconM line: Study Types - "In formal benchmarking studies and controlled experiments..., an open LLM \must be one of the models under evaluation".
 % Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package".
 Open LLM & Reproducibility depends on access to the model under study. &
-\iconM For benchmarking studies, include an open LLM among the models evaluated.
+\iconM For benchmarking studies, include an open LLM.
 \newline \iconS Otherwise, include an open LLM as a baseline; provide a replication package. \\
 \addlinespace
 % Human Validation Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
@@ -60,7 +60,7 @@ Human Validation & Automated metrics alone cannot ensure validity of subjective 
 % Limitations \iconM line: Recommendations - "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; \must clauses for internal/construct/external validity, reliability, ethical/regulatory.
 % Limitations \iconS line: Mitigation Strategies - bullet list (replication packages, human validation, longitudinal re-runs, triangulation, sensitivity analysis); "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing".
 Limitations & Honest acknowledgment of threats strengthens a study. &
-\iconM Report threats by validity type.
+\iconM Discuss threats to internal validity (data leakage), reliability (non-determinism), construct and external validity.
 \newline \iconS Employ mitigations where possible. \\
 \bottomrule
 \end{tabularx}
