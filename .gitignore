@@ -95,6 +95,6 @@ target/
 ########
 emse25-llm-guidelines.pdf
 emse25-llm-guidelines-flat.pdf
-title-page.pdf
+/title-page.pdf
 dblp_unmatched_report.txt
 scripts/.bib_validation_cache.json

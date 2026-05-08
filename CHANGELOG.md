@@ -7,7 +7,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ## [2026.05]
 
-EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity strengthening drawing on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review.
+EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens construct validity drawing on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review, and incorporates further input from discussions during ICSE 2026 (April 2026) and the 3rd Copenhagen Symposium on Human-Centered Software Engineering AI (May 2026).
 
 ### Added
 
@@ -27,7 +27,7 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 - **See Also blocks:** `Section n (Title): rationale` format.
 - **Checklist bullets:** `\iconM` / `\iconS` replace empty `\square`.
 - **Benchmarks Challenges:** new evidence from Cao et al. (84.2% ignore test-suite coverage, 64.0% single-pass, 82.5% no contamination handling), confirmed by Bean et al.
-- **Bibliography:** title proper nouns and acronyms wrapped in `{}` to preserve capitalization.
+- **Bibliography:** seven arXiv preprints replaced with peer-reviewed citations; entries normalized to DBLP keys; proper nouns and acronyms wrapped in `{}` to preserve capitalization.
 - **Reporting Checklist:** Items now ordered general-before-conditional within each severity. The sampling-strategy bullet split into a general "describe and justify the sampling strategy" item plus a conditional non-probability follow-up. The open-LLM-baseline item moved to *Model Selection and Configuration* because its trigger is a model-choice condition.
 
 ## [2026.04]

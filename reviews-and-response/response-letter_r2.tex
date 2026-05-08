@@ -171,6 +171,8 @@ Thank you for the revision. Please address the remaining feedback by Reviewer 1.
 We thank the editors and reviewers for the positive assessment.
 We addressed every point raised by Reviewer 1, as detailed below.
 We also thank Reviewers 2 and 3 for confirming that their concerns have been resolved.
+
+Beyond Reviewer 1's points, we took the opportunity to incorporate further input from discussions during ICSE 2026 (April 2026) and the 3rd Copenhagen Symposium on Human-Centered Software Engineering AI (May 2026), and to strengthen the construct-validity guidance for benchmarks based on two recent surveys (Cao et al.'s review of 572 benchmarks and Bean et al.'s review of 445 benchmarks). The substantive additions include new \textbf{should} recommendations for benchmarks (defining the phenomenon, justifying the sampling strategy, isolating confounders, error analysis, contamination prevention) and human validation (rater demographics for value-laden constructs); a new \textbf{should} on recording runtime traces in an OTLP-compatible format such as the OpenTelemetry GenAI semantic conventions or OpenInference; bracketed conditional tags (e.g., \texttt{[fine-tuning]}, \texttt{[agents]}) prefixing applicability-conditioned items in the reporting checklist; and a bibliography pass that upgraded seven arXiv preprints to their peer-reviewed venues. The companion website now hosts a changelog documenting all changes between guideline versions, available at \url{https://llm-guidelines.org/changelog/}.
 \end{response}
 
 
@@ -193,9 +195,9 @@ In common with other reviewers, please refrain from using uppercase MUST/SHOULD 
 \begin{response}
 We agree that the uppercase rendering read as standards-style language and have dropped it. As a compromise we now set \textbf{must}, \textbf{must not}, \textbf{should}, and \textbf{should not} in lowercase bold throughout the text rather than plain text: the lowercase resolves the standards-style concern, while keeping the keywords visually distinct preserves their role as scan-anchors that let a reader skim a recommendation paragraph and pick out the strength of each clause without reading every sentence in full.
 
-On the suggestion to use \emph{mandatory} and \emph{desirable} in Table~3, we hope the reviewer agrees with us keeping \emph{must} and \emph{should}, for the same reason we gave in the previous round: after dropping the RFC reference, we retained \emph{must}/\emph{should} as plain indicators of essential vs.\ desired practices, in the same spirit as SIGSOFT's \emph{mandatory}/\emph{desirable} categories.
-The categorical distinction is also carried visually in Table~3 by the filled (\textbullet) and open ($\circ$) icons defined in the caption, so the table conveys the same essential/desired split that SIGSOFT's terms encode.
-Using a single vocabulary across Table~3, the guideline recommendations, and the reporting checklist (Appendix~C) lets readers map matrix cells directly to the corresponding sentences in the body, which we believe is more useful than aligning Table~3 with SIGSOFT terminology while the surrounding prose uses different words.
+On the suggestion to use \emph{mandatory} and \emph{desirable} in Table~3, we hope the reviewer agrees with us keeping \textbf{must} and \textbf{should}, for the same reason we gave in the previous round: after dropping the RFC reference, we retained \textbf{must}/\textbf{should} as plain indicators of essential vs.\ desired practices, in the same spirit as the SIGSOFT Empirical Standards' \emph{mandatory}/\emph{desirable} categories.
+The categorical distinction is also carried visually in Table~3 by the filled (\textbullet) and open ($\circ$) icons defined in the caption, so the table conveys the same essential/desired split that the SIGSOFT Empirical Standards' terms encode.
+Using a single vocabulary across Table~3, the guideline recommendations, and the reporting checklist (Appendix~C) lets readers map matrix cells directly to the corresponding sentences in the body, which we believe is more useful than aligning Table~3 with the SIGSOFT Empirical Standards' terminology while the surrounding prose uses different words.
 \end{response}
 
 \begin{reviewcomment}
@@ -238,7 +240,7 @@ In Appendix A, eliminate the confusing and redundant empty boxes, in favor of us
 \begin{response}
 Done.
 The empty checkbox markers ($\square$) have been removed from all itemize lists in Appendix~A.
-Each item is now introduced directly by its \emph{must}~(\textbullet) or \emph{should}~($\circ$) icon, which serves as the bullet figure, matching the symbology of Table~3.
+Each item is now introduced directly by its \textbf{must}~(\textbullet) or \textbf{should}~($\circ$) icon, which serves as the bullet figure, matching the symbology of Table~3.
 \end{response}
 
 \begin{reviewcomment}
