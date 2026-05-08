@@ -15,7 +15,12 @@ echo "Flattening current version..."
 
 echo "Generating diff markup..."
 mkdir -p "$PROJECT_DIR/versions"
-latexdiff /tmp/old_flat.tex /tmp/new_flat.tex > "$PROJECT_DIR/versions/diff.tex"
+# Treat tabular/tabularx environments as opaque so heavily restructured
+# tables (column changes, row reorderings) render as a single delete + add
+# instead of producing broken \DIFdelendFL markup inside cells.
+latexdiff \
+  --config='PICTUREENV=(?:picture|DIFnomarkup|tabular|tabularx)[\w\d*@]*' \
+  /tmp/old_flat.tex /tmp/new_flat.tex > "$PROJECT_DIR/versions/diff.tex"
 
 
 # Merge bibliographies: the diff references citations from both old and new
