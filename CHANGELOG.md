@@ -11,6 +11,7 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 
 ### Added
 
+- **Reporting Checklist:** Bracketed conditional tags (`[fine-tuning]`, `[agents]`, `[restricted-sharing]`, etc.) prefix items that apply only to studies with that feature.
 - **Benchmarks:** **should** define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
 - **Benchmarks:** For ratings that vary across raters or runs, **should** report distributions per item rather than only point estimates.
 - **Human Validation:** For value-laden or culturally contingent constructs, **should** describe rater demographics beyond expertise.
@@ -27,6 +28,7 @@ EMSE minor revision: Reviewer 1's stylistic feedback plus construct-validity str
 - **Checklist bullets:** `\iconM` / `\iconS` replace empty `\square`.
 - **Benchmarks Challenges:** new evidence from Cao et al. (84.2% ignore test-suite coverage, 64.0% single-pass, 82.5% no contamination handling), confirmed by Bean et al.
 - **Bibliography:** title proper nouns and acronyms wrapped in `{}` to preserve capitalization.
+- **Reporting Checklist:** Items now ordered general-before-conditional within each severity. The sampling-strategy bullet split into a general "describe and justify the sampling strategy" item plus a conditional non-probability follow-up. The open-LLM-baseline item moved to *Model Selection and Configuration* because its trigger is a model-choice condition.
 
 ## [2026.04]
 

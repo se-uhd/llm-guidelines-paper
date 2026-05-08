@@ -5,85 +5,92 @@
 % sentence(s) in the corresponding _guidelines/0X_*.tex file. Update both
 % the item and the comment when guideline text changes.
 % Ordering rule (per CLAUDE.md): within each section, sort by severity
-% (\iconM before \iconS), then by reporting location
+% (\iconM before \iconS), then by general before \condition{}-tagged
+% (conditional) items, then by reporting location
 % (\paper -> unspecified -> \supplementarymaterial).
 
 The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes actionable items from the guidelines based on the \textbf{summary} sections.
 The checklist is organized along typical paper sections.
-Items marked \iconM are requirements (\must); items marked \iconS are recommendations (\should).
+Items marked \iconM are requirements (\must), and items marked \iconS are recommendations (\should).
 Each item references its source guideline by short name.
-Items annotated with \paper or \supplementarymaterial indicate where information should be reported; unmarked items may be reported in either.
+Items annotated with \paper or \supplementarymaterial indicate where we expect the information to be reported.
+Unmarked items may be reported either in the paper or as supplementary material.
+Items prefixed with a bracketed tag apply only to studies with that feature (e.g., \condition{fine-tuning}, \condition{agents}).
+\ifpaper\else
+On the website, readers can hover each tag to read its description and use the filter panel to hide items that do not apply to their study.
+\fi
 
 \paragraph{\textbf{Introduction}}
 \begin{itemize}[label={},leftmargin=*]
     \item \iconM Disclose any use of LLMs in the empirical study, specifying which LLM, how, and where it was used~(Declare Usage).
     % G1 Recommendations: "researchers \must clearly declare that an LLM was used"; specifies which/how/where in the research process.
-    \item \iconS Report the purpose of using LLMs, automated tasks, and expected benefits in the \paper~(Declare Usage).
+    \item \iconS Report in the \paper the purpose of using LLMs, the tasks they automate, and the expected benefits~(Declare Usage).
     % G1 Recommendations: "researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper".
 \end{itemize}
 
 \paragraph{\textbf{Research Design and Methods}}\mbox{}\\
 \noindent\textit{Model Selection and Configuration}
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM Report the exact LLM model or tool version, configuration, and experiment date in the \paper~(Model Version).
+    \item \iconM Report in the \paper the exact LLM model or tool version, the configuration, and the experiment date~(Model Version).
     % G2 Recommendations: "Researchers \must document in the \paper which model or tool version they used... along with the date when the experiments were carried out and the configured parameters that affect output generation".
-    \item \iconM For fine-tuned models, describe the fine-tuning goal, dataset, and procedure in the \paper~(Model Version).
+    \item \iconM \condition{fine-tuning} For fine-tuned models, describe in the \paper the fine-tuning goal, the dataset, and the procedure~(Model Version).
     % G2 Recommendations: "If a model was fine-tuned, researchers \must describe the fine-tuning goal..., the fine-tuning procedure..., and the fine-tuning dataset... in the \paper".
     \item \iconS Report default parameters and explain model and version choices~(Model Version).
     % G2 Recommendations: "researchers \should report all configuration values, even if they used the defaults"; "Researchers \should motivate in the \paper why they selected certain models, versions, and configurations".
-    \item \iconS For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ)~(Model Version).
+    \item \iconS \condition{quantization} For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ)~(Model Version).
     % G2 Recommendations: "When using quantized models, researchers \should report the quantization level... and method".
-    \item \iconS Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(Model Version).
+    \item \iconS \condition{fine-tuning} Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(Model Version).
     % G2 Recommendations: "Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model"; "Researchers \should either share the fine-tuning dataset as part of the \supplementarymaterial or explain in the \paper why the data cannot be shared. The same applies to the fine-tuned model weights".
+    \item \iconS \condition{commercial-models} Include an open LLM as a baseline when using commercial models and report inter-model agreement~(Open LLM).
+    % G6 Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement". Placed in Model Selection and Configuration because the trigger is a model-choice condition (use of commercial models), even though the recommendation itself involves a baseline.
 \end{itemize}
 
 \noindent\textit{System and Prompt Design}
-% Topical order within each severity: architecture overview first, then prompts
-% (use-level fundamentals), then context/tools, then agents/RAG, then hosting.
-% Within S items, the meta "justify design decisions" leads (overrides the
-% strict paper-before-unspec rule because it is foundational).
+% Within each severity: general items first (architecture, prompting strategy,
+% prompt reuse, prompt-publication, hosting; then S meta and prompt-development
+% items, then open-source release), then \condition{}-tagged items.
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM Describe the full architecture of LLM-based tools in the \paper, including the role of the LLM, interactions with other components, and overall system behavior~(Design).
+    \item \iconM Describe in the \paper the full architecture of LLM-based tools, including the role of the LLM, interactions with other components, and overall system behavior~(Design).
     % G3 Recommendations: "Researchers \must clearly describe the tool architecture and what exactly the LLM... contributes"; for the topic-specific paragraphs that follow, "the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial".
-    \item \iconM Specify whether zero-shot, one-shot, or few-shot prompting was used in the \paper~(Design).
+    \item \iconM Specify in the \paper whether zero-shot, one-shot, or few-shot prompting was used~(Design).
     % G3 Prompting Strategy: "Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was used".
     \item \iconM Specify prompt reuse across models and configurations~(Design).
     % G3 Prompt Development: "researchers \must make clear which prompts were used for which models in which versions and with which configuration".
-    \item \iconM For dynamically generated prompts, document the generation process thoroughly~(Design).
-    % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
-    \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and dynamic components, as \supplementarymaterial~(Design).
+    \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as \supplementarymaterial~(Design).
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
-    \item \iconM Describe any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md}) in the \paper~(Design).
-    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
-    \item \iconM Summarize which tools and skills were exposed to the model in the \paper~(Design).
-    % G3 Tool Catalog: "Researchers \must summarize in the \paper which tools and skills were exposed to the model".
-    \item \iconM If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(Design).
-    % G3 Agentic Systems and Pipelines: "researchers \must describe its exact architecture, including the agents' roles..., whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used".
-    \item \iconM For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(Design).
-    % G3 RAG and Ensembles: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
     \item \iconM Report hosting, hardware setup, and latency implications~(Design).
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations".
+    \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(Design).
+    % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
+    \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(Design).
+    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
+    \item \iconM \condition{tool-use} Summarize in the \paper which tools and skills were exposed to the model~(Design).
+    % G3 Tool Catalog: "Researchers \must summarize in the \paper which tools and skills were exposed to the model".
+    \item \iconM \condition{agents} If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(Design).
+    % G3 Agentic Systems and Pipelines: "researchers \must describe its exact architecture, including the agents' roles..., whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used".
+    \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(Design).
+    % G3 RAG and Ensembles: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
     \item \iconS Justify design decisions~(Design).
-    % G3 Recommendations: "Researchers \should explain design decisions and which retrieval mechanisms were implemented"; hosting is covered by a separate \should clause in the same paragraph. Foundational/meta item: placed first within S items even though it is unspecified-location, ahead of the paper-marked ensemble item below.
+    % G3 Recommendations: "Researchers \should explain design decisions and which retrieval mechanisms were implemented"; foundational/meta item, leads within S-general.
     \item \iconS Describe prompt development rationale and selection process~(Design).
     % G3 Prompt Development: "Researchers \should explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies"; "If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated".
     \item \iconS Report prompt evolution and any LLM-suggested refinements~(Design).
     % G3 Prompt Development: "researchers \should at least summarize the prompt evolution"; "Researchers \should report any instances in which LLMs were used to suggest prompt refinements".
-    \item \iconS For user-authored prompts, describe how they were collected and analyzed~(Design).
-    % G3 Prompt Reporting: "For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed".
-    \item \iconS Document input handling and token optimization strategies when prompts are long or complex~(Design).
-    % G3 Prompting Strategy: "researchers \should describe the strategies they used to handle input length constraints"; "Token optimization measures... \should also be documented".
-    \item \iconS If full prompt disclosure is not feasible, provide summaries or examples~(Design).
-    % G3 Prompt Reporting: "when the paper cannot include all prompts in full, it \should provide summaries and representative examples".
-    \item \iconS For ensemble architectures, explain the coordination logic between models in the \paper~(Design).
-    % G3 RAG and Ensembles: "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split applies to the topic-specific paragraphs. Coordination-logic specifics are S.
     \item \iconS Where legally possible, release the source code of the implementation under an open-source license~(Design).
     % G3 Recommendations: "Where legally possible..., researchers \should release the source code of their implementation under an open-source license".
-    \item \iconS Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(Design).
+    \item \iconS \condition{participant-prompts} For user-authored prompts, describe how they were collected and analyzed~(Design).
+    % G3 Prompt Reporting: "For studies involving human participants who create or modify prompts, researchers \should describe how these prompts were collected and analyzed".
+    \item \iconS \condition{long-prompts} Document input handling and token optimization strategies when prompts are long or complex~(Design).
+    % G3 Prompting Strategy: "researchers \should describe the strategies they used to handle input length constraints"; "Token optimization measures... \should also be documented".
+    \item \iconS \condition{restricted-sharing} If full prompt disclosure is not feasible, provide summaries or examples~(Design).
+    % G3 Prompt Reporting: "when the paper cannot include all prompts in full, it \should provide summaries and representative examples".
+    \item \iconS \condition{ensemble} For ensemble architectures, explain in the \paper the coordination logic between models~(Design).
+    % G3 RAG and Ensembles: "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split applies to the topic-specific paragraphs. Coordination-logic specifics are S.
+    \item \iconS \condition{context-augmentation} Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(Design).
     % G3 RAG and Ensembles: "Stored data used for context augmentation \should be reported, including details on data preprocessing, versioning, and update frequency".
-    \item \iconS Include context-file contents as \supplementarymaterial~(Design).
+    \item \iconS \condition{context-files} Include context-file contents as \supplementarymaterial~(Design).
     % G3 Context Files: researchers "\should publish the full contents of those files as \supplementarymaterial".
-    \item \iconS Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(Design).
+    \item \iconS \condition{tool-use} Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(Design).
     % G3 Tool Catalog: "Researchers \should include the complete list..., tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial".
 \end{itemize}
 
@@ -91,19 +98,20 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 \begin{itemize}[label={},leftmargin=*]
     \item \iconS Include full interaction logs (prompts and responses) as \supplementarymaterial if privacy and confidentiality can be ensured~(Traces).
     % G4 Interaction Logs: "Researchers \should report the full interaction logs... as part of their \supplementarymaterial". (For S5 specifically the matrix elevates this to \must.)
-    \item \iconS For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as \supplementarymaterial~(Traces).
+    \item \iconS \condition{agents} For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as \supplementarymaterial~(Traces).
     % G4 Interaction Logs: "For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent... These \should also be reported as \supplementarymaterial".
-    \item \iconS For agentic systems, report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, sub-agents) were activated~(Traces).
+    \item \iconS \condition{agents} For agentic systems, report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, sub-agents) were activated~(Traces).
     % G4 Runtime Traces: "Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries". The merged trace covers both per-call detail and artifact activations.
-    \item \iconS For agentic systems, report developed plans as \supplementarymaterial if available~(Traces).
+    \item \iconS \condition{agents} For agentic systems, report developed plans as \supplementarymaterial if available~(Traces).
     % G4 Agentic Plans: "the developed plans \should be reported as \supplementarymaterial if available".
 \end{itemize}
 
 \noindent\textit{Benchmarks and Metrics}
-% G5 items grouped together; the G6 cross-link (open LLM baseline) sits at
-% the end of the section so it does not interrupt the G5 validity arc.
+% Within each severity: general items first, then \condition{}-tagged items.
+% G6 cross-link (open LLM baseline) sits at the end of the section so it does
+% not interrupt the G5 validity arc.
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM Justify all benchmark and metric choices in the \paper~(Benchmarks).
+    \item \iconM Justify in the \paper all benchmark and metric choices~(Benchmarks).
     % G5 Recommendations: researchers "\must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study".
     \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(Benchmarks).
     % G5 Recommendations: "researchers \must motivate why they chose a certain metric or variant thereof for their particular study"; "Prior adoption alone does not constitute sufficient justification".
@@ -111,53 +119,53 @@ Items annotated with \paper or \supplementarymaterial indicate where information
     % G5 Recommendations (new): researchers "\should provide an operational definition of the phenomenon the benchmark is intended to measure ..., including its scope and any sub-components".
     \item \iconS Summarize benchmark structure, task types, and limitations~(Benchmarks).
     % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)".
-    \item \iconS Describe and justify the sampling strategy used to select problems for inclusion in the benchmark; for non-probability sampling, discuss generalizability implications~(Benchmarks).
-    % G5 Recommendations (new): researchers "\should describe and justify the sampling strategy used to select problems for inclusion in the benchmark ...; if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions".
     \item \iconS Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats~(Benchmarks).
     % G5 Recommendations (new): researchers "\should identify which capabilities a benchmark conflates, isolate the target capability where possible ..., and acknowledge remaining confounders as threats to construct validity".
     \item \iconS Perform an error analysis: categorize the failures observed and report their relative frequency; report failures that cluster on confounding capabilities as construct-validity threats~(Benchmarks).
     % G5 Recommendations (new): researchers "\should perform an error analysis by categorizing the failures observed and reporting the relative frequency of each category". "If failures concentrate on inputs that demand abilities other than the target phenomenon ..., this is a construct-validity threat".
-    \item \iconS For new or released benchmarks, adopt contamination-prevention mechanisms: held-out subset, canary strings, and pre-exposure investigation against common training corpora~(Benchmarks).
-    % G5 Recommendations (new): researchers creating or releasing a new benchmark "\should adopt concrete contamination-prevention mechanisms: maintaining a held-out subset of items for ongoing, uncontaminated evaluation; embedding canary strings ...; and investigating whether the benchmark's source materials may already appear in common LLM training corpora".
-    \item \iconS For ratings that vary across raters or runs (human raters, LLM-as-judge), report the distribution of ratings per item rather than only aggregated point estimates~(Benchmarks).
-    % G5 Recommendations (new): "When scoring uses ratings that vary across raters or runs ..., researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement".
+    \item \iconS Describe and justify the sampling strategy used to select problems for inclusion in the benchmark~(Benchmarks).
+    % G5 Recommendations (new): researchers "\should describe and justify the sampling strategy used to select problems for inclusion in the benchmark". Conditional follow-up about non-probability sampling appears as a separate \condition{}-tagged bullet below.
     \item \iconS Justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics~(Benchmarks).
     % G5 Recommendations: "researchers \should justify their chosen number of repetitions, for example, through a power analysis... or by monitoring the convergence of descriptive statistics".
-    \item \iconS Include an open LLM as a baseline when using commercial models and report inter-model agreement~(Open LLM).
-    % G6 Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement". Placed at the end of the section since it is a G6 cross-link, separate from the G5 validity items above.
+    \item \iconS \condition{non-probability-sampling} For non-probability sampling (e.g., convenience), discuss the implications for the generalizability of conclusions~(Benchmarks).
+    % G5 Recommendations (new): "if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions".
+    \item \iconS \condition{new-benchmark} For new or released benchmarks, adopt contamination-prevention mechanisms: held-out subset, canary strings, and pre-exposure investigation against common training corpora~(Benchmarks).
+    % G5 Recommendations (new): researchers creating or releasing a new benchmark "\should adopt concrete contamination-prevention mechanisms: maintaining a held-out subset of items for ongoing, uncontaminated evaluation; embedding canary strings ...; and investigating whether the benchmark's source materials may already appear in common LLM training corpora".
+    \item \iconS \condition{multi-rater-scoring} For ratings that vary across raters or runs (human raters, LLM-as-judge), report the distribution of ratings per item rather than only aggregated point estimates~(Benchmarks).
+    % G5 Recommendations (new): "When scoring uses ratings that vary across raters or runs ..., researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement".
 \end{itemize}
 
 \noindent\textit{Human Validation}
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM If using human validation, define the measured construct (e.g., usability, maintainability) and describe the measurement instrument in the \paper~(Human Validation).
+    \item \iconM \condition{human-validation} If using human validation, define in the \paper the measured construct (e.g., usability, maintainability) and describe the measurement instrument~(Human Validation).
     % G7 Study Design Considerations: "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate".
-    \item \iconM When developing or adapting measurement instruments, share them~(Human Validation).
+    \item \iconM \condition{human-validation} When developing or adapting measurement instruments, share them~(Human Validation).
     % G7 Study Design Considerations: "When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments".
     \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(Human Validation).
     % G7 Recommendations: "researchers \should consider human validation early in the study design, not as an afterthought"; "Researchers \should use established reference models to compare humans with LLMs".
-    \item \iconS Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(Human Validation).
+    \item \iconS \condition{human-validation} Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(Human Validation).
     % G7 Subjective Judgment and Agreement: "the LLM output \should be evaluated against judgments aggregated from multiple human judges, and researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
-    \item \iconS Discuss and, where feasible, control for confounding factors~(Human Validation).
+    \item \iconS \condition{human-validation} Discuss and, where feasible, control for confounding factors~(Human Validation).
     % G7 Subjective Judgment and Agreement: "Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise)". Power analysis is intentionally excluded here: G7 source uses plain "may" ("Where applicable, researchers may perform a power analysis...") and the next sentence explicitly notes "limited established guidance specific to determining sample sizes for LLM-human comparisons" - so it does not warrant a \should-level checklist item.
-    \item \iconS For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases~(Human Validation).
+    \item \iconS \condition{human-validation}\condition{subjective-constructs} For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases~(Human Validation).
     % G7 Subjective Judgment and Agreement (new): "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise (e.g., geographic, linguistic, or professional background) and discuss potential demographic biases in rater recruitment and instructions".
 \end{itemize}
 
 \noindent\textit{Reproducibility, Ethics, and Resources}
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM For studies involving sensitive data, discuss data governance mechanisms compliant with applicable jurisdictional obligations~(Limitations).
+    \item \iconM \condition{restricted-sharing} For studies involving sensitive data, discuss data governance mechanisms compliant with applicable jurisdictional obligations~(Limitations).
     % G8 Ethical \& Regulatory: "Studies involving sensitive data \must discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations".
     \item \iconS Justify LLM usage in light of its resource demands~(Limitations).
     % G8 Environmental \& Sustainability: "The study findings \should be discussed in the context of the resource-intensiveness of LLMs to justify the increased resource consumption over traditional approaches".
-    \item \iconS Where full sharing of prompts, traces, or datasets is not feasible, share representative examples for partial replicability~(Limitations).
-    % G8 Mitigation Strategies bullet: "Replication Packages covering prompt and architecture specifications, model outputs, and representative examples for partial replicability". The source bullet has no RFC 2119 marker; \iconS is interpretive, treating G8's mitigation list as \should-level given the framing "The following mitigation strategies can help address the threats". Concrete instances of "if full sharing not feasible, share representative examples" appear with explicit \should in G2 (fine-tuning data), G3 (prompts), and G4 (interaction logs); this item is the cross-artifact summary.
-    \item \iconS Provide a full replication package with step-by-step instructions as \supplementarymaterial~(Open LLM).
+    \item \iconS Provide a full replication package as \supplementarymaterial, including step-by-step instructions for verifying and reproducing the results~(Open LLM).
     % G6 Recommendations: "Researchers \should provide a complete replication package as part of their \supplementarymaterial, including clear step-by-step instructions on how to verify and reproduce the results".
+    \item \iconS \condition{restricted-sharing} Where full sharing of prompts, traces, or datasets is not feasible, share representative examples for partial replicability~(Limitations).
+    % G8 Mitigation Strategies bullet: "Replication Packages covering prompt and architecture specifications, model outputs, and representative examples for partial replicability". The source bullet has no RFC 2119 marker; \iconS is interpretive, treating G8's mitigation list as \should-level given the framing "The following mitigation strategies can help address the threats". Concrete instances of "if full sharing not feasible, share representative examples" appear with explicit \should in G2 (fine-tuning data), G3 (prompts), and G4 (interaction logs); this item is the cross-artifact summary.
 \end{itemize}
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(Benchmarks).
+    \item \iconM \condition{comparing-models} If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(Benchmarks).
     % G5 Recommendations: "If comparing models or tools, researchers \must use appropriate inferential statistics... rather than relying solely on differences in means or other summary statistics".
     \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(Benchmarks).
     % G5 Recommendations: "Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance".
@@ -171,12 +179,12 @@ Items annotated with \paper or \supplementarymaterial indicate where information
 \begin{itemize}[label={},leftmargin=*]
     \item \iconM Describe measurement constructs and methods; disclose any data leakage risks and avoid leaking evaluation data into LLM improvement pipelines~(Limitations).
     % G8 Internal Validity / Construct Validity: "researchers \must discuss potential data leakage effects and their impact on results"; "researchers \must discuss how they ensured quality of subjective results".
-    \item \iconM Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(Design).
-    % G3 Recommendations: "Researchers \must clearly describe the tool architecture..., including any dependencies on proprietary tools that affect reproducibility"; G3 Challenges: "For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations".
     \item \iconM Transparently report study limitations, including the impact of non-determinism and generalizability constraints~(Limitations).
     % G8 Recommendations / Reliability: "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; "Researchers \must discuss the measures taken to increase reliability and reproducibility".
     \item \iconM Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences~(Limitations).
     % G8 External Validity: "The limitations and mitigations used for external validity \must be discussed"; covers cross-model transfer and cross-time instability.
+    \item \iconM \condition{restricted-sharing} Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(Design).
+    % G3 Recommendations: "Researchers \must clearly describe the tool architecture..., including any dependencies on proprietary tools that affect reproducibility"; G3 Challenges: "For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations".
     \item \iconS Employ and report strategies to mitigate identified validity and reproducibility threats, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(Limitations).
     % G8 Mitigation Strategies: lists Replication Packages, Human Validation, Longitudinal Re-Runs, Triangulation, Sensitivity Analysis as strategies (no explicit \must); "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures".
 \end{itemize}
