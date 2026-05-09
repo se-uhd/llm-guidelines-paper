@@ -15,12 +15,11 @@ A comparison of commercial and open models also allows researchers to contextual
 Researchers \should provide a complete replication package as part of their \supplementarymaterial, including clear step-by-step instructions on how to verify and reproduce the results reported in the paper.
 
 Open LLMs are available on platforms such as \href{https://huggingface.co/}{\emph{Hugging Face}} and can be hosted locally using frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, or on cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud.
+Researchers can also explore open-source tools such as \href{https://www.continue.dev/}{\emph{Continue}}, \href{https://cline.bot/}{\emph{Cline}}, and \href{https://opencode.ai/}{\emph{opencode}}~\cite{opencode}, which publish their full agent code, system prompts, and tool catalog. Vendor-hosted services such as \emph{GitHub Copilot} and \emph{Claude Code} make parts of their tooling public (e.g., editor extensions, hook examples), but their deployed agent loops, system prompts, and tool catalogs typically remain proprietary.
 
 The term ``open'' can have different meanings in the context of LLMs.
 \citeauthor{widder2024open} discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
 The \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024} defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
-
-Researchers can also explore open-source tools such as Continue, Cline, and opencode as alternatives to commercial tools like GitHub Copilot and Claude Code, enabling instrumentation, architectural transparency, and detailed telemetry collection.
 
 \guidelinesubsubsection{Examples}
 
@@ -51,7 +50,8 @@ Documentation is often sparse or fragmented, placing a high barrier to entry for
 \guidelinesubsubsection{Study Types}
 
 This guideline applies primarily to study types in which the researcher controls which LLM is used.
-In formal benchmarking studies and controlled experiments (see \benchmarkingtasks), an open LLM \must be one of the models under evaluation.
+In formal benchmarking studies (see \benchmarkingtasks), an open LLM \must be one of the models under evaluation; without one, the reported scores cannot be re-run by others, defeating the cumulative comparability that distinguishes a benchmark from a one-off measurement.
+For controlled experiments, an open LLM \should be one of the models under test; if the experimental design requires capabilities that only a specific commercial model exhibits, researchers \should acknowledge this as a limitation.
 When evaluating \newtools, researchers \should use an open LLM as a baseline whenever it is technically feasible; if integration proves too complex, they \should report the initial benchmarking results of open models.
 For \annotators and \judges, researchers \should compare annotation or judgment quality from open vs.\ commercial models to assess the extent to which results depend on a specific proprietary model.
 For \synthesis, researchers \should compare synthesis results from open and commercial models to evaluate robustness of the findings.

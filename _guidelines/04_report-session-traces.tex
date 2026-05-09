@@ -14,8 +14,7 @@ This matters particularly for studies targeting commercial software-as-a-service
 
 The rationale is similar to reporting interview transcripts in qualitative research.
 Just as a human participant might give different answers to the same question asked two months apart, the responses from tools such as ChatGPT can also vary over time, and the trace of an agent's decisions on any given run is often not reproducible at a later date.
-
-This section addresses runtime reporting and complements \design, which covers the static artifacts that determine what the model sees.
+This guideline addresses runtime reporting and complements \design, which covers the static artifacts that determine what the model sees.
 
 \guidelinesubsubsection{Recommendations}
 
@@ -41,7 +40,6 @@ All reported traces \must be made publicly available as \supplementarymaterial, 
 \guidelinesubsubsection{Examples}
 
 An example of reporting full interaction logs is the study by \citeauthor{ronanki2023investigating}~\cite{ronanki2023investigating}, for which the authors reported the full answers of ChatGPT and uploaded them to \href{https://zenodo.org/records/8124936}{Zenodo}.
-
 For agentic systems, \citeauthor{DBLP:conf/kbse/BouzeniaP25}~\cite{DBLP:conf/kbse/BouzeniaP25} unified the runtime trajectories of three SE agents (\emph{RepairAgent}, \emph{AutoCodeRover}, \emph{OpenHands}) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
 
 \guidelinesubsubsection{Benefits}
@@ -64,6 +62,7 @@ Agent frameworks differ in whether and how they log agent-to-agent communication
 \guidelinesubsubsection{Study Types}
 
 Runtime trace reporting requirements depend heavily on the study type and on the accessibility of the underlying system.
+The general expectation is that interaction logs are reported as \supplementarymaterial whenever feasible; runtime traces are additionally expected when agentic execution or evaluation harnesses go beyond direct API calls.
 
 For \llmusage, especially observational studies targeting commercial tools, researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information.
 If complete interaction logs cannot be shared (e.g., because they contain confidential information), the prompts and responses \must at least be summarized and described in the \paper.
