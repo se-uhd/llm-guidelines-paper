@@ -15,7 +15,7 @@ Reasons may be monetary, technical, or methodological (e.g., planned comparison 
 Depending on the specific study context, additional information regarding the experiment or tool architecture \should be reported.
 
 A common customization approach for existing LLMs is fine-tuning.
-If a model was fine-tuned, researchers \must describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning vs. Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, batch size, etc.), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the \paper.
+If a model was fine-tuned, researchers \must describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning versus Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, and batch size), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the \paper.
 Researchers \should either share the fine-tuning dataset as part of the \supplementarymaterial or explain in the \paper why the data cannot be shared (e.g., because it contains confidential or personal data that could not be anonymized).
 The same applies to the fine-tuned model weights.
 Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model.
@@ -85,7 +85,6 @@ Setting the temperature to 0 configures greedy decoding (always selecting the mo
 Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
 Researchers \shouldnot treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
 When a temperature of 0 is chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.
-%\comment{Should we also address how API rate limits and usage constraints can affect experiments?}
 
 \guidelinesubsubsection{Study Types}
 
