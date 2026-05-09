@@ -14,16 +14,16 @@ Academic paper submitted to Empirical Software Engineering (EMSE) journal, curre
 
 ```bash
 # Full build (compile + bibliography + recompile twice for references)
-latexmk -pdf emse25-llm-guidelines.tex
+latexmk -pdf emse26-llm-guidelines.tex
 
 # Single compilation pass
-pdflatex emse25-llm-guidelines.tex
+pdflatex emse26-llm-guidelines.tex
 
 # Bibliography only
-bibtex emse25-llm-guidelines
+bibtex emse26-llm-guidelines
 
 # Word count (must use -inc to count \input files)
-texcount -inc emse25-llm-guidelines.tex
+texcount -inc emse26-llm-guidelines.tex
 
 # Response letter build
 latexmk -pdf response-letter.tex
@@ -38,13 +38,13 @@ latexmk -pdf response-letter.tex
 ./scripts/flatten.sh
 ```
 
-PDF outputs (`emse25-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git. `emse25-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
+PDF outputs (`emse26-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
 
 ## Document Structure
 
 ### Main Paper
 
-The main entry point is `emse25-llm-guidelines.tex`. Its preamble loads paper-only packages, then inputs the shared header:
+The main entry point is `emse26-llm-guidelines.tex`. Its preamble loads paper-only packages, then inputs the shared header:
 
 ```
 \documentclass[smallextended]{svjour3}
@@ -92,7 +92,7 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 - `reviews-and-response/emse-reviews.md`, `emse-reviews-r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
 - `title-page.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class)
 - `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
-- `scripts/flatten.sh` — Flattens all `\input` files into `emse25-llm-guidelines-flat.tex` via `latexpand`
+- `scripts/flatten.sh` — Flattens all `\input` files into `emse26-llm-guidelines-flat.tex` via `latexpand`
 - `versions/` — Contains original submission PDF (`EMSE-D-25-00637.pdf`) and diff output
 
 ## Key Conventions
@@ -150,7 +150,7 @@ All scripts live in the `scripts/` directory (requires `bibtexparser`).
 
 - **`scripts/clean_bibliography.py`** — Validates each entry against DBLP (and Crossref as fallback). For entries with an arXiv id (detected from `eprint`, DBLP CoRR key, `url`, `volume = abs/...`, or arXiv DOI), queries DBLP for all records of that work; if a non-CoRR record exists (conference, journal, workshop), the entry is upgraded and its citation key is renamed to the new DBLP key. For already-published entries that still carry leftover arXiv metadata (`eprint`, `archiveprefix`, `primaryclass`, `eprinttype`, redundant arXiv `url`), strips those fields. After bib changes, rewrites `\cite` sites in all source `.tex` files for renamed keys. A persistent JSON cache (`scripts/.bib_validation_cache.json`) records last-validation timestamp, content hash, and outcome per entry; subsequent runs skip cached entries that are fresh and unchanged. Removing unreferenced entries is opt-in via `--remove-unref` (default off, since stale `.aux` files can drop in-progress citations).
 
-  CLI flags: `--force` (ignore cache), `--only KEY[,KEY...]`, `--max-age-days N` (default 30), `--remove-unref`, `--no-rename`, `--no-tex-update`, `--no-strip`, `--dry-run`, `--limit N`. The script writes `literature.bib` in place (backs up to `literature.bib.backup` first), updates `.tex` cite sites, refreshes the cache, and writes a per-run report at `dblp_unmatched_report.txt`. After a run that renames keys, regenerate `emse25-llm-guidelines-flat.tex` via `./scripts/flatten.sh`.
+  CLI flags: `--force` (ignore cache), `--only KEY[,KEY...]`, `--max-age-days N` (default 30), `--remove-unref`, `--no-rename`, `--no-tex-update`, `--no-strip`, `--dry-run`, `--limit N`. The script writes `literature.bib` in place (backs up to `literature.bib.backup` first), updates `.tex` cite sites, refreshes the cache, and writes a per-run report at `dblp_unmatched_report.txt`. After a run that renames keys, regenerate `emse26-llm-guidelines-flat.tex` via `./scripts/flatten.sh`.
 
 - **`scripts/retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., 429s or transient errors). Reads failed keys from `dblp_unmatched_report.txt` and appends results. Largely superseded by `clean_bibliography.py`'s built-in retry, but kept for targeted reruns.
 

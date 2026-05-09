@@ -2,7 +2,7 @@
 set -euo pipefail
 
 OLD_DIR="${1:-../papers/llm-guidelines-paper}"
-MAIN_TEX="emse25-llm-guidelines.tex"
+MAIN_TEX="emse26-llm-guidelines.tex"
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 OLD_DIR="$(cd "$OLD_DIR" && pwd)"
