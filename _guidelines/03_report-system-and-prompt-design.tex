@@ -11,9 +11,8 @@ In automated studies, researchers typically design prompt templates from which i
 Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
 \citeauthor{DBLP:conf/iclr/Sclar0TS24}~\cite{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models.
 
-This section addresses everything researchers put in place before runs begin, complementing \modelversion, which focuses on model-specific details, and \traces, which covers what happens at runtime.
-
-These guidelines do not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
+This guideline addresses everything researchers put in place before runs begin, complementing \modelversion (model-specific details) and \traces (runtime behavior).
+It does not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
 
 \guidelinesubsubsection{Recommendations}
 
@@ -92,7 +91,6 @@ The \paper explains the rationale behind the prompt design and the data output f
 \guidelinesubsubsection{Benefits}
 
 Documenting the architecture and supplemental data of LLM-based systems strengthens reproducibility and transparency~\cite{DBLP:journals/software/LuZXXW24}, enabling experiment replication, result validation, and cross-study comparison.
-
 Detailed prompt documentation strengthens verifiability, reproducibility, and comparability of LLM-based studies, letting other researchers replicate studies, refine prompts, and evaluate how different content types and formatting choices influence LLM behavior.
 Reporting the tool catalog and context files enables other researchers to reconstruct the exact context the model saw, which is often the dominant factor in agent behavior.
 
@@ -100,7 +98,6 @@ Reporting the tool catalog and context files enables other researchers to recons
 
 Documenting LLM-based architectures involves challenges such as proprietary APIs and dependencies that restrict disclosure, managing large-scale retrieval databases, and ensuring efficient query execution.
 Researchers must also balance transparency with data privacy concerns, adapt to the evolving nature of LLM integrations, and handle the complexity of multi-agent interactions and decision-making logic, all of which can impact reproducibility and system clarity.
-
 Prompts themselves are challenging to document because they often combine multiple components such as code, error messages, and explanatory text, and privacy or confidentiality concerns can hinder sharing.
 
 Not all systems allow reporting of complete (system) prompts, context files, and tool schemas.

@@ -37,6 +37,7 @@ EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens cons
 - **Model Version:** Two summary lists condensed into one prose summary.
 - **Tools / Human Validation:** HULA (Takerngsaksiri et al., ICSE-SEIP 2025) repositioned from a definitional citation cluster to an industrial example.
 - **ClassEval citation:** upgraded from arXiv preprint to the ICSE 2024 entry.
+- **Open LLM:** Severity split for formal benchmarking studies (**must** include an open LLM; rationale added that scores are otherwise unverifiable) and controlled experiments (**should** include, unless required capabilities are specific to a commercial model).
 
 ## [2026.04]
 
