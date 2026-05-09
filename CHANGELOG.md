@@ -15,8 +15,11 @@ EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens cons
 - **Benchmarks:** **should** define the phenomenon, justify the sampling strategy, isolate confounders, conduct an error analysis, document benchmark adaptations, and adopt contamination-prevention mechanisms for new benchmarks. Pointer to HOW2BENCH and Bean et al.'s checklists.
 - **Benchmarks:** For ratings that vary across raters or runs, **should** report distributions per item rather than only point estimates.
 - **Human Validation:** For value-laden or culturally contingent constructs, **should** describe rater demographics beyond expertise.
+- **Human Validation:** *See Also* subsection added (was missing).
+- **Limitations and Mitigations:** *Examples*, *Benefits*, and *Challenges* subsections added (were missing). *Examples* cites Sallou et al.'s threat-and-mitigation catalog and Du et al.'s ClassEval threat-mitigation pairings.
 - **Traces:** Second example showing runtime trajectories (Bouzenia & Pradel, ASE 2025).
 - **Traces:** **should** record runtime traces in an OTLP-compatible format such as the OpenTelemetry GenAI semantic conventions or OpenInference, and report the version used.
+- **Declare Usage:** Cheng et al. (2025) cited supporting disclosure placement in the methods section rather than acknowledgments.
 
 ### Changed
 
@@ -29,6 +32,11 @@ EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens cons
 - **Benchmarks Challenges:** new evidence from Cao et al. (84.2% ignore test-suite coverage, 64.0% single-pass, 82.5% no contamination handling), confirmed by Bean et al.
 - **Bibliography:** seven arXiv preprints replaced with peer-reviewed citations; entries normalized to DBLP keys; proper nouns and acronyms wrapped in `{}` to preserve capitalization.
 - **Reporting Checklist:** Items now ordered general-before-conditional within each severity. The sampling-strategy bullet split into a general "describe and justify the sampling strategy" item plus a conditional non-probability follow-up. The open-LLM-baseline item moved to *Model Selection and Configuration* because its trigger is a model-choice condition.
+- **Limitations and Mitigations:** Threat-list and mitigation bullets unified across all six categories. Cross-model transfer, tool-architecture, and over-reliance bullets refactored from vague "and capabilities" / "API or capabilities" / "intended construct" to concrete dimensions (post-training procedures, vendor-specific features, the capability the benchmark tests). Construct validity gained behavioral equivalence as a second SE-specific aspect. Infrastructure dependence absorbed vendor quotas, throttling, and pricing changes as reproducibility threats.
+- **Benchmarks:** *Recommendations* MUSTs lifted into prose; bullet list now SHOULDs only.
+- **Model Version:** Two summary lists condensed into one prose summary.
+- **Tools / Human Validation:** HULA (Takerngsaksiri et al., ICSE-SEIP 2025) repositioned from a definitional citation cluster to an industrial example.
+- **ClassEval citation:** upgraded from arXiv preprint to the ICSE 2024 entry.
 
 ## [2026.04]
 
