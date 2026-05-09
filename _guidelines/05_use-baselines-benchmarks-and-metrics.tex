@@ -6,15 +6,13 @@ A \textit{benchmark} is a ``standard tool for the competitive evaluation and com
 
 \guidelinesubsubsection{Recommendations}
 
-Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. If one or more metrics or benchmarks are used, researchers:
+Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. When one or more metrics or benchmarks are used, researchers \must briefly justify in the \paper why each selected benchmark and metric is suitable for the given task or study, and \must discuss the reliability and validity (especially construct validity) of those choices. Beyond these requirements, researchers \should:
 \begin{itemize}
-    \item \must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study;
-    \item \must discuss the reliability and validity (especially construct validity) of selected metrics and benchmarks;
-    \item \should provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components~\cite{bean2025measuring};
-    \item \should summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
-    \item \should describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in \emph{HumanEval}, GitHub issues in \emph{SWE-bench}, vulnerable functions in \emph{DiverseVul}); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions~\cite{DBLP:journals/ese/BaltesR22, bean2025measuring};
-    \item \should discuss the limitations of the selected benchmark(s) (e.g. widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} only test short Python functions, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks});
-    \item \should include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
+    \item provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components~\cite{bean2025measuring};
+    \item summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
+    \item describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in \emph{HumanEval}, GitHub issues in \emph{SWE-bench}, vulnerable functions in \emph{DiverseVul}); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions~\cite{DBLP:journals/ese/BaltesR22, bean2025measuring};
+    \item discuss the limitations of the selected benchmark(s) (e.g., widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} only test short Python functions, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks});
+    \item include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
 \end{itemize}
 
 If multiple benchmarks exist for the same task, researchers \should compare both performance and design choices (e.g., which tasks are included, how outputs are scored, what aspect of the phenomenon is covered) across benchmarks~\cite{bean2025measuring}.
@@ -81,7 +79,7 @@ Common problem types for LLM-based studies are classification, recommendation, a
 \paragraph{Benchmark Examples:}
 
 Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
-\emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:journals/corr/abs-2308-01861}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
+\emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:conf/icse/Du0WWL0FS0L24}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
 An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:conf/nips/RoziereLCL20} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
 
 Most benchmarks focus on generation tasks, but benchmarks for classification and recommendation also exist.
@@ -135,13 +133,12 @@ If non-standard metrics are used, researchers \must state their reasoning.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should expect manuscripts to:
-\begin{enumerate*}
-    \item clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables;
-    \item present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs;
-    \item justify the selection of any metrics, benchmarks, and baselines used;
-    \item discuss \textit{in detail} the assumptions, reliability, and validity (\textit{especially construct validity}) of each benchmark and metric;
-    \item articulate any limitations regarding construct and measurement validity.
-\end{enumerate*}
+(1) clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables;
+(2) present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs;
+(3) justify the selection of metrics, benchmarks, and baselines;
+(4) discuss \textit{in detail} the assumptions, reliability, and validity (\textit{especially construct validity}) of each benchmark and metric;
+(5) articulate any limitations regarding construct and measurement validity.
+
 As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark or metric does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
 
 \guidelinesubsubsection{See Also}

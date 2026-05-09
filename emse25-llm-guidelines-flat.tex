@@ -548,18 +548,13 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 Empirical guidelines are needed for SE studies involving LLMs to ensure the validity and reproducibility of their results.
 However, such guidelines must be tailored to different study types that each pose unique challenges.
-%Therefore, understanding the classification of these studies is essential for developing appropriate guidelines.
 Therefore, we created a taxonomy of study types to contextualize our recommendations.
-%Note that our \guidelines refer to the \studytypes but not the other way around.
 We use the term \emph{study type} to refer to categories of LLM involvement in empirical research, rather than to research methodologies (e.g., experiments, case studies). A single empirical study may involve multiple such study types.
 Each study type section starts with a \textbf{description}, followed by \textbf{examples} from the SE research community and beyond. The \textbf{advantages} and \textbf{challenges} of using LLMs are discussed in a summary subsection at the end of this section, synthesizing cross-cutting themes across all study types.
 \ifpaper
 See Table~\ref{tab:study-types} for an overview of study types.
 \fi
  
-%% This sub-table of contents is organizational overkill. 
-%% I think it's  a good additional since the guidlines are already a wall of text.
-
 \begin{table}[tb]
 \centering
 \caption{Overview of study types.}
@@ -593,8 +588,7 @@ For example, LLMs can apply predefined coding guides to qualitative datasets (\a
 \label{sec:llms-as-annotators}
 
 \studytypeparagraph{Description}
-In qualitative data analysis, manually annotating (``coding'') natural language text (e.g., requirements, interview transcripts, open-ended survey responses) is a time-consuming manual process~\cite{DBLP:journals/ase/BanoHZT24}. LLMs can augment human coding, suggest new codes, and label artifacts based on a pre-defined coding guide much faster than humans can~\cite{DBLP:conf/chi/HeHDRH24}. 
-%(see \synthesis), or even automate the entire qualitative data analysis process.
+In qualitative data analysis, manually annotating (``coding'') natural language text (e.g., requirements, interview transcripts, open-ended survey responses) is a time-consuming manual process~\cite{DBLP:journals/ase/BanoHZT24}. LLMs can augment human coding, suggest new codes, and label artifacts based on a pre-defined coding guide much faster than humans can~\cite{DBLP:conf/chi/HeHDRH24}.
 The extent to which, or under what conditions, LLMs can perform these tasks \textit{effectively} remains an open research question~\cite{DBLP:conf/msr/AhmedDTP25}. Indeed, measuring their effectiveness is practically and philosophically challenging. From an interpretivist philosophical perspective, one cannot measure the quality of analysis by comparing one (human or machine) analyst's work to another. From a realist perspective, triangulating across multiple human judges, LLM judges, and other data sources (e.g., whether a pull request is marked as having resolved an issue) improves confidence in the findings but does not prove that any one judge is valid.
 
 \studytypeparagraph{Examples}
@@ -602,8 +596,6 @@ The extent to which, or under what conditions, LLMs can perform these tasks \tex
 They used three models of comparable size with an absolute majority voting rule (i.e., a label is only accepted if it receives more than half of the total votes from the models). This approach slightly outperformed the best individual model tested. 
 Meanwhile, \citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} examined LLMs as annotators in SE research across five datasets, six LLMs, and ten annotation tasks.
 They found that model-model agreement strongly correlates with human-model agreement; models performed poorly in tasks where humans also frequently disagreed. They proposed to use model confidence scores to identify specific samples that could be safely delegated to LLMs, potentially reducing human annotation effort without compromising inter-rater agreement.
-%% Reliabiltiy is a necessary condition for, but does not constitute, validity. We cannot infer that a statement is true just because several LLMs agree on it.  
-%Conversely, if multiple LLMs reach similar solutions independently, then LLMs are likely suitable for the annotation task.
  
 \studytypesubsection{LLMs as Judges}
 \label{sec:llms-as-judges}
@@ -635,16 +627,13 @@ They evaluated LLM output against expert human judges and found moderate agreeme
 \studytypeparagraph{Description}
 
 Unlike annotation (see \annotators), which focuses on categorizing or labeling individual data points, synthesis refers to the process of integrating and interpreting information from multiple sources to generate higher-level insights, identify patterns across datasets, and develop conceptual frameworks or theories. LLMs may be able to support synthesis tasks in SE research by processing and distilling information from qualitative data sources. 
-Although synthesis in the preceding notion refers to abstraction and interpretation across multiple data sources, the term is sometimes also used to refer to generating synthetic content (e.g., source code, bug-fix pairs, requirements, etc.) that are then used in downstream tasks to train, fine-tune, or evaluate existing models or tools.
+Although synthesis in the preceding notion refers to abstraction and interpretation across multiple data sources, the term is sometimes also used to refer to generating synthetic content (e.g., source code, bug-fix pairs, or requirements) that is then used in downstream tasks to train, fine-tune, or evaluate existing models or tools.
 In this case, the synthesis is done primarily using the LLM and its training data; the input is limited to basic instructions and examples.
 
 \studytypeparagraph{Examples} 
 
 Published examples of applying LLMs for synthesis in SE remain scarce; however, some recent work in other domains is instructive~\cite{DBLP:journals/ase/BanoHZT24}.
 \citeauthor{DBLP:conf/wsese/BarrosANKKNB25}~\cite{DBLP:conf/wsese/BarrosANKKNB25} conducted a systematic mapping study on using LLMs for qualitative research and found that most studies focused on the healthcare and social sciences. In these studies, LLMs supported qualitative methods, such as grounded theory and thematic analysis, by aiding in pattern identification.
-%They identified examples in domains such as healthcare and social sciences (see, e.g., \cite{de2024performing,mathis2024inductive}) in which LLMs were used to support qualitative analysis, including grounded theory and thematic analysis.
-%Overall, the findings highlight the successful generation of preliminary coding schemes from interview transcripts, later refined by human researchers, along with support for pattern identification.This approach was reported not only to expedite the initial coding process but also to allow researchers to focus more on higher-level analysis and interpretation.
-%This particular paper suggests using LLMs to support tasks such as initial coding and theme identification while conservatively reserving interpretative or creative processes for human analysts.
 In SE, \citeauthor{DBLP:conf/wsese/LecaVSS25}~\cite{DBLP:conf/wsese/LecaVSS25} explored how LLMs have been applied for qualitative data analysis (QDA) and proposed general strategies and guidelines for their application. \citeauthor{DBLP:journals/corr/abs-2511-14528}~\cite{DBLP:journals/corr/abs-2511-14528} complemented this perspective by studying the opportunities and limitations of introducing LLM-based support into QDA, and by formulating recommendations for embedding human–AI collaboration across the thematic analysis phases. Building on these, subsequent work has proposed hybrid frameworks combining LLM support with human-led QDA. \citeauthor{DBLP:journals/corr/abs-2402-01386}~\cite{DBLP:journals/corr/abs-2402-01386} designed an LLM-driven multi-agent system that integrates AI with human decision-making to automate qualitative data analysis methods. Their system generated initial codes, developed themes, and summarized text. Similarly, \citeauthor{DBLP:journals/corr/abs-2510-18456}~\cite{DBLP:journals/corr/abs-2510-18456} compared the performance of humans and LLMs in coding, theme development, definition, and refinement, creating guidelines for a hybrid-LLM framework.
 Finally, \citeauthor{DBLP:journals/corr/abs-2506-21138}'s work is an example of using LLMs to create synthetic datasets.
 They present an approach to generate synthetic requirements, showing that they \enq{can match or surpass human-authored requirements for specific classification tasks}~\cite{DBLP:journals/corr/abs-2506-21138}.
@@ -662,14 +651,13 @@ To serve as virtual subjects, generated responses should be indistinguishable fr
 
 \studytypeparagraph{Examples}
 
-\citeauthor{DBLP:journals/ipm/XuSRGPLSH24}~\cite{DBLP:journals/ipm/XuSRGPLSH24} compiled a list of ways LLMs can support social science research, some of which transfer to empirical SE research. For example, LLMs can emulate human responses and behaviors in simulated interviews and focus groups~\cite{DBLP:journals/ase/GerosaTSS24}. Similarly, \citeauthor{DBLP:conf/icse/BanoGH25}~\cite{DBLP:conf/icse/BanoGH25}, investigated biases in LLM-generated candidate profiles in SE recruitment processes. They found biases favoring male candidates, lighter skin tones, and slim physiques, particularly for senior roles. LLMs may be able to simulate end-user feedback and behavior in usability studies, identify usability issues and offering suggestions for improvement based on predefined user personas.
+\citeauthor{DBLP:journals/ipm/XuSRGPLSH24}~\cite{DBLP:journals/ipm/XuSRGPLSH24} compiled a list of ways LLMs can support social science research, some of which transfer to empirical SE research. For example, LLMs can emulate human responses and behaviors in simulated interviews and focus groups~\cite{DBLP:journals/ase/GerosaTSS24}. Similarly, \citeauthor{DBLP:conf/icse/BanoGH25}~\cite{DBLP:conf/icse/BanoGH25}, investigated biases in LLM-generated candidate profiles in SE recruitment processes. They found biases favoring male candidates, lighter skin tones, and slim physiques, particularly for senior roles. LLMs may be able to simulate end-user feedback and behavior in usability studies, identify usability issues, and offer suggestions for improvement based on predefined user personas.
  
 \subsection{LLMs as Tools for Software Engineers}
 \label{sec:llms-as-tools-for-software-engineers}
 
 LLM-based assistants have become a widely adopted tool for software engineers~\cite{stackoverflow2025survey}, supporting them in various tasks such as code generation and debugging.
 Researchers have studied how software engineers use LLMs (\llmusage), developed new tools that integrate LLMs (\newtools), and benchmarked LLMs for software engineering tasks (\benchmarkingtasks).
-%Like in the previous section, we outline the advantages that studying LLMs in these contexts brings, but also point to specific challenges.
  
 \studytypesubsection{Studying LLM Usage in Software Engineering}
 \label{sec:studying-llm-usage-in-software-engineering}
@@ -687,7 +675,6 @@ They can also uncover risks or deficiencies of existing tools.
 Based on a convergent mixed-methods study, \citeauthor{DBLP:journals/tosem/Russo24} has found that early adoption of generative AI by software engineers is primarily driven by compatibility with existing workflows~\cite{DBLP:journals/tosem/Russo24}.
 \citeauthor{DBLP:journals/pacmse/KhojahM0N24} investigated the use of ChatGPT (GPT-3.5) by professional software engineers in a week-long observational study~\cite{DBLP:journals/pacmse/KhojahM0N24}.
 They found that most developers do not use the code generated by ChatGPT directly but instead use the output as a guide to implement their own solutions.
-%Furthermore, they recommend that future research investigate the use of ChatGPT in non code-related SE tasks and for training and learning SE concepts.
 \citeauthor{DBLP:conf/csee/AzanzaPIG24}'s case study found that LLMs could \enq{enhance personalized, instant onboarding support; however, relying on proprietary external LLMs poses significant data privacy risks}~\cite{DBLP:conf/csee/AzanzaPIG24}. 
  \citeauthor{DBLP:conf/icsa/JahicS24} found that most participants from 15 software companies they surveyed had already adopted AI (especially ChatGPT) for SE tasks; but cited copyright and privacy issues, as well as inconsistent or low-quality outputs, as barriers to adoption~\cite{DBLP:conf/icsa/JahicS24}. 
 Retrospective studies that analyze data generated while developers use LLMs can provide additional insights into human-LLM interactions.
@@ -701,9 +688,9 @@ Conversations can then be analyzed using quantitative~\cite{DBLP:conf/msr/RabbiC
 
 LLMs are being integrated into new tools that support software engineers in their daily tasks (e.g., to assist in code comprehension~\cite{DBLP:conf/chi/YanHWH24} and test case generation~\cite{DBLP:journals/tse/SchaferNET24}).
 One way of integrating LLM-based tools into software engineers' workflows is using GenAI agents.
-Unlike traditional LLM-based tools, these agents are capable of acting autonomously and proactively, are often tailored to meet specific user needs, and can interact with external environments~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25,wiesinger2025agents,yang2025code}.
+Unlike traditional LLM-based tools, these agents are capable of acting autonomously and proactively, are often tailored to meet specific user needs, and can interact with external environments~\cite{wiesinger2025agents,yang2025code}.
 From an architectural perspective, GenAI agents can be implemented in various ways~\cite{wiesinger2025agents}.
-However, they generally share three key components: (1) a reasoning mechanism that guides the LLM (often enabled by advanced prompt engineering), (2) a set of tools to interact with external systems (e.g., APIs or databases), and (3) a user communication interface that extends beyond traditional chat-based interactions~\cite{DBLP:conf/icsm/RichardsW24, DBLP:journals/tmlr/SumersYN024, DBLP:journals/corr/abs-2309-07870}.
+However, they generally share three key components: (1) a reasoning mechanism that guides the LLM (often enabled by advanced prompt engineering), (2) a set of tools to interact with external systems (e.g., APIs or databases), and (3) a user communication interface that extends beyond traditional chat-based interactions~\cite{DBLP:journals/tmlr/SumersYN024, DBLP:journals/corr/abs-2309-07870}.
 Researchers can also test and compare different tool architectures to increase artifact quality and developer satisfaction.
 
 \studytypeparagraph{Examples}
@@ -713,6 +700,7 @@ The authors focused more on the presentation, providing a user-friendly interfac
 \citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} presented a large-scale empirical evaluation on the effectiveness of LLMs for automated unit test generation.
 They presented \emph{TestPilot}, a tool that implements an approach in which the LLM is provided with prompts that include the signature and implementation of a function under test, along with usage examples extracted from the documentation.
 \citeauthor{DBLP:conf/icsm/RichardsW24} introduced a preliminary GenAI agent designed to assist developers in understanding source code by incorporating a reasoning component grounded in the theory of mind~\cite{DBLP:conf/icsm/RichardsW24}.
+\citeauthor{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25}~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25} present \emph{HULA}, a multi-agent system deployed in Atlassian JIRA that lets engineers refine LLM-generated coding plans and source code, and report acceptance and modification rates from real users.
  
 \studytypesubsection{Benchmarking LLMs for Software Engineering Tasks}
 \label{sec:benchmarking-llms-for-software-engineering-tasks}
@@ -753,7 +741,7 @@ The prevalence of \emph{proprietary tools and opaque training data} limits resea
 
 \emph{Evaluation difficulty} is inherent in studying LLM-based tools and benchmarks. Benchmarks may lack construct validity~\cite{DBLP:books/sp/24/RalphKAA24}, usually do not capture the full complexity of software engineering work~\cite{Chandra2025benchmarks}, and may lead to \emph{overconfidence} and overfitting~\cite{DBLP:conf/kdd/WanSJKCNSSWYABJ24}. LLMs are also susceptible to adversarial manipulation where semantics-preserving changes may deceive them into accepting flawed artifacts~\cite{DBLP:journals/corr/abs-2510-24367}. See \benchmarksmetrics for detailed guidance on benchmark design, including~\citeauthor{cao2025should}'s~\cite{cao2025should} guidelines for coding task benchmarks.
 
-A fundamental challenge is \emph{philosophical and methodological incongruence} with qualitative research. In a recent open letter, 419 experienced qualitative researchers argued \enq{that analytic approaches such as reflexive thematic analysis are human research practices requiring a subjective, positioned, and reflexive researcher and therefore the use of GenAI in such approaches is not methodologically congruent}~\cite{jowsey2025reject}. LLMs lack the capacity for genuinely reflexive qualitative analysis because they operate on statistical prediction without understanding the meaning of the data being analyzed~\cite{jowsey2025reject, DBLP:journals/corr/abs-2306-13298, DBLP:journals/corr/abs-2510-18456}. Effective use requires structured prompts and careful human oversight~\cite{DBLP:conf/wsese/BarrosANKKNB25}; see \humanvalidation and \limitationsmitigations for guidance.
+A fundamental challenge is \emph{philosophical and methodological incongruence} with qualitative research. In a recent open letter, 419 experienced qualitative researchers argued \enq{that analytic approaches such as reflexive thematic analysis are human research practices requiring a subjective, positioned, and reflexive researcher and therefore the use of GenAI in such approaches is not methodologically congruent}~\cite{jowsey2025reject}. LLMs lack the capacity for genuinely reflexive qualitative analysis because they operate on statistical prediction without understanding the meaning of the data being analyzed~\cite{DBLP:journals/corr/abs-2306-13298, DBLP:journals/corr/abs-2510-18456}. Effective use requires structured prompts and careful human oversight~\cite{DBLP:conf/wsese/BarrosANKKNB25}; see \humanvalidation and \limitationsmitigations for guidance.
 
 There is \emph{insufficient evidence} for the effectiveness of LLMs in most research roles. No compelling evidence exists that LLMs can accurately simulate human participants~\cite{DBLP:journals/corr/abs-2508-06950} or reliably judge most relevant properties of SE artifacts; gathering such evidence for each specific usage may be quite difficult~\cite{DBLP:journals/ais/HardingDLL24}. LLMs may be better suited for augmenting rather than replacing human researchers~\cite{DBLP:conf/emnlp/WangLXZZ21, DBLP:conf/chi/HeHDRH24}, but even then, limited evidence exists that augmentation increases \emph{effectiveness} as well as \emph{efficiency}~\cite{DBLP:journals/corr/abs-2508-06950}. When LLM outputs are incorrect, they can negatively \emph{affect human judgment}~\cite{DBLP:conf/www/HuangKA23a, panHumanCenteredDesignRecommendations2024}; see \humanvalidation for mitigation strategies.
 
@@ -827,7 +815,7 @@ Without explicit disclosure, readers cannot evaluate how the LLM's characteristi
 \guidelinesubsubsection{Recommendations}
 
 When conducting any kind of empirical study involving LLMs, researchers \must clearly declare that an LLM was used (see \scope for what we consider relevant research support).
-This \should be done in a suitable section of the \paper, for example, in the introduction or research methods section.
+This \should be done in a suitable section of the \paper, for example, in the introduction or research methods section; \citeauthor{cheng2025writing}~\cite{cheng2025writing} argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper.
 For authoring scientific articles, this transparency is, for example, required by the ACM Policy on Authorship: \enq{The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work}~\cite{ACM2023}.
 
 Beyond generic declarations, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
@@ -836,9 +824,6 @@ A sufficient declaration specifies not only \emph{that} an LLM was used, but als
 When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
 In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
-% Related paper:
-% Artificial intelligence‑assisted academic writing: recommendations for ethical use
-% https://doi.org/10.1186/s41077-025-00350-6
 
 \guidelinesubsubsection{Examples}
 
@@ -918,29 +903,12 @@ Reasons may be monetary, technical, or methodological (e.g., planned comparison 
 Depending on the specific study context, additional information regarding the experiment or tool architecture \should be reported.
 
 A common customization approach for existing LLMs is fine-tuning.
-If a model was fine-tuned, researchers \must describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning vs. Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, batch size, etc.), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the \paper.
+If a model was fine-tuned, researchers \must describe the fine-tuning goal (e.g., improving the performance for a specific task), the fine-tuning procedure (e.g., full fine-tuning versus Low-Rank Adaptation (LoRA), selected hyperparameters, loss function, learning rate, and batch size), and the fine-tuning dataset (e.g., data sources, the preprocessing pipeline, dataset size) in the \paper.
 Researchers \should either share the fine-tuning dataset as part of the \supplementarymaterial or explain in the \paper why the data cannot be shared (e.g., because it contains confidential or personal data that could not be anonymized).
 The same applies to the fine-tuned model weights.
 Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model.
 
-In summary, our recommendation is to report:
-\begin{enumerate*}[label=(\arabic*)]
-\item Model/tool name and version (\must in \paper);
-\item All relevant configured parameters that affect output generation (\must in \paper);
-\item Default values of all available parameters (\should);
-\item Checksum/fingerprint of used model version and configuration (\should);
-\item Additional properties such as context window size (\should);
-\item Model quantization level and method, if applicable (\should).
-\end{enumerate*}
-
-For fine-tuned models, additional recommendations apply:
-\begin{enumerate*}[label=(\arabic*)]
-\item Fine-tuning goal (\must in \paper);
-\item Fine-tuning dataset creation and characterization (\must in \paper);
-\item Fine-tuning parameters and procedure (\must in \paper);
-\item Fine-tuning dataset and fine-tuned model weights (\should);
-\item Validation metrics and benchmarks (\should).
-\end{enumerate*}
+In summary, researchers \must report in the \paper at minimum (1) the exact model or tool name and version, (2) all configured parameters that affect output generation, (3) the experiment date, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, and parameters and procedure. Beyond these requirements, researchers \should additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable; for fine-tuned models, they \should share the dataset and model weights as \supplementarymaterial (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
 
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information.
 For these tools, researchers \should report what is available and openly acknowledge limitations that hinder reproducibility.
@@ -988,7 +956,6 @@ Setting the temperature to 0 configures greedy decoding (always selecting the mo
 Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
 Researchers \shouldnot treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
 When a temperature of 0 is chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.
-%\comment{Should we also address how API rate limits and usage constraints can affect experiments?}
 
 \guidelinesubsubsection{Study Types}
 
@@ -1283,15 +1250,13 @@ A \textit{benchmark} is a ``standard tool for the competitive evaluation and com
 
 \guidelinesubsubsection{Recommendations}
 
-Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. If one or more metrics or benchmarks are used, researchers:
+Benchmark and metric selection requires understanding the benchmark tasks, what exactly is being measured, and how it relates to the (often latent) variables researchers actually care about. When one or more metrics or benchmarks are used, researchers \must briefly justify in the \paper why each selected benchmark and metric is suitable for the given task or study, and \must discuss the reliability and validity (especially construct validity) of those choices. Beyond these requirements, researchers \should:
 \begin{itemize}
-    \item \must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study;
-    \item \must discuss the reliability and validity (especially construct validity) of selected metrics and benchmarks;
-    \item \should provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components~\cite{bean2025measuring};
-    \item \should summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
-    \item \should describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in \emph{HumanEval}, GitHub issues in \emph{SWE-bench}, vulnerable functions in \emph{DiverseVul}); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions~\cite{DBLP:journals/ese/BaltesR22, bean2025measuring};
-    \item \should discuss the limitations of the selected benchmark(s) (e.g. widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} only test short Python functions, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks});
-    \item \should include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
+    \item provide an operational definition of the phenomenon the benchmark is intended to measure (e.g., functional correctness, code maintainability, vulnerability detection), including its scope and any sub-components~\cite{bean2025measuring};
+    \item summarize the structure and tasks of the selected benchmark(s), including the programming language(s) and descriptive statistics such as the number of contained tasks and test cases;
+    \item describe and justify the sampling strategy used to select problems for inclusion in the benchmark (e.g., function-completion problems in \emph{HumanEval}, GitHub issues in \emph{SWE-bench}, vulnerable functions in \emph{DiverseVul}); if non-probability sampling (e.g., convenience) is used, discuss its implications for the generalizability of conclusions~\cite{DBLP:journals/ese/BaltesR22, bean2025measuring};
+    \item discuss the limitations of the selected benchmark(s) (e.g., widely used benchmarks such as \emph{HumanEval} \cite{DBLP:journals/corr/abs-2107-03374} and \emph{MBPP} \cite{DBLP:journals/corr/abs-2108-07732} only test short Python functions, which is not representative of the full breadth of SE work~\cite{Chandra2025benchmarks});
+    \item include an example of a task and the corresponding test case(s) to illustrate the structure of the benchmark.
 \end{itemize}
 
 If multiple benchmarks exist for the same task, researchers \should compare both performance and design choices (e.g., which tasks are included, how outputs are scored, what aspect of the phenomenon is covered) across benchmarks~\cite{bean2025measuring}.
@@ -1358,11 +1323,7 @@ Common problem types for LLM-based studies are classification, recommendation, a
 \paragraph{Benchmark Examples:}
 
 Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
-% Both benchmarks consist of code snippets written in Python sourced from publicly available repositories.
-% Each snippet consists of four parts: a prompt containing a function definition and a corresponding description of what the function should accomplish, a canonical solution, an entry point for execution, and test cases.
-% The input of the LLM is the entire prompt.
-% The output of the LLM is then evaluated against the canonical solution using metrics or against a test suite.
-\emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:journals/corr/abs-2308-01861}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
+\emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:conf/icse/Du0WWL0FS0L24}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
 An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:conf/nips/RoziereLCL20} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
 
 Most benchmarks focus on generation tasks, but benchmarks for classification and recommendation also exist.
@@ -1416,13 +1377,12 @@ If non-standard metrics are used, researchers \must state their reasoning.
 \guidelinesubsubsection{Advice for Reviewers}
 
 Reviewers should expect manuscripts to:
-\begin{enumerate*}
-    \item clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables;
-    \item present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs;
-    \item justify the selection of any metrics, benchmarks, and baselines used;
-    \item discuss \textit{in detail} the assumptions, reliability, and validity (\textit{especially construct validity}) of each benchmark and metric;
-    \item articulate any limitations regarding construct and measurement validity.
-\end{enumerate*}
+(1) clearly identify the constructs or variables the study aims to measure (e.g., LLM performance, quality of generated code), including independent, dependent, and control variables;
+(2) present their measurement model, i.e., which metrics, benchmarks, or baselines are used and how they relate to the target constructs;
+(3) justify the selection of metrics, benchmarks, and baselines;
+(4) discuss \textit{in detail} the assumptions, reliability, and validity (\textit{especially construct validity}) of each benchmark and metric;
+(5) articulate any limitations regarding construct and measurement validity.
+
 As with other guidelines, missing information about baselines or metrics is typically a revision request. However, vague descriptions that conflate broad concerns (e.g., effectiveness, quality) with specific counting methods should be questioned. Ubiquity of a benchmark or metric does not imply validity or appropriateness for a given context. Manuscripts should convey a solid understanding of construct and measurement validity by explaining and justifying their measurement models.
 
 \guidelinesubsubsection{See Also}
@@ -1457,7 +1417,7 @@ Researchers \should provide a complete replication package as part of their \sup
 Open LLMs are available on platforms such as \href{https://huggingface.co/}{\emph{Hugging Face}} and can be hosted locally using frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, or on cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud.
 
 The term ``open'' can have different meanings in the context of LLMs.
-\citeauthor{widder2024open} discuss three types of openness (transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
+\citeauthor{widder2024open} discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
 The \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024} defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
 
 Researchers can also explore open-source tools such as Continue, Cline, and opencode as alternatives to commercial tools like GitHub Copilot and Claude Code, enabling instrumentation, architectural transparency, and detailed telemetry collection.
@@ -1570,6 +1530,7 @@ This illustrates that high model-model reliability does not guarantee alignment 
 Moreover, a high model-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
 \citeauthor{DBLP:journals/corr/abs-2501-19297}~\cite{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
+For agentic tools, \citeauthor{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25}~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25} report acceptance and modification rates from real users for \emph{HULA}, an agentic plan-and-code system deployed in Atlassian JIRA.
 
 \guidelinesubsubsection{Benefits}
 
@@ -1599,7 +1560,16 @@ For \benchmarkingtasks, there is less need for human validation when using exten
 Human validation may be the most challenging of our guidelines to assess because it often requires evaluating conceptual arguments. If LLM output is validated only by comparison with other LLMs, reviewers should look for \textit{quantitative empirical evidence} that such comparison is reliable \textit{and} valid. High inter-model agreement alone is insufficient, as reliability does not imply validity. Similarly, reviewers should expect evidence that any employed benchmarks are reliable and valid. Absent such evidence, human validation is warranted.
 A single human judge is appropriate only when judgments depend on widely accepted theories and involve limited value conflict (e.g., tagging method names containing abbreviations). For multiple judges, reviewers should expect IRA/IRR improvement techniques as described in the recommendations above (experienced raters, organized rounds, consensus meetings, updated decision rules). Low IRA or IRR (e.g., Krippendorff's $\alpha<0.8$) without these techniques is a concern. Conversely, if authors have followed best practices and still obtained mediocre results (e.g., $0.66<\alpha<0.8$), this should be noted as a limitation.
 Beyond reliability, reviewers should expect authors to explain conceptually why their human judgments should be valid, considering construct definitions, decision rules, and judge expertise.
-As with other guidelines, missing information is typically a revision request. Absent judge instructions, instruments, decision rules, or construct definitions may prevent assessment of rigor and validity, while missing recruitment details are less critical. Clarification requests about construct definitions are routine and should not alone warrant rejection. 
+As with other guidelines, missing information is typically a revision request. Absent judge instructions, instruments, decision rules, or construct definitions may prevent assessment of rigor and validity, while missing recruitment details are less critical. Clarification requests about construct definitions are routine and should not alone warrant rejection.
+
+\guidelinesubsubsection{See Also}
+\begin{itemize}[label=$\rightarrow$]
+    \item \seebenchmarksmetrics: Human evaluation complements automated metrics where benchmarks cannot sufficiently capture the target construct.
+    \item \seemodelversion: Human-validation findings characterize only the specific model and configuration that produced the outputs.
+    \item \seedesign: Prompt and architecture choices produce the outputs that humans then validate.
+    \item \seetraces: Stored interaction logs and runtime traces are the artifacts human reviewers examine.
+    \item \seelimitationsmitigations: Rater demographics, threshold choices, and the validity of human judgments are limitations to discuss.
+\end{itemize} 
 \subsection{Report Limitations and Mitigations}
 \label{sec:report-limitations-and-mitigations}
 
@@ -1619,11 +1589,11 @@ Researchers \must clearly present the limitations of their work without defensiv
 When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings.
 LLM-based studies may involve many kinds of generalization including the following:
 \begin{enumerate}
-    \item From tested LLMs to others; that is, do the performance characteristics of the LLM(s) studied generalize to LLM(s) not included in the study.
-    \item From tested configurations to others; that is, how sensitive are the results to the specific configuration(s) of the LLM under test. 
-    \item From research to practice; for instance, just because researchers can get a certain level of code generation performance under ideal conditions does not mean software developers, given the same tools, will get similar results without having the researchers present to show them exactly what to do. 
-    \item From a sample of people (e.g. human validators; human participants) to a larger population of people.
-    \item From one time period to another; i.e., does the same LLM, or other versions of the same LLM, produce similar results at a different point in time?
+    \item From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
+    \item From tested configurations to others; i.e., how sensitive results are to the specific configuration(s) of the LLM under test.
+    \item From research to practice; i.e., whether developers using the same tools obtain results comparable to those reported under researcher-supervised conditions.
+    \item From a sampled population to a larger one; i.e., whether findings from a specific group of human validators or participants apply to a broader population.
+    \item From one time period to another; i.e., whether the same LLM, or other versions of it, produce similar results at a different point in time.
 \end{enumerate}
 
 The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
@@ -1631,9 +1601,9 @@ The following concerns present an overview that has to be tailored to the indivi
 \paragraph{Internal Validity:}
 The primary threats to internal validity are:
 \begin{itemize}
-	\item Data leakage and contamination, including inter-dataset duplication, potentially resulting in a training–evaluation overlaps, leading to overly optimistic evaluation results.
-	\item Unintended inclusion of evaluation data in model-improvement pipelines, contributing to data leakage. This is especially relevant for longitudinal studies including LLMs.
-	\item Incomplete architecture, prompt, or pipeline reporting, posing hidden confounding factors.
+	\item \emph{Data leakage and contamination.} Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results.
+	\item \emph{Evaluation data entering model-improvement pipelines.} Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
+	\item \emph{Incomplete architecture, prompt, or pipeline reporting.} Undisclosed components introduce hidden confounders.
 \end{itemize}
 
 Inter-dataset duplication is prevalent in SE, particularly for code-related benchmarks. As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results.
@@ -1641,9 +1611,9 @@ Inter-dataset duplication is prevalent in SE, particularly for code-related benc
 \paragraph{Construct Validity:}
 The primary threats to construct validity are:
 \begin{itemize}
-	\item Metric–construct mismatch (e.g., BLEU/ROUGE vs. functional correctness). More traditional metrics might not capture all relevant SE-specific aspects.
-	\item Over-reliance on benchmark-specific metrics. Optimizing for a single benchmark might result in dataset-specific heuristics rather than the intended construct, overstating real-world utility.
-	\item Benchmark scope limitations. Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
+	\item \emph{Metric-construct mismatch.} Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence.
+	\item \emph{Over-reliance on benchmark-specific metrics.} Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
+	\item \emph{Benchmark scope limitations.} Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
 \end{itemize}
 
 If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers \must discuss how they ensured quality of subjective results, similarly to qualitative research.
@@ -1651,11 +1621,11 @@ If constructs are based on subjective interpretations, purely automated metrics 
 \paragraph{External Validity:}
 The primary threats to external validity are:
 \begin{itemize}
-    \item Cross-model transfer limitations. Results obtained with one LLM (or family of LLMs) may not generalize to others due to differences in training data, architecture, and capabilities.
-    \item Tool-architecture specificity. Tools built around a specific LLM's API or capabilities may not transfer to other models without substantial re-engineering.
-    \item Limited domain coverage. Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
-    \item Limited participant diversity. Study participants (e.g., human validators, developers) may not represent the broader population in terms of expertise, geographic location, or cultural background.
-    \item Cross-time instability (model evolution). Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411}.
+    \item \emph{Cross-model transfer limitations.} Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and RLHF).
+    \item \emph{Tool-architecture specificity.} Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering.
+    \item \emph{Limited domain coverage.} Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
+    \item \emph{Limited participant diversity.} Study participants such as human validators or developers may not represent the broader population in terms of expertise, geographic location, or cultural background.
+    \item \emph{Cross-time instability.} Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411}.
 \end{itemize}
 
 Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time)~\cite{DBLP:journals/corr/abs-2307-09009}. Researchers \must discuss the limitations and mitigations of external validity.
@@ -1663,9 +1633,9 @@ Generalizability is particularly critical for proprietary and non-deterministic 
 \paragraph{Reliability \& Reproducibility:}
 The primary threats to reliability and reproducibility are:
 \begin{itemize}
-    \item Non-deterministic outputs. Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
-    \item Infrastructure dependence. Results may vary depending on the hardware, software stack, and hosting environment used, making exact replication challenging across different infrastructure setups.
-    \item Resource inequality preventing replication. LLM research is resource-intensive and hence remains predominantly in the domain of private companies or well-funded research institutions~\cite{schwartz2020green, ahmed2023industry}, excluding researchers from under-resourced institutions.
+    \item \emph{Non-deterministic outputs.} Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
+    \item \emph{Infrastructure dependence.} Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
+    \item \emph{Resource inequality.} LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions~\cite{schwartz2020green, ahmed2023industry}, excluding researchers from under-resourced institutions.
 \end{itemize}
 
 Researchers \must discuss the measures taken to increase reliability and reproducibility.
@@ -1675,17 +1645,17 @@ The same applies to SaaS-based LLM research, where providers frequently deprecat
 \paragraph{Ethical \& Regulatory Boundaries:}
 The primary concerns for ethical and regulatory matters are:
 \begin{itemize}
-    \item Use of sensitive or proprietary data. Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
-    \item Jurisdictional obligations. Data protection regulations (e.g., GDPR, CCPA) and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
-    \item Implicit model bias. Especially for qualitative research LLM might \enq{reinforce dominant paradigms and biases} and \enq{identify, replicate and reinforce dominant language and patterns}~\cite{jowsey2025reject}.
+    \item \emph{Use of sensitive or proprietary data.} Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
+    \item \emph{Jurisdictional obligations.} Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
+    \item \emph{Implicit model bias.} Especially for qualitative research, LLMs might \enq{reinforce dominant paradigms and biases} and \enq{identify, replicate and reinforce dominant language and patterns}~\cite{jowsey2025reject}.
 \end{itemize}
 
 Studies involving sensitive data \must discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
 \paragraph{Environmental \& Sustainability Constraints:}
 \begin{itemize}
-    \item Energy consumption. With growing model size, the environmental impact of experiments with LLMs increases. Considering the environmental impact in the study design is important given the substantial energy costs of LLM experiments~\cite{DBLP:conf/acl/StrubellGM19}.
-    \item Trade-off between repetition and sustainability. Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
+    \item \emph{Energy consumption.} With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.
+    \item \emph{Trade-off between repetition and sustainability.} Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 \end{itemize}
 
 Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches.
@@ -1694,16 +1664,29 @@ Researchers \should justify the LLM's resource consumption against the benefits 
 The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
 
 \begin{itemize}
-    \item \emph{Replication Packages} covering prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
-    \item \emph{Human Validation} of subjective constructs, following quality criteria known from qualitative research.
-    \item \emph{Longitudinal Re-Runs} to repeat experiments with LLMs over time, complemented by statistical analyses.
+    \item \emph{Replication Packages.} Cover prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
+    \item \emph{Human Validation.} Validate subjective constructs following quality criteria known from qualitative research.
+    \item \emph{Longitudinal Re-Runs.} Repeat experiments with LLMs over time, complemented by statistical analyses.
     \item \emph{Methodological Trustworthiness Measures.} Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures when deterministic reproduction is structurally impossible.
-    \item \emph{Triangulation} via multiple models (e.g., proprietary and open models), multiple independent datasets, and multiple complementary metrics.
-    \item \emph{Cost Accounting} through reporting of input/output tokens, token and service costs, or hardware specifications.
-    \item \emph{Energy Preservation} by selecting smaller or newer less resource-intensive models and employing techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation~\cite{mitu2024hidden} where feasible. Carbon footprint estimation is desirable, but still difficult.
-    \item \emph{Ethical and Regulatory Considerations} through data governance mechanisms, ethical reviews, and bias assessment procedures.
-    \item \emph{Sensitivity Analysis} through variation of LLM configurations, prompts, architecture decisions, datasets, and if applicable human participant backgrounds.
+    \item \emph{Triangulation.} Use multiple models (e.g., proprietary and open), multiple independent datasets, and multiple complementary metrics.
+    \item \emph{Cost Accounting.} Report input and output tokens, token and service costs, or hardware specifications.
+    \item \emph{Energy Preservation.} Select smaller or newer less resource-intensive models and apply techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation~\cite{mitu2024hidden} where feasible. Carbon footprint estimation is desirable, but still difficult.
+    \item \emph{Ethical and Regulatory Considerations.} Apply data governance mechanisms, ethical reviews, and bias assessment procedures.
+    \item \emph{Sensitivity Analysis.} Vary LLM configurations, prompts, architecture decisions, datasets, and where applicable human participant backgrounds.
 \end{itemize}
+
+\guidelinesubsubsection{Examples}
+
+\citeauthor{DBLP:conf/icse/SallouDP24}~\cite{DBLP:conf/icse/SallouDP24} catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata).
+\citeauthor{DBLP:conf/icse/Du0WWL0FS0L24}~\cite{DBLP:conf/icse/Du0WWL0FS0L24} pair each threat in their \emph{ClassEval} evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
+
+\guidelinesubsubsection{Benefits}
+
+Transparent reporting of limitations and mitigations helps readers calibrate confidence in the findings, makes explicit which threats were addressed and which remain open, and documents design decisions that other authors can borrow or refine. Transparent threat discussion also keeps a paper's claims proportionate to its evidence.
+
+\guidelinesubsubsection{Challenges}
+
+Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team's primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
 
 \guidelinesubsubsection{Study Types}
 
@@ -2156,16 +2139,13 @@ Items prefixed with a bracketed tag apply only to studies with that characterist
 \end{appendices} 
 \section{Statements and Declarations}
 
-\paragraph{Competing Interests:} The authors declare no competing interests. Multiple co-authors are members of the EMSE Editorial Board, which is disclosed here for transparency.
-
-%extra v-space will disappear when the "added" tag is deleted.
-\paragraph{Authorship:} Each author contributed or reviewed content and, most importantly, read the complete guidelines and confirmed that they stand behind all recommendations, not only their own contributions.
-
-\paragraph{Funding:} No funding was received for writing this article. However, the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI}, which played a central role in forming the team of co-authors, was supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo.
-
-\paragraph{Ethical Approval:} No ethics approval was required for writing this article.
-
-\paragraph{Data Availability:} This article has no associated data. The guidelines are \href{https://llm-guidelines.org/}{hosted online} and \href{https://github.com/se-uhd/llm-guidelines-website}{maintained on GitHub}.
+\begin{description}
+\item[\textit{Competing Interests:}] The authors declare no competing interests. Multiple co-authors are members of the EMSE Editorial Board, which is disclosed here for transparency.
+\item[\textit{Authorship:}] Each author contributed or reviewed content and, most importantly, read the complete guidelines and confirmed that they stand behind all recommendations, not only their own contributions.
+\item[\textit{Funding:}] No funding was received for writing this article. However, the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI}, which played a central role in forming the team of co-authors, was supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P.\ Sloan Foundation with grant G-2024-22586 to Daniel Russo.
+\item[\textit{Ethical Approval:}] No ethics approval was required for writing this article.
+\item[\textit{Data Availability:}] This article has no associated data. The guidelines are \href{https://llm-guidelines.org/}{hosted online} and \href{https://github.com/se-uhd/llm-guidelines-website}{maintained on GitHub}.
+\end{description}
 
 \bibliographystyle{spbasic}
 \bibliography{literature}
