@@ -10,11 +10,11 @@ Researchers \must clearly present the limitations of their work without defensiv
 When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings.
 LLM-based studies may involve many kinds of generalization including the following:
 \begin{enumerate}
-    \item From tested LLMs to others; that is, do the performance characteristics of the LLM(s) studied generalize to LLM(s) not included in the study.
-    \item From tested configurations to others; that is, how sensitive are the results to the specific configuration(s) of the LLM under test. 
-    \item From research to practice; for instance, just because researchers can get a certain level of code generation performance under ideal conditions does not mean software developers, given the same tools, will get similar results without having the researchers present to show them exactly what to do. 
-    \item From a sample of people (e.g. human validators; human participants) to a larger population of people.
-    \item From one time period to another; i.e., does the same LLM, or other versions of the same LLM, produce similar results at a different point in time?
+    \item From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
+    \item From tested configurations to others; i.e., how sensitive results are to the specific configuration(s) of the LLM under test.
+    \item From research to practice; i.e., whether developers using the same tools obtain results comparable to those reported under researcher-supervised conditions.
+    \item From a sampled population to a larger one; i.e., whether findings from a specific group of human validators or participants apply to a broader population.
+    \item From one time period to another; i.e., whether the same LLM, or other versions of it, produce similar results at a different point in time.
 \end{enumerate}
 
 The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
@@ -95,6 +95,19 @@ The following mitigation strategies can help address the threats described above
     \item \emph{Ethical and Regulatory Considerations.} Apply data governance mechanisms, ethical reviews, and bias assessment procedures.
     \item \emph{Sensitivity Analysis.} Vary LLM configurations, prompts, architecture decisions, datasets, and where applicable human participant backgrounds.
 \end{itemize}
+
+\guidelinesubsubsection{Examples}
+
+\citeauthor{DBLP:conf/icse/SallouDP24}~\cite{DBLP:conf/icse/SallouDP24} catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata).
+\citeauthor{DBLP:conf/icse/Du0WWL0FS0L24}~\cite{DBLP:conf/icse/Du0WWL0FS0L24} pair each threat in their \emph{ClassEval} evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
+
+\guidelinesubsubsection{Benefits}
+
+Transparent reporting of limitations and mitigations helps readers calibrate confidence in the findings, makes explicit which threats were addressed and which remain open, and documents design decisions that other authors can borrow or refine. Transparent threat discussion also keeps a paper's claims proportionate to its evidence.
+
+\guidelinesubsubsection{Challenges}
+
+Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team's primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
 
 \guidelinesubsubsection{Study Types}
 
