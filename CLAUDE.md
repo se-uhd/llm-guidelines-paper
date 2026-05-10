@@ -40,6 +40,8 @@ latexmk -pdf response-letter.tex
 
 PDF outputs (`emse26-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
 
+**Always run `./compile_and_flatten.sh` after content edits** before committing. The flat `.tex` is tracked, so it goes stale otherwise; the local PDF preview goes stale too. This applies to any change under `_main/`, `_scope/`, `_studytypes/`, `_guidelines/`, `_tldr/`, `_summary/`, `literature.bib`, or `shared-header.tex`. After running it, downstream rebuilds (website + skill bundle) need `./compile-latex.sh && ./convert-and-merge-sources.sh` from the `llm-guidelines-website/` repo.
+
 ## Document Structure
 
 ### Main Paper
