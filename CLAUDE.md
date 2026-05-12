@@ -25,11 +25,14 @@ bibtex emse26-llm-guidelines
 # Word count (must use -inc to count \input files)
 texcount -inc emse26-llm-guidelines.tex
 
-# Response letter build
-latexmk -pdf response-letter.tex
+# Response letter build (R2)
+latexmk -pdf reviews-and-response/response-letter_r2.tex
 
 # Compile and flatten into a single .tex file
 ./compile_and_flatten.sh
+
+# Rebuild the full R2 resubmission bundle (flat tex, bib, main PDF, title page, response letter)
+./versions/r2/regenerate.sh
 
 # Generate diff PDF against old submission (requires latexpand, latexdiff)
 ./scripts/create_diff.sh [path/to/old/version]
@@ -38,9 +41,11 @@ latexmk -pdf response-letter.tex
 ./scripts/flatten.sh
 ```
 
-PDF outputs (`emse26-llm-guidelines.pdf`, `title-page.pdf`) are gitignored. `response-letter.pdf` is tracked by git. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
+PDF outputs (`emse26-llm-guidelines.pdf`, `emse26-llm-guidelines-flat.pdf`) are gitignored. Response-letter PDFs and the R2 bundle artifacts under `versions/r2/` are tracked. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
 
 **Always run `./compile_and_flatten.sh` after content edits** before committing. The flat `.tex` is tracked, so it goes stale otherwise; the local PDF preview goes stale too. This applies to any change under `_main/`, `_scope/`, `_studytypes/`, `_guidelines/`, `_tldr/`, `_summary/`, `literature.bib`, or `shared-header.tex`. After running it, downstream rebuilds (website + skill bundle) need `./compile-latex.sh && ./convert-and-merge-sources.sh` from the `llm-guidelines-website/` repo.
+
+**Before resubmitting R2, run `./versions/r2/regenerate.sh`.** It refreshes every R2 artifact from the current sources and aborts if the flat tex is stale, so an out-of-date PDF or bibliography cannot be uploaded by mistake.
 
 ## Document Structure
 
@@ -90,12 +95,13 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 ### Revision Artifacts
 
-- `reviews-and-response/response-letter.tex` and `response-letter-r1.tex` — Point-by-point responses to reviewers (`response-letter.tex` is the major-revision response; `response-letter-r1.tex` is the minor-revision R1 response). Each is a standalone document using `literature.bib`, with custom `reviewcomment`/`response` environments and one `\review` section per reviewer. Build with `latexmk -pdf reviews-and-response/response-letter-r1.tex` (similarly for the major-revision file).
-- `reviews-and-response/emse-reviews.md`, `emse-reviews-r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
-- `title-page.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class)
+- `reviews-and-response/response-letter_r1.tex` and `response-letter_r2.tex` — Point-by-point responses to reviewers (`response-letter_r1.tex` is the major-revision response; `response-letter_r2.tex` is the minor-revision R2 response). Each is a standalone document using `literature.bib`, with custom `reviewcomment`/`response` environments and one `\review` section per reviewer. Build via `versions/r2/regenerate.sh` (preferred) or directly with `latexmk -pdf reviews-and-response/response-letter_r2.tex`.
+- `reviews-and-response/emse-reviews.md`, `emse-reviews_r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
+- `versions/r2/title-page_r2.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class). Lives inside the R2 bundle.
+- `versions/r2/regenerate.sh` — Rebuilds the R2 resubmission bundle (`emse26-llm-guidelines-flat_r2.{tex,pdf}`, `literature_r2.bib`, `title-page_r2.pdf`) and `reviews-and-response/response-letter_r2.pdf` from current sources. Runs `compile_and_flatten.sh` first, then re-verifies via a fresh `latexpand` pass and aborts if the working-copy flat tex differs, so stale artifacts cannot enter the bundle. Does not touch `EMSE-D-25-00637_R2.pdf` (that PDF is downloaded from Editorial Manager).
 - `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
 - `scripts/flatten.sh` — Flattens all `\input` files into `emse26-llm-guidelines-flat.tex` via `latexpand`
-- `versions/` — Contains original submission PDF (`EMSE-D-25-00637.pdf`) and diff output
+- `versions/` — Per-round bundles: `initial/` (original submission PDF), `r1/` (R1 diff and PDFs), `r2/` (R2 resubmission bundle with regenerate script)
 
 ## Key Conventions
 
