@@ -5,7 +5,7 @@ All notable changes to the LLM Guidelines for SE will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
-## [Unreleased]
+## [Ahead of last paper release]
 
 ### Added
 
