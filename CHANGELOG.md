@@ -5,6 +5,14 @@ All notable changes to the LLM Guidelines for SE will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
+## [Unreleased]
+
+### Added
+
+- **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
+- **Benchmarks:** Synthesizing benchmark instances added as a third contamination-mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
+- **Open LLM:** DevBench cited as an example that combines three open-weight models with commercial frontier models under an MIT-licensed release.
+
 ## [2026.05]
 
 EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens construct validity drawing on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review, and incorporates further input from discussions during ICSE 2026 (April 2026) and the 3rd Copenhagen Symposium on Human-Centered Software Engineering AI (May 2026).
