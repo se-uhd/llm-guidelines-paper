@@ -824,7 +824,8 @@ A sufficient declaration specifies not only \emph{that} an LLM was used, but als
 
 When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
-In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
+When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role \should be declared separately.
+In each case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
 
 \guidelinesubsubsection{Examples}
 
@@ -843,6 +844,9 @@ An example of an LLM disclosure beyond writing support can be found in a recent 
 \it
 ``We used Claude Opus 4.7 via the Anthropic API to synthesize themes from interview transcripts, with all prompts and conversation logs published as supplementary material.''
 \end{quote}
+
+\citeauthor{DBLP:journals/corr/abs-2601-11895}'s DevBench paper illustrates separate disclosure of multiple LLM roles: \emph{GPT-4o} generates the synthetic benchmark instances, nine models (including \emph{Claude 4 Sonnet}, \emph{GPT-4.1}, \emph{DeepSeek-V3}, and \emph{Ministral-3B}) are the evaluation subjects, and \emph{o3-mini} is the LLM judge that scores completions for relevance and helpfulness~\cite{DBLP:journals/corr/abs-2601-11895}.
+% GROUNDING: ``Synthetic instances were generated with OpenAI's GPT-4o'' (Section 2.3); ``We use o3-mini as the LLM judge'' (Section 3.3); list of nine evaluated models in Section 4.1.
 
 \guidelinesubsubsection{Benefits}
 
@@ -1321,7 +1325,9 @@ Common problem types for LLM-based studies are classification, recommendation, a
 
 Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
 \emph{ClassEval} (available on \href{https://github.com/FudanSELab/ClassEval}{GitHub}) \cite{DBLP:conf/icse/Du0WWL0FS0L24}, \emph{LiveCodeBench} (available on \href{https://github.com/LiveCodeBench/LiveCodeBench}{GitHub}) \cite{DBLP:journals/corr/abs-2403-07974}, and \emph{SWE-bench} (available on \href{https://github.com/swe-bench/SWE-bench}{GitHub}) \cite{DBLP:conf/iclr/JimenezYWYPPN24}.
-An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:conf/nips/RoziereLCL20} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}). 
+An example of a code translation benchmark is \emph{TransCoder}~\cite{DBLP:conf/nips/RoziereLCL20} (available on \href{https://github.com/facebookresearch/CodeGen}{GitHub}).
+\citeauthor{DBLP:journals/corr/abs-2601-11895}'s \emph{DevBench} (available on \href{https://github.com/microsoft/devbench}{GitHub})~\cite{DBLP:journals/corr/abs-2601-11895} applies the synthesis strategy, with 1,800 code completion instances derived from developer telemetry.
+% GROUNDING: 1,800 instances; ``categories \dots\ derived from analysis of over one billion real developer interactions'' (Section 2.1).
 
 Most benchmarks focus on generation tasks, but benchmarks for classification and recommendation also exist.
 For classification, \emph{DiverseVul} (available on \href{https://github.com/wagner-group/diversevul}{GitHub})~\cite{DBLP:conf/raid/0001DACW23} provides vulnerable and non-vulnerable functions evaluated using standard classification metrics.
@@ -1348,7 +1354,7 @@ When metric values look surprising, examine the specific test cases driving them
 
 Finally, benchmark data contamination, where the benchmark itself is part of the training data, may lead to artificially high performance if the model remembers the solution from the training data rather than deriving it from the input~\cite{DBLP:journals/corr/abs-2406-04244}. Therefore, for proprietary LLMs that do not release their training data, researchers \should consider using human validation, curating new data, or refactoring existing data~\cite{DBLP:journals/corr/abs-2406-04244}. 
 
-To mitigate contamination, researchers can create new benchmark datasets by collecting data after a specified cutoff date; researchers \must disclose data sources and collection dates for each release. However, this temporal approach requires continuous updates as new models may include the benchmark in future training data. Alternatively, keeping the benchmark private prevents inclusion in training sets, but requires trust in the benchmark creator and a system to execute it without leaking data. Researchers can also evaluate how contaminated their benchmark is~\cite{DBLP:journals/corr/abs-2502-00678}.
+To mitigate contamination, researchers can create new benchmark datasets by collecting data after a specified cutoff date; researchers \must disclose data sources and collection dates for each release. However, this temporal approach requires continuous updates as new models may include the benchmark in future training data. Alternatively, keeping the benchmark private prevents inclusion in training sets, but requires trust in the benchmark creator and a system to execute it without leaking data. A third strategy is to synthesize benchmark instances rather than draw them from public sources, which avoids training-data contamination at the cost of requiring an instance generator and a validation pipeline. Researchers can also evaluate how contaminated their benchmark is~\cite{DBLP:journals/corr/abs-2502-00678}.
 
 
 \guidelinesubsubsection{Study Types}
@@ -1425,6 +1431,8 @@ For example, \citeauthor{DBLP:journals/corr/abs-2406-09834} evaluated seven adva
 \citeauthor{DBLP:journals/corr/abs-2408-04430} compared four LLMs on a cross-language code clone detection task~\cite{DBLP:journals/corr/abs-2408-04430}.
 Three evaluated models were open-source.
 \citeauthor{DBLP:conf/eicc/GoncalvesSC0MPS25} fine-tuned the open LLM \emph{LLaMA} 3.2 on a refined version of the \emph{DiverseVul} dataset to benchmark vulnerability detection performance~\cite{DBLP:conf/eicc/GoncalvesSC0MPS25}.
+\citeauthor{DBLP:journals/corr/abs-2601-11895} evaluated nine code completion models on the \emph{DevBench} benchmark and included three open-weight models (\emph{DeepSeek-V3}, \emph{DeepSeek-V3.1}, and \emph{Ministral-3B}) alongside commercial frontier models, releasing benchmark, evaluation scripts, and per-model raw completions under an MIT license~\cite{DBLP:journals/corr/abs-2601-11895}.
+% GROUNDING: ``We open-source the 1,800-instance benchmark and evaluation code.'' ``[Ministral 3B as] a representative compact open model.'' (Section 1 and Section 4.1)
 \emph{CodeBERT}, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data-processing scripts on GitHub~\cite{codebert}. It has been used as an open baseline across diverse SE tasks, including exploit code generation~\cite{DBLP:journals/jss/YangZCZHC23}, vulnerability detection~\cite{DBLP:conf/gaiis/XiaSD24}, code clone detection~\cite{DBLP:conf/kbse/SonnekalbGBM22}, and programming assistance for exception handling~\cite{DBLP:conf/icse/CaiYMMN24}.
 
 \guidelinesubsubsection{Benefits}
