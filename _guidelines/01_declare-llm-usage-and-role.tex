@@ -14,7 +14,8 @@ A sufficient declaration specifies not only \emph{that} an LLM was used, but als
 
 When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
 When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
-In either case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
+When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role \should be declared separately.
+In each case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
 
 \guidelinesubsubsection{Examples}
 
@@ -33,6 +34,9 @@ An example of an LLM disclosure beyond writing support can be found in a recent 
 \it
 ``We used Claude Opus 4.7 via the Anthropic API to synthesize themes from interview transcripts, with all prompts and conversation logs published as supplementary material.''
 \end{quote}
+
+\citeauthor{DBLP:journals/corr/abs-2601-11895}'s DevBench paper illustrates separate disclosure of multiple LLM roles: \emph{GPT-4o} generates the synthetic benchmark instances, nine models (including \emph{Claude 4 Sonnet}, \emph{GPT-4.1}, \emph{DeepSeek-V3}, and \emph{Ministral-3B}) are the evaluation subjects, and \emph{o3-mini} is the LLM judge that scores completions for relevance and helpfulness~\cite{DBLP:journals/corr/abs-2601-11895}.
+% GROUNDING: ``Synthetic instances were generated with OpenAI's GPT-4o'' (Section 2.3); ``We use o3-mini as the LLM judge'' (Section 3.3); list of nine evaluated models in Section 4.1.
 
 \guidelinesubsubsection{Benefits}
 
