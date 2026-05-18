@@ -12,6 +12,8 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
 - **Benchmarks:** Synthesizing benchmark instances added as a third contamination-mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
 - **Open LLM:** DevBench cited as an example that combines three open-weight models with commercial frontier models under an MIT-licensed release.
+- **Scope:** New *Related Reporting Guidelines* paragraph cites CONSORT (template for our checklist), TRIPOD-LLM (Gallifant et al.), Navarro et al.'s HCI guidelines (CHI 2026), Kapoor et al.'s REFORMS (Science Advances 2024), and Korn et al.'s FORGE 2026 prompt reporting guideline; rebuts Navarro et al.'s reading of *Open LLM* and *Design* as unconditional. Gallifant, Sallou, and the prior position paper move into this paragraph from the SE-target paragraph.
+- **Motivation:** Shift-left paragraph added (Liu et al. 2024): with LLMs, reporting must cover upstream artifacts (prompts, context) in addition to the code and data that traditional open-science practice releases.
 
 ## [2026.05]
 
