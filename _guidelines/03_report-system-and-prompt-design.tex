@@ -18,7 +18,7 @@ It does not apply when LLMs are used solely for language polishing, paraphrasing
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper, including any dependencies on proprietary tools that affect reproducibility.
 Researchers \should explain design decisions and which retrieval mechanisms were implemented (e.g., keyword search, semantic similarity matching, rule-based extraction).
-Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications. Latency \must be reported when this is relevant for the interaction mode with the LLM (e.g., as part of human subject experiments).
+Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications. Latency reporting is covered under \benchmarksmetrics.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
 
 Standalone LLMs require limited architectural documentation, while study setups that integrate LLMs with other components, configure agents, or depend on particular context files or tool schemas require more detailed reporting. In the topic-specific paragraphs that follow, the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial.
@@ -44,7 +44,7 @@ Because prompt effectiveness varies between models and model versions, researche
 
 \paragraph{Prompting Strategy and Input Handling:}
 Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was used.
-For few-shot prompts, the examples provided to the model \must be clearly outlined, along with the rationale for selecting them. Concrete examples of the few-shot prompts \should be included in the \supplementarymaterial.
+For few-shot prompts, researchers \must explain in the \paper how the examples were selected and \should include the concrete examples in the \supplementarymaterial.
 If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated and how the final design was chosen.
 
 When dealing with extensive or complex prompt context, researchers \should describe the strategies they used to handle input length constraints (e.g., truncating, summarizing, or splitting prompts into multiple parts).

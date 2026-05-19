@@ -1001,7 +1001,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must describe in the \paper the full architecture of LLM-based tools, from standalone uses to agentic systems, including the LLM's role and its interactions with other components. Hosting, infrastructure, and latency \must be reported. Researchers \must publish all prompts as \supplementarymaterial, including prompt templates with representative instances and the dynamic generation process where applicable; sensitive content \must be anonymized. If full prompt disclosure is not feasible, summaries or examples \should be provided. The prompting strategy and prompt reuse across models and configurations \must be specified, and how the prompts were developed \should be described. Researchers \must describe context-file mechanisms used and summarize in the \paper which tools and skills were exposed; full file contents and the complete tool catalog (schemas, definitions, Model Context Protocol (MCP) servers) \should be published as \supplementarymaterial. For agentic systems, researchers \must specify the agents' roles, reasoning frameworks, communication flows, and agent behavior traceability across LLM output, tool calls, and user interactions. For retrieval-augmented generation (RAG) and similar methods, researchers \must describe how external data was retrieved, stored, and integrated. Where legally possible, the implementation \should be open-sourced; non-disclosed proprietary components \must be acknowledged as reproducibility limitations.
+\summary: Researchers \must describe in the \paper the full architecture of LLM-based tools, from standalone uses to agentic systems, including the LLM's role and its interactions with other components. Hosting and infrastructure \must be reported. Researchers \must publish all prompts as \supplementarymaterial, including prompt templates with representative instances and the dynamic generation process where applicable; sensitive content \must be anonymized. If full prompt disclosure is not feasible, summaries or examples \should be provided. The prompting strategy and prompt reuse across models and configurations \must be specified, and how the prompts were developed \should be described. Researchers \must describe context-file mechanisms used and summarize in the \paper which tools and skills were exposed; full file contents and the complete tool catalog (schemas, definitions, Model Context Protocol (MCP) servers) \should be published as \supplementarymaterial. For agentic systems, researchers \must specify the agents' roles, reasoning frameworks, communication flows, and agent behavior traceability across LLM output, tool calls, and user interactions. For retrieval-augmented generation (RAG) and similar methods, researchers \must describe how external data was retrieved, stored, and integrated. Where legally possible, the implementation \should be open-sourced; non-disclosed proprietary components \must be acknowledged as reproducibility limitations.
  \end{framed}
 
 \guidelinesubsubsection{Rationale}
@@ -1024,7 +1024,7 @@ It does not apply when LLMs are used solely for language polishing, paraphrasing
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper, including any dependencies on proprietary tools that affect reproducibility.
 Researchers \should explain design decisions and which retrieval mechanisms were implemented (e.g., keyword search, semantic similarity matching, rule-based extraction).
-Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations.
+Researchers \should describe how the models were hosted and accessed; for \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially impact results, so researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications. Latency reporting is covered under \benchmarksmetrics.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
 
 Standalone LLMs require limited architectural documentation, while study setups that integrate LLMs with other components, configure agents, or depend on particular context files or tool schemas require more detailed reporting. In the topic-specific paragraphs that follow, the \paper \must contain a high-level description of any reported component, with full details provided as \supplementarymaterial.
@@ -1050,7 +1050,7 @@ Because prompt effectiveness varies between models and model versions, researche
 
 \paragraph{Prompting Strategy and Input Handling:}
 Researchers \must specify whether zero-shot, one-shot, or few-shot prompting was used.
-For few-shot prompts, the examples provided to the model \should be clearly outlined, along with the rationale for selecting them.
+For few-shot prompts, researchers \must explain in the \paper how the examples were selected and \should include the concrete examples in the \supplementarymaterial.
 If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated and how the final design was chosen.
 
 When dealing with extensive or complex prompt context, researchers \should describe the strategies they used to handle input length constraints (e.g., truncating, summarizing, or splitting prompts into multiple parts).
@@ -1166,7 +1166,7 @@ An \emph{interaction log} captures what humans or other software tools sent to t
 A \emph{runtime trace} captures what the LLM did at runtime: calls to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) and activations of configured artifacts (e.g., context files, skills). Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically.
-Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching, input preprocessing, and floating-point arithmetic on GPUs~\cite{Chann2023}.
+Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching and floating-point arithmetic on GPUs~\cite{YuanNondeterminismLLMInference}, and from Mixture-of-Experts routing~\cite{Chann2023}.
 For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself.
 This matters particularly for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT, and for agentic runs where behavior depends on how the model chose among many possible tool calls.
 
@@ -1248,7 +1248,7 @@ When reviewing commercial-tool studies, reviewers should focus on whether author
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. They \should operationally define the phenomenon being measured, justify the sampling strategy used to select problems for inclusion in the benchmark, isolate the target capability from confounders where possible, and report an error analysis of the observed failures. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain in the \paper why the selected metrics are suitable for the specific study; prior adoption in related work alone does not constitute sufficient justification. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. If comparing models or tools, researchers \must use appropriate inferential statistics rather than relying solely on summary statistics. Researchers \should justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics. \end{framed}
+\summary: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. They \should operationally define the phenomenon being measured, justify the sampling strategy used to select problems for inclusion in the benchmark, isolate the target capability from confounders where possible, and report an error analysis of the observed failures. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain in the \paper why the selected metrics are suitable for the specific study; prior adoption in related work alone does not constitute sufficient justification. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. If comparing models or tools, researchers \must use appropriate inferential statistics rather than relying solely on summary statistics. Researchers \should justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics. Latency \must be reported when it can affect study outcomes (e.g., interactive user studies, latency comparisons). \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1284,6 +1284,7 @@ They can report additional metrics that they consider appropriate.
 We briefly discuss common metrics in the \emph{Examples} subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
 Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
+Latency \must be reported when it can affect study outcomes.
 
 Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2602-07150}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics. When scoring uses ratings that vary across raters or runs (e.g., human raters, LLM-as-judge), researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement, since aggregation can mask systematic disagreement~\cite{bean2025measuring}.
 
@@ -1369,7 +1370,7 @@ This guideline \must be followed for all study types that automatically evaluate
 The design of a benchmark and the selection of appropriate metrics are highly dependent on the specific study type and research goal.
 Recommending specific metrics for specific study types is beyond the scope of these guidelines, but \citeauthor{DBLP:journals/corr/abs-2505-08903} provide a good overview of existing metrics for evaluating LLMs~\cite{DBLP:journals/corr/abs-2505-08903}.
 
-For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores so that readers can assess whether reported gains reflect the target capability or other capabilities the task happens to require.
+For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores so that readers can assess whether reported gains reflect the target capability or other capabilities the task happens to require. When researchers compare LLMs or tools on latency, they \must report the infrastructure used to produce the measurements (\design).
 For \annotators, the research goal might be to assess which model comes close to a ground truth dataset created by human annotators.
 Especially for open annotation tasks, selecting suitable metrics to compare LLM-generated and human-generated labels is important.
 In general, annotation tasks can vary widely.
@@ -1378,7 +1379,7 @@ Due to this task dependence, researchers \must justify their metric choice, expl
 For \newtools, researchers \should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution.
 For \judges, researchers \should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments.
 For \synthesis, researchers \should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness) and justify their appropriateness for the synthesis task.
-For \llmusage, researchers \should justify the measurement instruments and metrics used for studying LLM usage patterns, including any survey scales or behavioral measures.
+For \llmusage, researchers \should justify the measurement instruments and metrics used for studying LLM usage patterns, including any survey scales or behavioral measures. In interactive setups where response times can influence participant behavior, researchers \must report observed latency.
 For \subjects, researchers \should compare simulated and real human responses using appropriate metrics to assess simulation fidelity.
 If researchers assess a well-established task such as code generation, they \should report standard metrics such as \emph{pass@k} and compare the performance between models.
 If non-standard metrics are used, researchers \must state their reasoning.
@@ -1778,6 +1779,7 @@ resource and invite the community to refine and extend them at
 \section*{Acknowledgments}
 
 Our study types and guidelines are based on discussion sessions with researchers at the \emph{2024 International Software Engineering Research Network} (ISERN) meeting and at the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI} (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
+We thank Steffen Herbold for his feedback on the guidelines.
 LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6 and 4.7), were used interactively for language editing and structural revision suggestions across all sections of this paper. All LLM-generated suggestions were reviewed and revised by the authors.
 
 \begin{appendices}
@@ -2024,8 +2026,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Prompt Development: "researchers \must make clear which prompts were used for which models in which versions and with which configuration".
     \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as \supplementarymaterial~(\refdesign).
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
-    \item \iconM Report hosting, hardware setup, and latency implications~(\refdesign).
-    % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations".
+    \item \iconM Report hosting and hardware setup~(\refdesign).
+    % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications".
     \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(\refdesign).
     % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
     \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(\refdesign).
@@ -2081,6 +2083,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G5 Recommendations: researchers "\must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study".
     \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(\refbenchmarks).
     % G5 Recommendations: "researchers \must motivate why they chose a certain metric or variant thereof for their particular study"; "Prior adoption alone does not constitute sufficient justification".
+    \item \iconM \condition{latency-sensitive} Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons)~(\refbenchmarks).
+    % G5 Recommendations: "Latency \must be reported when it can affect study outcomes". Study Types: for \llmusage, "in interactive setups where response times can influence participant behavior, researchers \must report observed latency"; for \benchmarkingtasks, "when researchers compare LLMs or tools on latency, they \must report the infrastructure used to produce the measurements".
     \item \iconS Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should provide an operational definition of the phenomenon the benchmark is intended to measure ..., including its scope and any sub-components".
     \item \iconS Summarize benchmark structure, task types, and limitations~(\refbenchmarks).

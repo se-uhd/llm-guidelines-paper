@@ -58,8 +58,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Prompt Development: "researchers \must make clear which prompts were used for which models in which versions and with which configuration".
     \item \iconM Publish all prompts or, when using templates, prompt templates with representative instances, including their structure, content, formatting, and variable components, as \supplementarymaterial~(\refdesign).
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
-    \item \iconM Report hosting, hardware setup, and latency implications~(\refdesign).
-    % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications and latency considerations".
+    \item \iconM Report hosting and hardware setup~(\refdesign).
+    % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications".
     \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(\refdesign).
     % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
     \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(\refdesign).
@@ -115,6 +115,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G5 Recommendations: researchers "\must briefly justify (in the \paper) why selected benchmarks and metrics are suitable for the given task or study".
     \item \iconM Explain in the \paper why the selected metrics are suitable for the specific study~(\refbenchmarks).
     % G5 Recommendations: "researchers \must motivate why they chose a certain metric or variant thereof for their particular study"; "Prior adoption alone does not constitute sufficient justification".
+    \item \iconM \condition{latency-sensitive} Report latency when it can affect study outcomes (e.g., interactive user studies, latency comparisons)~(\refbenchmarks).
+    % G5 Recommendations: "Latency \must be reported when it can affect study outcomes". Study Types: for \llmusage, "in interactive setups where response times can influence participant behavior, researchers \must report observed latency"; for \benchmarkingtasks, "when researchers compare LLMs or tools on latency, they \must report the infrastructure used to produce the measurements".
     \item \iconS Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should provide an operational definition of the phenomenon the benchmark is intended to measure ..., including its scope and any sub-components".
     \item \iconS Summarize benchmark structure, task types, and limitations~(\refbenchmarks).
