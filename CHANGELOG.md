@@ -12,6 +12,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
 - **Benchmarks:** Synthesizing benchmark instances added as a third contamination-mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
 - **Open LLM:** DevBench cited as an example that combines three open-weight models with commercial frontier models under an MIT-licensed release.
+- **Human Validation:** *Replacing Human Judgment* surfaced as a labeled paragraph under *Recommendations*. Adds a **must** disclosure floor (researchers must explain whether and how the replacement is justified) on top of the existing **should** to follow systematic approaches. Model-to-model agreement reframed as necessary-but-not-sufficient; qualitative-coding caveat added. The Study Types umbrella sentence echoes the conditional **must** for annotators, judges, synthesis, and subjects. Hosking et al. (ICLR 2024) and Chen et al. (EMNLP 2024) cited under *Challenges* on human-rater limitations.
 
 ## [2026.05]
 

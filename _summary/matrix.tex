@@ -78,12 +78,12 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % newtools: "should use an open LLM as a baseline whenever it is technically feasible"
   & \iconM % benchmarkingtasks: "In formal benchmarking studies..., an open LLM must be one of the models under evaluation". Controlled experiments are \should-tier and not separately represented in the matrix.
   \\
-% Human Validation: "applies to all study types, although the need for human validation varies"
+% Human Validation: "applies to all study types, although the need for human validation varies". The Replacing Human Judgment recommendation adds a conditional \must ("researchers \must explain whether and how the replacement is justified"), surfaced in the Study Types umbrella sentence for \annotators, \judges, \synthesis, and \subjects.
 \hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}
-  & \iconS % annotators: "should validate LLM-generated annotations against human annotators"
-  & \iconS % judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"
-  & \iconS % synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"
-  & \iconS % subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"
+  & \iconS % annotators: "should validate LLM-generated annotations against human annotators"; conditional \must when the LLM replaces (rather than augments) human annotators (Replacing Human Judgment).
+  & \iconS % judges: "should co-create initial rating criteria with humans and validate a sample of LLM judgments"; same conditional \must when the LLM replaces human judges.
+  & \iconS % synthesis: "should employ human oversight to verify that qualitative interpretations and synthesized outputs faithfully represent the underlying data"; same conditional \must when the LLM replaces human synthesizers.
+  & \iconS % subjects: "should validate simulated responses against real human data to assess the fidelity of the simulation"; same conditional \must when the LLM replaces human subjects.
   & \iconS % llmusage: "should carefully reflect on the validity of their evaluation criteria and validate subjective assessments with human experts"
   & \iconS % newtools: "For \newtools whose output is supposed to match human expectations, researchers \should validate the LLM output against human judgment"
   & \iconS % benchmarkingtasks: "should employ human validation when creating or adapting new benchmarks"
