@@ -32,6 +32,7 @@ They can report additional metrics that they consider appropriate.
 We briefly discuss common metrics in the \emph{Examples} subsection below.
 As mentioned, researchers \must motivate why they chose a certain metric or variant thereof for their particular study.
 Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
+Latency \must be reported when it can affect study outcomes.
 
 Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2602-07150}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics. When scoring uses ratings that vary across raters or runs (e.g., human raters, LLM-as-judge), researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement, since aggregation can mask systematic disagreement~\cite{bean2025measuring}.
 
@@ -117,7 +118,7 @@ This guideline \must be followed for all study types that automatically evaluate
 The design of a benchmark and the selection of appropriate metrics are highly dependent on the specific study type and research goal.
 Recommending specific metrics for specific study types is beyond the scope of these guidelines, but \citeauthor{DBLP:journals/corr/abs-2505-08903} provide a good overview of existing metrics for evaluating LLMs~\cite{DBLP:journals/corr/abs-2505-08903}.
 
-For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores so that readers can assess whether reported gains reflect the target capability or other capabilities the task happens to require.
+For \benchmarkingtasks, this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores so that readers can assess whether reported gains reflect the target capability or other capabilities the task happens to require. When researchers compare LLMs or tools on latency, they \must report the infrastructure used to produce the measurements (\design).
 For \annotators, the research goal might be to assess which model comes close to a ground truth dataset created by human annotators.
 Especially for open annotation tasks, selecting suitable metrics to compare LLM-generated and human-generated labels is important.
 In general, annotation tasks can vary widely.
@@ -126,7 +127,7 @@ Due to this task dependence, researchers \must justify their metric choice, expl
 For \newtools, researchers \should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution.
 For \judges, researchers \should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments.
 For \synthesis, researchers \should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness) and justify their appropriateness for the synthesis task.
-For \llmusage, researchers \should justify the measurement instruments and metrics used for studying LLM usage patterns, including any survey scales or behavioral measures.
+For \llmusage, researchers \should justify the measurement instruments and metrics used for studying LLM usage patterns, including any survey scales or behavioral measures. In interactive setups where response times can influence participant behavior, researchers \must report observed latency.
 For \subjects, researchers \should compare simulated and real human responses using appropriate metrics to assess simulation fidelity.
 If researchers assess a well-established task such as code generation, they \should report standard metrics such as \emph{pass@k} and compare the performance between models.
 If non-standard metrics are used, researchers \must state their reasoning.

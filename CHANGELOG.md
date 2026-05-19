@@ -15,6 +15,12 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Scope:** New *Related Reporting Guidelines* paragraph cites CONSORT (template for our checklist), TRIPOD-LLM (Gallifant et al.), Navarro et al.'s HCI guidelines (CHI 2026), Kapoor et al.'s REFORMS (Science Advances 2024), and Korn et al.'s FORGE 2026 prompt reporting guideline; positions Korn et al. as complementing our recommendations and names two substantive points where the HCI guidelines diverge (selective prompt reporting; modest technical evaluation). Gallifant, Sallou, and the prior position paper move into this paragraph from the SE-target paragraph.
 - **Motivation:** Shift-left paragraph added (Liu et al. 2024): with LLMs, reporting must cover upstream artifacts (prompts, context) in addition to the code and data that traditional open science practice releases.
 - **Human Validation:** New *Replacing Human Judgment* paragraph: When LLMs replace humans, researchers **must** explain whether and how the replacement is justified.
+- **Traces:** Mixture-of-Experts routing added to the list of non-determinism causes; citations split between Yuan et al. (batching, GPU floating-point) and Chann (MoE).
+- **Benchmarks and Metrics:** Latency reporting added as a conditional **must** when study outcomes depend on response time (e.g., interactive user studies, latency comparisons). Tagged `[latency-sensitive]` in the reporting checklist.
+
+### Changed
+
+- **Design:** Few-shot example selection rationale required in the paper as a **must** (was a **should**); concrete examples remain in the supplementary material.
 
 ## [2026.05]
 

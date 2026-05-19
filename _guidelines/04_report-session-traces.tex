@@ -8,7 +8,7 @@ An \emph{interaction log} captures what humans or other software tools sent to t
 A \emph{runtime trace} captures what the LLM did at runtime: calls to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) and activations of configured artifacts (e.g., context files, skills). Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically.
-Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching, input preprocessing, floating-point arithmetic on GPUs, and the use of Mixture-of-Experts architectures~\cite{Chann2023}.
+Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching and floating-point arithmetic on GPUs~\cite{YuanNondeterminismLLMInference}, and from Mixture-of-Experts routing~\cite{Chann2023}.
 For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself.
 This matters particularly for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT, and for agentic runs where behavior depends on how the model chose among many possible tool calls.
 
