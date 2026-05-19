@@ -112,6 +112,8 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 - Guidelines: `\usagerole`, `\modelversion`, `\design`, `\traces`, `\benchmarksmetrics`, `\openllm`, `\humanvalidation`, `\limitationsmitigations`
 - Umbrella: `\scope`, `\studytypes`, `\guidelines`, `\llmsforresearcher`, `\llmsforengineers`
 
+**Subsection / paragraph back-references in prose:** When mentioning a labeled subsection (`\guidelinesubsubsection`, `\scopeparagraph`) or a labeled paragraph (`\paragraph`, `\studytypeparagraph`) by its title, italicize the title with `\emph{}`. Examples: `see \emph{Challenges} below`, `in the \emph{Examples} subsection below`, `\emph{Replacing Human Judgment} applies particularly to ...`. Add the "subsection" or "paragraph" descriptor only when clarity needs it; the italics alone usually mark the title as a label. Use "above" / "below" as directional cues for nearby references. Section-level references continue to use the cross-reference macros above (`\scope`, `\guidelines`, etc.).
+
 **Inline quotes:** `\enq{...}` renders typographically correct quotes with italics.
 
 **Summary label:** `\summary` renders the inline "Summary" label that opens each guideline's framed summary box.
