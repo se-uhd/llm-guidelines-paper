@@ -596,7 +596,7 @@ For example, LLMs can apply predefined coding guides to qualitative datasets (\a
 \label{sec:llms-as-annotators}
 
 \studytypeparagraph{Description}
-In qualitative data analysis, manually annotating (``coding'') natural language text (e.g., requirements, interview transcripts, open-ended survey responses) is a time-consuming manual process~\cite{DBLP:journals/ase/BanoHZT24}. LLMs can augment human coding, suggest new codes, and label artifacts based on a pre-defined coding guide much faster than humans can~\cite{DBLP:conf/chi/HeHDRH24}.
+In qualitative data analysis, manually annotating (``coding'') natural language text (e.g., requirements, interview transcripts, open-ended survey responses) is a time-consuming manual process~\cite{DBLP:journals/ase/BanoHZT24}. LLMs can augment human coding, suggest new codes, and label artifacts based on a pre-defined coding guide much faster than humans can~\cite{DBLP:conf/chi/HeHDRH24}. This covers both deductive (closed) coding, where the LLM labels artifacts against a predefined coding guide, and inductive (open) coding, where the LLM proposes new codes from the data. Closed coding is checked against the guide and ground-truth labels; open coding requires reviewing the resulting codebook and resolving disagreements over newly proposed codes.
 The extent to which, or under what conditions, LLMs can perform these tasks \textit{effectively} remains an open research question~\cite{DBLP:conf/msr/AhmedDTP25}. Indeed, measuring their effectiveness is practically and philosophically challenging. From an interpretivist philosophical perspective, one cannot measure the quality of analysis by comparing one (human or machine) analyst's work to another. From a realist perspective, triangulating across multiple human judges, LLM judges, and other data sources (e.g., whether a pull request is marked as having resolved an issue) improves confidence in the findings but does not prove that any one judge is valid.
 
 \studytypeparagraph{Examples}
@@ -1125,7 +1125,7 @@ Researchers using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench})
 If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
 For controlled experiments under \llmusage, exact prompts \must be reported for all conditions.
-For \annotators, researchers \must document any predefined coding guides or instructions included in prompts, as these influence how the model labels artifacts.
+For \annotators, researchers \must document any predefined coding guides or instructions included in prompts, as these influence how the model labels artifacts. For inductive (open) coding, researchers \must also report how the coding prompt changed as new codes were added.
 For \judges, researchers \must report the evaluation criteria, scales, and examples embedded in the prompt to ensure consistent interpretation.
 For \synthesis tasks (e.g., summarization, aggregation), researchers \must document the sequence of prompts used to generate and refine outputs, including follow-ups and clarification queries.
 For \subjects (e.g., simulating human participants), researchers \must report any role-playing instructions, constraints, or personas used to guide LLM behavior.
@@ -1828,7 +1828,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   \\
 % System and Prompt Design: "must be followed for all studies that involve tools with system-level components beyond bare LLMs"
 \hyperref[sec:report-system-and-prompt-design]{Design}
-  & \iconM % annotators: "must document any predefined coding guides or instructions included in prompts"
+  & \iconM % annotators: "must document any predefined coding guides or instructions included in prompts"; for inductive (open) coding, "must also report how the coding prompt changed as new codes were added"
   & \iconM % judges: "must report the evaluation criteria, scales, and examples embedded in the prompt"
   & \iconM % synthesis: "must document the sequence of prompts used to generate and refine outputs"
   & \iconM % subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
@@ -2030,6 +2030,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including detailed infrastructure specifications".
     \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(\refdesign).
     % G3 Prompt Reporting: "When prompts are generated dynamically..., the generation process \must be thoroughly documented, including any automated algorithms or rules".
+    \item \iconM \condition{open-coding} For inductive (open) coding, report how the coding prompt changed as new codes were added~(\refdesign).
+    % G3 Study Types (annotators): "For inductive (open) coding, researchers \must also report how the coding prompt changed as new codes were added".
     \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(\refdesign).
     % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
     \item \iconM \condition{tool-use} Summarize in the \paper which tools and skills were exposed to the model~(\refdesign).
