@@ -6,8 +6,10 @@ These limitations are relative to current LLM capabilities and tool architecture
 Nevertheless, risk management and threat mitigation \should be planned during study design, not as an afterthought.
 
 \guidelinesubsubsection{Recommendations}
-Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g. data leakage), reliability (i.e. non-determinism), and reproducibility (e.g. resource requirements). 
-When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt trustworthiness criteria from qualitative research to substantiate dependability and confirmability of findings.
+Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g., data leakage), reliability (i.e., non-determinism), and reproducibility (e.g., resource requirements).
+
+We follow the standard SE convention of organizing limitations by internal, construct, and external validity, plus reliability~\cite{DBLP:journals/ese/RunesonH09,ralph2021empiricalstandardssoftwareengineering}, extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see \annotators and \llmsforresearcher), researchers \should use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead~\cite{guba1981criteria}. When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings. \citeauthor{DBLP:journals/tosem/RobillardAEGLNNSSS24}~\cite{DBLP:journals/tosem/RobillardAEGLNNSSS24} propose a further SE alternative in which the discussion is organized around explicit study design trade-offs.
+
 LLM-based studies may involve many kinds of generalization including the following:
 \begin{enumerate}
     \item From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
@@ -108,6 +110,8 @@ Transparent reporting of limitations and mitigations helps readers calibrate con
 \guidelinesubsubsection{Challenges}
 
 Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team's primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
+
+The threats to validity framework itself is contested within SE. \citeauthor{DBLP:journals/infsof/VerdecchiaELRS23}~\cite{DBLP:journals/infsof/VerdecchiaELRS23} argue that threats sections too often read as \enq{laundry-lists}, \citeauthor{DBLP:conf/esem/LagoRSV24}~\cite{DBLP:conf/esem/LagoRSV24} corroborate this empirically across a decade of ICSE Distinguished Paper Award winners, and \citeauthor{DBLP:journals/tosem/RobillardAEGLNNSSS24}~\cite{DBLP:journals/tosem/RobillardAEGLNNSSS24} argue for refocusing the discussion on study design trade-offs rather than the standard validity categories.
 
 \guidelinesubsubsection{Study Types}
 
