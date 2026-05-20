@@ -5,7 +5,7 @@ This guideline focuses on documenting the \emph{model-specific} aspects of empir
 
 \guidelinesubsubsection{Recommendations}
 
-Researchers \must document in the \paper which model or tool version they used in their study, along with the date when the experiments were carried out and the configured parameters that affect output generation.
+Researchers \must document in the \paper which model or tool version they used in their study, along with the date of study execution and the parameters they configured that affect output generation.
 Since default values might change over time, researchers \should report all configuration values, even if they used the defaults.
 Checksums and fingerprints \should be reported since they identify specific versions and configurations.
 Depending on the study context, other properties such as the context window size (number of tokens) \should be reported.
@@ -20,7 +20,7 @@ Researchers \should either share the fine-tuning dataset as part of the \supplem
 The same applies to the fine-tuned model weights.
 Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model.
 
-In summary, researchers \must report in the \paper at minimum (1) the exact model or tool name and version, (2) all configured parameters that affect output generation, (3) the experiment date, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, and parameters and procedure. Beyond these requirements, researchers \should additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable; for fine-tuned models, they \should share the dataset and model weights as \supplementarymaterial (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
+In summary, researchers \must report in the \paper at minimum (1) the exact model or tool name and version, (2) all parameters they configured that affect output generation, (3) the date of study execution, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, and parameters and procedure. Beyond these requirements, researchers \should additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable; for fine-tuned models, they \should share the dataset and model weights as \supplementarymaterial (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
 
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information.
 For these tools, researchers \should report what is available and openly acknowledge limitations that hinder reproducibility.
@@ -76,7 +76,7 @@ They \must always report the configuration that is visible to them, acknowledgin
 Depending on the specific study type, researchers \should provide additional information on the system and prompt design (see \design), session traces (see \traces), and specific limitations and mitigations (see \limitationsmitigations).
 
 For example, when \llmusage by focusing on commercial tools such as ChatGPT or GitHub Copilot, researchers \must be as specific as possible in describing their study setup.
-The configured model name, version, and the date when the experiment was conducted \must always be reported.
+The configured model name, version, and the date of study execution \must always be reported.
 See \design for prompt reporting and \traces for interaction logs.
 
 For \annotators, \judges, and \synthesis, researchers \must report the model configuration used for the respective annotation, judging, or synthesis tasks, including temperature and other sampling parameters that affect output variability.
