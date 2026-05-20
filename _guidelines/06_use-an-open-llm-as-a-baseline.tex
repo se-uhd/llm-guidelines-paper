@@ -51,7 +51,7 @@ Documentation is often sparse or fragmented, placing a high barrier to entry for
 \guidelinesubsubsection{Study Types}
 
 This guideline applies primarily to study types in which the researcher controls which LLM is used.
-In formal benchmarking studies (see \benchmarkingtasks), an open LLM \must be one of the models under evaluation; without one, the reported scores cannot be re-run by others, defeating the cumulative comparability that distinguishes a benchmark from a one-off measurement.
+For \benchmarkingtasks, an open LLM \should be one of the models under evaluation, so that the reported scores can be independently re-run. Where this is not feasible, researchers \should justify the omission and, per \design, ensure the evaluation harness can be used with open models.
 For controlled experiments, an open LLM \should be one of the models under test; if the experimental design requires capabilities that only a specific commercial model exhibits, researchers \should acknowledge this as a limitation.
 When evaluating \newtools, researchers \should use an open LLM as a baseline whenever it is technically feasible; if integration proves too complex, they \should report the initial benchmarking results of open models.
 For \annotators and \judges, researchers \should compare annotation or judgment quality from open vs.\ commercial models to assess the extent to which results depend on a specific proprietary model.

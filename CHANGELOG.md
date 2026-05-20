@@ -9,6 +9,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ### Added
 
+- **Guidelines introduction:** New paragraph explaining that **must** covers disclosure obligations and **should** covers methodological recommendations.
 - **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
 - **Benchmarks:** Synthesizing benchmark instances added as a third contamination-mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
 - **Open LLM:** DevBench cited as an example that combines three open-weight models with commercial frontier models under an MIT-licensed release.
@@ -21,6 +22,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ### Changed
 
+- **Open LLM / Design / Benchmarks and Metrics:** Two methodology **must** requirements downgraded to **should**: the open-LLM-in-benchmarking carve-out and the inferential-statistics requirement when comparing models. *System and Prompt Design* now elevates the harness-description recommendation to **must** for benchmarking and adds a **should** that the harness support plugging in open models.
 - **Design:** Few-shot example selection rationale required in the paper as a **must** (was a **should**); concrete examples remain in the supplementary material.
 - **Model Version:** The **must** to report generation parameters now reads "parameters they configured" (active voice), making explicit that the requirement covers parameters the researcher actually set, not values they cannot see (e.g., temperature in a ChatGPT session). Defaults remain a **should**. "Experiments" replaced by "study execution" throughout the guideline, since not every LLM interaction is an experiment.
 

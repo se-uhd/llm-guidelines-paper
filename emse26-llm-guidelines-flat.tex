@@ -779,6 +779,9 @@ A~\should criterion represents a desired practice that strengthens a study's rig
 However, there may be valid reasons to deviate in particular circumstances (e.g., resource constraints, inapplicability to a specific study context or type).
 Nonetheless, studies that deviate from a \should criterion should briefly justify the
 deviation and discuss its potential impact (e.g., on validity or reproducibility).
+The distinction between \must and \should also reflects \emph{what} the criterion mandates, not only its severity.
+A \must criterion is typically a disclosure obligation such as reporting model versions, publishing prompts, describing architectures, and discussing limitations, so that readers can independently evaluate the choices authors made.
+A \should criterion is typically a methodological recommendation such as which baselines to include and which validation strategies or statistical analyses to apply.
 \ifpaper
 Table~\ref{tab:guidelines} lists our eight guidelines.
 Table~\ref{tab:guideline-matrix} in the appendix provides an overview of how each guideline applies to each study type.
@@ -1120,7 +1123,7 @@ This guideline \must be followed for all studies that involve tools with system-
 It also \must be followed by all studies that use concrete prompts or prompt templates.
 
 For \newtools, this guideline is of primary importance: researchers \must describe the tool's full architecture, explain how prompts were generated and structured within the tool, report the context files, tool catalog, and skill definitions used, and document how the role of each LLM fits into the overall system behavior.
-For \benchmarkingtasks, researchers \should describe the evaluation harness and infrastructure if it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines); see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
+For \benchmarkingtasks, researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines), and the harness \should be usable with open models; see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
 Researchers using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench}) \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
 If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
@@ -1248,7 +1251,7 @@ When reviewing commercial-tool studies, reviewers should focus on whether author
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. They \should operationally define the phenomenon being measured, justify the sampling strategy used to select problems for inclusion in the benchmark, isolate the target capability from confounders where possible, and report an error analysis of the observed failures. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain in the \paper why the selected metrics are suitable for the specific study; prior adoption in related work alone does not constitute sufficient justification. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. If comparing models or tools, researchers \must use appropriate inferential statistics rather than relying solely on summary statistics. Researchers \should justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics. Latency \must be reported when it can affect study outcomes (e.g., interactive user studies, latency comparisons). \end{framed}
+\summary: Researchers \must justify all benchmark and metric choices in the \paper and \should summarize benchmark structure, task types, and limitations. They \should operationally define the phenomenon being measured, justify the sampling strategy used to select problems for inclusion in the benchmark, isolate the target capability from confounders where possible, and report an error analysis of the observed failures. Where possible, traditional (non-LLM) baselines \should be used for comparison. Researchers \must explain in the \paper why the selected metrics are suitable for the specific study; prior adoption in related work alone does not constitute sufficient justification. They \should report established metrics to make study results comparable, but can report additional metrics that they consider appropriate. Due to the inherent non-determinism of LLMs, experiments \should be repeated; the result distribution \should then be reported using descriptive statistics. If comparing models or tools, researchers \should use appropriate inferential statistics rather than relying solely on summary statistics. Researchers \should justify the number of experiment repetitions, for example through a power analysis or by monitoring convergence of descriptive statistics. Latency \must be reported when it can affect study outcomes (e.g., interactive user studies, latency comparisons). \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -1286,7 +1289,7 @@ As mentioned, researchers \must motivate why they chose a certain metric or vari
 Prior adoption alone does not constitute sufficient justification; researchers \mustnot justify metric choices solely by citing their use in prior work.
 Latency \must be reported when it can affect study outcomes.
 
-Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2602-07150}. If comparing models or tools, researchers \must use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics. When scoring uses ratings that vary across raters or runs (e.g., human raters, LLM-as-judge), researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement, since aggregation can mask systematic disagreement~\cite{bean2025measuring}.
+Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance (e.g., arithmetic mean, median, confidence intervals, standard deviations)~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2602-07150}. If comparing models or tools, researchers \should use appropriate inferential statistics (e.g., hypothesis tests such as the Mann-Whitney U test, McNemar's test for binary outcomes~\cite{DBLP:conf/iclr/KublerBKZYKK26}, or bootstrap-based comparisons, along with effect sizes) rather than relying solely on differences in means or other summary statistics. When scoring uses ratings that vary across raters or runs (e.g., human raters, LLM-as-judge), researchers \should report the distribution of ratings per item rather than only aggregated point estimates or exact-match agreement, since aggregation can mask systematic disagreement~\cite{bean2025measuring}.
 
 The number of required repetitions depends on factors such as the study type, the variability of the task, and the desired precision of estimates. As with sample sizes for human validation (\humanvalidation), researchers \should justify their chosen number of repetitions, for example, through a power analysis~\cite{Cohen1992, DBLP:journals/corr/abs-2602-07150} or by monitoring the convergence of descriptive statistics across incremental runs~\cite{DBLP:journals/corr/abs-2410-03492}. A pilot study can help estimate the expected variability and inform this decision.
 
@@ -1461,7 +1464,7 @@ Documentation is often sparse or fragmented, placing a high barrier to entry for
 \guidelinesubsubsection{Study Types}
 
 This guideline applies primarily to study types in which the researcher controls which LLM is used.
-In formal benchmarking studies (see \benchmarkingtasks), an open LLM \must be one of the models under evaluation; without one, the reported scores cannot be re-run by others, defeating the cumulative comparability that distinguishes a benchmark from a one-off measurement.
+For \benchmarkingtasks, an open LLM \should be one of the models under evaluation, so that the reported scores can be independently re-run. Where this is not feasible, researchers \should justify the omission and, per \design, ensure the evaluation harness can be used with open models.
 For controlled experiments, an open LLM \should be one of the models under test; if the experimental design requires capabilities that only a specific commercial model exhibits, researchers \should acknowledge this as a limitation.
 When evaluating \newtools, researchers \should use an open LLM as a baseline whenever it is technically feasible; if integration proves too complex, they \should report the initial benchmarking results of open models.
 For \annotators and \judges, researchers \should compare annotation or judgment quality from open vs.\ commercial models to assess the extent to which results depend on a specific proprietary model.
@@ -1838,7 +1841,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconM % subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
   & \iconS % llmusage: "should describe the tool architecture of the studied tool to the extent that it is accessible"; the must clause applies only to controlled experiments
   & \iconM % newtools: "of primary importance: must describe the tool's full architecture, prompts, context files, tool catalog, skill definitions"
-  & \iconM % benchmarkingtasks: "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
+  & \iconM % benchmarkingtasks: "must describe the evaluation harness and infrastructure when it goes beyond bare model API calls"; "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
   \\
 % Session Traces: runtime trace reporting requirements depend heavily on the study type and the accessibility of the underlying system
 \hyperref[sec:report-session-traces]{Traces}
@@ -1868,7 +1871,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & --     % subjects: Open LLM source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by Limitations' \must clauses for subjects (Limitations row marks subjects as \iconM).
   & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM).
   & \iconS % newtools: "should use an open LLM as a baseline whenever it is technically feasible"
-  & \iconM % benchmarkingtasks: "In formal benchmarking studies..., an open LLM must be one of the models under evaluation". Controlled experiments are \should-tier and not separately represented in the matrix.
+  & \iconS % benchmarkingtasks: "For \benchmarkingtasks, an open LLM \should be one of the models under evaluation". The replicability load is now carried by Design's benchmarking \must to describe the harness and \should that it be usable with open models.
   \\
 % Human Validation: "applies to all study types, although the need for human validation varies". \emph{Replacing Human Judgment} adds a conditional \must ("researchers \must explain whether and how the replacement is justified") that the Study Types umbrella sentence names for \annotators, \judges, \synthesis, and \subjects.
 \hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}
@@ -1943,11 +1946,9 @@ Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 \newline \iconS Define the phenomenon and sampling strategy; isolate confounders; analyze errors; repeat experiments and report distributions. \\
 \addlinespace
 % Open LLM Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
-% Open LLM \iconM line: Study Types - "In formal benchmarking studies..., an open LLM \must be one of the models under evaluation". Controlled experiments are now \should-tier (with capability-driven exception); the \iconS row covers them.
-% Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package".
+% Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package". Study Types for \benchmarkingtasks now reads \should rather than \must; the replicability load is carried by Design's benchmarking \must (describe the harness) and \should (harness should be usable with open models).
 Open LLM & Reproducibility depends on access to the model under study. &
-\iconM For benchmarking studies, include an open LLM.
-\newline \iconS Otherwise, include an open LLM as a baseline; provide a replication package. \\
+\iconS Include an open LLM as a baseline; for benchmarks, design the harness so it is usable with open models. Provide a replication package. \\
 \addlinespace
 % Human Validation Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % Human Validation \iconM line: Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
@@ -2042,6 +2043,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Pipelines and Agentic Systems: "researchers \must describe its exact architecture, including the agents' roles..., whether it is a single-agent or multi-agent system, how it interacts with external tools and users, and the reasoning framework used".
     \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(\refdesign).
     % G3 RAG and Ensembles: "researchers \must describe how external data was retrieved, stored, and integrated into the LLM's responses".
+    \item \iconM \condition{benchmarking} Describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)~(\refdesign).
+    % G3 Study Types (benchmarking): "researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)".
     \item \iconS Justify design decisions~(\refdesign).
     % G3 Recommendations: "Researchers \should explain design decisions and which retrieval mechanisms were implemented"; foundational/meta item, leads within S-general.
     \item \iconS Describe prompt development rationale and selection process~(\refdesign).
@@ -2064,6 +2067,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Context Files: researchers "\should publish the full contents of those files as \supplementarymaterial".
     \item \iconS \condition{tool-use} Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(\refdesign).
     % G3 Tool Catalog: "Researchers \should include the complete list..., tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial".
+    \item \iconS \condition{benchmarking} Design the evaluation harness so it is usable with open models~(\refdesign).
+    % G3 Study Types (benchmarking): "the harness \should be usable with open models". Carries the replicability load after \openllm's benchmarking carve-out was downgraded from \must to \should.
 \end{itemize}
 
 \noindent\textit{Session Traces}
@@ -2143,14 +2148,14 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label={},leftmargin=*]
-    \item \iconM \condition{comparing-models} If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(\refbenchmarks).
-    % G5 Recommendations: "If comparing models or tools, researchers \must use appropriate inferential statistics... rather than relying solely on differences in means or other summary statistics".
     \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(\refbenchmarks).
     % G5 Recommendations: "Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance".
     \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(\refbenchmarks).
     % G5 Recommendations: "researchers \should check whether a less resource-intensive approach... can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics".
     \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(\refbenchmarks).
     % G5 Recommendations: "researchers \should report established metrics whenever possible, as this allows secondary research. They can report additional metrics".
+    \item \iconS \condition{comparing-models} If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(\refbenchmarks).
+    % G5 Recommendations: "If comparing models or tools, researchers \should use appropriate inferential statistics... rather than relying solely on differences in means or other summary statistics". Downgraded from \must to \should: see CHANGELOG entry on the disclosure-vs-methodology design pattern.
 \end{itemize}
 
 \paragraph{\textbf{Limitations and Threats to Validity}}
