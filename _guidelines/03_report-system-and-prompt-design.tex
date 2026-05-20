@@ -55,13 +55,16 @@ Agentic coding tools expose a range of configuration and extension mechanisms in
 Context files such as \texttt{AGENTS.md} or \texttt{CLAUDE.md} are version-controlled Markdown files containing persistent, project-specific instructions automatically included in the context on each call~\cite{mohsenimofidi2026context}.
 Researchers \must describe which context-file mechanisms were used and \should publish the full contents as \supplementarymaterial, because they steer agent behavior similarly to system prompts.
 Because context files are version-controlled, their evolution across a study is recoverable from the project's git history and from the runtime traces reported under \traces.
+If context files are customized to include researcher-defined instructions, rules, or settings, these modifications are similar to prompt development and \must be reported with the same level of detail as other prompts, including their development process and any iterations.
 
 \paragraph{Tool Catalog and Skill Definitions:}
 Agentic systems expose a set of callable tools, skills, and sub-agents to the model on each call, along with their schemas: parameter names, types, and natural-language descriptions as the model sees them.
 Tools vary in granularity, from one operation per tool to generic execution interfaces.
 Claude Code, for example, does not register individual command-line utilities but defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
 The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
-Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial.
+Researchers \must summarize in the \paper which tools and skills were exposed to the model, and \should include the complete list (names with one-line purposes), tool schemas, sub-agent definitions, and the identities of any connected Model Context Protocol (MCP) servers as \supplementarymaterial. 
+Skills that are defined as a natural-language description of a capability are used by agents in a manner similar to system prompts. Therefore, skills \must be treated as prompts and reported with the same level of detail as other prompts, including their development process and any iterations.
+
 Where sub-agents are used, researchers \should also describe the delegation pattern: which sub-agent handles which kind of task, and how control returns to the orchestrator.
 
 \paragraph{Pipelines and Agentic Systems:}
