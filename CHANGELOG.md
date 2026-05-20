@@ -22,6 +22,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 ### Changed
 
 - **Design:** Few-shot example selection rationale required in the paper as a **must** (was a **should**); concrete examples remain in the supplementary material.
+- **Model Version:** The **must** to report generation parameters now reads "parameters they configured" (active voice), making explicit that the requirement covers parameters the researcher actually set, not values they cannot see (e.g., temperature in a ChatGPT session). Defaults remain a **should**. "Experiments" replaced by "study execution" throughout the guideline, since not every LLM interaction is an experiment.
 
 ## [2026.05]
 
