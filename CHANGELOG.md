@@ -17,7 +17,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Human Validation:** New *Replacing Human Judgment* paragraph: When LLMs replace humans, researchers **must** explain whether and how the replacement is justified.
 - **Traces:** Mixture-of-Experts routing added to the list of non-determinism causes; citations split between Yuan et al. (batching, GPU floating-point) and Chann (MoE).
 - **Benchmarks and Metrics:** Latency reporting added as a conditional **must** when study outcomes depend on response time (e.g., interactive user studies, latency comparisons). Tagged `[latency-sensitive]` in the reporting checklist.
-- **Annotators:** Deductive (closed) and inductive (open) coding named explicitly in the *Description*, with validation noted for each. For inductive coding, *Design* now **must** report how the coding prompt changed as new codes were added.
+- **Annotators:** Open and closed coding named explicitly in the *Description*.
 
 ### Changed
 
