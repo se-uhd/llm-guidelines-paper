@@ -114,7 +114,7 @@ This guideline \must be followed for all studies that involve tools with system-
 It also \must be followed by all studies that use concrete prompts or prompt templates.
 
 For \newtools, this guideline is of primary importance: researchers \must describe the tool's full architecture, explain how prompts were generated and structured within the tool, report the context files, tool catalog, and skill definitions used, and document how the role of each LLM fits into the overall system behavior.
-For \benchmarkingtasks, researchers \should describe the evaluation harness and infrastructure if it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines); see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
+For \benchmarkingtasks, researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines), and the harness \should be usable with open models; see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agent-based systems.
 Researchers using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench}) \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
 If prompt tuning, retrieval-augmented generation (RAG), or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.

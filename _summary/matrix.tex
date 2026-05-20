@@ -46,7 +46,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconM % subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
   & \iconS % llmusage: "should describe the tool architecture of the studied tool to the extent that it is accessible"; the must clause applies only to controlled experiments
   & \iconM % newtools: "of primary importance: must describe the tool's full architecture, prompts, context files, tool catalog, skill definitions"
-  & \iconM % benchmarkingtasks: "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
+  & \iconM % benchmarkingtasks: "must describe the evaluation harness and infrastructure when it goes beyond bare model API calls"; "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
   \\
 % Session Traces: runtime trace reporting requirements depend heavily on the study type and the accessibility of the underlying system
 \hyperref[sec:report-session-traces]{Traces}
@@ -76,7 +76,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & --     % subjects: Open LLM source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by Limitations' \must clauses for subjects (Limitations row marks subjects as \iconM).
   & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM).
   & \iconS % newtools: "should use an open LLM as a baseline whenever it is technically feasible"
-  & \iconM % benchmarkingtasks: "In formal benchmarking studies..., an open LLM must be one of the models under evaluation". Controlled experiments are \should-tier and not separately represented in the matrix.
+  & \iconS % benchmarkingtasks: "For \benchmarkingtasks, an open LLM \should be one of the models under evaluation". The replicability load is now carried by Design's benchmarking \must to describe the harness and \should that it be usable with open models.
   \\
 % Human Validation: "applies to all study types, although the need for human validation varies". \emph{Replacing Human Judgment} adds a conditional \must ("researchers \must explain whether and how the replacement is justified") that the Study Types umbrella sentence names for \annotators, \judges, \synthesis, and \subjects.
 \hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}
