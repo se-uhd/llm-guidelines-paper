@@ -27,7 +27,7 @@ Model Version & Reproducibility requires precise identification of the system us
 % Design \iconM line: Recommendations - explicit \must clauses for architecture, infrastructure, prompts/templates, prompt-development strategy, context files, tool catalog, agent architecture, and retrieval mechanisms.
 % Design \iconS line: Study Types - "For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible". The \must clause for exact prompts in controlled experiments under \llmusage still applies whenever researcher-authored prompts exist.
 Design & Static artifacts determine what the model sees on every call and must be documented in full. &
-\iconM Describe architecture, infrastructure, prompts and templates (with development strategy), context files, tool catalog, agent architecture, and retrieval mechanisms.
+\iconM Describe system and agent architecture, infrastructure, prompts, agent configuration, tool catalog, and retrieval mechanisms.
 \newline \iconS For LLM usage, describe the tool architecture to the extent accessible. \\
 \addlinespace
 % Traces Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself."
@@ -47,7 +47,7 @@ Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 % Open LLM Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
 % Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package". Study Types for \benchmarkingtasks now reads \should rather than \must; the replicability load is carried by Design's benchmarking \must (describe the harness) and \should (harness should be usable with open models).
 Open LLM & Reproducibility depends on access to the model under study. &
-\iconS Include an open LLM as a baseline; for benchmarks, design the harness so it is usable with open models. Provide a replication package. \\
+\iconS Include an open LLM as a baseline; for benchmarks, design the harness for use with open models. Provide a replication package. \\
 \addlinespace
 % Human Validation Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % Human Validation \iconM line: Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
@@ -55,7 +55,7 @@ Open LLM & Reproducibility depends on access to the model under study. &
 % Human Validation \iconS replacement line: Recommendations (Replacing Human Judgment) - "researchers \should follow systematic approaches to support this judgment ... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".
 % Human Validation \iconS validation line: Subjective Judgment and Agreement - "the LLM output \should be evaluated against judgments aggregated from multiple human judges"; "Researchers \should report measures of IRA or IRR"; "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise ... and discuss potential demographic biases".
 Human Validation & Automated metrics alone cannot ensure validity of subjective constructs. &
-\iconM Define the measured construct and share any custom measurement instruments.
+\iconM Define the measured construct and share custom measurement instruments.
 \newline \iconM When LLMs replace humans in research tasks, explain whether and how the replacement is justified.
 \newline \iconS When LLMs replace humans in research tasks, ground the replacement with model-to-model and model-to-human agreement.
 \newline \iconS Validate against human judgment with inter-rater reliability; describe rater demographics for value-laden constructs. \\

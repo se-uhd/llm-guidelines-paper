@@ -20,6 +20,10 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Benchmarks and Metrics:** Latency reporting added as a conditional **must** when study outcomes depend on response time (e.g., interactive user studies, latency comparisons). Tagged `[latency-sensitive]` in the reporting checklist.
 - **Annotators:** Open and closed coding named explicitly in the *Description*.
 - **Design:** **should** justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog).
+- **Benchmarks and Metrics:** Dror et al. (2018) cited as a decision tree for selecting among inferential tests (Mann-Whitney U, McNemar, bootstrap), based on distributional assumptions and test-set size.
+- **Open LLM:** OpenRouter named as an aggregator option alongside cloud services and self-hosting frameworks; open-source agentic tools (Continue, Cline, opencode) and vendor-hosted services (GitHub Copilot, Claude Code) contrasted on what they expose.
+- **Study Types:** Each of the seven study-type subsections opens with a one-sentence framing of the role within its grouping (researcher tools / engineer tools).
+- **Human Validation:** *Benefits* notes that disagreements between human and LLM judgments diagnose where automated metrics fall short.
 
 ### Changed
 
@@ -28,6 +32,12 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Model Version:** The **must** to report generation parameters now reads "parameters they configured" (active voice), making explicit that the requirement covers parameters the researcher actually set, not values they cannot see (e.g., temperature in a ChatGPT session). Defaults remain a **should**. "Experiments" replaced by "study execution" throughout the guideline, since not every LLM interaction is an experiment.
 - **Design:** Topic-specific paragraphs reorganized. *Context Files* generalized to *Context Files and Agent Configuration*, with configuration mechanisms (context files, skills, subagents, hooks, settings, rules) introduced as an umbrella; configuration artifacts **must** be reported with the same level of detail as prompts. *Tool Catalog and Skill Definitions* renamed *Tool Catalog and MCP Servers* (skills are configuration artifacts). *RAG and Ensembles* folded into *Pipelines and Complex Systems*. *Agentic Systems* carved out as a separate paragraph; for agentic systems with external tools, **must** distinguish three kinds of activity (model reasoning, tool calls, interactions with users or the environment). The vague "explain design decisions and which retrieval mechanisms were implemented" **should** removed (retrieval is covered under the RAG sub-case).
 - **Traces:** Open-format **should** softened. OpenTelemetry GenAI semantic conventions and OpenInference are preferred where they fit; tool-native formats (e.g., Claude Code transcripts, LangGraph state logs) are acceptable when researchers describe the file format and report the tool version.
+- **Scope:** *Related Reporting Guidelines* tightened (~20% shorter): CONSORT year and "across communities" filler removed; HCI per-paper contrasts reorganized so the two "On X" comparisons read consecutively.
+- **Methodology:** Chronology of ISERN 2024 → CHASEAI 2024 → WSESE 2025 made explicit (a preprint of the position paper was the basis for the CHASEAI discussions; paper published at WSESE 2025).
+- **Model Version:** Summary item (4) for fine-tuned models names *approach* (full vs LoRA) and *hyperparameters* explicitly instead of generic "parameters and procedure".
+- **Limitations and Mitigations:** *Environmental & Sustainability Constraints* caption flipped to a period with a one-sentence preamble, matching the structure of the other six validity-category captions.
+- **Open LLM:** *Challenges* refactored from prose enumeration to an itemize with named captions (*Definitional inconsistency*, *Performance gap*, *Hardware demands*, *Operational complexity*).
+- **Editorial pass:** Tightened *Benefits* in G1, G3, G5, and G7 (others reverted to original after review); split five 90+-word sentences in *Advantages and Challenges* into shorter units; applied the caption-punctuation rule (`\paragraph{Title.}` for captions followed by prose); standardized *human validation* across *See Also* lines; split filler semicolons and colons where both halves stand alone.
 
 ## [2026.05]
 

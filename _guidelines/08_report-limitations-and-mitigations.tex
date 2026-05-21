@@ -21,7 +21,7 @@ LLM-based studies may involve many kinds of generalization including the followi
 
 The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
 
-\paragraph{Internal Validity:}
+\paragraph{Internal Validity.}
 The primary threats to internal validity are:
 \begin{itemize}
 	\item \emph{Data leakage and contamination.} Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results.
@@ -31,7 +31,7 @@ The primary threats to internal validity are:
 
 Inter-dataset duplication is prevalent in SE, particularly for code-related benchmarks. As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results.
 
-\paragraph{Construct Validity:}
+\paragraph{Construct Validity.}
 The primary threats to construct validity are:
 \begin{itemize}
 	\item \emph{Metric-construct mismatch.} Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence.
@@ -41,7 +41,7 @@ The primary threats to construct validity are:
 
 If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers \must discuss how they ensured quality of subjective results, similarly to qualitative research.
 
-\paragraph{External Validity:}
+\paragraph{External Validity.}
 The primary threats to external validity are:
 \begin{itemize}
     \item \emph{Cross-model transfer limitations.} Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and RLHF).
@@ -53,7 +53,7 @@ The primary threats to external validity are:
 
 Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time)~\cite{DBLP:journals/corr/abs-2307-09009}. Researchers \must discuss the limitations and mitigations of external validity.
 
-\paragraph{Reliability \& Reproducibility:}
+\paragraph{Reliability \& Reproducibility.}
 The primary threats to reliability and reproducibility are:
 \begin{itemize}
     \item \emph{Non-deterministic outputs.} Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
@@ -65,7 +65,7 @@ Researchers \must discuss the measures taken to increase reliability and reprodu
 However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through \emph{credibility}, \emph{transferability}, \emph{dependability}, and \emph{confirmability}~\cite{guba1981criteria}.
 The same applies to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
 
-\paragraph{Ethical \& Regulatory Boundaries:}
+\paragraph{Ethical \& Regulatory Boundaries.}
 The primary concerns for ethical and regulatory matters are:
 \begin{itemize}
     \item \emph{Use of sensitive or proprietary data.} Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
@@ -75,7 +75,8 @@ The primary concerns for ethical and regulatory matters are:
 
 Studies involving sensitive data \must discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
-\paragraph{Environmental \& Sustainability Constraints:}
+\paragraph{Environmental \& Sustainability Constraints.}
+The primary environmental and sustainability concerns are:
 \begin{itemize}
     \item \emph{Energy consumption.} With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.
     \item \emph{Trade-off between repetition and sustainability.} Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
@@ -83,7 +84,7 @@ Studies involving sensitive data \must discuss data governance mechanisms tailor
 
 Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches.
 
-\paragraph{Mitigation Strategies:}
+\paragraph{Mitigation Strategies.}
 The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
 
 \begin{itemize}
@@ -105,7 +106,7 @@ The following mitigation strategies can help address the threats described above
 
 \guidelinesubsubsection{Benefits}
 
-Transparent reporting of limitations and mitigations helps readers calibrate confidence in the findings, makes explicit which threats were addressed and which remain open, and documents design decisions that other authors can borrow or refine. Transparent threat discussion also keeps a paper's claims proportionate to its evidence.
+Transparent reporting of limitations and mitigations helps readers calibrate confidence in the findings, makes explicit which threats were addressed and which remain open, and documents design decisions that other authors can borrow or refine. It also keeps a paper's claims proportionate to its evidence.
 
 \guidelinesubsubsection{Challenges}
 
