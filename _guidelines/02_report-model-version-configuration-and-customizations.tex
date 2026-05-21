@@ -20,7 +20,7 @@ Researchers \should either share the fine-tuning dataset as part of the \supplem
 The same applies to the fine-tuned model weights.
 Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model.
 
-In summary, researchers \must report in the \paper at minimum (1) the exact model or tool name and version, (2) all parameters they configured that affect output generation, (3) the date of study execution, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, and parameters and procedure. Beyond these requirements, researchers \should additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable; for fine-tuned models, they \should share the dataset and model weights as \supplementarymaterial (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
+In summary, researchers \must report in the \paper at minimum (1) the exact model or tool name and version, (2) all parameters they configured that affect output generation, (3) the date of study execution, and, for fine-tuned models, (4) the fine-tuning goal, dataset characterization, approach (e.g., full fine-tuning vs.\ LoRA), and hyperparameters. Beyond these requirements, researchers \should additionally report default parameter values, checksums or fingerprints, model properties relevant to the study (e.g., context-window size), and quantization level and method where applicable. For fine-tuned models, they \should also share the dataset and model weights as \supplementarymaterial (unless legal or privacy constraints prevent disclosure) and report validation metrics and benchmarks.
 
 Commercial models (e.g., GPT-5) or LLM-based tools (e.g., ChatGPT) might not give researchers access to all required information.
 For these tools, researchers \should report what is available and openly acknowledge limitations that hinder reproducibility.
@@ -53,7 +53,7 @@ Given suitable hardware, running the model is then as easy as executing the foll
 
 \guidelinesubsubsection{Benefits}
 
-Reporting this information is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, reporting the information outlined in this guideline helps researchers come as close as possible to that standard.
+Reporting the model version, configuration, and date of study execution is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, the recommendations above help researchers come as close as possible to that standard.
 
 \guidelinesubsubsection{Challenges}
 
