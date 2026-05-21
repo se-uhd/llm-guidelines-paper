@@ -19,12 +19,15 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Traces:** Mixture-of-Experts routing added to the list of non-determinism causes; citations split between Yuan et al. (batching, GPU floating-point) and Chann (MoE).
 - **Benchmarks and Metrics:** Latency reporting added as a conditional **must** when study outcomes depend on response time (e.g., interactive user studies, latency comparisons). Tagged `[latency-sensitive]` in the reporting checklist.
 - **Annotators:** Open and closed coding named explicitly in the *Description*.
+- **Design:** **should** justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog).
 
 ### Changed
 
 - **Open LLM / Design / Benchmarks and Metrics:** Two methodology **must** requirements downgraded to **should**: the open-LLM-in-benchmarking carve-out and the inferential-statistics requirement when comparing models. *System and Prompt Design* now elevates the harness-description recommendation to **must** for benchmarking and adds a **should** that the harness support plugging in open models.
 - **Design:** Few-shot example selection rationale required in the paper as a **must** (was a **should**); concrete examples remain in the supplementary material.
 - **Model Version:** The **must** to report generation parameters now reads "parameters they configured" (active voice), making explicit that the requirement covers parameters the researcher actually set, not values they cannot see (e.g., temperature in a ChatGPT session). Defaults remain a **should**. "Experiments" replaced by "study execution" throughout the guideline, since not every LLM interaction is an experiment.
+- **Design:** Topic-specific paragraphs reorganized. *Context Files* generalized to *Context Files and Agent Configuration*, with configuration mechanisms (context files, skills, subagents, hooks, settings, rules) introduced as an umbrella; configuration artifacts **must** be reported with the same level of detail as prompts. *Tool Catalog and Skill Definitions* renamed *Tool Catalog and MCP Servers* (skills are configuration artifacts). *RAG and Ensembles* folded into *Pipelines and Complex Systems*. *Agentic Systems* carved out as a separate paragraph; for agentic systems with external tools, **must** distinguish three kinds of activity (model reasoning, tool calls, interactions with users or the environment). The vague "explain design decisions and which retrieval mechanisms were implemented" **should** removed (retrieval is covered under the RAG sub-case).
+- **Traces:** Open-format **should** softened. OpenTelemetry GenAI semantic conventions and OpenInference are preferred where they fit; tool-native formats (e.g., Claude Code transcripts, LangGraph state logs) are acceptable when researchers describe the file format and report the tool version.
 
 ## [2026.05]
 

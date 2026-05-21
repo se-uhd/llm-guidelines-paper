@@ -1004,7 +1004,7 @@ Missing version, configuration, or parameter information is typically a minor re
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must describe in the \paper the full architecture of LLM-based tools, from standalone uses to agentic systems, including the LLM's role and its interactions with other components. Hosting and infrastructure \must be reported. Researchers \must publish all prompts as \supplementarymaterial, including prompt templates with representative instances and the dynamic generation process where applicable; sensitive content \must be anonymized. If full prompt disclosure is not feasible, summaries or examples \should be provided. The prompting strategy and prompt reuse across models and configurations \must be specified, and how the prompts were developed \should be described. Researchers \must describe context-file mechanisms used and summarize in the \paper which tools and skills were exposed; full file contents and the complete tool catalog (schemas, definitions, Model Context Protocol (MCP) servers) \should be published as \supplementarymaterial. For agentic systems, researchers \must specify the agents' roles, reasoning frameworks, and communication flows; where external tools are used, the model's reasoning, tool calls, and interactions with users or the environment \must be reported as separate sources of behavior. For retrieval-augmented generation (RAG) and similar methods, researchers \must describe how external data was retrieved, stored, and integrated. Where legally possible, the implementation \should be open-sourced; non-disclosed proprietary components \must be acknowledged as reproducibility limitations.
+\summary: Researchers \must describe in the \paper the full architecture of LLM-based tools, from standalone uses to agentic systems, including the LLM's role and its interactions with other components. Hosting and infrastructure \must be reported. Researchers \must publish all prompts as \supplementarymaterial, including prompt templates with representative instances and the dynamic generation process where applicable; sensitive content \must be anonymized. If full prompt disclosure is not feasible, summaries or examples \should be provided. The prompting strategy and prompt reuse across models and configurations \must be specified, and how the prompts were developed \should be described. Researchers \must describe context-file mechanisms used and summarize in the \paper which tools and skills were exposed; full file contents and the complete tool catalog (schemas, definitions, Model Context Protocol (MCP) servers) \should be published as \supplementarymaterial. For agentic systems, researchers \must specify the agents' roles, reasoning frameworks, and communication flows; where external tools are used, the model's reasoning, tool calls, and interactions with users or the environment \must be reported separately. For retrieval-augmented generation (RAG) and similar methods, researchers \must describe how external data was retrieved, stored, and integrated. Where legally possible, the implementation \should be open-sourced; non-disclosed proprietary components \must be acknowledged as reproducibility limitations.
  \end{framed}
 
 \guidelinesubsubsection{Rationale}
@@ -1026,6 +1026,7 @@ It does not apply when LLMs are used solely for language polishing, paraphrasing
 \guidelinesubsubsection{Recommendations}
 
 Researchers \must clearly describe the tool architecture and what exactly the LLM (or ensemble of LLMs) contributes to the tool or method presented in a research paper, including any dependencies on proprietary tools that affect reproducibility.
+Researchers \should justify substantive architectural choices where alternatives existed (e.g., why a particular agentic framework or tool catalog was selected).
 Researchers \should describe how the models were hosted and accessed. For \emph{time-sensitive measurements}, the hosting choice (e.g., self-hosting on local hardware, an aggregator such as OpenRouter, or a vendor API such as the OpenAI API) can substantially affect results, so researchers \must clarify whether local infrastructure or cloud services were used, including the specific hardware for local hosting (e.g., GPU model and VRAM) or the service tier for cloud APIs. Latency reporting is covered under \benchmarksmetrics.
 Where legally possible (e.g., not restricted by industry-partner agreements), researchers \should release the source code of their implementation under an open-source license.
 
@@ -1065,7 +1066,7 @@ For \emph{ensemble models}, in addition to following the \modelversion guideline
 
 \paragraph{Agentic Systems:}
 If the LLM is part of an \emph{agentic system} that autonomously plans or executes tasks, researchers \must additionally describe the agents' roles (e.g., planner, executor, coordinator), whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
-For agentic systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must distinguish three sources of behavior: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)} servers); (3) interactions with users, the environment, or other agents.
+For agentic systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must distinguish three kinds of activity: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)} servers); (3) interactions with users, the environment, or other agents.
 Reporting these separately lets readers understand whether a result came from the model, a tool, or their interaction. How to record the runtime traces of each is covered in \traces.
 
 \paragraph{Context Files and Agent Configuration:}
@@ -1076,7 +1077,7 @@ Configuration mechanisms and their artifacts \must be reported with the same lev
 Because context files are version-controlled, their evolution across a study is recoverable from the project's Git history and from the runtime traces reported under \traces.
 Where subagents are used, researchers \should also describe the delegation pattern, including which subagent handles which task and how control is returned to the orchestrator.
 
-\paragraph{Tool Catalog and Skill Definitions:}
+\paragraph{Tool Catalog and MCP Servers:}
 On each call, agentic systems expose a set of tools to the model along with their schemas (e.g., parameter names, types, and natural-language descriptions).
 Tools differ in granularity: An editor agent might expose one tool per editing operation (e.g., \texttt{read\_file}, \texttt{apply\_edit}), while Claude Code defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
 The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
@@ -1187,7 +1188,7 @@ For traces containing sensitive information, researchers \must anonymize persona
 When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) or activates configured artifacts (e.g., context files, skills, sub-agents reported under \design), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
 Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries.
 This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
-Researchers \should use an open format with a documented schema. Emerging standards such as the OpenTelemetry GenAI semantic conventions~\cite{otel_genai_semconv} or OpenInference~\cite{openinference_spec} are preferred where they fit. Where tool-native formats are used (e.g., Claude Code's session transcripts, LangGraph's state logs), researchers \must describe the field structure and report the format and tool version used.
+Researchers \should use an open format with a documented schema. Emerging standards such as the OpenTelemetry GenAI semantic conventions~\cite{otel_genai_semconv} or OpenInference~\cite{openinference_spec} are preferred where they fit. Where tool-native formats are used (e.g., Claude Code's session transcripts, LangGraph's state logs), researchers \must describe the file format and report the tool version.
 
 \paragraph{Agentic Plans:}
 For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available.
@@ -2031,18 +2032,20 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
     \item \iconM Report hosting and hardware setup~(\refdesign).
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including the specific hardware for local hosting (e.g., GPU model and VRAM) or the service tier for cloud APIs".
-    \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(\refdesign).
+    \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the code or rules that assemble each prompt from runtime inputs~(\refdesign).
     % G3 Prompt Reporting: "When prompts are generated dynamically, researchers \must document the code or rules that assemble each prompt from runtime inputs".
-    \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(\refdesign).
-    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
-    \item \iconM \condition{tool-use} Summarize in the \paper which tools and skills were exposed to the model~(\refdesign).
-    % G3 Tool Catalog: "Researchers \must summarize in the \paper which tools and skills were exposed to the model".
+    \item \iconM \condition{context-files} Describe in the \paper any configuration mechanisms used (e.g., context files such as \texttt{CLAUDE.md} or \texttt{AGENTS.md}, skills, subagents, hooks, settings, rules)~(\refdesign).
+    % G3 Context Files and Agent Configuration: "researchers \must describe which configuration mechanisms were used".
+    \item \iconM \condition{tool-use} Summarize in the \paper which tools were exposed to the model~(\refdesign).
+    % G3 Tool Catalog and MCP Servers: "Researchers \must summarize in the \paper which tools were exposed to the model".
     \item \iconM \condition{agents} If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(\refdesign).
     % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used".
-    \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(\refdesign).
+    \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model's context~(\refdesign).
     % G3 Pipelines and Complex Systems (RAG sub-case): "researchers \must additionally describe how external data was retrieved, stored ..., and selected for inclusion in the model's context".
     \item \iconM \condition{benchmarking} Describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)~(\refdesign).
     % G3 Study Types (benchmarking): "researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)".
+    \item \iconS Justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog)~(\refdesign).
+    % G3 Recommendations: "Researchers \should justify substantive architectural choices where alternatives existed (e.g., why a particular agentic framework or tool catalog was selected)".
     \item \iconS Describe prompt development rationale and selection process~(\refdesign).
     % G3 Prompt Development: "Researchers \should explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies"; "If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated".
     \item \iconS Report prompt evolution and any LLM-suggested refinements~(\refdesign).
@@ -2054,15 +2057,15 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS \condition{long-prompts} Document input handling and token optimization strategies when prompts are long or complex~(\refdesign).
     % G3 Prompting Strategy: "researchers \should describe the strategies they used to handle input length constraints"; "Token optimization measures... \should also be documented".
     \item \iconS \condition{restricted-sharing} If full prompt disclosure is not feasible, provide summaries or examples~(\refdesign).
-    % G3 Prompt Reporting: "when the paper cannot include all prompts in full, it \should provide summaries and representative examples".
+    % G3 Prompt Reporting: "When confidentiality (e.g., industry-partner agreements) prevents full publication, researchers \should publish summaries and representative examples instead".
     \item \iconS \condition{ensemble} For ensemble architectures, explain in the \paper the coordination logic between models~(\refdesign).
     % G3 Pipelines and Complex Systems (Ensembles): "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split applies to the topic-specific paragraphs. Coordination-logic specifics are S.
     \item \iconS \condition{context-augmentation} Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(\refdesign).
     % G3 Pipelines and Complex Systems (RAG sub-case): "The data used for retrieval \should also be reported, including its preprocessing, versioning, and update frequency".
-    \item \iconS \condition{context-files} Include context-file contents as \supplementarymaterial~(\refdesign).
+    \item \iconS \condition{context-files} Include all configuration artifacts (context files, skill folders, subagent files, hooks, settings, rules) as \supplementarymaterial~(\refdesign).
     % G3 Context Files and Agent Configuration: researchers "\should publish all configuration artifacts as \supplementarymaterial".
-    \item \iconS \condition{tool-use} Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(\refdesign).
-    % G3 Tool Catalog and Skill Definitions: "Researchers \should include a complete list with names and purposes, tool schemas, and the names of any connected MCP servers as \supplementarymaterial".
+    \item \iconS \condition{tool-use} Include the complete list of tools (names with one-line purposes), tool schemas, and connected MCP servers as \supplementarymaterial~(\refdesign).
+    % G3 Tool Catalog and MCP Servers: "Researchers \should include a complete list with names and purposes, tool schemas, and the names of any connected MCP servers as \supplementarymaterial".
     \item \iconS \condition{benchmarking} Design the evaluation harness so it is usable with open models~(\refdesign).
     % G3 Study Types (benchmarking): "the harness \should be usable with open models". Carries the replicability load after \openllm's benchmarking carve-out was downgraded from \must to \should.
 \end{itemize}

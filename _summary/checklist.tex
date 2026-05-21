@@ -60,18 +60,20 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G3 Prompt Reporting / Supplementary: "researchers \must report all prompts that were used"; "When prompt templates are used, researchers \must report them alongside representative prompt instances"; "researchers \must make all prompts and prompt variations publicly available as part of their \supplementarymaterial".
     \item \iconM Report hosting and hardware setup~(\refdesign).
     % G3 Recommendations: "Researchers \must clarify whether local infrastructure or cloud services were used, including the specific hardware for local hosting (e.g., GPU model and VRAM) or the service tier for cloud APIs".
-    \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the generation process thoroughly~(\refdesign).
+    \item \iconM \condition{dynamic-prompts} For dynamically generated prompts, document the code or rules that assemble each prompt from runtime inputs~(\refdesign).
     % G3 Prompt Reporting: "When prompts are generated dynamically, researchers \must document the code or rules that assemble each prompt from runtime inputs".
-    \item \iconM \condition{context-files} Describe in the \paper any context-file mechanisms used (e.g., \texttt{AGENTS.md}, \texttt{CLAUDE.md})~(\refdesign).
-    % G3 Context Files: "Researchers \must describe which context-file mechanisms were used".
-    \item \iconM \condition{tool-use} Summarize in the \paper which tools and skills were exposed to the model~(\refdesign).
-    % G3 Tool Catalog: "Researchers \must summarize in the \paper which tools and skills were exposed to the model".
+    \item \iconM \condition{context-files} Describe in the \paper any configuration mechanisms used (e.g., context files such as \texttt{CLAUDE.md} or \texttt{AGENTS.md}, skills, subagents, hooks, settings, rules)~(\refdesign).
+    % G3 Context Files and Agent Configuration: "researchers \must describe which configuration mechanisms were used".
+    \item \iconM \condition{tool-use} Summarize in the \paper which tools were exposed to the model~(\refdesign).
+    % G3 Tool Catalog and MCP Servers: "Researchers \must summarize in the \paper which tools were exposed to the model".
     \item \iconM \condition{agents} If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(\refdesign).
     % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used".
-    \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and integrated~(\refdesign).
+    \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model's context~(\refdesign).
     % G3 Pipelines and Complex Systems (RAG sub-case): "researchers \must additionally describe how external data was retrieved, stored ..., and selected for inclusion in the model's context".
     \item \iconM \condition{benchmarking} Describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)~(\refdesign).
     % G3 Study Types (benchmarking): "researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines)".
+    \item \iconS Justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog)~(\refdesign).
+    % G3 Recommendations: "Researchers \should justify substantive architectural choices where alternatives existed (e.g., why a particular agentic framework or tool catalog was selected)".
     \item \iconS Describe prompt development rationale and selection process~(\refdesign).
     % G3 Prompt Development: "Researchers \should explain in the \paper how they developed the prompts and why they decided to follow certain prompting strategies"; "If multiple versions of a prompt were tested, researchers \should describe how these variations were evaluated".
     \item \iconS Report prompt evolution and any LLM-suggested refinements~(\refdesign).
@@ -83,15 +85,15 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS \condition{long-prompts} Document input handling and token optimization strategies when prompts are long or complex~(\refdesign).
     % G3 Prompting Strategy: "researchers \should describe the strategies they used to handle input length constraints"; "Token optimization measures... \should also be documented".
     \item \iconS \condition{restricted-sharing} If full prompt disclosure is not feasible, provide summaries or examples~(\refdesign).
-    % G3 Prompt Reporting: "when the paper cannot include all prompts in full, it \should provide summaries and representative examples".
+    % G3 Prompt Reporting: "When confidentiality (e.g., industry-partner agreements) prevents full publication, researchers \should publish summaries and representative examples instead".
     \item \iconS \condition{ensemble} For ensemble architectures, explain in the \paper the coordination logic between models~(\refdesign).
     % G3 Pipelines and Complex Systems (Ensembles): "researchers \should describe the architecture connecting them: the routing logic that determines which model handles which input, model interactions, and the output combination strategy". The general paper/supp split applies to the topic-specific paragraphs. Coordination-logic specifics are S.
     \item \iconS \condition{context-augmentation} Report data preprocessing, versioning, and update frequency for stored data used for context augmentation~(\refdesign).
     % G3 Pipelines and Complex Systems (RAG sub-case): "The data used for retrieval \should also be reported, including its preprocessing, versioning, and update frequency".
-    \item \iconS \condition{context-files} Include context-file contents as \supplementarymaterial~(\refdesign).
+    \item \iconS \condition{context-files} Include all configuration artifacts (context files, skill folders, subagent files, hooks, settings, rules) as \supplementarymaterial~(\refdesign).
     % G3 Context Files and Agent Configuration: researchers "\should publish all configuration artifacts as \supplementarymaterial".
-    \item \iconS \condition{tool-use} Include the complete list of tools and skills (names with one-line purposes), tool schemas, skill definitions, sub-agent definitions, and connected MCP servers as \supplementarymaterial~(\refdesign).
-    % G3 Tool Catalog and Skill Definitions: "Researchers \should include a complete list with names and purposes, tool schemas, and the names of any connected MCP servers as \supplementarymaterial".
+    \item \iconS \condition{tool-use} Include the complete list of tools (names with one-line purposes), tool schemas, and connected MCP servers as \supplementarymaterial~(\refdesign).
+    % G3 Tool Catalog and MCP Servers: "Researchers \should include a complete list with names and purposes, tool schemas, and the names of any connected MCP servers as \supplementarymaterial".
     \item \iconS \condition{benchmarking} Design the evaluation harness so it is usable with open models~(\refdesign).
     % G3 Study Types (benchmarking): "the harness \should be usable with open models". Carries the replicability load after \openllm's benchmarking carve-out was downgraded from \must to \should.
 \end{itemize}
