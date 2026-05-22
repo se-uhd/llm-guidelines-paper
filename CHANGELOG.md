@@ -9,6 +9,10 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ### Added
 
+- **Limitations and Mitigations:** External Validity absorbed the former Generalizability list, gaining two new threats (configuration sensitivity, research-to-practice gap). Construct Validity gained five threats: construct under-specification, reliability without validity, capability confounding, prompt sensitivity, judge biases (position, verbosity, format).
+- **Limitations and Mitigations:** Item-level cross-references added from each threat to the guideline carrying the relevant reporting requirement.
+- **Benchmarks and Metrics:** AgentBench (Liu et al., ICLR 2024) added as an LLM-as-agent benchmark example with eight environments.
+- **Human Validation:** Krippendorff threshold tiers (α<0.667 discard, 0.667≤α<0.8 tentative, α≥0.8 reliable) elevated from Examples to a **should** in Recommendations.
 - **Guidelines introduction:** New paragraph explaining that **must** covers disclosure obligations and **should** covers methodological recommendations.
 - **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
 - **Benchmarks:** Synthesizing benchmark instances added as a third contamination-mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
@@ -27,6 +31,12 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ### Changed
 
+- **Limitations and Mitigations:** Threat sections restructured. Mitigation strategies distributed from a single consolidated list into the corresponding threat sections as prose. Generalizability merged into External Validity, which now leads the threat sections. Internal Validity contamination mitigations now cross-reference Benchmarks and Metrics for concrete strategies (post-cutoff construction, held-out subsets, canary strings).
+- **Session Traces:** Interaction-log and runtime-trace definitions tightened. Interaction logs cover the human-observable exchange at the LLM's interface (prompts in, responses out, including human-in-the-loop exchanges for agentic systems). Runtime traces cover the LLM's internal activity (tool calls and configured-artifact activations), naming the tool/artifact, arguments, and result per entry.
+- **Session Traces:** Agentic plans **should** scoped to "any plans the system exposes" (e.g., Claude Code's editable Markdown plans), so the conditioning is on system exposure rather than a vague "if available".
+- **Open LLM:** Replication-package recommendation narrowed to the open-LLM baseline specifically ("ensure the open-LLM baseline is independently reproducible from supplementary material"); broader full-replication-package guidance moved to Limitations and Mitigations as a Reliability & Reproducibility mitigation.
+- **Human Validation:** *Subjective Judgment and Agreement* restructured so the opening sentence makes the LLM-vs-aggregated-human-reference comparison structure explicit. Established-reference-models recommendation moved up to follow the comparison setup. *Agentic Tools* paragraph reorganized to lead with the human-in-the-loop motivation; uses the paper-standard term "agentic systems" (with cross-ref to Design) instead of the outlier "agentic software development tools".
+- **Scope:** *Related Reporting Guidelines* moved to the end of the scope section to avoid forward references to guideline shorthand macros.
 - **Open LLM / Design / Benchmarks and Metrics:** Two methodology **must** requirements downgraded to **should**: the open-LLM-in-benchmarking carve-out and the inferential-statistics requirement when comparing models. *System and Prompt Design* now elevates the harness-description recommendation to **must** for benchmarking and adds a **should** that the harness support plugging in open models.
 - **Design:** Few-shot example selection rationale required in the paper as a **must** (was a **should**); concrete examples remain in the supplementary material.
 - **Model Version:** The **must** to report generation parameters now reads "parameters they configured" (active voice), making explicit that the requirement covers parameters the researcher actually set, not values they cannot see (e.g., temperature in a ChatGPT session). Defaults remain a **should**. "Experiments" replaced by "study execution" throughout the guideline, since not every LLM interaction is an experiment.

@@ -6,98 +6,81 @@ These limitations are relative to current LLM capabilities and tool architecture
 Nevertheless, risk management and threat mitigation \should be planned during study design, not as an afterthought.
 
 \guidelinesubsubsection{Recommendations}
-Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern diverse topics including generalizability, internal validity (e.g., data leakage), reliability (i.e., non-determinism), and reproducibility (e.g., resource requirements).
+Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern external, internal, and construct validity; reliability and reproducibility; and ethical, regulatory, and environmental concerns.
 
-We follow the standard SE convention of organizing limitations by internal, construct, and external validity, plus reliability~\cite{DBLP:journals/ese/RunesonH09,ralph2021empiricalstandardssoftwareengineering}, extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see \annotators and \llmsforresearcher), researchers \should use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead~\cite{guba1981criteria}. When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings. \citeauthor{DBLP:journals/tosem/RobillardAEGLNNSSS24}~\cite{DBLP:journals/tosem/RobillardAEGLNNSSS24} propose a further SE alternative in which the discussion is organized around explicit study design trade-offs.
-
-LLM-based studies may involve many kinds of generalization including the following:
-\begin{enumerate}
-    \item From tested LLMs to others; i.e., whether the performance characteristics of the LLM(s) studied transfer to LLM(s) not included in the study.
-    \item From tested configurations to others; i.e., how sensitive results are to the specific configuration(s) of the LLM under test.
-    \item From research to practice; i.e., whether developers using the same tools obtain results comparable to those reported under researcher-supervised conditions.
-    \item From a sampled population to a larger one; i.e., whether findings from a specific group of human validators or participants apply to a broader population.
-    \item From one time period to another; i.e., whether the same LLM, or other versions of it, produce similar results at a different point in time.
-\end{enumerate}
-
-The following concerns present an overview that has to be tailored to the individual study context. This section does not repeat requirements from other recommendations.
-
-\paragraph{Internal Validity.}
-The primary threats to internal validity are:
-\begin{itemize}
-	\item \emph{Data leakage and contamination.} Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results.
-	\item \emph{Evaluation data entering model-improvement pipelines.} Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
-	\item \emph{Incomplete architecture, prompt, or pipeline reporting.} Undisclosed components introduce hidden confounders.
-\end{itemize}
-
-Inter-dataset duplication is prevalent in SE, particularly for code-related benchmarks. As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results.
-
-\paragraph{Construct Validity.}
-The primary threats to construct validity are:
-\begin{itemize}
-	\item \emph{Metric-construct mismatch.} Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence.
-	\item \emph{Over-reliance on benchmark-specific metrics.} Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
-	\item \emph{Benchmark scope limitations.} Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
-\end{itemize}
-
-If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers \must discuss how they ensured quality of subjective results, similarly to qualitative research.
+We follow the standard SE convention of organizing limitations by external, internal, and construct validity, plus reliability~\cite{DBLP:journals/ese/RunesonH09,ralph2021empiricalstandardssoftwareengineering}, extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see \annotators), researchers \should use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead~\cite{guba1981criteria}. When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings.
 
 \paragraph{External Validity.}
 The primary threats to external validity are:
 \begin{itemize}
-    \item \emph{Cross-model transfer limitations.} Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and RLHF).
-    \item \emph{Tool-architecture specificity.} Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering.
-    \item \emph{Limited domain coverage.} Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
-    \item \emph{Limited participant diversity.} Study participants such as human validators or developers may not represent the broader population in terms of expertise, geographic location, or cultural background.
-    \item \emph{Cross-time instability.} Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411}.
+    \item \emph{Cross-model transfer limitations}: Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and reinforcement learning from human feedback); see \openllm for using an open LLM as a comparison baseline.
+    \item \emph{Configuration sensitivity}: Results may not generalize beyond the specific configuration(s) tested (e.g., decoding parameters, system prompt, or context settings); see \design for an overview.
+    \item \emph{Tool-architecture specificity}: Tools built around vendor-specific APIs or features (e.g., function calling, structured output, or context-window size) may not transfer to other models without substantial re-engineering (see \design).
+    \item \emph{Limited domain coverage}: Studies often focus on a narrow set of programming languages, task types, or application domains, limiting generalizability to other SE contexts.
+    \item \emph{Limited participant and rater diversity}: Study participants (e.g., developers) and human raters validating LLM outputs may not represent the broader population in terms of expertise, geographic location, or cultural background (see \humanvalidation for guidance on rater diversity in value-laden constructs).
+    \item \emph{Research-to-practice gap}: Developers using the same tools outside researcher-supervised conditions may obtain results that differ from those reported in the study.
+    \item \emph{Cross-time instability}: Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411} (see \modelversion for version and fingerprint reporting that enables tracking such drift).
 \end{itemize}
 
-Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time)~\cite{DBLP:journals/corr/abs-2307-09009}. Researchers \must discuss the limitations and mitigations of external validity.
+Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time). Researchers \must discuss the limitations and mitigations of external validity.
+Mitigations include \emph{triangulation} across multiple models (e.g., proprietary and open), independent datasets, and complementary metrics; \emph{sensitivity analysis} that varies LLM configurations, prompts, architecture decisions, datasets, and where applicable participant backgrounds; and performing \emph{longitudinal re-runs} (see \emph{Reliability \& Reproducibility} below), which also helps detect cross-time instability.
+
+\paragraph{Internal Validity.}
+The primary threats to internal validity are:
+\begin{itemize}
+	\item \emph{Data leakage and contamination}: Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results (see \benchmarksmetrics).
+	\item \emph{Evaluation data entering model-improvement pipelines}: Evaluation samples can unintentionally feed retraining or fine-tuning, especially in longitudinal studies involving LLMs.
+	\item \emph{Incomplete architecture, prompt, or pipeline reporting}: Undisclosed components introduce hidden confounders (see \design).
+\end{itemize}
+
+As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results. Concrete mitigations for contamination (e.g., post-cutoff benchmark construction, held-out subsets, canary strings) are discussed in \benchmarksmetrics.
+
+\paragraph{Construct Validity.}
+The primary threats to construct validity are:
+\begin{itemize}
+	\item \emph{Metric-construct mismatch}: Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence (see \benchmarksmetrics).
+	\item \emph{Construct under-specification}: If a construct lacks an operational definition, neither automated metrics nor human raters can apply it consistently.
+	\item \emph{Reliability without validity}: High inter-rater or inter-model agreement does not imply that the measurement captures the intended construct; a reliable LLM can be reliably inaccurate (see \humanvalidation).
+	\item \emph{Benchmark scope limitations}: Benchmarks commonly ignore runtime behaviors, security implications, readability, testability, and maintainability, yielding results that may not transfer to realistic development settings.
+	\item \emph{Capability confounding}: Benchmark performance can blend the target capability with unrelated capabilities such as output format compliance, instruction following, or prompt format sensitivity, inflating apparent scores (see \benchmarksmetrics).
+	\item \emph{Over-reliance on benchmark-specific metrics}: Optimizing for a single benchmark may produce dataset-specific shortcuts that pass the benchmark without exhibiting the capability it was designed to test, overstating real-world utility.
+	\item \emph{Prompt sensitivity}: Small changes in instructions, formatting, or in-context examples can substantially shift what the LLM appears to measure, making the operationalized construct unstable across prompt variants (see \design).
+	\item \emph{Judge biases}: LLM and human judges exhibit systematic biases such as position bias, verbosity bias, and preferences for richly formatted or citation-rich outputs regardless of correctness (see \humanvalidation).
+\end{itemize}
+
+If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers \must discuss how they ensured quality of subjective results, similarly to qualitative research. The primary mitigation is \emph{human validation} of subjective constructs following quality criteria known from qualitative research (see \humanvalidation).
 
 \paragraph{Reliability \& Reproducibility.}
 The primary threats to reliability and reproducibility are:
 \begin{itemize}
-    \item \emph{Non-deterministic outputs.} Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
-    \item \emph{Infrastructure dependence.} Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
-    \item \emph{Resource inequality.} LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions~\cite{schwartz2020green, ahmed2023industry}, excluding researchers from under-resourced institutions.
+    \item \emph{Non-deterministic outputs}: Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
+    \item \emph{Infrastructure dependence}: Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
+    \item \emph{Resource inequality}: LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions~\cite{schwartz2020green, ahmed2023industry}, excluding researchers from under-resourced institutions.
 \end{itemize}
 
 Researchers \must discuss the measures taken to increase reliability and reproducibility.
-However, non-deterministic reproducibility is not inherently disqualifying. Qualitative traditions such as ethnography, grounded theory, and action research ensure trustworthiness through \emph{credibility}, \emph{transferability}, \emph{dependability}, and \emph{confirmability}~\cite{guba1981criteria}.
-The same applies to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
+However, non-deterministic reproducibility is not inherently disqualifying. The trustworthiness criteria introduced above apply particularly to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
+Mitigations include providing \emph{replication packages} that cover prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability), and performing \emph{longitudinal re-runs} with statistical analyses. When deterministic reproduction is structurally impossible, researchers \should consider \emph{methodological trustworthiness measures} such as triangulation, reflexivity, audit trails, and peer debriefing as complementary measures.
 
 \paragraph{Ethical \& Regulatory Boundaries.}
 The primary concerns for ethical and regulatory matters are:
 \begin{itemize}
-    \item \emph{Use of sensitive or proprietary data.} Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
-    \item \emph{Jurisdictional obligations.} Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
-    \item \emph{Implicit model bias.} Especially for qualitative research, LLMs might \enq{reinforce dominant paradigms and biases} and \enq{identify, replicate and reinforce dominant language and patterns}~\cite{jowsey2025reject}.
+    \item \emph{Use of sensitive or proprietary data}: Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
+    \item \emph{Jurisdictional obligations}: Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
+    \item \emph{Implicit model bias}: Especially for qualitative research, LLMs might \enq{reinforce dominant paradigms and biases} and \enq{identify, replicate and reinforce dominant language and patterns}~\cite{jowsey2025reject} (see \humanvalidation).
 \end{itemize}
 
-Studies involving sensitive data \must discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
+Studies involving sensitive data \must discuss data governance mechanisms tailored toward LLM environments, compliant with applicable jurisdictional obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
 \paragraph{Environmental \& Sustainability Constraints.}
 The primary environmental and sustainability concerns are:
 \begin{itemize}
-    \item \emph{Energy consumption.} With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.
-    \item \emph{Trade-off between repetition and sustainability.} Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
+    \item \emph{Energy consumption}: With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.
+    \item \emph{Trade-off between repetition and sustainability}: Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 \end{itemize}
 
 Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches.
-
-\paragraph{Mitigation Strategies.}
-The following mitigation strategies can help address the threats described above, depending on the study scope and feasibility.
-
-\begin{itemize}
-    \item \emph{Replication Packages.} Cover prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability.
-    \item \emph{Human Validation.} Validate subjective constructs following quality criteria known from qualitative research.
-    \item \emph{Longitudinal Re-Runs.} Repeat experiments with LLMs over time, complemented by statistical analyses.
-    \item \emph{Methodological Trustworthiness Measures.} Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures when deterministic reproduction is structurally impossible.
-    \item \emph{Triangulation.} Use multiple models (e.g., proprietary and open), multiple independent datasets, and multiple complementary metrics.
-    \item \emph{Cost Accounting.} Report input and output tokens, token and service costs, or hardware specifications.
-    \item \emph{Energy Preservation.} Select smaller or newer less resource-intensive models and apply techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation~\cite{mitu2024hidden} where feasible. Carbon footprint estimation is desirable, but still difficult.
-    \item \emph{Ethical and Regulatory Considerations.} Apply data governance mechanisms, ethical reviews, and bias assessment procedures.
-    \item \emph{Sensitivity Analysis.} Vary LLM configurations, prompts, architecture decisions, datasets, and where applicable human participant backgrounds.
-\end{itemize}
+Mitigations include \emph{energy preservation} and \emph{cost accounting}. \emph{Energy preservation} involves selecting smaller or newer, less resource-intensive models and applying techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation~\cite{mitu2024hidden} where feasible. Carbon footprint estimation is desirable, but still difficult. \emph{Cost accounting} tracks resource consumption by reporting tokens, service costs, or hardware specifications.
 
 \guidelinesubsubsection{Examples}
 
@@ -123,7 +106,7 @@ For \synthesis, researchers \must discuss the risk of contextual misinterpretati
 For \subjects, researchers \must discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification, and the limited ecological validity of simulated responses.
 For \llmusage, researchers \must discuss generalizability constraints across different tools and user populations, and acknowledge how observed usage patterns may not transfer to other contexts.
 For \newtools, researchers \must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates on tool behavior, and limitations of the evaluation setup.
-For \benchmarkingtasks, researchers \must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes to real-world tasks.
+For \benchmarkingtasks, researchers \must discuss potential data contamination, benchmark scope limitations, capability confounding, and the extent to which benchmark performance generalizes to real-world tasks.
 
 \guidelinesubsubsection{Advice for Reviewers}
 
@@ -140,5 +123,6 @@ When important limitations are missing, reviewers should request they be added. 
     \item \seedesign: Triangulation across architectures and prompts is one mitigation strategy.
     \item \seetraces: Stored session traces serve as a baseline against which authors can monitor LLM behavior drift over time.
     \item \seebenchmarksmetrics: Benchmark and metric choices are one source of construct-validity threats authors must discuss.
+    \item \seeopenllm: An open LLM baseline mitigates cross-model transfer concerns by providing an independently reproducible comparison.
     \item \seehumanvalidation: When automated metrics cannot validly measure a construct, human validation is an alternative.
 \end{itemize}

@@ -26,7 +26,7 @@ Model Version & Reproducibility requires precise identification of the system us
 % Design Rationale: "LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: software layers that pre-process data, prepare prompts, filter user requests, or post-process responses, and the context those layers feed into each call."
 % Design \iconM line: Recommendations - explicit \must clauses for architecture, infrastructure, prompts/templates, prompt-development strategy, context files, tool catalog, agent architecture, and retrieval mechanisms.
 % Design \iconS line: Study Types - "For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible". The \must clause for exact prompts in controlled experiments under \llmusage still applies whenever researcher-authored prompts exist.
-Design & Static artifacts determine what the model sees on every call and must be documented in full. &
+Design & Static artifacts determine the model's input on every call and must be documented in full. &
 \iconM Describe system and agent architecture, infrastructure, prompts, agent configuration, tool catalog, and retrieval mechanisms.
 \newline \iconS For LLM usage, describe the tool architecture to the extent accessible. \\
 \addlinespace
@@ -45,15 +45,15 @@ Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 \newline \iconS Define the phenomenon and sampling strategy; isolate confounders; analyze errors; repeat experiments and report distributions. \\
 \addlinespace
 % Open LLM Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
-% Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should provide a complete replication package". Study Types for \benchmarkingtasks now reads \should rather than \must; the replicability load is carried by Design's benchmarking \must (describe the harness) and \should (harness should be usable with open models).
+% Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial". Study Types for \benchmarkingtasks now reads \should rather than \must; the replicability load is carried by Design's benchmarking \must (describe the harness) and \should (harness should be usable with open models). Broader replication-package guidance moved to G8 Reliability \& Reproducibility Mitigations.
 Open LLM & Reproducibility depends on access to the model under study. &
-\iconS Include an open LLM as a baseline; for benchmarks, design the harness for use with open models. Provide a replication package. \\
+\iconS Include an open LLM as a baseline; ensure it is independently reproducible from supplementary material; for benchmarks, design the harness for use with open models. \\
 \addlinespace
 % Human Validation Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
 % Human Validation \iconM line: Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
 % Human Validation \iconM replacement line: Recommendations (Replacing Human Judgment) - "In such cases, researchers \must explain whether and how the replacement is justified". Named in the Study Types umbrella sentence as a conditional \must applying particularly to \annotators, \judges, \synthesis, and \subjects.
 % Human Validation \iconS replacement line: Recommendations (Replacing Human Judgment) - "researchers \should follow systematic approaches to support this judgment ... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".
-% Human Validation \iconS validation line: Subjective Judgment and Agreement - "the LLM output \should be evaluated against judgments aggregated from multiple human judges"; "Researchers \should report measures of IRA or IRR"; "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise ... and discuss potential demographic biases".
+% Human Validation \iconS validation line: Subjective Judgment and Agreement - "the same artifacts \should be judged independently by both the LLM and a panel of human experts, and the LLM judgments \should then be compared against an aggregated human reference"; "Researchers \should report measures of IRA or IRR"; "For value-laden or culturally contingent constructs ..., researchers \should describe rater demographics beyond expertise ... and discuss potential demographic biases".
 Human Validation & Automated metrics alone cannot ensure validity of subjective constructs. &
 \iconM Define the measured construct and share custom measurement instruments.
 \newline \iconM When LLMs replace humans in research tasks, explain whether and how the replacement is justified.
@@ -62,7 +62,7 @@ Human Validation & Automated metrics alone cannot ensure validity of subjective 
 \addlinespace
 % Limitations Rationale: "When using LLMs for empirical studies in SE, researchers face unique challenges and potential limitations... Researchers must openly discuss these limitations and explain how their impact was mitigated."
 % Limitations \iconM line: Recommendations - "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; \must clauses for internal/construct/external validity, reliability, ethical/regulatory.
-% Limitations \iconS line: Mitigation Strategies - bullet list (replication packages, human validation, longitudinal re-runs, triangulation, sensitivity analysis); "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing".
+% Limitations \iconS line: Mitigations distributed across threat sections - Replication Packages, Methodological Trustworthiness Measures, Longitudinal Re-Runs, Cost Accounting (Reliability \& Reproducibility); Triangulation, Sensitivity Analysis (External Validity); Human Validation (Construct Validity); Energy Preservation (Environmental \& Sustainability); Ethical and Regulatory Considerations (Ethical \& Regulatory Boundaries).
 Limitations & Honest acknowledgment of threats strengthens a study. &
 \iconM Discuss threats to internal validity (data leakage), reliability (non-determinism), construct and external validity.
 \newline \iconS Employ mitigations where possible. \\

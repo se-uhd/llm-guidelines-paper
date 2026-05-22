@@ -102,12 +102,12 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 \begin{itemize}[label={},leftmargin=*]
     \item \iconS Include full interaction logs (prompts and responses) as \supplementarymaterial if privacy and confidentiality can be ensured~(\reftraces).
     % G4 Interaction Logs: "Researchers \should report the full interaction logs... as part of their \supplementarymaterial". (For S5 specifically the matrix elevates this to \must.)
-    \item \iconS \condition{agents} For agentic systems, include interaction logs covering exchanges between humans and the agent and between external tools and the agent (human-in-the-loop feedback, approvals, refinements) as \supplementarymaterial~(\reftraces).
-    % G4 Interaction Logs: "For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent... These \should also be reported as \supplementarymaterial".
-    \item \iconS \condition{agents} For agentic systems, report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, sub-agents) were activated~(\reftraces).
+    \item \iconS \condition{agents} For agentic systems, include interaction logs covering human-in-the-loop exchanges with the agent (feedback, approvals, refinements) as \supplementarymaterial~(\reftraces).
+    % G4 Interaction Logs: "For agentic systems, interaction logs cover the human-facing exchanges with the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements. These \should also be reported as \supplementarymaterial".
+    \item \iconS \condition{agents} For agentic systems, report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments, result, and ordering, and which configured artifacts (skills, context files, subagents) were activated~(\reftraces).
     % G4 Runtime Traces: "Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries". The merged trace covers both per-call detail and artifact activations.
-    \item \iconS \condition{agents} For agentic systems, report developed plans as \supplementarymaterial if available~(\reftraces).
-    % G4 Agentic Plans: "the developed plans \should be reported as \supplementarymaterial if available".
+    \item \iconS \condition{agents} For agentic systems, report any plans the system exposes as \supplementarymaterial~(\reftraces).
+    % G4 Agentic Plans: "researchers \should report any plans the system exposes as \supplementarymaterial".
 \end{itemize}
 
 \noindent\textit{Benchmarks and Metrics}
@@ -146,7 +146,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM \condition{human-validation} If using human validation, define in the \paper the measured construct (e.g., usability, maintainability) and describe the measurement instrument~(\refhumanvalidation).
     % G7 Study Design Considerations: "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate".
     \item \iconM \condition{human-validation} When developing or adapting measurement instruments, share them~(\refhumanvalidation).
-    % G7 Study Design Considerations: "When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share their instruments".
+    % G7 Study Design Considerations: "When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share these instruments".
     \item \iconM \condition{human-validation} When LLMs replace humans in research tasks, explain in the \paper whether and how the replacement is justified~(\refhumanvalidation).
     % G7 Recommendations (Replacing Human Judgment): "In such cases, researchers \must explain whether and how the replacement is justified". Echoed in the Study Types umbrella sentence for \annotators, \judges, \synthesis, and \subjects.
     \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(\refhumanvalidation).
@@ -154,7 +154,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS \condition{human-validation} When LLMs replace humans in research tasks, report in the \paper the systematic approach used to justify the replacement, including model-to-model and model-to-human agreement~(\refhumanvalidation).
     % G7 Recommendations (Replacing Human Judgment): "researchers \should follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits model-to-model agreement... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".
     \item \iconS \condition{human-validation} Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(\refhumanvalidation).
-    % G7 Subjective Judgment and Agreement: "the LLM output \should be evaluated against judgments aggregated from multiple human judges, and researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
+    % G7 Subjective Judgment and Agreement: "the same artifacts \should be judged independently by both the LLM and a panel of human experts, and the LLM judgments \should then be compared against an aggregated human reference. Researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
     \item \iconS \condition{human-validation} Discuss and, where feasible, control for confounding factors~(\refhumanvalidation).
     % G7 Subjective Judgment and Agreement: "Confounding factors \should be discussed and, where feasible, controlled for (e.g., by categorizing participants according to their level of experience or expertise)". Power analysis is intentionally excluded here: G7 source uses plain "may" ("Where applicable, researchers may perform a power analysis...") and the next sentence explicitly notes "limited established guidance specific to determining sample sizes for LLM-human comparisons" - so it does not warrant a \should-level checklist item.
     \item \iconS \condition{human-validation}\condition{subjective-constructs} For value-laden or culturally contingent constructs, describe rater demographics beyond expertise and discuss potential demographic biases~(\refhumanvalidation).
@@ -164,13 +164,13 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 \noindent\textit{Reproducibility, Ethics, and Resources}
 \begin{itemize}[label={},leftmargin=*]
     \item \iconM \condition{restricted-sharing} For studies involving sensitive data, discuss data governance mechanisms compliant with applicable jurisdictional obligations~(\reflimitations).
-    % G8 Ethical \& Regulatory: "Studies involving sensitive data \must discuss data governance mechanisms tailored towards LLM environments, compliant with applicable juristical obligations".
+    % G8 Ethical \& Regulatory: "Studies involving sensitive data \must discuss data governance mechanisms tailored toward LLM environments, compliant with applicable jurisdictional obligations".
     \item \iconS Justify LLM usage in light of its resource demands~(\reflimitations).
-    % G8 Environmental \& Sustainability: "The study findings \should be discussed in the context of the resource-intensiveness of LLMs to justify the increased resource consumption over traditional approaches".
-    \item \iconS Provide a full replication package as \supplementarymaterial, including step-by-step instructions for verifying and reproducing the results~(\refopenllm).
-    % G6 Recommendations: "Researchers \should provide a complete replication package as part of their \supplementarymaterial, including clear step-by-step instructions on how to verify and reproduce the results".
+    % G8 Environmental \& Sustainability: "Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches".
+    \item \iconS Provide a full replication package as \supplementarymaterial, including step-by-step instructions for verifying and reproducing the results~(\reflimitations).
+    % G8 Reliability \& Reproducibility Mitigations: "Mitigations include \emph{replication packages} covering prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability)". G6's narrower text now reads "Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial".
     \item \iconS \condition{restricted-sharing} Where full sharing of prompts, traces, or datasets is not feasible, share representative examples for partial replicability~(\reflimitations).
-    % G8 Mitigation Strategies bullet: "Replication Packages covering prompt and architecture specifications, model outputs, and representative examples for partial replicability". The source bullet has no RFC 2119 marker; \iconS is interpretive, treating G8's mitigation list as \should-level given the framing "The following mitigation strategies can help address the threats". Concrete instances of "if full sharing not feasible, share representative examples" appear with explicit \should in G2 (fine-tuning data), G3 (prompts), and G4 (interaction logs); this item is the cross-artifact summary.
+    % G8 Reliability \& Reproducibility Mitigations: "Replication Packages: cover prompt and architecture specifications, model outputs, and representative examples for partial replicability, accompanied by an implementation using an open model for long-term stability". The mitigation bullet has no RFC 2119 marker; \iconS is interpretive, treating it as \should-level. Concrete instances of "if full sharing not feasible, share representative examples" appear with explicit \should in G2 (fine-tuning data), G3 (prompts), and G4 (interaction logs); this item is the cross-artifact summary.
 \end{itemize}
 
 \paragraph{\textbf{Results}}
@@ -192,9 +192,9 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM Transparently report study limitations, including the impact of non-determinism and generalizability constraints~(\reflimitations).
     % G8 Recommendations / Reliability: "Researchers \must clearly present the limitations of their work without defensiveness or obfuscation"; "Researchers \must discuss the measures taken to increase reliability and reproducibility".
     \item \iconM Specify whether generalization across LLMs or across time was assessed, and discuss model and version differences~(\reflimitations).
-    % G8 External Validity: "The limitations and mitigations used for external validity \must be discussed"; covers cross-model transfer and cross-time instability.
+    % G8 External Validity: "Researchers \must discuss the limitations and mitigations of external validity"; covers cross-model transfer and cross-time instability.
     \item \iconM \condition{restricted-sharing} Acknowledge non-disclosed confidential or proprietary components as reproducibility limitations~(\refdesign).
     % G3 Recommendations: "Researchers \must clearly describe the tool architecture..., including any dependencies on proprietary tools that affect reproducibility"; G3 Challenges: "For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations".
     \item \iconS Employ and report strategies to mitigate identified validity and reproducibility threats, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(\reflimitations).
-    % G8 Mitigation Strategies: lists Replication Packages, Human Validation, Longitudinal Re-Runs, Triangulation, Sensitivity Analysis as strategies (no explicit \must); "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures".
+    % G8 Mitigations distributed across threat sections: Replication Packages, Methodological Trustworthiness Measures, Longitudinal Re-Runs, Cost Accounting (Reliability \& Reproducibility); Triangulation, Sensitivity Analysis (External Validity); Human Validation (Construct Validity). No explicit \must; "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures".
 \end{itemize}
