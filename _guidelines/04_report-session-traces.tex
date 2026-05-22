@@ -1,37 +1,37 @@
 \guidelinesubsubsection{Rationale}
 
-A \emph{session} is any bounded stretch of activity during which an LLM is invoked. Sessions cover one-shot prompts, batch runs, multi-turn conversations, and agentic runs that span many tool calls.
-A \emph{session trace} records everything that crosses the LLM boundary or is produced around the model during that stretch: prompts received, responses returned, tool calls the model made together with their arguments and results, plans the model developed, and which of the statically configured artifacts (e.g., skills, context files, sub-agents, tools) were actually picked up at runtime.
+A \emph{session} is any bounded period of activity during which an LLM is invoked. Sessions cover one-shot prompts, batch runs, multi-turn conversations, and agentic runs that span many tool calls.
+A \emph{session trace} records everything that crosses the LLM boundary or is produced around the model during that period: prompts received, responses returned, tool calls the model made together with their arguments and results, plans the model developed, and which of the statically configured artifacts (e.g., skills, context files, subagents, tools) were actually picked up at runtime.
 
 Two kinds of session trace are important to capture.
-An \emph{interaction log} captures what humans or other software tools sent to the LLM and what the LLM returned.
-A \emph{runtime trace} captures what the LLM did at runtime: calls to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) and activations of configured artifacts (e.g., context files, skills). Reporting both kinds is needed for an agentic run, because neither tells the full story on its own.
+An \emph{interaction log} captures what a human can observe at the LLM's interface: the prompts sent in and the responses returned, whether the prompts come from a human user or, in non-interactive runs, from a calling harness.
+A \emph{runtime trace} records the LLM's internal activity: each call to an external tool (e.g., APIs, file systems, databases, MCP servers, subagents) or activation of a configured artifact (e.g., context files, skills), with the tool or artifact identified, the arguments passed, and the result returned. For agentic runs, both kinds matter, because neither tells the full story on its own.
 
 Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically.
 Non-determinism can arise from probabilistic sampling and, even with greedy decoding (temperature = 0), from batching and floating-point arithmetic on GPUs~\cite{YuanNondeterminismLLMInference}, and from Mixture-of-Experts routing~\cite{Chann2023}.
-For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself.
+Verifying conclusions drawn from such interactions therefore depends as much on runtime traces as on the system design itself.
 This matters particularly for studies targeting commercial software-as-a-service (SaaS) solutions such as ChatGPT, and for agentic runs where behavior depends on how the model chose among many possible tool calls.
 
 The rationale is similar to reporting interview transcripts in qualitative research.
 Just as a human participant might give different answers to the same question asked two months apart, the responses from tools such as ChatGPT can also vary over time, and the trace of an agent's decisions on any given run is often not reproducible at a later date.
-This guideline addresses runtime reporting and complements \design, which covers the static artifacts that determine what the model sees.
+This guideline addresses runtime reporting and complements \design, which covers the static artifacts that determine the model's input.
 
 \guidelinesubsubsection{Recommendations}
 
 \paragraph{Interaction Logs.}
 Researchers \should report the full interaction logs (prompts sent to the LLM and responses returned) as part of their \supplementarymaterial.
-For agentic systems, interaction logs generalize to cover exchanges between humans and the agent as well as between external tools and the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
+For agentic systems, interaction logs cover the human-facing exchanges with the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
 These \should also be reported as \supplementarymaterial so that readers can reconstruct the sequence of exchanges and assess human oversight decisions.
 For traces containing sensitive information, researchers \must anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
 
 \paragraph{Runtime Traces.}
-When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, sub-agents) or activates configured artifacts (e.g., context files, skills, sub-agents reported under \design), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
+When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, subagents) or activates configured artifacts reported under \design (e.g., context files, skills, subagents), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
 Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries.
 This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
 Researchers \should use an open format with a documented schema. Emerging standards such as the OpenTelemetry GenAI semantic conventions~\cite{otel_genai_semconv} or OpenInference~\cite{openinference_spec} are preferred where they fit. Where tool-native formats are used (e.g., Claude Code's session transcripts, LangGraph's state logs), researchers \must describe the file format and report the tool version.
 
 \paragraph{Agentic Plans.}
-For agentic systems that autonomously plan and execute tasks, the developed plans \should be reported as \supplementarymaterial if available.
+For agentic systems that autonomously plan and execute tasks, researchers \should report any plans the system exposes as \supplementarymaterial.
 In Claude Code, for example, a plan is a short Markdown document the user can open and edit during a session, listing the proposed steps and the files or commands the agent intends to touch.
 Other frameworks such as LangGraph keep plans inside the agent's internal execution state.
 All reported traces \must be made publicly available as \supplementarymaterial, subject to privacy and confidentiality constraints. When full trace logging is not feasible, researchers \should provide representative examples or anonymized traces.
@@ -39,7 +39,7 @@ All reported traces \must be made publicly available as \supplementarymaterial, 
 \guidelinesubsubsection{Examples}
 
 An example of reporting full interaction logs is the study by \citeauthor{ronanki2023investigating}~\cite{ronanki2023investigating}, for which the authors reported the full answers of ChatGPT and uploaded them to \href{https://zenodo.org/records/8124936}{Zenodo}.
-For agentic systems, \citeauthor{DBLP:conf/kbse/BouzeniaP25}~\cite{DBLP:conf/kbse/BouzeniaP25} unified the runtime trajectories of three SE agents (\emph{RepairAgent}, \emph{AutoCodeRover}, \emph{OpenHands}) into a common format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
+For agentic systems, \citeauthor{DBLP:conf/kbse/BouzeniaP25}~\cite{DBLP:conf/kbse/BouzeniaP25} unified the runtime trajectories of three SE agents (\emph{RepairAgent}, \emph{AutoCodeRover}, \emph{OpenHands}) into a custom thought-action-result format and released the resulting 120 trajectories with 2,822 LLM interactions as a public dataset.
 
 \guidelinesubsubsection{Benefits}
 

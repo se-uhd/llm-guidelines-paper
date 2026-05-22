@@ -6,13 +6,13 @@ Including an open LLM as a baseline ensures that at least part of the study can 
 
 \guidelinesubsubsection{Recommendations}
 
-Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement.
+Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see \benchmarksmetrics).
 We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible.
 Using an open model as a baseline is also not necessary if the use of the LLM is tangential to the study goal.
 
 Open models allow other researchers to verify research results and build upon them, even without access to commercial models.
 A comparison of commercial and open models also allows researchers to contextualize model performance.
-Researchers \should provide a complete replication package as part of their \supplementarymaterial, including clear step-by-step instructions on how to verify and reproduce the results reported in the paper.
+Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial.
 
 Open LLMs are available from hubs such as \href{https://huggingface.co/}{\emph{Hugging Face}}. They can be self-hosted with frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, accessed through cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud, or routed through aggregators such as \href{https://openrouter.ai/}{\emph{OpenRouter}} that expose many providers behind a single API. For agentic setups, open-source tools such as \href{https://www.continue.dev/}{\emph{Continue}}, \href{https://cline.bot/}{\emph{Cline}}, and \href{https://opencode.ai/}{\emph{opencode}}~\cite{opencode} publish their full agent code, system prompts, and tool catalog---vendor-hosted services such as \emph{GitHub Copilot} and \emph{Claude Code} expose only parts of their tooling (e.g., editor extensions, hook examples) and keep their deployed agent loops, system prompts, and tool catalogs proprietary.
 
@@ -33,7 +33,7 @@ Three evaluated models were open-source.
 \guidelinesubsubsection{Benefits}
 
 A true open LLM baseline improves reproducibility by exposing model architectures, parameter settings, and ideally training data, enabling independent verification of results.
-Such baselines also let researchers compare novel methods against a stable reference point, since proprietary backends can silently change between tests.
+Such baselines also let researchers compare novel methods against a stable reference point, since proprietary models can silently change between tests.
 They also allow inspection of training data (when released) and model behavior, helping identify biases and limitations.
 Unlike closed-source alternatives, which can be withdrawn or silently updated, open LLMs remain available for future studies.
 They typically avoid the per-use API fees that can constrain research groups with limited budgets.
