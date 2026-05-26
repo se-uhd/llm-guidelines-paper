@@ -2,7 +2,7 @@
 """Clean and update literature.bib.
 
 Pipeline:
-  1. (opt-in) Remove unreferenced entries.
+  1. Report unreferenced entries (always); remove them only with --remove-unref.
   2. DBLP key/biburl refresh — for entries that already have a DBLP key.
   3. arXiv-aware lookup — detect arXiv id; query DBLP for all records of
      that work; promote to a non-CoRR record (conf/journal/workshop) when
@@ -624,7 +624,8 @@ def parse_args():
     p.add_argument("--max-age-days", type=int, default=30,
                    help="Re-validate cached entries older than N days (default 30).")
     p.add_argument("--remove-unref", action="store_true",
-                   help="Run Step 1 (remove unreferenced entries). Default off.")
+                   help="Delete unreferenced entries. Default off: they are only "
+                        "reported, not removed.")
     p.add_argument("--no-rename", action="store_true",
                    help="Don't rename citation keys to DBLP keys.")
     p.add_argument("--no-tex-update", action="store_true",
@@ -723,7 +724,7 @@ def process_entry(entry, args):
             "stripped_fields": [], "reason": ""}
 
 
-def write_report(removed, results, rename_map, tex_counts):
+def write_report(removed, unreferenced_kept, results, rename_map, tex_counts):
     lines = []
     lines.append("=" * 72)
     lines.append(f"Bibliography Cleanup Report  ({now_iso()})")
@@ -734,6 +735,8 @@ def write_report(removed, results, rename_map, tex_counts):
         counts[r["outcome"]] = counts.get(r["outcome"], 0) + 1
     if removed:
         lines.append(f"Unreferenced entries removed:    {len(removed)}")
+    if unreferenced_kept:
+        lines.append(f"Unreferenced entries (kept):     {len(unreferenced_kept)}")
     for label in ("upgraded", "normalized", "stripped",
                   "no_change", "no_match", "skip_misc", "cached"):
         if label in counts:
@@ -745,6 +748,14 @@ def write_report(removed, results, rename_map, tex_counts):
         lines.append("Removed (unreferenced):")
         lines.append("-" * 72)
         for k in sorted(removed):
+            lines.append(f"  - {k}")
+        lines.append("")
+
+    if unreferenced_kept:
+        lines.append("-" * 72)
+        lines.append("Unreferenced (kept; run with --remove-unref to delete):")
+        lines.append("-" * 72)
+        for k in sorted(unreferenced_kept):
             lines.append(f"  - {k}")
         lines.append("")
 
@@ -821,14 +832,22 @@ def main():
         bib_db = bibtexparser.load(f, parser=parser)
     print(f"Parsed {len(bib_db.entries)} entries")
 
-    # Step 1: optional remove-unreferenced
+    # Step 1: report unreferenced entries; remove only with --remove-unref
+    print("\n--- Step 1: Unreferenced entries ---")
+    referenced = keys_from_tex_files() | keys_from_aux()
+    print(f"  Referenced (.tex ∪ .aux): {len(referenced)}")
     removed = []
+    unreferenced_kept = []
     if args.remove_unref:
-        print("\n--- Step 1: Remove unreferenced entries ---")
-        referenced = keys_from_tex_files() | keys_from_aux()
-        print(f"  Referenced (.tex ∪ .aux): {len(referenced)}")
         removed = remove_unreferenced(bib_db, referenced)
         print(f"  Removed: {len(removed)}")
+    else:
+        unreferenced_kept = sorted(e["ID"] for e in bib_db.entries
+                                   if e["ID"] not in referenced)
+        print(f"  Unreferenced (kept; pass --remove-unref to delete): "
+              f"{len(unreferenced_kept)}")
+        for k in unreferenced_kept:
+            print(f"    - {k}")
 
     # Step 2/3/4: validate each entry
     print("\n--- Validate entries against DBLP / Crossref ---")
@@ -940,7 +959,7 @@ def main():
     else:
         print("\n[dry-run] no files written")
 
-    write_report(removed, results, rename_map, tex_counts)
+    write_report(removed, unreferenced_kept, results, rename_map, tex_counts)
 
 
 if __name__ == "__main__":
