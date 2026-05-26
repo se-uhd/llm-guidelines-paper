@@ -98,3 +98,8 @@ emse26-llm-guidelines-flat.pdf
 /title-page.pdf
 dblp_unmatched_report.txt
 scripts/.bib_validation_cache.json
+
+##########
+# Python #
+##########
+__pycache__/
