@@ -107,3 +107,8 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 ## [2026.03]
 
 First explicitly versioned release, corresponding to the EMSE major revision submission (2026-03-19).
+
+[Ahead of last paper release]: https://github.com/se-uhd/llm-guidelines-paper/compare/2026.05...main
+[2026.05]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.05
+[2026.04]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.04
+[2026.03]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.03
