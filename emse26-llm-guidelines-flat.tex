@@ -498,10 +498,11 @@ While multi-modal foundation models that use or generate images, audio, or video
 
 \scopeparagraph{Focus on Direct Development or Research Support}
 
-While researchers may use LLMs for many peripheral tasks (e.g., proof-reading, spell-checking, translation), our guidelines focus on their direct role in empirical research and engineering practice.
+While researchers may use LLMs for many peripheral tasks (e.g., proofreading, spell-checking, translation), our guidelines focus on their direct role in empirical research and engineering practice.
 For engineers, we focus on the use of LLMs to automate SE tasks, that is, artificial intelligence (AI) for software engineering (AI4SE) (see~\llmsforengineers).
 This includes agentic systems that autonomously plan and execute multi-step tasks using LLMs (see~\design).
 For researchers, we focus on the use of LLMs to automate empirical research tasks such as data collection, processing, or analysis (see~\llmsforresearcher).
+The 2026 ACM Policy on Authorship likewise requires disclosing AI used in the research itself, not AI used only to assist with writing~\cite{ACM2026}.
 
 \scopeparagraph{Researchers as our Target Audience}
 
@@ -519,7 +520,7 @@ We use \paper to refer to the manuscript PDF, including any appendices bound wit
 
 Reporting guidelines have a long tradition in healthcare research, where CONSORT~\cite{Schulz2010} is the canonical standard for randomized clinical trials. Our reporting checklist (\ifpaper Appendix~\ref{sec:checklist} \else \href{/checklist/}{checklist} \fi) follows its structural template. LLM-specific reporting guidelines have appeared more recently: \citeauthor{Gallifant2025}'s TRIPOD-LLM~\cite{Gallifant2025} for healthcare, \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines~\cite{DBLP:conf/chi/NavarroSA26}, \citeauthor{Kapoor2024REFORMS}'s REFORMS~\cite{Kapoor2024REFORMS} for ML-based science, and within SE, \citeauthor{DBLP:conf/icse/SallouDP24}'s vision paper on validity threats~\cite{DBLP:conf/icse/SallouDP24}, our earlier workshop position paper~\cite{DBLP:conf/wsese/0001BFB25}, and \citeauthor{DBLP:journals/corr/abs-2601-01954}'s prompt-reporting guideline for automated SE~\cite{DBLP:journals/corr/abs-2601-01954}, derived from a literature review of ICSE, FSE, and ASE papers and a survey of 105 program committee members. Beyond LLM-specific work, the NeurIPS reproducibility checklist~\cite{DBLP:journals/jmlr/PineauVSLBdFL21} prescribes per-submission disclosure for ML papers, covering items such as algorithm description, experimental setup, and statistical reporting.
 
-\citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours, with the essential items their 105 SE PC respondents endorsed aligning with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proof-reading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
+\citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours, with the essential items their 105 SE PC respondents endorsed aligning with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proofreading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
 
 Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). The \supplementarymaterial is published according to the \emph{ACM SIGSOFT Open Science Policies}~\cite{daniel_graziotin_2024_10796477} for replication and downstream reuse. In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial.
 
@@ -833,7 +834,7 @@ The \supplementarymaterial \should be published according to the \emph{ACM SIGSO
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits in the \paper. When the LLM is central to the study, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology or acknowledgments suffices. \end{framed}
+\summary: Researchers \must disclose any use of LLMs to support empirical studies in their \paper, specifying which LLM was used, how it was used, and where in the research process it was employed. They \should report the exact purpose, the tasks that were automated, and the expected benefits in the \paper. When the LLM is central to the study, the declaration \should be prominent and detailed in the methodology section; for tangential uses, a brief statement in the methodology section suffices. \end{framed}
 
 \guidelinesubsubsection{Rationale}
 
@@ -844,20 +845,20 @@ Without explicit disclosure, readers cannot evaluate how the LLM's characteristi
 
 When conducting any kind of empirical study involving LLMs, researchers \must clearly declare that an LLM was used (see \scope for what we consider relevant research support).
 This \should be done in a suitable section of the \paper, for example, in the introduction or research methods section; \citeauthor{cheng2025writing}~\cite{cheng2025writing} argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper.
-For authoring scientific articles, this transparency is, for example, required by the ACM Policy on Authorship: \enq{The use of generative AI tools and technologies to create content is permitted but must be fully disclosed in the Work}~\cite{ACM2023}.
+The ACM Policy on Authorship requires authors to describe in the methods section any use of AI in the research itself~\cite{ACM2026}.
 
 Beyond generic declarations, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
 A sufficient declaration specifies not only \emph{that} an LLM was used, but also \emph{which} LLM (name and version), \emph{how} it was used (e.g., as an annotator, code generator, or judge), and \emph{where} in the research process it was employed (e.g., data collection, analysis, or synthesis).
 
 When the LLM is central to the study (e.g., as the main tool being evaluated or as a core component of the research method), the declaration \should be prominent and detailed, appearing in the methodology section with cross-references to the specific guidelines that apply (e.g., Sections \modelversion, \design, and \traces).
-When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology or acknowledgments section is sufficient.
+When the LLM's role is more tangential (e.g., used for a single preprocessing step), a brief but explicit statement in the methodology section is sufficient.
 When a study assigns multiple distinct roles to LLMs (e.g., one model generates evaluation data while another scores outputs), each role \should be declared separately.
 In each case, the disclosure \must be specific enough for readers to assess how the LLM's involvement may affect the study's validity and reproducibility.
 
 \guidelinesubsubsection{Examples}
 
-The \emph{ACM Policy on Authorship}~\cite{ACM2023} suggests disclosing GenAI usage in the acknowledgments section of the \paper, advising to \enq{err on the side of caution, and include a disclosure in the acknowledgments section of the Work} when uncertain about the need.
-For double-blind review, researchers can add a temporary ``AI Disclosure'' section where the acknowledgments would appear.
+The \emph{ACM Policy on Authorship} requires reporting AI-generated artifacts such as code, datasets, and figures where they underlie a study's conclusions~\cite{ACM2026}.
+Reporting in the methods section keeps this disclosure visible under double-blind review, where end-of-paper acknowledgments are often removed.
 An example of an LLM disclosure beyond writing support can be found in a recent paper by \citeauthor{DBLP:conf/re/LubosFTGMEL24}~\cite{DBLP:conf/re/LubosFTGMEL24}, in which they write in the methodology section:
 
 \begin{quote}
@@ -884,8 +885,8 @@ Realizing these benefits requires reporting the LLM's exact role and version (se
 Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward.
 One challenge might be authors' reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors' work is less original.
 In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors~\cite{SCHILKE2025104405}.
-However, the \emph{ACM Policy on Authorship} is very clear in that any use of GenAI tools to create content \must be disclosed.
-Our guidelines focus on research support beyond proof-reading and writing support (see \scope), but the threshold of what must be declared continues to evolve as organizations such as the ACM update their authorship policies.
+However, the \emph{ACM Policy on Authorship} requires disclosure of AI used in the research itself, not AI used only to assist with writing~\cite{ACM2026}.
+Our guidelines focus on such use (see \scope), not on proofreading or writing support.
 
 \guidelinesubsubsection{Study Types}
 
@@ -900,9 +901,7 @@ For \benchmarkingtasks, researchers \must declare which LLMs were benchmarked an
 
 The most common problem with disclosure is incompleteness or vagueness about how the LLM was used. If the paper says ``we used LLM X to help with task Y'' without specifying how, reviewers should request clarification. Such requests are typically minor revisions unless the missing details may reveal methodological problems.
 
-Using an LLM as a copyeditor becomes problematic when authors do not or cannot take responsibility for the resulting text. If a reviewer finds clear evidence that LLM-generated text was not carefully reviewed (e.g., text such as ``As a Large Language Model, I...''), this may warrant rejection. If a reviewer suspects an author \textit{cannot} take responsibility for AI-generated text, they should raise the concern with their editor or program chair. Due process requires that authors not be accused of misconduct without clear evidence.
-
-If undisclosed LLM use is suspected, the reviewer should similarly consult their editor or program chair. When the evidence is conclusive, the key question is the degree to which undisclosed use affects the study's contribution, ranging from negligible (e.g., word choice in a single sentence) to severe (e.g., generating ostensibly empirical data or statistical analyses).
+If undisclosed LLM use is suspected, the reviewer should consult their editor or program chair. When the evidence is conclusive, the key question is the degree to which undisclosed use affects the study's contribution, ranging from negligible (e.g., word choice in a single sentence) to severe (e.g., generating the reported data or results).
 
 \guidelinesubsubsection{See Also}
 \begin{itemize}[label=$\rightarrow$]

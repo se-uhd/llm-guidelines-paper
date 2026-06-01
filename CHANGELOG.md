@@ -48,6 +48,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 - **Limitations and Mitigations:** *Environmental & Sustainability Constraints* caption flipped to a period with a one-sentence preamble, matching the structure of the other six validity-category captions.
 - **Open LLM:** *Challenges* refactored from prose enumeration to an itemize with named captions (*Definitional inconsistency*, *Performance gap*, *Hardware demands*, *Operational complexity*).
 - **Editorial pass:** Tightened *Benefits* in G1, G3, G5, and G7 (others reverted to original after review); split five 90+-word sentences in *Advantages and Challenges* into shorter units; applied the caption-punctuation rule (`\paragraph{Title.}` for captions followed by prose); standardized *human validation* across *See Also* lines; split filler semicolons and colons where both halves stand alone.
+- **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing-only assistance from disclosure. Advice for Reviewers now cites the policy's author-accountability and reject/retract provisions.
 
 ## [2026.05]
 
