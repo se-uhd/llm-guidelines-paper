@@ -1316,8 +1316,8 @@ Researchers building or releasing new SE benchmarks \should consult operational 
 \paragraph{Common Metrics.}
 
 Two common metrics used for generation tasks are \emph{BLEU-N} and \emph{pass@k}.
-\emph{BLEU-N}~\cite{DBLP:conf/acl/PapineniRWZ02} was originally developed for evaluating machine translation quality by measuring n-gram precision between a candidate and reference text, ranging from 0 (dissimilar) to 1 (similar). It has been widely adopted in SE for code generation tasks, though its validity in this context is debatable. An n-gram overlap does not capture functional correctness, and syntactically different code can be semantically equivalent (see \emph{Challenges} below).
-Code-specific variations such as \emph{CodeBLEU}~\cite{DBLP:journals/corr/abs-2009-10297} and \emph{CrystalBLEU}~\cite{DBLP:conf/kbse/EghbaliP22} attempt to address these limitations by introducing additional heuristics such as AST matching.
+\emph{BLEU-N}~\cite{DBLP:conf/acl/PapineniRWZ02} was originally developed for evaluating machine translation quality by measuring modified n-gram precision (with a brevity penalty) between a candidate and reference text, ranging from 0 (dissimilar) to 1 (similar). It has been widely adopted in SE for code generation tasks, though its validity in this context is debatable. An n-gram overlap does not capture functional correctness, and syntactically different code can be semantically equivalent (see \emph{Challenges} below).
+Code-specific variations attempt to address these limitations. \emph{CodeBLEU}~\cite{DBLP:journals/corr/abs-2009-10297} augments n-gram overlap with syntactic (AST) and data-flow matching, whereas \emph{CrystalBLEU}~\cite{DBLP:conf/kbse/EghbaliP22} ignores n-grams that recur across unrelated programs, such as boilerplate syntax and common API calls, because they inflate overlap scores without indicating genuine similarity.
 
 The metric \emph{pass@k} reports the likelihood that a model correctly completes a code snippet at least once within $k$ attempts. Originally introduced by \citeauthor{DBLP:conf/nips/KulalPC0PAL19}~\cite{DBLP:conf/nips/KulalPC0PAL19} as the success rate within a budget of $B$ program attempts (corresponding to $k$ in \emph{pass@k}) and popularized by \citeauthor{DBLP:journals/corr/abs-2107-03374}~\cite{DBLP:journals/corr/abs-2107-03374}, it ranges from 0 (no correct solution in $k$ tries) to 1 (at least one correct solution), with correctness typically defined by passing test cases.
 
@@ -1328,11 +1328,12 @@ The \emph{pass@k} metric is defined as:
 \]
 
 \begin{itemize}
-  \item $n$ is the total number of generated samples per prompt,
-  \item $c$ is the number of correct samples among $n$, and
-  \item $k$ is the number of samples drawn.
+  \item $n$ is the total number of samples generated per prompt (with $n \ge k$),
+  \item $c$ is the number of correct samples among the $n$, and
+  \item $k$ is the number of attempts considered, drawn from the $n$ generated samples without replacement.
 \end{itemize}
 
+The formula above gives \emph{pass@k} for a single prompt. The value reported for a benchmark is its mean over all prompts.
 The choice of $k$ depends on the downstream task. The metric \emph{pass@1} is critical for single-suggestion scenarios such as code completion, while higher $k$ values (e.g., 2, 5, 10) assess multi-attempt capability and are commonly reported in technical reports of code LLMs (e.g., Code Llama~\cite{DBLP:journals/corr/abs-2308-12950}, DeepSeek-Coder~\cite{DBLP:journals/corr/abs-2401-14196}, Qwen2.5-Coder~\cite{DBLP:journals/corr/abs-2409-12186}, StarCoder~\cite{DBLP:journals/tmlr/LiAZMKMMALCLZZW23}).
 However, \emph{pass@k} is not a universal metric suitable for all generation tasks.
 It requires a binary notion of correctness, making the metric appropriate for code synthesis evaluated via unit tests, but unsuitable for open-ended generation tasks such as comment generation, where multiple valid outputs exist.
