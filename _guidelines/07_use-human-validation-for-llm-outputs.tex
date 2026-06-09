@@ -23,7 +23,7 @@ LLMs may be used to replace, rather than augment, humans in research tasks such 
 \paragraph{Subjective Judgment and Agreement.}
 When the judgment is subjective (i.e., depends on the judge's values or theories), the same artifacts \should be judged independently by both the LLM and a panel of human experts, and the LLM judgments \should then be compared against an aggregated human reference. Researchers \should clearly describe their aggregation method and reasoning.
 Researchers \should use established reference models to compare humans with LLMs.
-For example, \citeauthor{DBLP:conf/icse/SchneiderFW25}~\cite{DBLP:conf/icse/SchneiderFW25} outline design considerations for studies comparing LLMs with humans.
+For example, \citeauthor{DBLP:conf/icse/SchneiderFW25} outline design considerations for studies comparing LLMs with humans~\cite{DBLP:conf/icse/SchneiderFW25}.
 % GROUNDING DBLP:conf/icse/SchneiderFW25: "We propose a framework to support researchers in designing and executing studies, and in assessing LLMs with respect to humans."
 
 One systematic approach to building the human reference is to randomly order the objects requiring judgment and put them in groups small enough to judge in one to three hours. Two or three human experts review the first group together, simultaneously judging, discussing, and creating a set of decision rules documenting their reasoning. Then, the experts iterate among rounds of:
@@ -54,15 +54,15 @@ When evaluating agentic tools, researchers \should assess the feedback that user
 
 \guidelinesubsubsection{Examples}
 
-\citeauthor{DBLP:conf/msr/AhmedDTP25}~\cite{DBLP:conf/msr/AhmedDTP25} proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using inter-model agreement as an initial screening criterion (with a threshold of $\alpha>0.5$) and model confidence for sample-level decisions. However, their threshold is well below the levels generally considered acceptable for inter-rater agreement.
+\citeauthor{DBLP:conf/msr/AhmedDTP25} proposed a systematic method for deciding whether LLMs can replace human annotators on a given task, using inter-model agreement as an initial screening criterion (with a threshold of $\alpha>0.5$) and model confidence for sample-level decisions~\cite{DBLP:conf/msr/AhmedDTP25}. However, their threshold is well below the levels generally considered acceptable for inter-rater agreement.
 % GROUNDING DBLP:conf/msr/AhmedDTP25: "model confidence as a means to select specific samples where LLMs can safely replace human annotators"
 Notably, while three LLMs exhibited higher inter-model agreement than human annotators on some tasks, human-model agreement remained low on others.
 This illustrates that high inter-model reliability does not guarantee alignment with human judgment, reinforcing the need for human validation before assuming that LLM annotations are valid.
 Moreover, a high inter-model agreement could merely indicate that the models share systematic biases and hence reliably agree on the wrong answer.
 
-\citeauthor{DBLP:journals/corr/abs-2501-19297}~\cite{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case. Domain experts reviewed both documents and attempted to distinguish their origin.
+\citeauthor{DBLP:journals/corr/abs-2501-19297} evaluated ChatGPT's capability to generate requirements documents by comparing an LLM-generated and a human-generated document based on the same business use case~\cite{DBLP:journals/corr/abs-2501-19297}. Domain experts reviewed both documents and attempted to distinguish their origin.
 % GROUNDING DBLP:journals/corr/abs-2501-19297: "Document "01": Created by an LLM, ChatGPT-4.0 using a single-shot prompt. Document "02": Created by a human expert during a one-hour, closed session."
-For agentic tools, \citeauthor{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25}~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25} report acceptance and modification rates from real users for \emph{HULA}, an agentic plan-and-code system deployed in Atlassian JIRA.
+For agentic tools, \citeauthor{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25} reported acceptance and modification rates from real users for \emph{HULA}, an agentic plan-and-code system deployed in Atlassian JIRA~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25}.
 % GROUNDING DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25: "practitioners approved the generated plans for 433 out of 527 plan generated issues, achieving a plan approval rate of 82%"
 
 \guidelinesubsubsection{Benefits}

@@ -14,7 +14,7 @@ A \emph{prompt template} is a parameterized structure containing static elements
 % GROUNDING DBLP:journals/corr/abs-2406-06608: "A prompt template is a function that contains one or more variables which will be replaced by some media (usually text) to create a prompt"
 In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
-\citeauthor{DBLP:conf/iclr/Sclar0TS24}~\cite{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models.
+\citeauthor{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models~\cite{DBLP:conf/iclr/Sclar0TS24}.
 % GROUNDING DBLP:conf/iclr/Sclar0TS24: "format performance only weakly correlates between models, which puts into question the methodological validity of comparing models with an arbitrarily chosen, fixed prompt format"
 
 This guideline covers the architecture, prompts, and configuration used in an LLM-based study, complementing \modelversion (model-specific details) and \traces (runtime behavior).
@@ -85,15 +85,15 @@ Researchers \must summarize in the \paper which tools were exposed to the model,
 
 \guidelinesubsubsection{Examples}
 
-\citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration.
+\citeauthor{DBLP:journals/tse/SchaferNET24} evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration~\cite{DBLP:journals/tse/SchaferNET24}.
 % GROUNDING DBLP:journals/tse/SchaferNET24: "the prompt generator, test validator, and prompt refiner collaborate to construct prompts for test generation, assemble complete tests from the LLM's response, run them"
-They also detail the datasets used, including sources, selection criteria, and preprocessing steps.
+They also detailed the datasets used, including sources, selection criteria, and preprocessing steps.
 
 A second example is \citeauthor{DBLP:conf/chi/YanHWH24}'s \emph{IVIE} tool~\cite{DBLP:conf/chi/YanHWH24}, which integrates LLMs into the VS Code interface.
 % GROUNDING DBLP:conf/chi/YanHWH24: "We present an implementation of Ivie that forks VS Code, applying a modern LLM for timely segmentation and explanation of generated code."
 The authors document the tool architecture, detailing the IDE integration, context extraction from code editors, and the formatting pipeline for LLM-generated explanations.
 
-\citeauthor{DBLP:journals/pacmse/LiangBBDFF024}'s paper~\cite{DBLP:journals/pacmse/LiangBBDFF024} is a good example of comprehensive prompt reporting.
+\citeauthor{DBLP:journals/pacmse/LiangBBDFF024}'s paper is a good example of comprehensive prompt reporting~\cite{DBLP:journals/pacmse/LiangBBDFF024}.
 % GROUNDING DBLP:journals/pacmse/LiangBBDFF024: "Materials used in this study, such as the protocols, GPT-4 generated data, and exact prompts, are available in the supplemental materials"
 The authors make the exact prompts available in their \supplementarymaterial on Figshare, including details such as code blocks enclosed in triple backticks.
 The \paper explains the rationale behind the prompt design and the data output format, and it includes an overview figure and two concrete examples, keeping the main text concise while remaining reproducible.
