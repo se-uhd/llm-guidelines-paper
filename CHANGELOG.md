@@ -9,6 +9,8 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ## [2026.06]
 
+Version accepted at Empirical Software Engineering (EMSE).
+
 ### Changed
 
 - **New Software Engineering Tools:** The GenAI-agent description now centers on a control loop around the model (observe, inspect, choose, act), with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation) drawn from Raschka's coding-agent decomposition and CoALA (Sumers et al.), replacing the earlier three-component framing.
