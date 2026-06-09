@@ -453,11 +453,11 @@ Each guideline distinguishes requirements (must) from recommended practices
 Our guidelines recommend that researchers:
 (1)~declare LLM usage and role;
 (2)~report model versions, configurations, and customizations;
-(3)~document the tool architecture beyond the model;
-(4)~disclose prompts, their development, and interaction logs;
-(5)~validate LLM outputs with humans;
+(3)~document the system and prompt design beyond the model;
+(4)~report session traces, i.e., interaction logs and runtime traces;
+(5)~use suitable baselines, benchmarks, and metrics;
 (6)~include an open LLM as a baseline;
-(7)~use suitable baselines, benchmarks, and metrics; and
+(7)~validate LLM outputs against human judgment; and
 (8)~articulate limitations and mitigations.
 We complement the guidelines with an applicability matrix mapping guidelines
 to study types and a reporting checklist for authors and reviewers.
@@ -1390,7 +1390,7 @@ Unlike human participant conversations, which often cannot be reported because o
 This enables reproduction studies, tracking of response changes over time or across model versions, and secondary research on LLM consistency for specific SE tasks.
 
 For agentic systems, reporting runtime traces alongside interaction logs lets readers follow the model's reasoning, the tool calls it made, and the order of those calls.
-Usage traces complement the static configuration reported under \design by showing which of the configured artifacts were activated on a given run.
+Runtime traces complement the static configuration reported under \design by showing which of the configured artifacts were activated on a given run.
 
 \guidelinesubsubsection{Challenges}
 
@@ -2027,12 +2027,11 @@ Our guidelines recommend that researchers:
 \begin{enumerate*}[label=(\arabic*)]
 \item declare LLM usage and role;
 \item report model versions, configurations, and customizations;
-\item document the tool architecture beyond the model;
-\item disclose prompts, their development, and, where feasible,
-interaction logs;
-\item validate LLM outputs with humans;
+\item document the system and prompt design beyond the model;
+\item report session traces, i.e., interaction logs and runtime traces;
+\item use suitable baselines, benchmarks, and metrics;
 \item include an open LLM as a baseline;
-\item use suitable baselines, benchmarks, and metrics; and
+\item validate LLM outputs against human judgment; and
 \item articulate limitations and mitigations, including costs, potential
 biases, and environmental impact.
 \end{enumerate*}
