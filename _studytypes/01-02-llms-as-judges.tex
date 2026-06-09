@@ -10,6 +10,7 @@ As judges, LLMs rate software artifacts along quality criteria (e.g., code reada
 \studytypeparagraph{Examples}
 
 \citeauthor{DBLP:conf/re/LubosFTGMEL24}~\cite{DBLP:conf/re/LubosFTGMEL24} used \href{https://www.llama.com/llama2/}{Llama-2} to evaluate the quality of software requirements statements. 
+% GROUNDING DBLP:conf/re/LubosFTGMEL24: "We conducted an LLM-based evaluation of requirements utilizing the Llama 2 language model with 70 billion parameters, fine-tuned to complete chat responses."
 They prompted the LLM with the text below, where the words in braces reflect the study parameters:
 
 \begin{plain}
@@ -23,3 +24,4 @@ Explain your decision and suggest an improved version.
 \end{plain}
 
 They evaluated LLM output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, \citeauthor{DBLP:conf/kbse/WangALHTASL25}~\cite{DBLP:conf/kbse/WangALHTASL25} used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4). 
+% GROUNDING DBLP:conf/kbse/WangALHTASL25: "explicit class-based scoring with clearly interpretable scales (e.g., ratings 0–4) [36]–[38], and using LLMs themselves as judges"

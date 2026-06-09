@@ -10,6 +10,7 @@
 % (\paper -> unspecified -> \supplementarymaterial).
 
 The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes actionable items from the guidelines based on the \textbf{summary} sections.
+% GROUNDING Schulz2010: "The CONSORT 2010 Statement is this paper including the 25 item checklist in the table (Table 1) and the flow diagram (Figure 1)."
 The checklist is organized along typical paper sections.
 Items marked \iconM are requirements (\must), and items marked \iconS are recommendations (\should).
 Each item references its source guideline by short name.
@@ -151,8 +152,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % G7 Recommendations (Replacing Human Judgment): "In such cases, researchers \must explain whether and how the replacement is justified". Echoed in the Study Types umbrella sentence for \annotators, \judges, \synthesis, and \subjects.
     \item \iconS Consider human validation early in the study design and build on established reference models for human-LLM comparison~(\refhumanvalidation).
     % G7 Recommendations: "researchers \should consider human validation early in the study design, not as an afterthought"; "Researchers \should use established reference models to compare humans with LLMs".
-    \item \iconS \condition{human-validation} When LLMs replace humans in research tasks, report in the \paper the systematic approach used to justify the replacement, including model-to-model and model-to-human agreement~(\refhumanvalidation).
-    % G7 Recommendations (Replacing Human Judgment): "researchers \should follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits model-to-model agreement... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".
+    \item \iconS \condition{human-validation} When LLMs replace humans in research tasks, report in the \paper the systematic approach used to justify the replacement, including inter-model and model-to-human agreement~(\refhumanvalidation).
+    % G7 Recommendations (Replacing Human Judgment): "researchers \should follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits inter-model agreement... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".
     \item \iconS \condition{human-validation} Validate LLM judgments against human judgment, report aggregation methods, and assess human-LLM agreement~(\refhumanvalidation).
     % G7 Subjective Judgment and Agreement: "the same artifacts \should be judged independently by both the LLM and a panel of human experts, and the LLM judgments \should then be compared against an aggregated human reference. Researchers \should clearly describe their aggregation method"; "Researchers \should report measures of IRA or IRR".
     \item \iconS \condition{human-validation} Discuss and, where feasible, control for confounding factors~(\refhumanvalidation).
