@@ -103,3 +103,4 @@ scripts/.bib_validation_cache.json
 # Python #
 ##########
 __pycache__/
+ai-slop-report.md
