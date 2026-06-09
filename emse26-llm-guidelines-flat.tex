@@ -477,17 +477,17 @@ Since the release of ChatGPT in November 2022, large language models (LLMs) have
 Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}. \citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} surveyed 72 peer-reviewed papers from leading security and SE venues published in 2023--2024 and found that every paper contained at least one of nine LLM-specific pitfalls they identified, spanning data collection, pre-training, fine-tuning, prompting, and evaluation; only 15.7\% of the pitfalls present in those papers were explicitly discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
 % GROUNDING DBLP:journals/corr/abs-2510-25506: "For none of the five studies, we were able to fully reproduce the results."
 % GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024, finding that every paper contains at least one pitfall"
-Three characteristics of LLMs make this particularly challenging:
-their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, with slight changes leading to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509};
+Three characteristics of LLMs make this particularly challenging.
+First, their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, and slight changes can lead to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509}.
 % GROUNDING DBLP:conf/naacl/SongWLL25: "given a particular input, the same LLM may generate significantly different outputs under various decoding configurations, a phenomenon known as non-determinism in generation"
 % GROUNDING DBLP:journals/corr/abs-2602-07150: "single-run pass@1 estimates vary by 2.2 to 6.0 percentage points depending on which run is selected, with standard deviations exceeding 1.5 percentage points even at temperature 0"
 % GROUNDING DBLP:conf/nips/AgarwalSCCB21: "A small number of training runs coupled with high variability in performance of deep RL algorithms often leads to substantial statistical uncertainty in reported point estimates."
 % GROUNDING DBLP:journals/corr/abs-2412-12509: "A 2% variation in the LLM's judgment could lead to significant shifts in the ranking, potentially misrepresenting the true performance of the models"
-commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009};
+Second, commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009}.
 % GROUNDING DBLP:journals/corr/abs-2307-09009: "We find that the performance and behavior of both GPT-3.5 and GPT-4 can vary greatly over time."
-and even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
+Third, even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
 % GROUNDING Gibney2024: "Many of the large language models that power chatbots claim to be open, but restrict access to code and training data."
-Moreover, prompt formatting choices alone can shift accuracy by tens of percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
+Moreover, prompt formatting choices alone can shift accuracy by up to 76 percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
 % GROUNDING DBLP:conf/iclr/Sclar0TS24: "several widely used open-source LLMs are extremely sensitive to subtle changes in prompt formatting in few-shot settings, with performance differences of up to 76 accuracy points"
 % GROUNDING renze2024temperature: "A higher temperature makes the output more random, thus favoring more 'creative' predictions."
 Hence, not reporting these settings directly affects reproducibility.
@@ -519,7 +519,7 @@ We target SE research because reporting guidelines from other disciplines do not
 
 \scopeparagraph{Focus on Text-Based Use Cases}
 
-While multi-modal foundation models that use or generate images, audio, or video may also support SE research and practice, we focus on textual use cases of LLMs (e.g., in natural language or programming languages). Many of our guidelines, particularly those concerning model reporting, prompt documentation, and reproducibility, are likely applicable to multi-modal settings as well, but we leave their explicit validation to future work.
+While multi-modal foundation models that use or generate images, audio, or video may also support SE research and practice, we focus on textual use cases of LLMs (e.g., in natural language or programming languages). Many of our guidelines, particularly those concerning model reporting, prompt documentation, and reproducibility, are likely applicable to multi-modal settings as well, but we leave a systematic assessment of this applicability to future work.
 
 \scopeparagraph{Focus on Direct Development or Research Support}
 
@@ -540,11 +540,18 @@ Our guidelines focus on what to report and how. They complement but do not repla
 
 \scopeparagraph{Reporting Locations}
 
-We use \paper to refer to the manuscript PDF, including any appendices bound with it. We use \supplementarymaterial to refer to any artifact, replication package, dataset, or other resource external to the manuscript PDF (e.g., hosted on Zenodo or Figshare). What belongs in the main body versus an appendix is a presentation choice for authors and venues; what belongs inside the manuscript versus outside it is the reporting-location decision the guidelines make. When a recommendation does not specify a location, either \paper or \supplementarymaterial is acceptable.
+We use \paper to refer to the manuscript PDF, including any appendices it contains. We use \supplementarymaterial to refer to any artifact, replication package, dataset, or other resource external to the manuscript PDF (e.g., hosted on Zenodo or Figshare). What belongs in the main body versus an appendix is a presentation choice for authors and venues; what belongs inside the manuscript versus outside it is the reporting-location decision the guidelines make. When a recommendation does not specify a location, either \paper or \supplementarymaterial is acceptable.
+
+\scopeparagraph{Navigating These Guidelines}
+
+Our guidelines are structured to support different reading strategies depending on the reader's goal.
+\emph{Researchers planning a new study} may start with the taxonomy of study types (see \studytypes) to identify which types apply to their planned work, then consult \ifpaper Table~\ref{tab:guideline-matrix} \else the \href{/guidelines/\#guidelines-by-study-type}{applicability matrix} \fi to determine which guidelines are requirements (\must) and which are recommendations (\should) for those study types. Each guideline section opens with a brief summary, allowing readers to quickly assess relevance before reading the full text.
+\emph{Researchers writing up results} may start with the \ifpaper checklist in Appendix~\ref{sec:checklist}, \else \href{/checklist/}{checklist}, \fi which organizes actionable items by typical paper sections (Introduction, Research Design and Methods, Results, etc.). \ifpaper Table~\ref{tab:guidelines} provides a quick reference to all eight guidelines, and Table~\ref{tab:rationale-recommendations} maps each guideline's rationale to its recommendations. \fi
+\emph{Reviewers} can use the \emph{Advice for Reviewers} subsection at the end of each guideline for targeted guidance on assessing manuscripts. \ifpaper Table~\ref{tab:guideline-matrix} helps reviewers identify which guidelines apply to the study type under review. \fi
 
 \scopeparagraph{Related Reporting Guidelines}
 
-Reporting guidelines have a long tradition in healthcare research, where CONSORT~\cite{Schulz2010} is the canonical standard for randomized clinical trials. Our reporting checklist (\ifpaper Appendix~\ref{sec:checklist} \else \href{/checklist/}{checklist} \fi) follows its structural template. LLM-specific reporting guidelines have appeared more recently: \citeauthor{Gallifant2025}'s TRIPOD-LLM for healthcare~\cite{Gallifant2025}, \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines~\cite{DBLP:conf/chi/NavarroSA26}, \citeauthor{Kapoor2024REFORMS}'s REFORMS for ML-based science~\cite{Kapoor2024REFORMS}, and within SE, \citeauthor{DBLP:conf/icse/SallouDP24}'s vision paper on validity threats~\cite{DBLP:conf/icse/SallouDP24}, our earlier workshop position paper~\cite{DBLP:conf/wsese/0001BFB25}, and \citeauthor{DBLP:journals/corr/abs-2601-01954}'s prompt-reporting guideline for automated SE, derived from a literature review of ICSE, FSE, and ASE papers and a survey of 105 program committee members~\cite{DBLP:journals/corr/abs-2601-01954}. Beyond LLM-specific work, the NeurIPS reproducibility checklist~\cite{DBLP:journals/jmlr/PineauVSLBdFL21} prescribes per-submission disclosure for ML papers, covering items such as algorithm description, experimental setup, and statistical reporting.
+Reporting guidelines have a long tradition in healthcare research, where CONSORT~\cite{Schulz2010} is the canonical standard for randomized clinical trials. Our reporting checklist (\ifpaper Appendix~\ref{sec:checklist} \else \href{/checklist/}{checklist} \fi) follows its structural template. LLM-specific reporting guidelines have appeared more recently. Outside SE, these include \citeauthor{Gallifant2025}'s TRIPOD-LLM for healthcare~\cite{Gallifant2025}, \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines~\cite{DBLP:conf/chi/NavarroSA26}, and \citeauthor{Kapoor2024REFORMS}'s REFORMS for ML-based science~\cite{Kapoor2024REFORMS}. Within SE, they include \citeauthor{DBLP:conf/icse/SallouDP24}'s vision paper on validity threats~\cite{DBLP:conf/icse/SallouDP24}, our earlier workshop position paper~\cite{DBLP:conf/wsese/0001BFB25}, and \citeauthor{DBLP:journals/corr/abs-2601-01954}'s prompt-reporting guideline for automated SE~\cite{DBLP:journals/corr/abs-2601-01954}, derived from a literature review of ICSE, FSE, and ASE papers and a survey of 105 program committee members. Beyond LLM-specific work, the NeurIPS reproducibility checklist~\cite{DBLP:journals/jmlr/PineauVSLBdFL21} prescribes per-submission disclosure for ML papers, covering items such as algorithm description, experimental setup, and statistical reporting.
 % GROUNDING Schulz2010: "the 2010 version of the CONSORT Statement, which updates the previous reporting guideline based on new methodological evidence and accumulated experience"
 % GROUNDING Gallifant2025: "Large language models (LLMs) are rapidly being adopted in healthcare, necessitating standardized reporting guidelines."
 % GROUNDING DBLP:conf/chi/NavarroSA26: "we present a set of considerations for authors, reviewers, and HCI communities around reporting and reviewing papers that involve LLM-integrated systems"
@@ -554,28 +561,20 @@ Reporting guidelines have a long tradition in healthcare research, where CONSORT
 % GROUNDING DBLP:journals/corr/abs-2601-01954: "Based on the findings, we derived a structured guideline that distinguishes essential, desirable, and exceptional reporting elements."
 % GROUNDING DBLP:journals/jmlr/PineauVSLBdFL21: "authors were obliged to fill it both at the initial paper submission phase (May 2019), and at the final camera-ready phase (October 2019)"
 
-\citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours, with the essential items their 105 SE PC respondents endorsed aligning with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proofreading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
+\citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours. The items their 105 surveyed program committee members endorsed as essential align with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proofreading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
 
-Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). The \supplementarymaterial is published according to the \emph{ACM SIGSOFT Open Science Policies}~\cite{daniel_graziotin_2024_10796477} for replication and downstream reuse. In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial.
-% GROUNDING daniel_graziotin_2024_10796477: "the paper itself should, in principle, be made available on the Internet: without any barrier ... under a proper open license that specifies purposes for re-use and repurposing"
-
-\scopeparagraph{Navigating These Guidelines}
-
-Our guidelines are structured to support different reading strategies depending on the reader's goal.
-\emph{Researchers planning a new study} may start with the taxonomy of study types (see \studytypes) to identify which types apply to their planned work, then consult \ifpaper Table~\ref{tab:guideline-matrix} \else the \href{/guidelines/\#guidelines-by-study-type}{applicability matrix} \fi to determine which guidelines are requirements (\must) and which are recommendations (\should) for those study types. Each guideline section opens with a brief summary, allowing readers to quickly assess relevance before reading the full text.
-\emph{Researchers writing up results} may start with the \ifpaper checklist in Appendix~\ref{sec:checklist}, \else \href{/checklist/}{checklist}, \fi which organizes actionable items by typical paper sections (Introduction, Research Design and Methods, Results, etc.). \ifpaper Table~\ref{tab:guidelines} provides a quick reference to all eight guidelines, and Table~\ref{tab:rationale-recommendations} maps each guideline's rationale to its recommendations. \fi
-\emph{Reviewers} can use the \emph{Advice for Reviewers} subsection at the end of each guideline for targeted guidance on assessing manuscripts. \ifpaper Table~\ref{tab:guideline-matrix} helps reviewers identify which guidelines apply to the study type under review. \fi 
+Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial. 
 \section{Methodology}
 \label{sec:methodology}
 
-This project was initiated at the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain, where the first and last author organized a session on guidelines for empirical studies involving LLMs. The resulting discussions led to a position paper~\citep{DBLP:conf/wsese/0001BFB25}. A preprint of this paper was the basis for further discussions at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), where a workstream formed to collaboratively refine and extend the preliminary guidelines.
+The development of these guidelines was initiated at the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain, where the first and last author organized a session on guidelines for empirical studies involving LLMs. The resulting discussions led to a position paper~\citep{DBLP:conf/wsese/0001BFB25}. A preprint of this paper was the basis for further discussions at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), where a workstream formed to collaboratively refine and extend the preliminary guidelines.
 % GROUNDING DBLP:conf/wsese/0001BFB25: "we report a first set of guidelines based on a discussion session with other empiricism experts at the 2024 International Software Engineering Research Network (ISERN) meeting"
-Our process follows an established tradition of developing reporting guidelines through expert collaboration, as exemplified by CONSORT for clinical trials~\citep{Begg1996} and, more recently, TRIPOD-LLM for LLM-based prediction studies in medicine~\citep{Gallifant2025}.
+Our process followed an established tradition of developing reporting guidelines through expert collaboration, as exemplified by CONSORT for clinical trials~\citep{Begg1996} and, more recently, TRIPOD-LLM for LLM-based prediction studies in medicine~\citep{Gallifant2025}.
 % GROUNDING Begg1996: "For RCTs to ultimately benefit patients, the published report should be of the highest possible standard."
 % GROUNDING Gallifant2025: "Developed through an expedited Delphi process and expert consensus, TRIPOD-LLM emphasizes transparency, human oversight and task-specific performance reporting."
 
 We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
-During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \design, \traces) and covered \benchmarksmetrics as well as \limitationsmitigations.
+During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \design, \traces) and added \benchmarksmetrics and \limitationsmitigations.
 
 Then, at least two co-authors were assigned to each study type and guideline to refine and extend the content, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
@@ -596,7 +595,7 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 \section{Study Types}
 \label{sec:study-types}
 
-To ensure the validity and reproducibility of their results, SE studies involving LLMs need empirical guidelines.
+The SE community needs guidelines to establish common standards for designing and reporting empirical studies involving LLMs.
 However, such guidelines must be tailored to different study types that each pose unique challenges.
 Therefore, we created a taxonomy of study types to contextualize our recommendations.
 We use the term \emph{study type} to refer to categories of LLM involvement in empirical research, rather than to research methodologies (e.g., experiments, case studies). A single empirical study may involve multiple such study types.
@@ -902,13 +901,13 @@ Field study findings face \emph{generalizability} challenges because outcomes ma
 \section{Guidelines}
 \label{sec:guidelines}
 
-A primary goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical SE studies involving LLMs. As repeating LLM-focused research to verify results lies somewhere between the ACM's definitions of reproducibility (different team, same research artifacts) and repeatability (different team, different research artifacts)~\cite{acm2020artifactreview} due to potential model changes and imperfect research artifacts, we follow \citeauthor{DBLP:journals/corr/abs-2510-25506} and use the terms interchangeably~\cite{DBLP:journals/corr/abs-2510-25506}. While previous guidelines regarding open science and empirical studies still apply, LLM-specific characteristics (e.g. inherent non-determinism~\cite{DBLP:conf/naacl/SongWLL25, YuanNondeterminismLLMInference}, opaque and proprietary models) present additional replicability challenges, which, in turn, demand new guidance.
-% GROUNDING acm2020artifactreview: "Reproducibility (Different team, same experimental setup) ... an independent group can obtain the same result using the author's own artifacts."
+A primary goal of our guidelines is to \emph{enable reproducibility and replicability} of empirical SE studies involving LLMs. As repeating LLM-focused research to verify results lies somewhere between the ACM's definitions of reproducibility (different team, same research artifacts) and replicability (different team, different research artifacts)~\cite{acm2020artifactreview} due to potential model changes and incomplete research artifacts (e.g., unreported prompts, configurations, or seeds), we follow \citeauthor{DBLP:journals/corr/abs-2510-25506} and use the terms interchangeably~\cite{DBLP:journals/corr/abs-2510-25506}. While previous guidelines regarding open science and empirical studies still apply, LLM-specific characteristics (e.g. inherent non-determinism~\cite{DBLP:conf/naacl/SongWLL25, YuanNondeterminismLLMInference}, opaque and proprietary models) present additional replicability challenges, which, in turn, demand new guidance.
+% GROUNDING acm2020artifactreview: "Reproducibility (Different team, same experimental setup) ... an independent group can obtain the same result using the author's own artifacts. Replicability (Different team, different experimental setup) ... an independent group can obtain the same result using artifacts which they develop completely independently."
 % GROUNDING DBLP:journals/corr/abs-2510-25506: "by a different team using the same measurement procedure, the same measuring system, under the same operating conditions, in the same or a different location on multiple trials"
 % GROUNDING DBLP:conf/naacl/SongWLL25: "given a particular input, the same LLM may generate significantly different outputs under various decoding configurations, a phenomenon known as non-determinism in generation"
 % GROUNDING YuanNondeterminismLLMInference: "Contrary to common belief, our experiments reveal that greedy decoding does not guarantee deterministic outputs across different hardware and system configurations."
 
-Each guideline below begins with a brief \textbf{summary}, followed by its \textbf{rationale}, \textbf{recommendations}, \textbf{examples}, \textbf{benefits}, \textbf{challenges}, links to the relevant \textbf{study types}.
+Each guideline below begins with a brief \textbf{summary}, followed by its \textbf{rationale}, \textbf{recommendations}, \textbf{examples}, \textbf{benefits}, and \textbf{challenges}, with links to the relevant \textbf{study types}.
 The \emph{rationale} articulates the underlying principle, i.e., why the guideline matters, while the \emph{recommendations} provide concrete, actionable practices.
 \ifpaper
 Table~\ref{tab:rationale-recommendations} in the appendix provides a compact overview of this mapping.
@@ -923,8 +922,7 @@ A~\must criterion is a \emph{requirement}. Studies that intend to follow these
 guidelines are expected to meet all \must criteria.
 A~\should criterion represents a desired practice that strengthens a study's rigor or transparency.
 However, there may be valid reasons to deviate in particular circumstances (e.g., resource constraints, inapplicability to a specific study context or type).
-Nonetheless, studies that deviate from a \should criterion should briefly justify the
-deviation and discuss its potential impact (e.g., on validity or reproducibility).
+Nonetheless, authors should briefly justify any deviation from a \should criterion that could compromise a study's validity or reproducibility.
 The distinction between \must and \should also reflects \emph{what} the criterion mandates, not only its severity.
 A \must criterion is typically a disclosure obligation such as reporting model versions, publishing prompts, describing architectures, and discussing limitations, so that readers can independently evaluate the choices authors made.
 A \should criterion is typically a methodological recommendation such as which baselines to include and which validation strategies or statistical analyses to apply.
@@ -1112,7 +1110,7 @@ Given suitable hardware, running the model is then as easy as executing the foll
 
 \guidelinesubsubsection{Benefits}
 
-Reporting the model version, configuration, and date of study execution is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, the recommendations above help researchers come as close as possible to that standard.
+Reporting the model version, configuration, and date of study execution is a prerequisite for the verification and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, the recommendations above help researchers come as close as possible to that standard.
 
 \guidelinesubsubsection{Challenges}
 
@@ -1126,7 +1124,7 @@ Although, as motivated above, open models substantially simplify re-running expe
 Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses~\cite{DBLP:conf/iclr/HoltzmanBDFC20}.
 % GROUNDING DBLP:conf/iclr/HoltzmanBDFC20: "maximization-based decoding methods such as beam search lead to degeneration — output text that is bland, incoherent, or gets stuck in repetitive loops"
 
-Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2408-04667}.
+Even with a temperature of 0, full determinism is rarely guaranteed. Floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, and Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}. Silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2408-04667}.
 % GROUNDING YuanNondeterminismLLMInference: "In the context of LLMs, even small numerical variations in the logit values can affect the final token selection when the top probabilities are close."
 % GROUNDING Chann2023: "the vast majority of non-determinism in the API is explainable by its Sparse MoE architecture failing to enforce per-sequence determinism"
 % GROUNDING DBLP:journals/corr/abs-2307-09009: "the behavior of the "same" LLM service can change substantially in a relatively short amount of time"
@@ -2036,7 +2034,7 @@ Our guidelines recommend that researchers:
 biases, and environmental impact.
 \end{enumerate*}
 An applicability matrix maps guidelines to study types, and a reporting
-checklist (Section~\ref{sec:checklist}) supports authors and reviewers.
+checklist (Appendix~\ref{sec:checklist}) supports authors and reviewers.
 The study types and guidelines were derived collaboratively by
 22~co-authors, following a process similar to that of guidelines in
 other disciplines (see, e.g.,~\cite{Begg1996}).
@@ -2050,24 +2048,24 @@ consider our guidelines
 identified and were derived from 22 co-authors' collective expertise;
 (2)~\emph{useful}, as they provide actionable recommendations with an
 applicability matrix and a concrete reporting checklist
-(Section~\ref{sec:checklist});
-(3)~\emph{well-argued}, as each guideline is motivated by a dedicated
-rationale and supported by references to the literature; and
+(Appendix~\ref{sec:checklist});
+(3)~\emph{well-argued}, as each guideline pairs a dedicated
+rationale with concrete examples from published SE studies; and
 (4)~\emph{integrated with previous work}, as they build on and
 complement established empirical SE standards while addressing
 LLM-specific challenges.
 Adopting these practices will not eliminate LLM non-determinism, but it
-should make claims auditable and results easier to replicate and compare
+would make claims auditable and results easier to replicate and compare
 across studies.
 Because models and tools evolve, we maintain the guidelines as a living
-resource and invite the community to refine and extend them at
-\href{https://llm-guidelines.org/}{llm-guidelines.org}.
+resource and invite the community to refine and extend them
+(\href{https://llm-guidelines.org/}{llm-guidelines.org}).
 
 \section*{Acknowledgments}
 
 Our study types and guidelines are based on discussion sessions with researchers at the \emph{2024 International Software Engineering Research Network} (ISERN) meeting and at the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI} (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
 We thank Steffen Herbold and Alexander Serebrenik for their feedback on the guidelines.
-LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6 and 4.7), were used interactively for language editing and structural revision suggestions across all sections of this paper. All LLM-generated suggestions were reviewed and revised by the authors.
+LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6, 4.7, and 4.8), were used interactively for language editing and structural revision suggestions across all sections of this paper. All LLM-generated suggestions were reviewed and revised by the authors.
 
 \begin{appendices}
 

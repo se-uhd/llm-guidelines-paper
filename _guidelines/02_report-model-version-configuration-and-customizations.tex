@@ -57,7 +57,7 @@ Given suitable hardware, running the model is then as easy as executing the foll
 
 \guidelinesubsubsection{Benefits}
 
-Reporting the model version, configuration, and date of study execution is a prerequisite for the verification, reproduction, and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, the recommendations above help researchers come as close as possible to that standard.
+Reporting the model version, configuration, and date of study execution is a prerequisite for the verification and replication of LLM-based studies. While LLMs are inherently non-deterministic, this cannot excuse dismissing reproducibility. Although exact reproducibility is hard to achieve, the recommendations above help researchers come as close as possible to that standard.
 
 \guidelinesubsubsection{Challenges}
 
@@ -71,7 +71,7 @@ Although, as motivated above, open models substantially simplify re-running expe
 Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses~\cite{DBLP:conf/iclr/HoltzmanBDFC20}.
 % GROUNDING DBLP:conf/iclr/HoltzmanBDFC20: "maximization-based decoding methods such as beam search lead to degeneration — output text that is bland, incoherent, or gets stuck in repetitive loops"
 
-Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2408-04667}.
+Even with a temperature of 0, full determinism is rarely guaranteed. Floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, and Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}. Silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2408-04667}.
 % GROUNDING YuanNondeterminismLLMInference: "In the context of LLMs, even small numerical variations in the logit values can affect the final token selection when the top probabilities are close."
 % GROUNDING Chann2023: "the vast majority of non-determinism in the API is explainable by its Sparse MoE architecture failing to enforce per-sequence determinism"
 % GROUNDING DBLP:journals/corr/abs-2307-09009: "the behavior of the "same" LLM service can change substantially in a relatively short amount of time"

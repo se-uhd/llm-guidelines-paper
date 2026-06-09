@@ -3,17 +3,17 @@ Since the release of ChatGPT in November 2022, large language models (LLMs) have
 Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}. \citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} surveyed 72 peer-reviewed papers from leading security and SE venues published in 2023--2024 and found that every paper contained at least one of nine LLM-specific pitfalls they identified, spanning data collection, pre-training, fine-tuning, prompting, and evaluation; only 15.7\% of the pitfalls present in those papers were explicitly discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
 % GROUNDING DBLP:journals/corr/abs-2510-25506: "For none of the five studies, we were able to fully reproduce the results."
 % GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024, finding that every paper contains at least one pitfall"
-Three characteristics of LLMs make this particularly challenging:
-their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, with slight changes leading to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509};
+Three characteristics of LLMs make this particularly challenging.
+First, their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, and slight changes can lead to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509}.
 % GROUNDING DBLP:conf/naacl/SongWLL25: "given a particular input, the same LLM may generate significantly different outputs under various decoding configurations, a phenomenon known as non-determinism in generation"
 % GROUNDING DBLP:journals/corr/abs-2602-07150: "single-run pass@1 estimates vary by 2.2 to 6.0 percentage points depending on which run is selected, with standard deviations exceeding 1.5 percentage points even at temperature 0"
 % GROUNDING DBLP:conf/nips/AgarwalSCCB21: "A small number of training runs coupled with high variability in performance of deep RL algorithms often leads to substantial statistical uncertainty in reported point estimates."
 % GROUNDING DBLP:journals/corr/abs-2412-12509: "A 2% variation in the LLM's judgment could lead to significant shifts in the ranking, potentially misrepresenting the true performance of the models"
-commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009};
+Second, commercial models evolve beyond version identifiers, so reported performance can change over time~\cite{DBLP:journals/corr/abs-2307-09009}.
 % GROUNDING DBLP:journals/corr/abs-2307-09009: "We find that the performance and behavior of both GPT-3.5 and GPT-4 can vary greatly over time."
-and even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
+Third, even for ``open'' models, training data and fine-tuning details often remain undisclosed~\cite{Gibney2024}.
 % GROUNDING Gibney2024: "Many of the large language models that power chatbots claim to be open, but restrict access to code and training data."
-Moreover, prompt formatting choices alone can shift accuracy by tens of percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
+Moreover, prompt formatting choices alone can shift accuracy by up to 76 percentage points~\cite{DBLP:conf/iclr/Sclar0TS24}, and configured parameters such as temperature affect output variability~\cite{renze2024temperature}.
 % GROUNDING DBLP:conf/iclr/Sclar0TS24: "several widely used open-source LLMs are extremely sensitive to subtle changes in prompt formatting in few-shot settings, with performance differences of up to 76 accuracy points"
 % GROUNDING renze2024temperature: "A higher temperature makes the output more random, thus favoring more 'creative' predictions."
 Hence, not reporting these settings directly affects reproducibility.
