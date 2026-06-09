@@ -14,21 +14,33 @@ Open models allow other researchers to verify research results and build upon th
 A comparison of commercial and open models also allows researchers to contextualize model performance.
 Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial.
 
-Open LLMs are available from hubs such as \href{https://huggingface.co/}{\emph{Hugging Face}}. They can be self-hosted with frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, accessed through cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud, or routed through aggregators such as \href{https://openrouter.ai/}{\emph{OpenRouter}} that expose many providers behind a single API. For agentic setups, open-source tools such as \href{https://www.continue.dev/}{\emph{Continue}}, \href{https://cline.bot/}{\emph{Cline}}, and \href{https://opencode.ai/}{\emph{opencode}}~\cite{opencode} publish their full agent code, system prompts, and tool catalog---vendor-hosted services such as \emph{GitHub Copilot} and \emph{Claude Code} expose only parts of their tooling (e.g., editor extensions, hook examples) and keep their deployed agent loops, system prompts, and tool catalogs proprietary.
+Open LLMs are available from hubs such as \href{https://huggingface.co/}{\emph{Hugging Face}}. They can be self-hosted with frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, accessed through cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud, or routed through aggregators such as \href{https://openrouter.ai/}{\emph{OpenRouter}} that expose many providers behind a single API. For agentic setups, open-source tools such as \href{https://www.continue.dev/}{\emph{Continue}}, \href{https://cline.bot/}{\emph{Cline}}, and \href{https://opencode.ai/}{\emph{opencode}}~\cite{opencode} publish their full agent code, system prompts, and tool catalog. By contrast, vendor-hosted services such as \emph{GitHub Copilot} and \emph{Claude Code} expose only parts of their tooling (e.g., editor extensions, hook examples) and keep their deployed agent loops, system prompts, and tool catalogs proprietary.
+% GROUNDING opencode: "OpenCode is an open source AI coding agent."
 
 The term ``open'' can have different meanings in the context of LLMs.
 \citeauthor{widder2024open} discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
+% GROUNDING widder2024open: "We highlight three main affordances of 'open' AI, namely transparency, reusability, and extensibility"
 The \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024} defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
+% GROUNDING OSIAI2024: "Sufficiently detailed information about the data used to train the system so that a skilled person can build a substantially equivalent system."
 
 \guidelinesubsubsection{Examples}
 
 An increasing number of studies have adopted open LLMs as baseline models.
 For example, \citeauthor{DBLP:journals/corr/abs-2406-09834} evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion~\cite{DBLP:journals/corr/abs-2406-09834}.
+% GROUNDING DBLP:journals/corr/abs-2406-09834: "This study involved seven advanced LLMs, 145 API mappings from eight popular Python libraries, and 28,125 completion prompts."
 \citeauthor{DBLP:journals/corr/abs-2408-04430} compared four LLMs on a cross-language code clone detection task~\cite{DBLP:journals/corr/abs-2408-04430}.
+% GROUNDING DBLP:journals/corr/abs-2408-04430: "We evaluated four LLMs and one embedding model for cross-lingual code clone detection."
 Three evaluated models were open-source.
 \citeauthor{DBLP:conf/eicc/GoncalvesSC0MPS25} fine-tuned the open LLM \emph{LLaMA} 3.2 on a refined version of the \emph{DiverseVul} dataset to benchmark vulnerability detection performance~\cite{DBLP:conf/eicc/GoncalvesSC0MPS25}.
+% GROUNDING DBLP:conf/eicc/GoncalvesSC0MPS25: "we present a refined version of DiverseVul dataset, which is used to fine-tune a large language model, LLaMA 3.2, for vulnerability detection"
 \citeauthor{DBLP:journals/corr/abs-2601-11895} evaluated nine code completion models on the \emph{DevBench} benchmark and included three open-weight models (\emph{DeepSeek-V3}, \emph{DeepSeek-V3.1}, and \emph{Ministral-3B}) alongside commercial frontier models, releasing benchmark, evaluation scripts, and per-model raw completions under an MIT license~\cite{DBLP:journals/corr/abs-2601-11895}.
-\emph{CodeBERT}, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data-processing scripts on GitHub~\cite{codebert}. It has been used as an open baseline across diverse SE tasks, including exploit code generation~\cite{DBLP:journals/jss/YangZCZHC23}, vulnerability detection~\cite{DBLP:conf/gaiis/XiaSD24}, code clone detection~\cite{DBLP:conf/kbse/SonnekalbGBM22}, and programming assistance for exception handling~\cite{DBLP:conf/icse/CaiYMMN24}.
+% GROUNDING DBLP:journals/corr/abs-2601-11895: "Claude 4 Sonnet, Claude 3.7 Sonnet, GPT-4.1 mini, GPT-4.1, GPT-4o, DeepSeek-V3, DeepSeek-V3.1, GPT-4.1 nano, Ministral 3B"
+\emph{CodeBERT}, a bimodal transformer pre-trained by Microsoft Research, is published with model weights, source code, and data processing scripts on GitHub~\cite{codebert}. It has been used as an open baseline across diverse SE tasks, including exploit code generation~\cite{DBLP:journals/jss/YangZCZHC23}, vulnerability detection~\cite{DBLP:conf/gaiis/XiaSD24}, code clone detection~\cite{DBLP:conf/kbse/SonnekalbGBM22}, and programming assistance for exception handling~\cite{DBLP:conf/icse/CaiYMMN24}.
+% GROUNDING codebert: "This repo provides the code for reproducing the experiments in CodeBERT: A Pre-Trained Model for Programming and Natural Languages."
+% GROUNDING DBLP:journals/jss/YangZCZHC23: "we propose a novel template-augmented exploit code generation approach ExploitGen based on CodeBERT"
+% GROUNDING DBLP:conf/gaiis/XiaSD24: "this study introduces a software defect detection system leveraging CodeBERT and Bi-LSTM"
+% GROUNDING DBLP:conf/kbse/SonnekalbGBM22: "Transformer networks such as CodeBERT already achieve outstanding results for code clone detection in benchmark datasets"
+% GROUNDING DBLP:conf/icse/CaiYMMN24: "we design Neurex via a multi-tasking model with the fine-tuning of the large language model CodeBERT for the three above exception handling recommending tasks"
 
 \guidelinesubsubsection{Benefits}
 
@@ -43,6 +55,8 @@ They typically avoid the per-use API fees that can constrain research groups wit
 Open-source LLMs face several challenges:
 \begin{itemize}
     \item \emph{Definitional inconsistency.} Many models release only trained weights without training data or methodological details (``open weight'' openness)~\cite{Gibney2024}, which is why we reference the OSI definition in our recommendations~\cite{OSIAI2024}.
+    % GROUNDING Gibney2024: "Technology giants such as Meta and Microsoft are describing their artificial intelligence (AI) models as 'open source' while failing to disclose important information about the underlying technology"
+    % GROUNDING OSIAI2024: "The complete source code used to train and run the system"
     \item \emph{Performance gap.} Open models often lag behind the most advanced proprietary ``frontier'' models in common benchmarks, making it difficult to demonstrate clear improvements when evaluating new methods using open LLMs alone.
     \item \emph{Hardware demands.} Deploying and experimenting with these models typically requires substantial hardware resources, in particular high-performance GPUs that may be beyond reach for many academic groups.
     \item \emph{Operational complexity.} Unlike APIs provided by proprietary vendors (e.g., the OpenAI API), installing, configuring, and fine-tuning open-source models can be technically demanding.

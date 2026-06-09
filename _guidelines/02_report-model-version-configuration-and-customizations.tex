@@ -28,6 +28,8 @@ For these tools, researchers \should report what is available and openly acknowl
 \guidelinesubsubsection{Examples}
 
 Based on the documentation that OpenAI and Azure provide~\cite{OpenAI25, Azure25}, researchers might, for example, report:
+% GROUNDING OpenAI25: "Set the seed parameter to any integer of your choice and use the same value across requests you'd like deterministic outputs for."
+% GROUNDING Azure25: "See Model versions to learn about how Azure OpenAI handles model version upgrades. See Working with models to learn how to view and configure the model version settings of your GPT-4 deployments."
 
 \begin{quote}
 \it
@@ -36,6 +38,7 @@ Based on the documentation that OpenAI and Azure provide~\cite{OpenAI25, Azure25
 \end{quote}
 
 \citeauthor{DBLP:conf/icse/KangYY23} provide a similar statement in their paper on exploring LLM-based bug reproduction~\cite{DBLP:conf/icse/KangYY23}:
+% GROUNDING DBLP:conf/icse/KangYY23: "We access OpenAI Codex via its closed beta API, using the code-davinci-002 model. ... we set the temperature to 0.7, and the maximum number of tokens to 256."
 
 \begin{quote}
 \it
@@ -45,6 +48,7 @@ Based on the documentation that OpenAI and Azure provide~\cite{OpenAI25, Azure25
 Our guidelines additionally recommend reporting a checksum/fingerprint and exact dates; otherwise, this example is close to our recommendations.
 
 \citeauthor{DBLP:conf/icsa/DharVV24}~\cite{DBLP:conf/icsa/DharVV24} assessed whether LLMs can generate architectural design decisions, detailing the system architecture and the LLM's role within it.
+% GROUNDING DBLP:conf/icsa/DharVV24: "we utilize GPT and T5-based models with 0-shot, few-shot, and fine-tuning approaches to generate the Decision of an ADR given its Context"
 They provide information on the fine-tuning approach and datasets, including the source of architectural decision records, preprocessing methods, and data selection criteria.
 
 For self-hosted models, the \supplementarymaterial can become a true replication package. For example, for models provisioned using \href{https://ollama.com/library/}{ollama}, one can report the specific tag and checksum, e.g., \emph{``llama3.3, tag 70b-instruct-q8\_0, checksum d5b5e1b84868.''}
@@ -61,12 +65,19 @@ Different model providers and modes of operating the models allow for varying de
 For example, OpenAI provides a model version and a system fingerprint describing the backend configuration, which can also influence the output.
 However, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint.
 As a beta feature, OpenAI lets users set a seed parameter to receive \enq{(mostly) consistent output}~\cite{OpenAI23}.
+% GROUNDING OpenAI23: "Developers can now specify `seed` parameter in the Chat Completion request to receive (mostly) consistent outputs."
 However, the seed value does not allow for full reproducibility and the fingerprint changes frequently. 
 Although, as motivated above, open models substantially simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see \href{https://github.com/ollama/ollama/issues/5321}{GitHub issue for Llama3}).
 Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses~\cite{DBLP:conf/iclr/HoltzmanBDFC20}.
+% GROUNDING DBLP:conf/iclr/HoltzmanBDFC20: "maximization-based decoding methods such as beam search lead to degeneration — output text that is bland, incoherent, or gets stuck in repetitive loops"
 
-Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2510-25506, DBLP:conf/naacl/SongWLL25}.
+Even with a temperature of 0, full determinism is rarely guaranteed: floating-point arithmetic on GPUs causes slight numerical differences that cascade into divergent token selections~\cite{YuanNondeterminismLLMInference}, Sparse Mixture-of-Experts routing amplifies this effect~\cite{Chann2023}, silent backend changes in commercial APIs produce different outputs over time~\cite{DBLP:journals/corr/abs-2307-09009}, and even self-hosted open models with identical settings do not always yield consistent outputs~\cite{DBLP:journals/corr/abs-2408-04667}.
+% GROUNDING YuanNondeterminismLLMInference: "In the context of LLMs, even small numerical variations in the logit values can affect the final token selection when the top probabilities are close."
+% GROUNDING Chann2023: "the vast majority of non-determinism in the API is explainable by its Sparse MoE architecture failing to enforce per-sequence determinism"
+% GROUNDING DBLP:journals/corr/abs-2307-09009: "the behavior of the "same" LLM service can change substantially in a relatively short amount of time"
+% GROUNDING DBLP:journals/corr/abs-2408-04667: "LLM practitioners commonly notice that outputs can vary for the same inputs under settings expected to be deterministic."
 Researchers \shouldnot treat a temperature of 0 as a guarantee of reproducibility, but as one measure among several, including fixed seed values~\cite{OpenAI23}, system fingerprints, and archiving of raw outputs.
+% GROUNDING OpenAI23: "Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend."
 When a temperature of 0 is chosen primarily for reproducibility, this motivation \should be stated explicitly, along with an acknowledgment of its potential impact on output quality.
 
 \guidelinesubsubsection{Study Types}

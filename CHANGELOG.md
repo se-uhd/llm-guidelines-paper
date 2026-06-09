@@ -7,6 +7,13 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ## [Ahead of last paper release]
 
+## [2026.06]
+
+### Changed
+
+- **New Software Engineering Tools:** The GenAI-agent description now centers on a control loop around the model (observe, inspect, choose, act), with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation) drawn from Raschka's coding-agent decomposition and CoALA (Sumers et al.), replacing the earlier three-component framing.
+- **Citations audited and grounded:** every cited claim was checked against its source and several miscitations corrected: mode collapse now cites Verbalized Sampling (Zhang et al.) and Kirk et al.; non-determinism under fixed settings cites Atil et al.; benchmark overconfidence cites Banerjee et al.; TnT-LLM and other unsupported citations removed.
+
 ### Added
 
 - **Limitations and Mitigations:** External Validity absorbed the former Generalizability list, gaining two new threats (configuration sensitivity, research-to-practice gap). Construct Validity gained five threats: construct under-specification, reliability without validity, capability confounding, prompt sensitivity, judge biases (position, verbosity, format).
@@ -110,7 +117,8 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 
 First explicitly versioned release, corresponding to the EMSE major revision submission (2026-03-19).
 
-[Ahead of last paper release]: https://github.com/se-uhd/llm-guidelines-paper/compare/2026.05...main
+[Ahead of last paper release]: https://github.com/se-uhd/llm-guidelines-paper/compare/2026.06...main
+[2026.06]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.06
 [2026.05]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.05
 [2026.04]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.04
 [2026.03]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.03

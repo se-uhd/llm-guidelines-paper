@@ -7,7 +7,9 @@ Without explicit disclosure, readers cannot evaluate how the LLM's characteristi
 
 When conducting any kind of empirical study involving LLMs, researchers \must clearly declare that an LLM was used (see \scope for what we consider relevant research support).
 This \should be done in a suitable section of the \paper, for example, in the introduction or research methods section; \citeauthor{cheng2025writing}~\cite{cheng2025writing} argue specifically for the methods section, since acknowledgments are easily missed at the end of a paper.
+% GROUNDING cheng2025writing: "the most helpful and transparent means for describing the use of these tools is within the methods section of a manuscript"
 The ACM Policy on Authorship requires authors to describe in the methods section any use of AI in the research itself~\cite{ACM2026}.
+% GROUNDING ACM2026: "the specific use(s) of AI tools must be described in detail in the methods section of the Work"
 
 Beyond generic declarations, researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper.
 A sufficient declaration specifies not only \emph{that} an LLM was used, but also \emph{which} LLM (name and version), \emph{how} it was used (e.g., as an annotator, code generator, or judge), and \emph{where} in the research process it was employed (e.g., data collection, analysis, or synthesis).
@@ -20,8 +22,10 @@ In each case, the disclosure \must be specific enough for readers to assess how 
 \guidelinesubsubsection{Examples}
 
 The \emph{ACM Policy on Authorship} requires reporting AI-generated artifacts such as code, datasets, and figures where they underlie a study's conclusions~\cite{ACM2026}.
+% GROUNDING ACM2026: "the creation of artifacts that are directly relevant to the conclusions of the research, such as code, datasets, and charts or figures that rely on the AI tools"
 Reporting in the methods section keeps this disclosure visible under double-blind review, where end-of-paper acknowledgments are often removed.
 An example of an LLM disclosure beyond writing support can be found in a recent paper by \citeauthor{DBLP:conf/re/LubosFTGMEL24}~\cite{DBLP:conf/re/LubosFTGMEL24}, in which they write in the methodology section:
+% GROUNDING DBLP:conf/re/LubosFTGMEL24: "We conducted an LLM-based evaluation of requirements utilizing the Llama 2 language model with 70 billion parameters, fine-tuned to complete chat responses."
 
 \begin{quote}
 \it
@@ -36,6 +40,7 @@ An example of an LLM disclosure beyond writing support can be found in a recent 
 \end{quote}
 
 \citeauthor{DBLP:journals/corr/abs-2601-11895}'s DevBench paper illustrates separate disclosure of multiple LLM roles: \emph{GPT-4o} generates the synthetic benchmark instances, nine models (including \emph{Claude 4 Sonnet}, \emph{GPT-4.1}, \emph{DeepSeek-V3}, and \emph{Ministral-3B}) are the evaluation subjects, and \emph{o3-mini} is the LLM judge that scores completions for relevance and helpfulness~\cite{DBLP:journals/corr/abs-2601-11895}.
+% GROUNDING DBLP:journals/corr/abs-2601-11895: "Synthetic instances were generated with OpenAI's GPT-4o, chosen for its fluency, reasoning, and code generation capabilities"
 
 \guidelinesubsubsection{Benefits}
 
@@ -47,7 +52,9 @@ Realizing these benefits requires reporting the LLM's exact role and version (se
 Declaring LLM usage requires only a brief statement and no additional experiments, making compliance straightforward.
 One challenge might be authors' reluctance to disclose LLM usage for valid use cases, because they fear that AI-generated content makes reviewers think that the authors' work is less original.
 In fact, there is evidence suggesting that AI disclosure can negatively affect trust in authors~\cite{SCHILKE2025104405}.
+% GROUNDING SCHILKE2025104405: "Thirteen experiments consistently demonstrate that actors who disclose their AI usage are trusted less than those who do not."
 However, the \emph{ACM Policy on Authorship} requires disclosure of AI used in the research itself, not AI used only to assist with writing~\cite{ACM2026}.
+% GROUNDING ACM2026: "ACM no longer requires the disclosure of information regarding the use of AI (as distinct from AI used in the conduct of the research itself"
 Our guidelines focus on such use (see \scope), not on proofreading or writing support.
 
 \guidelinesubsubsection{Study Types}

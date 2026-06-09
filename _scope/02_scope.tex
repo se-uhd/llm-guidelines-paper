@@ -1,6 +1,8 @@
 \scopeparagraph{Software Engineering as our Target Discipline}
 
 We target SE research because reporting guidelines from other disciplines do not address its specific needs (see \emph{Related Reporting Guidelines} below). In particular, SE research employs a wide variety of empirical methods~\cite{ralph2021empiricalstandardssoftwareengineering, DBLP:books/sp/WohlinRHORW24}. We organize the LLM-involving subset of these methods into a taxonomy of \studytypes\ifpaper~(Section~\ref{sec:study-types})\fi, and each of our \guidelines specifies its applicability per study type.
+% GROUNDING ralph2021empiricalstandardssoftwareengineering: "Each study should be reviewed on its own terms, which is why so many different standards are needed."
+% GROUNDING DBLP:books/sp/WohlinRHORW24: "The book provides indispensable information regarding empirical studies, particularly for experiments, but also for systematic literature studies, surveys, and case studies."
 
 \scopeparagraph{Focus on Text-Based Use Cases}
 
@@ -13,6 +15,7 @@ For engineers, we focus on the use of LLMs to automate SE tasks, that is, artifi
 This includes agentic systems that autonomously plan and execute multi-step tasks using LLMs (see~\design).
 For researchers, we focus on the use of LLMs to automate empirical research tasks such as data collection, processing, or analysis (see~\llmsforresearcher).
 The 2026 ACM Policy on Authorship likewise requires disclosing AI used in the research itself, not AI used only to assist with writing~\cite{ACM2026}.
+% GROUNDING ACM2026: "ACM no longer requires the disclosure of information regarding the use of AI (as distinct from AI used in the conduct of the research itself"
 
 \scopeparagraph{Researchers as our Target Audience}
 
@@ -20,7 +23,7 @@ Our guidelines are intended to help SE researchers design, plan, conduct,
 and report empirical studies involving LLMs, and to support scholarly peer
 review of such studies. Each guideline includes an \emph{Advice for
 Reviewers} subsection with targeted assessment suggestions.
-Our guidelines focus on what to report and how; they complement but do not replace methodological guidance for designing specific types of empirical studies.
+Our guidelines focus on what to report and how. They complement but do not replace methodological guidance for designing specific types of empirical studies.
 
 \scopeparagraph{Reporting Locations}
 
@@ -29,10 +32,19 @@ We use \paper to refer to the manuscript PDF, including any appendices bound wit
 \scopeparagraph{Related Reporting Guidelines}
 
 Reporting guidelines have a long tradition in healthcare research, where CONSORT~\cite{Schulz2010} is the canonical standard for randomized clinical trials. Our reporting checklist (\ifpaper Appendix~\ref{sec:checklist} \else \href{/checklist/}{checklist} \fi) follows its structural template. LLM-specific reporting guidelines have appeared more recently: \citeauthor{Gallifant2025}'s TRIPOD-LLM~\cite{Gallifant2025} for healthcare, \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines~\cite{DBLP:conf/chi/NavarroSA26}, \citeauthor{Kapoor2024REFORMS}'s REFORMS~\cite{Kapoor2024REFORMS} for ML-based science, and within SE, \citeauthor{DBLP:conf/icse/SallouDP24}'s vision paper on validity threats~\cite{DBLP:conf/icse/SallouDP24}, our earlier workshop position paper~\cite{DBLP:conf/wsese/0001BFB25}, and \citeauthor{DBLP:journals/corr/abs-2601-01954}'s prompt-reporting guideline for automated SE~\cite{DBLP:journals/corr/abs-2601-01954}, derived from a literature review of ICSE, FSE, and ASE papers and a survey of 105 program committee members. Beyond LLM-specific work, the NeurIPS reproducibility checklist~\cite{DBLP:journals/jmlr/PineauVSLBdFL21} prescribes per-submission disclosure for ML papers, covering items such as algorithm description, experimental setup, and statistical reporting.
+% GROUNDING Schulz2010: "the 2010 version of the CONSORT Statement, which updates the previous reporting guideline based on new methodological evidence and accumulated experience"
+% GROUNDING Gallifant2025: "Large language models (LLMs) are rapidly being adopted in healthcare, necessitating standardized reporting guidelines."
+% GROUNDING DBLP:conf/chi/NavarroSA26: "we present a set of considerations for authors, reviewers, and HCI communities around reporting and reviewing papers that involve LLM-integrated systems"
+% GROUNDING Kapoor2024REFORMS: "REFORMS was developed based on a consensus of 19 researchers across computer science, data science, mathematics, social sciences, and biomedical sciences"
+% GROUNDING DBLP:conf/icse/SallouDP24: "researchers must still be careful as numerous intricate factors can influence the outcomes of experiments involving LLMs"
+% GROUNDING DBLP:conf/wsese/0001BFB25: "This paper contributes the first set of holistic guidelines for such studies."
+% GROUNDING DBLP:journals/corr/abs-2601-01954: "Based on the findings, we derived a structured guideline that distinguishes essential, desirable, and exceptional reporting elements."
+% GROUNDING DBLP:journals/jmlr/PineauVSLBdFL21: "authors were obliged to fill it both at the initial paper submission phase (May 2019), and at the final camera-ready phase (October 2019)"
 
 \citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours, with the essential items their 105 SE PC respondents endorsed aligning with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proofreading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
 
 Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). The \supplementarymaterial is published according to the \emph{ACM SIGSOFT Open Science Policies}~\cite{daniel_graziotin_2024_10796477} for replication and downstream reuse. In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial.
+% GROUNDING daniel_graziotin_2024_10796477: "the paper itself should, in principle, be made available on the Internet: without any barrier ... under a proper open license that specifies purposes for re-use and repurposing"
 
 \scopeparagraph{Navigating These Guidelines}
 

@@ -1,6 +1,7 @@
 \guidelinesubsubsection{Rationale}
 
 When using LLMs for empirical studies in SE, researchers face unique challenges and potential limitations that can influence the validity, reliability, and reproducibility of their findings~\cite{DBLP:conf/icse/SallouDP24}.
+% GROUNDING DBLP:conf/icse/SallouDP24: "researchers must still be careful as numerous intricate factors can influence the outcomes of experiments involving LLMs"
 Researchers must openly discuss these limitations and explain how their impact was mitigated.
 These limitations are relative to current LLM capabilities and tool architectures; speculating about future improvements is beyond the scope of a paper's limitation section.
 Nevertheless, risk management and threat mitigation \should be planned during study design, not as an afterthought.
@@ -9,6 +10,9 @@ Nevertheless, risk management and threat mitigation \should be planned during st
 Researchers \must clearly present the limitations of their work without defensiveness or obfuscation. These limitations may concern external, internal, and construct validity; reliability and reproducibility; and ethical, regulatory, and environmental concerns.
 
 We follow the standard SE convention of organizing limitations by external, internal, and construct validity, plus reliability~\cite{DBLP:journals/ese/RunesonH09,ralph2021empiricalstandardssoftwareengineering}, extended below with ethical, regulatory, and environmental concerns specific to LLM research. For studies that adopt qualitative analytic methods (the use of LLMs in reflexive qualitative analysis is itself contested, see \annotators), researchers \should use the trustworthiness criteria of credibility, transferability, dependability, and confirmability instead~\cite{guba1981criteria}. When deterministic reproducibility is structurally unattainable (e.g., SaaS-based models with opaque versioning), researchers \should adopt the same trustworthiness criteria to substantiate dependability and confirmability of findings.
+% GROUNDING DBLP:journals/ese/RunesonH09: "This scheme distinguishes between four aspects of the validity, which can be summarized as follows: Construct validity ... Internal validity ... External validity ... Reliability"
+% GROUNDING ralph2021empiricalstandardssoftwareengineering: "General Quality Criteria (e.g. internal validity, construct validity, credibility, resonance)"
+% GROUNDING guba1981criteria: "The four terms credibility, transferability, dependability and confirmability were established as the naturalist's equivalents for the more conventional rigor criteria of internal validity, external validity, reliablity and objectivity."
 
 \paragraph{External Validity.}
 The primary threats to external validity are:
@@ -20,6 +24,8 @@ The primary threats to external validity are:
     \item \emph{Limited participant and rater diversity}: Study participants (e.g., developers) and human raters validating LLM outputs may not represent the broader population in terms of expertise, geographic location, or cultural background (see \humanvalidation for guidance on rater diversity in value-laden constructs).
     \item \emph{Research-to-practice gap}: Developers using the same tools outside researcher-supervised conditions may obtain results that differ from those reported in the study.
     \item \emph{Cross-time instability}: Performance of proprietary models can change over time, leading to non-generalizable study outcomes~\cite{DBLP:journals/corr/abs-2307-09009, doi:10.1148/radiol.232411} (see \modelversion for version and fingerprint reporting that enables tracking such drift).
+    % GROUNDING DBLP:journals/corr/abs-2307-09009: "the behavior of the "same" LLM service can change substantially in a relatively short amount of time"
+    % GROUNDING doi:10.1148/radiol.232411: "Our results suggest performance drift between the March and June snapshots of GPT-3.5 and GPT-4."
 \end{itemize}
 
 Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time). Researchers \must discuss the limitations and mitigations of external validity.
@@ -56,6 +62,8 @@ The primary threats to reliability and reproducibility are:
     \item \emph{Non-deterministic outputs}: Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
     \item \emph{Infrastructure dependence}: Results may vary depending on the hardware, software stack, and hosting environment used; vendor-imposed quotas, throttling, or pricing changes can further prevent re-running experiments at the original scale, making exact replication challenging across different infrastructure setups.
     \item \emph{Resource inequality}: LLM research is resource-intensive and remains predominantly in the domain of private companies or well-funded research institutions~\cite{schwartz2020green, ahmed2023industry}, excluding researchers from under-resourced institutions.
+    % GROUNDING schwartz2020green: "the financial cost of the computations can make it difficult for academics, students, and researchers, in particular those from emerging economies, to engage in deep learning research"
+    % GROUNDING ahmed2023industry: "industry increasingly dominates the three key ingredients of modern AI research: computing power, large datasets, and highly skilled researchers"
 \end{itemize}
 
 Researchers \must discuss the measures taken to increase reliability and reproducibility.
@@ -68,6 +76,7 @@ The primary concerns for ethical and regulatory matters are:
     \item \emph{Use of sensitive or proprietary data}: Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
     \item \emph{Jurisdictional obligations}: Data protection regulations such as GDPR or CCPA and institutional policies may impose constraints on data collection, processing, and sharing in LLM-based studies.
     \item \emph{Implicit model bias}: Especially for qualitative research, LLMs might \enq{reinforce dominant paradigms and biases} and \enq{identify, replicate and reinforce dominant language and patterns}~\cite{jowsey2025reject} (see \humanvalidation).
+    % GROUNDING jowsey2025reject: "Failure to recognize these limitations of GenAI risks analyses that reinforce dominant paradigms and biases."
 \end{itemize}
 
 Studies involving sensitive data \must discuss data governance mechanisms tailored toward LLM environments, compliant with applicable jurisdictional obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
@@ -76,16 +85,20 @@ Studies involving sensitive data \must discuss data governance mechanisms tailor
 The primary environmental and sustainability concerns are:
 \begin{itemize}
     \item \emph{Energy consumption}: With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.
+    % GROUNDING DBLP:conf/acl/StrubellGM19: "These accuracy improvements depend on the availability of exceptionally large computational resources that necessitate similarly substantial energy consumption."
     \item \emph{Trade-off between repetition and sustainability}: Repeating experiments increases reliability but also energy consumption, requiring trade-offs during study design.
 \end{itemize}
 
 Researchers \should justify the LLM's resource consumption against the benefits over traditional approaches.
 Mitigations include \emph{energy preservation} and \emph{cost accounting}. \emph{Energy preservation} involves selecting smaller or newer, less resource-intensive models and applying techniques such as input/output token reduction, model pruning, quantization, or knowledge distillation~\cite{mitu2024hidden} where feasible. Carbon footprint estimation is desirable, but still difficult. \emph{Cost accounting} tracks resource consumption by reporting tokens, service costs, or hardware specifications.
+% GROUNDING mitu2024hidden: "Techniques such as model pruning, quantisation, and knowledge distillation can reduce the computational resources needed for training and inference, thereby decreasing the overall carbon footprint"
 
 \guidelinesubsubsection{Examples}
 
 \citeauthor{DBLP:conf/icse/SallouDP24}~\cite{DBLP:conf/icse/SallouDP24} catalog three categories of LLM-specific threats to validity (i.e., closed-source models, implicit data leakage, and reproducibility) and pair each with concrete mitigation strategies (e.g., versioned model archives, metamorphic test data, multiple replication runs with variability metrics, and detailed execution metadata).
+% GROUNDING DBLP:conf/icse/SallouDP24: "potential threats to the validity of LLM-based research including issues such as closed-source models, possible data leakage between LLM training data and research evaluation, and the reproducibility of LLM-based findings"
 \citeauthor{DBLP:conf/icse/Du0WWL0FS0L24}~\cite{DBLP:conf/icse/Du0WWL0FS0L24} pair each threat in their \emph{ClassEval} evaluation with a concrete mitigation: manually constructing the benchmark with multiple annotators to limit data leakage, piloting prompts on held-out tasks to control for prompt sensitivity, and reporting greedy-decoding results to control for non-determinism.
+% GROUNDING DBLP:conf/icse/Du0WWL0FS0L24: "One potential threat is the data leakage between our benchmark and model training data, thus we manually construct the benchmark ClassEval."
 
 \guidelinesubsubsection{Benefits}
 
@@ -96,6 +109,9 @@ Transparent reporting of limitations and mitigations helps readers calibrate con
 Identifying limitations one is not already aware of is the hardest part of writing a threats section, particularly for methodological threats outside the team's primary expertise. Publication and reviewing norms can pressure authors to downplay weaknesses, while page limits make exhaustive treatment impractical. Threat lists that recite generic LLM-research issues (e.g., model bias, non-determinism, or contamination) without showing how each one applies to specific design choices in this study leave reviewers unable to tell which risks actually applied.
 
 The threats to validity framework itself is contested within SE. \citeauthor{DBLP:journals/infsof/VerdecchiaELRS23}~\cite{DBLP:journals/infsof/VerdecchiaELRS23} argue that threats sections too often read as \enq{laundry-lists}, \citeauthor{DBLP:conf/esem/LagoRSV24}~\cite{DBLP:conf/esem/LagoRSV24} corroborate this empirically across a decade of ICSE Distinguished Paper Award winners, and \citeauthor{DBLP:journals/tosem/RobillardAEGLNNSSS24}~\cite{DBLP:journals/tosem/RobillardAEGLNNSSS24} argue for refocusing the discussion on study design trade-offs rather than the standard validity categories.
+% GROUNDING DBLP:journals/infsof/VerdecchiaELRS23: "TTV sections seem to be mostly formulated as “laundry-lists” of potential threats, lacking a thorough contextualization in the specifics of the study at hand"
+% GROUNDING DBLP:conf/esem/LagoRSV24: "the selected papers, despite being selected as best papers in the ICSE conference, reported dominantly shallow or none TTV analysis"
+% GROUNDING DBLP:journals/tosem/RobillardAEGLNNSSS24: "First, threats to validity sections are often boilerplate text produced by rote."
 
 \guidelinesubsubsection{Study Types}
 

@@ -48,6 +48,12 @@
 \clubpenalty = 10000
 % prevent single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
+% avoid a single short word alone on the last line of a paragraph:
+% \parfillskip can stretch at most 0.75\textwidth, so the last line must
+% fill at least ~25% of the text width (raise to 0.8/0.85 for a gentler
+% 20%/15% minimum). \emergencystretch absorbs the rare overfull line this
+% can cause.
+\setlength{\parfillskip}{0pt plus 0.75\textwidth}
 % allow line breaks at explicit hyphens (sub-components, retrieval-augmented, ...)
 \exhyphenpenalty = 0
 % give LaTeX more flexibility on tight lines so it does not overrun the margin

@@ -1,15 +1,21 @@
 \guidelinesubsubsection{Rationale}
 
 LLM-based studies rest on artifacts that researchers design, author, or configure before any model is invoked: \emph{software layers} that pre-process data, prepare prompts, filter user requests, or post-process responses, and the \emph{context} those layers feed into each call~\cite{galster2026configuring}. Context includes prompt templates, context files, tool and skill schemas, and retrieval mechanisms that bring external data into model invocations.
+% GROUNDING galster2026configuring: "The software layers around the model(s) that drive the agent loop (i.e., the agent harness) assemble this context for each call, expose tool schemas, and manage turn-by-turn state."
 For example, ChatGPT and GitHub Copilot use the same underlying models, but their outputs differ substantially because Copilot automatically adds project context. Researchers can also build tools using models directly via APIs.
 
 Prompts are central to any LLM-based study~\cite{DBLP:conf/iclr/Sclar0TS24}.
+% GROUNDING DBLP:conf/iclr/Sclar0TS24: "Because choices in prompt design can strongly influence model behavior, this design process is critical in effectively using any modern pre-trained generative language model"
 A \emph{prompt} is a concrete input to an LLM that guides its output~\cite{DBLP:journals/corr/abs-2406-06608}.
+% GROUNDING DBLP:journals/corr/abs-2406-06608: "A prompt is an input to a Generative AI model, that is used to guide its output"
 Depending on the task, a prompt may include instructions (e.g., \enq{classify the following bug report}), task context, input data, and output format specifications (e.g., \enq{respond as JSON with fields `category' and `justification'}), with outputs ranging from unstructured text to structured formats such as JSON~\cite{promptingguide_elements}.
+% GROUNDING promptingguide_elements: "A prompt contains any of the following elements: Instruction ... Context ... Input Data ... Output Indicator ... the type or format of the output"
 A \emph{prompt template} is a parameterized structure containing static elements (e.g., instructions, output format specifications) and placeholders for variable content (e.g., source code under analysis) that are filled in at runtime to construct concrete prompts~\cite{DBLP:journals/corr/abs-2406-06608}.
+% GROUNDING DBLP:journals/corr/abs-2406-06608: "A prompt template is a function that contains one or more variables which will be replaced by some media (usually text) to create a prompt"
 In automated studies, researchers typically design prompt templates from which individual prompts are then instantiated.
 Prompts substantially influence a model's output, so how they are formatted and integrated into an LLM-based study is essential for transparency, verifiability, and reproducibility.
 \citeauthor{DBLP:conf/iclr/Sclar0TS24}~\cite{DBLP:conf/iclr/Sclar0TS24} question the methodological validity of comparing models with \enq{an arbitrarily chosen, fixed prompt format}, because their research has shown that the performance of different prompt formats only weakly correlates between different models.
+% GROUNDING DBLP:conf/iclr/Sclar0TS24: "format performance only weakly correlates between models, which puts into question the methodological validity of comparing models with an arbitrarily chosen, fixed prompt format"
 
 This guideline covers the architecture, prompts, and configuration used in an LLM-based study, complementing \modelversion (model-specific details) and \traces (runtime behavior).
 It does not apply when LLMs are used solely for language polishing, paraphrasing, translation, tone or style adaptation, or layout edits (see \scope).
@@ -57,11 +63,12 @@ For \emph{ensemble models}, in addition to following the \modelversion guideline
 
 \paragraph{Agentic Systems.}
 If the LLM is part of an \emph{agentic system} that autonomously plans or executes tasks, researchers \must additionally describe the agents' roles (e.g., planner, executor, coordinator), whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used (e.g., chain-of-thought, self-reflection, multi-turn dialogue).
-For agentic systems that use external tools (e.g., Claude Code and its \href{https://docs.anthropic.com/en/docs/claude-code/sub-agents}{subagents}), researchers \must distinguish three kinds of activity: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)} servers); (3) interactions with users, the environment, or other agents.
+For agentic systems that use external tools (e.g., Claude Code and its \href{https://code.claude.com/docs/en/sub-agents}{subagents}), researchers \must distinguish three kinds of activity: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or \href{https://modelcontextprotocol.io/}{Model Context Protocol (MCP)} servers); (3) interactions with users, the environment, or other agents.
 Reporting these separately lets readers understand whether a result came from the model, a tool, or their interaction. How to record the runtime traces of each is covered in \traces.
 
 \paragraph{Context Files and Agent Configuration.}
 Researchers can tailor agentic tools through \emph{configuration mechanisms} such as context files, skills, subagents, hooks, settings, and rules~\cite{galster2026configuring}.
+% GROUNDING galster2026configuring: "We systematically document eight configuration mechanisms: Context Files, Skills, Subagents, Commands, Rules, Settings, Hooks, and MCP servers."
 A \emph{configuration artifact} is a concrete instance of such a mechanism: a single file (e.g., a context file or a subagent file) or a directory bundling several files (e.g., a skill folder containing \texttt{SKILL.md} alongside scripts, references, and assets).
 Since configuration mechanisms steer agent behavior in the same way as system prompts, researchers \must describe which configuration mechanisms were used and \should publish all configuration artifacts as \supplementarymaterial.
 Configuration mechanisms and their artifacts \must be reported with the same level of detail as general prompts, including their development process and any iterations.
@@ -71,6 +78,7 @@ Where subagents are used, researchers \should also describe the delegation patte
 \paragraph{Tool Catalog and MCP Servers.}
 On each call, agentic systems expose a set of tools to the model along with their schemas (e.g., parameter names, types, and natural-language descriptions).
 Tools differ in granularity. An editor agent might expose one tool per editing operation (e.g., \texttt{read\_file}, \texttt{apply\_edit}), while Claude Code defines a single \texttt{Bash} tool (\texttt{PowerShell} on Windows) through which the agent runs arbitrary shell commands such as \texttt{grep} or \texttt{ls}~\cite{anthropic_tools_reference}.
+% GROUNDING anthropic_tools_reference: "Read only reads files, not directories. Claude uses `ls` via the Bash tool to list directory contents."
 The catalog, the wording of descriptions, and the order in which tools are presented all influence which tool the model selects, so the exact serialized form matters for reproducibility.
 The same applies to the list of MCP servers made available to the model.
 Researchers \must summarize in the \paper which tools were exposed to the model, and \should include a complete list with names and purposes, tool schemas, and the names of any connected MCP servers as \supplementarymaterial.
@@ -78,12 +86,15 @@ Researchers \must summarize in the \paper which tools were exposed to the model,
 \guidelinesubsubsection{Examples}
 
 \citeauthor{DBLP:journals/tse/SchaferNET24}~\cite{DBLP:journals/tse/SchaferNET24} evaluated LLMs for automated unit test generation, providing a detailed description of the system architecture including code parsing, prompt formulation, LLM interaction, and test suite integration.
+% GROUNDING DBLP:journals/tse/SchaferNET24: "the prompt generator, test validator, and prompt refiner collaborate to construct prompts for test generation, assemble complete tests from the LLM's response, run them"
 They also detail the datasets used, including sources, selection criteria, and preprocessing steps.
 
 A second example is \citeauthor{DBLP:conf/chi/YanHWH24}'s \emph{IVIE} tool~\cite{DBLP:conf/chi/YanHWH24}, which integrates LLMs into the VS Code interface.
+% GROUNDING DBLP:conf/chi/YanHWH24: "We present an implementation of Ivie that forks VS Code, applying a modern LLM for timely segmentation and explanation of generated code."
 The authors document the tool architecture, detailing the IDE integration, context extraction from code editors, and the formatting pipeline for LLM-generated explanations.
 
 \citeauthor{DBLP:journals/pacmse/LiangBBDFF024}'s paper~\cite{DBLP:journals/pacmse/LiangBBDFF024} is a good example of comprehensive prompt reporting.
+% GROUNDING DBLP:journals/pacmse/LiangBBDFF024: "Materials used in this study, such as the protocols, GPT-4 generated data, and exact prompts, are available in the supplemental materials"
 The authors make the exact prompts available in their \supplementarymaterial on Figshare, including details such as code blocks enclosed in triple backticks.
 The \paper explains the rationale behind the prompt design and the data output format, and it includes an overview figure and two concrete examples, keeping the main text concise while remaining reproducible.
 
@@ -103,9 +114,11 @@ Not all systems allow reporting of complete (system) prompts, context files, and
 For commercial tools, researchers \must report all available information and acknowledge unknown aspects as limitations.
 Disclosure practices vary across vendors: some publish their system prompts, others keep them proprietary.
 Where prompts are published, they also change between releases~\cite{willison2026opus}, so researchers \should record the tool version and date of use even when the prompt content itself is unavailable.
+% GROUNDING willison2026opus: "Opus 4.7 shipped the other day (April 16, 2026) with a Claude.ai system prompt update since Opus 4.6 (February 5, 2026)."
 Understanding suggestions of commercial tools such as \emph{GitHub Copilot} might require recreating the exact state of the codebase at the time the suggestion was made, which is a challenging context to report.
 One solution is to use version control to capture the exact state of the codebase when a recommendation was made, keeping track of the files that were automatically added as context.
 We also recommend exploring open-source tools such as \emph{OpenCode}~\cite{opencode}, which expose more of the configuration that controls agent behavior.
+% GROUNDING opencode: "Specify a custom system prompt file for this agent with the `prompt` config."
 
 \guidelinesubsubsection{Study Types}
 
@@ -114,6 +127,7 @@ It also \must be followed by all studies that use concrete prompts or prompt tem
 
 For \newtools, this guideline is of primary importance: researchers \must describe the tool's full architecture, explain how prompts were generated and structured within the tool, report the context files, tool catalog, and skill definitions used, and document how the role of each LLM fits into the overall system behavior.
 For \benchmarkingtasks, researchers \must describe the evaluation harness and infrastructure when it goes beyond bare model API calls (e.g., custom sandboxing, orchestration layers, or post-processing pipelines), and the harness \should be usable with open models; see~\cite{Anthropic2025evals} for a practitioner account of evaluation harness design for agentic systems.
+% GROUNDING Anthropic2025evals: "An evaluation harness is the infrastructure that runs evals end-to-end. It provides instructions and tools, runs tasks concurrently, records all the steps, grades outputs, and aggregates results."
 Researchers using pre-defined prompts (e.g., \emph{HumanEval}, \emph{SWE-Bench}) \must specify the benchmark version and any modifications made to the prompts or evaluation setup.
 If prompt tuning, RAG, or other methods were used to adapt prompts, researchers \must disclose and justify those changes, and \should make the relevant code publicly available.
 For \llmusage, researchers \should describe the tool architecture of the studied tool to the extent that it is accessible, as architectural details may influence observed usage patterns.
