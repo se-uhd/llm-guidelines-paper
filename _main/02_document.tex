@@ -12,14 +12,14 @@
 \section{Methodology}
 \label{sec:methodology}
 
-This project was initiated at the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain, where the first and last author organized a session on guidelines for empirical studies involving LLMs. The resulting discussions led to a position paper~\citep{DBLP:conf/wsese/0001BFB25}. A preprint of this paper was the basis for further discussions at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), where a workstream formed to collaboratively refine and extend the preliminary guidelines.
+The development of these guidelines was initiated at the 2024 meeting of the \emph{International Software Engineering Research Network} (ISERN) in Barcelona, Spain, where the first and last author organized a session on guidelines for empirical studies involving LLMs. The resulting discussions led to a position paper~\citep{DBLP:conf/wsese/0001BFB25}. A preprint of this paper was the basis for further discussions at the \emph{\nth{2} Copenhagen Symposium on Human-Centered Software Engineering AI} (CHASEAI 2024), where a workstream formed to collaboratively refine and extend the preliminary guidelines.
 % GROUNDING DBLP:conf/wsese/0001BFB25: "we report a first set of guidelines based on a discussion session with other empiricism experts at the 2024 International Software Engineering Research Network (ISERN) meeting"
-Our process follows an established tradition of developing reporting guidelines through expert collaboration, as exemplified by CONSORT for clinical trials~\citep{Begg1996} and, more recently, TRIPOD-LLM for LLM-based prediction studies in medicine~\citep{Gallifant2025}.
+Our process followed an established tradition of developing reporting guidelines through expert collaboration, as exemplified by CONSORT for clinical trials~\citep{Begg1996} and, more recently, TRIPOD-LLM for LLM-based prediction studies in medicine~\citep{Gallifant2025}.
 % GROUNDING Begg1996: "For RCTs to ultimately benefit patients, the published report should be of the highest possible standard."
 % GROUNDING Gallifant2025: "Developed through an expedited Delphi process and expert consensus, TRIPOD-LLM emphasizes transparency, human oversight and task-specific performance reporting."
 
 We held bi-weekly meetings, in which we decided on the structure of the study type taxonomy and the guidelines.
-During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \design, \traces) and covered \benchmarksmetrics as well as \limitationsmitigations.
+During these discussions, we added a new study type (\synthesis), refined and extended the guideline sections (in particular \modelversion, \design, \traces) and added \benchmarksmetrics and \limitationsmitigations.
 
 Then, at least two co-authors were assigned to each study type and guideline to refine and extend the content, followed by a peer review and refinement phase.
 Afterwards, the first author reviewed all sections and discussed potential changes with the topic leads.
@@ -221,7 +221,7 @@ Our guidelines recommend that researchers:
 biases, and environmental impact.
 \end{enumerate*}
 An applicability matrix maps guidelines to study types, and a reporting
-checklist (Section~\ref{sec:checklist}) supports authors and reviewers.
+checklist (Appendix~\ref{sec:checklist}) supports authors and reviewers.
 The study types and guidelines were derived collaboratively by
 22~co-authors, following a process similar to that of guidelines in
 other disciplines (see, e.g.,~\cite{Begg1996}).
@@ -235,24 +235,24 @@ consider our guidelines
 identified and were derived from 22 co-authors' collective expertise;
 (2)~\emph{useful}, as they provide actionable recommendations with an
 applicability matrix and a concrete reporting checklist
-(Section~\ref{sec:checklist});
-(3)~\emph{well-argued}, as each guideline is motivated by a dedicated
-rationale and supported by references to the literature; and
+(Appendix~\ref{sec:checklist});
+(3)~\emph{well-argued}, as each guideline pairs a dedicated
+rationale with concrete examples from published SE studies; and
 (4)~\emph{integrated with previous work}, as they build on and
 complement established empirical SE standards while addressing
 LLM-specific challenges.
 Adopting these practices will not eliminate LLM non-determinism, but it
-should make claims auditable and results easier to replicate and compare
+would make claims auditable and results easier to replicate and compare
 across studies.
 Because models and tools evolve, we maintain the guidelines as a living
-resource and invite the community to refine and extend them at
-\href{https://llm-guidelines.org/}{llm-guidelines.org}.
+resource and invite the community to refine and extend them
+(\href{https://llm-guidelines.org/}{llm-guidelines.org}).
 
 \section*{Acknowledgments}
 
 Our study types and guidelines are based on discussion sessions with researchers at the \emph{2024 International Software Engineering Research Network} (ISERN) meeting and at the \emph{2nd Copenhagen Symposium on Human-Centered Software Engineering AI} (supported by the Carlsberg Foundation with grant CF24-0693 and the Alfred P. Sloan Foundation with grant G-2024-22586 to Daniel Russo).
 We thank Steffen Herbold and Alexander Serebrenik for their feedback on the guidelines.
-LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6 and 4.7), were used interactively for language editing and structural revision suggestions across all sections of this paper. All LLM-generated suggestions were reviewed and revised by the authors.
+LLM-based tools, including ChatGPT (GPT-5) and Claude Code (Opus 4.6, 4.7, and 4.8), were used interactively for language editing and structural revision suggestions across all sections of this paper. All LLM-generated suggestions were reviewed and revised by the authors.
 
 \begin{appendices}
 
