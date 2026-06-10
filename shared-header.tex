@@ -178,7 +178,7 @@
   \newcommand{\design}{\hyperref[sec:report-system-and-prompt-design]{\emph{System and Prompt Design}}\xspace}
   \newcommand{\traces}{\hyperref[sec:report-session-traces]{\emph{Session Traces}}\xspace}
   \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
-  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLMs}}\xspace}
+  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLM}}\xspace}
   \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
   \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
   % Short-name references for the reporting checklist (parenthetical citations
@@ -188,7 +188,7 @@
   \newcommand{\refmodelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{Model Version}}
   \newcommand{\refdesign}{\hyperref[sec:report-system-and-prompt-design]{Design}}
   \newcommand{\reftraces}{\hyperref[sec:report-session-traces]{Traces}}
-  \newcommand{\refbenchmarks}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Benchmarks}}
+  \newcommand{\refbenchmarks}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Benchmarks \& Metrics}}
   \newcommand{\refopenllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{Open LLM}}
   \newcommand{\refhumanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{Human Validation}}
   \newcommand{\reflimitations}{\hyperref[sec:report-limitations-and-mitigations]{Limitations}}
@@ -198,15 +198,15 @@
   \newcommand{\modelversion}{\href{/guidelines/model-version/}{\emph{Version and Configuration}}\xspace}
   \newcommand{\design}{\href{/guidelines/design/}{\emph{System and Prompt Design}}\xspace}
   \newcommand{\traces}{\href{/guidelines/traces/}{\emph{Session Traces}}\xspace}
-  \newcommand{\benchmarksmetrics}{\href{/guidelines/benchmarks/}{\emph{Benchmarks and Metrics}}\xspace}
-  \newcommand{\openllm}{\href{/guidelines/open-llm/}{\emph{Open LLMs}}\xspace}
+  \newcommand{\benchmarksmetrics}{\href{/guidelines/benchmarks-metrics/}{\emph{Benchmarks and Metrics}}\xspace}
+  \newcommand{\openllm}{\href{/guidelines/open-llm/}{\emph{Open LLM}}\xspace}
   \newcommand{\humanvalidation}{\href{/guidelines/human-validation/}{\emph{Human Validation}}\xspace}
   \newcommand{\limitationsmitigations}{\href{/guidelines/limitations/}{\emph{Limitations and Mitigations}}\xspace}
   \newcommand{\refdeclareusage}{\href{/guidelines/declare-usage/}{Declare Usage}}
   \newcommand{\refmodelversion}{\href{/guidelines/model-version/}{Model Version}}
   \newcommand{\refdesign}{\href{/guidelines/design/}{Design}}
   \newcommand{\reftraces}{\href{/guidelines/traces/}{Traces}}
-  \newcommand{\refbenchmarks}{\href{/guidelines/benchmarks/}{Benchmarks}}
+  \newcommand{\refbenchmarks}{\href{/guidelines/benchmarks-metrics/}{Benchmarks \& Metrics}}
   \newcommand{\refopenllm}{\href{/guidelines/open-llm/}{Open LLM}}
   \newcommand{\refhumanvalidation}{\href{/guidelines/human-validation/}{Human Validation}}
   \newcommand{\reflimitations}{\href{/guidelines/limitations/}{Limitations}}
@@ -218,11 +218,17 @@
   \newcommand{\studytypesubsection}[1]{\subsubsection{#1}}
   \newcommand{\studytypeparagraph}[1]{\paragraph{\bfseries #1:}}
   \newcommand{\scopeparagraph}[1]{\paragraph{\bfseries #1:}}
+  % Run-in captions inside guideline bodies. The paper appends the run-in
+  % period (caption and body share a line); the website branch emits the
+  % bare title so converted headings carry no trailing punctuation. Type
+  % no punctuation in the argument.
+  \newcommand{\guidelineparagraph}[1]{\paragraph{#1.}}
 \else
   \newcommand{\guidelinesubsubsection}[1]{\subsubsection{#1}}
   \newcommand{\studytypesubsection}[1]{\subsection{#1}}
   \newcommand{\studytypeparagraph}[1]{\subsubsection{#1}}
   \newcommand{\scopeparagraph}[1]{\subsubsection{#1}}
+  \newcommand{\guidelineparagraph}[1]{\paragraph{#1}}
 \fi
 
 % See Also entries: "Section X (Full Title)" (paper) or hyperlinked full title (website).
@@ -245,7 +251,7 @@
   \newcommand{\seemodelversion}{\href{/guidelines/model-version/}{Report Model Version, Configuration, and Customizations}}
   \newcommand{\seedesign}{\href{/guidelines/design/}{Report System and Prompt Design}}
   \newcommand{\seetraces}{\href{/guidelines/traces/}{Report Session Traces}}
-  \newcommand{\seebenchmarksmetrics}{\href{/guidelines/benchmarks/}{Use Suitable Baselines, Benchmarks, and Metrics}}
+  \newcommand{\seebenchmarksmetrics}{\href{/guidelines/benchmarks-metrics/}{Use Suitable Baselines, Benchmarks, and Metrics}}
   \newcommand{\seeopenllm}{\href{/guidelines/open-llm/}{Use an Open LLM as a Baseline}}
   \newcommand{\seehumanvalidation}{\href{/guidelines/human-validation/}{Use Human Validation for LLM Outputs}}
   \newcommand{\seelimitationsmitigations}{\href{/guidelines/limitations/}{Report Limitations and Mitigations}}

@@ -56,6 +56,8 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Benchmarks and Metrics:** Metric definitions sharpened. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data-flow matching versus removal of corpus-common n-grams. pass@k clarified as a per-prompt estimator that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
 - **Editorial pass:** Tightened *Benefits* in Declare Usage, Design, Benchmarks and Metrics, and Human Validation (others reverted to original after review); split five 90+-word sentences in *Advantages and Challenges* into shorter units; applied the caption-punctuation rule (`\paragraph{Title.}` for captions followed by prose); standardized *human validation* across *See Also* lines; split filler semicolons and colons where both halves stand alone.
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing-only assistance from disclosure. Advice for Reviewers now cites the policy's author-accountability and reject/retract provisions.
+- **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name; the website page moved to /guidelines/benchmarks-metrics/ with a redirect from the old URL.
+- **Open LLM:** In-prose cross-reference name now singular (*Open LLM*), matching the guideline title and all tables.
 
 ### Fixed
 
@@ -64,6 +66,7 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Summary boxes:** Realigned with the guideline bodies: disclosure location is a **should**, hosting is conditional, "configuration mechanisms" replaces "context-file mechanisms", the open-LLM definition follows OSI, the replication-package sentence narrowed to the open-LLM baseline, and power analysis is optional ("may").
 - **Open LLM:** The controlled-experiments **should** now names Studying LLM Usage as its study type, matching the scoping used in Design.
 - **Benchmarks and Metrics:** The pass@k display formula no longer embeds "where:" inside the math, fixing the website rendering; study-type short names in Table 1 pluralized to match the applicability matrix.
+- **Guideline captions:** Run-in captions now use a `\guidelineparagraph` macro that appends the period in the paper only, so website and skill headings no longer end with a stray period.
 
 ## [2026.05]
 
