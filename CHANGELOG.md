@@ -11,11 +11,6 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 Version accepted at Empirical Software Engineering (EMSE).
 
-### Changed
-
-- **New Software Engineering Tools:** The GenAI-agent description now centers on a control loop around the model (observe, inspect, choose, act), with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation) drawn from Raschka's coding-agent decomposition and CoALA (Sumers et al.), replacing the earlier three-component framing.
-- **Citations audited and grounded:** every cited claim was checked against its source and several miscitations corrected: mode collapse now cites Verbalized Sampling (Zhang et al.) and Kirk et al.; non-determinism under fixed settings cites Atil et al.; benchmark overconfidence cites Banerjee et al.; TnT-LLM and other unsupported citations removed.
-
 ### Added
 
 - **Limitations and Mitigations:** External Validity absorbed the former Generalizability list, gaining two new threats (configuration sensitivity, research-to-practice gap). Construct Validity gained five threats: construct under-specification, reliability without validity, capability confounding, prompt sensitivity, judge biases (position, verbosity, format).
@@ -36,10 +31,12 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Benchmarks and Metrics:** Dror et al. (2018) cited as a decision tree for selecting among inferential tests (Mann-Whitney U, McNemar, bootstrap), based on distributional assumptions and test-set size.
 - **Open LLM:** OpenRouter named as an aggregator option alongside cloud services and self-hosting frameworks; open-source agentic tools (Continue, Cline, opencode) and vendor-hosted services (GitHub Copilot, Claude Code) contrasted on what they expose.
 - **Study Types:** Each of the seven study-type subsections opens with a one-sentence framing of the role within its grouping (researcher tools / engineer tools).
-- **Human Validation:** *Benefits* notes that disagreements between human and LLM judgments diagnose where automated metrics fall short.
+- **Human Validation:** *Benefits* notes that disagreements between human reviewers and the LLM point to concrete improvements in the prompts, the context provided to the LLM, or the construct's operational definition.
 
 ### Changed
 
+- **New Software Engineering Tools:** The GenAI-agent description now centers on a control loop around the model (observe, inspect, choose, act), with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation) drawn from Raschka's coding-agent decomposition and CoALA (Sumers et al.), replacing the earlier three-component framing.
+- **Citations audited and grounded:** every cited claim was checked against its source and several miscitations corrected: mode collapse now cites Verbalized Sampling (Zhang et al.) and Kirk et al.; non-determinism under fixed settings cites Atil et al.; benchmark overconfidence cites Banerjee et al.; TnT-LLM and other unsupported citations removed.
 - **Limitations and Mitigations:** Threat sections restructured. Mitigation strategies distributed from a single consolidated list into the corresponding threat sections as prose. Generalizability merged into External Validity, which now leads the threat sections. Internal Validity contamination mitigations now cross-reference Benchmarks and Metrics for concrete strategies (post-cutoff construction, held-out subsets, canary strings).
 - **Session Traces:** Interaction-log and runtime-trace definitions tightened. Interaction logs cover the human-observable exchange at the LLM's interface (prompts in, responses out, including human-in-the-loop exchanges for agentic systems). Runtime traces cover the LLM's internal activity (tool calls and configured-artifact activations), naming the tool/artifact, arguments, and result per entry.
 - **Session Traces:** Agentic plans **should** scoped to "any plans the system exposes" (e.g., Claude Code's editable Markdown plans), so the conditioning is on system exposure rather than a vague "if available".
@@ -59,6 +56,14 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Benchmarks and Metrics:** Metric definitions sharpened. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data-flow matching versus removal of corpus-common n-grams. pass@k clarified as a per-prompt estimator that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
 - **Editorial pass:** Tightened *Benefits* in Declare Usage, Design, Benchmarks and Metrics, and Human Validation (others reverted to original after review); split five 90+-word sentences in *Advantages and Challenges* into shorter units; applied the caption-punctuation rule (`\paragraph{Title.}` for captions followed by prose); standardized *human validation* across *See Also* lines; split filler semicolons and colons where both halves stand alone.
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing-only assistance from disclosure. Advice for Reviewers now cites the policy's author-accountability and reject/retract provisions.
+
+### Fixed
+
+- **Reporting Checklist:** Items added for guideline requirements that had no checklist counterpart: reliability and construct validity discussion of benchmark and metric choices, few-shot example selection (new `[few-shot]` tag), prompt and trace anonymization, standalone-setup declaration, the three-activity distinction for tool-using agentic systems, benchmark version and modifications, data sources and collection dates for new benchmark releases, tool-native trace formats, representative prompt examples in the paper, and user feedback statistics for agentic tools. Hosting split into a general **should** and a conditional **must** for time-sensitive measurements.
+- **Reporting Checklist:** Data-leakage item now mirrors the guideline's obligation to discuss leakage effects instead of an "avoid leaking" command; full-replication-package item replaced by Open LLM's baseline-reproducibility **should**; metric-justification item absorbs the **must not** on prior use as sole justification; reporting-location markers aligned with the guideline bodies.
+- **Summary boxes:** Realigned with the guideline bodies: disclosure location is a **should**, hosting is conditional, "configuration mechanisms" replaces "context-file mechanisms", the open-LLM definition follows OSI, the replication-package sentence narrowed to the open-LLM baseline, and power analysis is optional ("may").
+- **Open LLM:** The controlled-experiments **should** now names Studying LLM Usage as its study type, matching the scoping used in Design.
+- **Benchmarks and Metrics:** The pass@k display formula no longer embeds "where:" inside the math, fixing the website rendering; study-type short names in Table 1 pluralized to match the applicability matrix.
 
 ## [2026.05]
 

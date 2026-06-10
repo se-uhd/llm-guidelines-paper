@@ -64,9 +64,9 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
   & \iconS % synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
   & \iconS % subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
-  & \iconS % llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"
+  & \iconS % llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"; conditional \must: "in interactive setups where response times can influence participant behavior, researchers \must report observed latency" (checklist: latency-sensitive item)
   & \iconS % newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
-  & \iconM % benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics, and should report an error analysis of failure modes alongside the headline scores"
+  & \iconM % benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics", "should report an error analysis alongside the primary scores"
   \\
 % Open LLM Baseline: "applies primarily to study types in which the researcher controls which LLM is used"
 \hyperref[sec:use-an-open-llm-as-a-baseline]{Open LLM}
@@ -74,7 +74,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % judges: "should compare judgment quality from open vs. commercial models"
   & \iconS % synthesis: "should compare synthesis results from open and commercial models"
   & --     % subjects: Open LLM source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by Limitations' \must clauses for subjects (Limitations row marks subjects as \iconM).
-  & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM).
+  & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM). For controlled experiments under \llmusage, the body adds a \should that an open LLM be among the models under test.
   & \iconS % newtools: "should use an open LLM as a baseline whenever it is technically feasible"
   & \iconS % benchmarkingtasks: "For \benchmarkingtasks, an open LLM \should be one of the models under evaluation". The replicability load is now carried by Design's benchmarking \must to describe the harness and \should that it be usable with open models.
   \\

@@ -51,10 +51,10 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 \textbf{Section} & \textbf{Title} & \textbf{Short Name} \\
 \midrule
 4.1   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{LLMs as Tools for Software Engineering Researchers}}                 &            \\
-4.1.1 & \quad \hyperref[sec:llms-as-annotators]{LLMs as Annotators}                                                                                  & Annotator  \\
-4.1.2 & \quad \hyperref[sec:llms-as-judges]{LLMs as Judges}                                                                                          & Judge      \\
+4.1.1 & \quad \hyperref[sec:llms-as-annotators]{LLMs as Annotators}                                                                                  & Annotators \\
+4.1.2 & \quad \hyperref[sec:llms-as-judges]{LLMs as Judges}                                                                                          & Judges     \\
 4.1.3 & \quad \hyperref[sec:llms-for-synthesis]{LLMs for Synthesis}                                                                                  & Synthesis  \\
-4.1.4 & \quad \hyperref[sec:llms-as-subjects]{LLMs as Subjects}                                                                                      & Subject    \\
+4.1.4 & \quad \hyperref[sec:llms-as-subjects]{LLMs as Subjects}                                                                                      & Subjects   \\
 \midrule
 4.2   & \textbf{\hyperref[sec:llms-as-tools-for-software-engineers]{LLMs as Tools for Software Engineers}}                                           &            \\
 4.2.1 & \quad \hyperref[sec:studying-llm-usage-in-software-engineering]{Studying LLM Usage in Software Engineering}                                  & Usage      \\
@@ -205,8 +205,8 @@ threaten the reproducibility and replicability of empirical SE studies.
 This paper presents a taxonomy of seven study types that organizes how
 LLMs are used in SE research, together with eight guidelines for
 designing and reporting such studies.
-Each guideline distinguishes requirements (\must) from recommended
-practices (\should) and is contextualized by the study types it
+Each guideline distinguishes requirements (\must) from recommendations
+(\should) and is contextualized by the study types it
 applies to.
 Our guidelines recommend that researchers:
 \begin{enumerate*}[label=(\arabic*)]
@@ -217,8 +217,7 @@ Our guidelines recommend that researchers:
 \item use suitable baselines, benchmarks, and metrics;
 \item include an open LLM as a baseline;
 \item validate LLM outputs against human judgment; and
-\item articulate limitations and mitigations, including costs, potential
-biases, and environmental impact.
+\item articulate limitations and mitigations.
 \end{enumerate*}
 An applicability matrix maps guidelines to study types, and a reporting
 checklist (Appendix~\ref{sec:checklist}) supports authors and reviewers.
@@ -244,9 +243,9 @@ LLM-specific challenges.
 Adopting these practices will not eliminate LLM non-determinism, but it
 would make claims auditable and results easier to replicate and compare
 across studies.
-Because models and tools evolve, we maintain the guidelines as a living
-resource and invite the community to refine and extend them
-(\href{https://llm-guidelines.org/}{llm-guidelines.org}).
+Because models and tools evolve, we maintain the study types and
+guidelines as a living resource and invite the community to refine and
+extend them (\href{https://llm-guidelines.org/}{llm-guidelines.org}).
 
 \section*{Acknowledgments}
 
