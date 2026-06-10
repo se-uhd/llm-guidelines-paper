@@ -30,7 +30,7 @@ Design & Static artifacts determine the model's input on every call and must be 
 \iconM Describe system and agent architecture, infrastructure, prompts, agent configuration, tool catalog, and retrieval mechanisms.
 \newline \iconS For LLM usage, describe the tool architecture to the extent accessible. \\
 \addlinespace
-% Traces Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... For other researchers to verify the conclusions drawn from LLM interactions, the traces of what happened at runtime are often as important as the design of the system itself."
+% Traces Rationale: "Even with the exact same prompts, decoding strategies, and parameters, LLMs can behave non-deterministically... Verifying conclusions drawn from such interactions therefore depends as much on runtime traces as on the system design itself."
 % Traces \iconM line: Study Types - "For \llmusage..., researchers \must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information".
 % Traces \iconS line: Recommendations - "Researchers \should report the full interaction logs"; "Researchers \should report the complete runtime trace" (broadly defined to cover tool calls and configured-artifact activations); "the developed plans \should be reported".
 Traces & Runtime traces make LLM and agent behavior verifiable despite non-determinism and tool opacity. &
@@ -39,7 +39,7 @@ Traces & Runtime traces make LLM and agent behavior verifiable despite non-deter
 \addlinespace
 % Benchmarks Rationale: "Meaningful evaluation requires well-understood, valid measurement instruments. Without justified benchmarks and metrics, claims about LLM performance lack the rigor needed for scientific comparison and cumulative progress."
 % Benchmarks \iconM line: Recommendations - "\must briefly justify... why selected benchmarks and metrics are suitable"; "\must discuss the reliability and validity (especially construct validity)".
-% Benchmarks \iconS line: Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the strategy used to sample benchmark items"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should conduct an error analysis covering common failure modes"; "\should repeat experiments and report descriptive statistics".
+% Benchmarks \iconS line: Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the sampling strategy used to select problems for inclusion in the benchmark"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should perform an error analysis by categorizing the failures observed and reporting the relative frequency of each category"; "\should repeat experiments and report descriptive statistics".
 Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 \iconM Justify metric and benchmark choices; discuss their validity.
 \newline \iconS Define the phenomenon and sampling strategy; isolate confounders; analyze errors; repeat experiments and report distributions. \\
@@ -49,7 +49,7 @@ Benchmarks & Meaningful evaluation requires reasoned valid measurement. &
 Open LLM & Reproducibility depends on access to the model under study. &
 \iconS Include an open LLM as a baseline; ensure it is independently reproducible from supplementary material; for benchmarks, design the harness for use with open models. \\
 \addlinespace
-% Human Validation Rationale: "Automated metrics alone cannot fully capture the validity of subjective or complex constructs."
+% Human Validation Rationale: "automated measurement captures only the constructs the benchmark was designed to measure. Subjective constructs and constructs that no current benchmark covers require human assessment."
 % Human Validation \iconM line: Study Design Considerations - "Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate"; "When designing custom instruments..., researchers \must share their instruments".
 % Human Validation \iconM replacement line: Recommendations (Replacing Human Judgment) - "In such cases, researchers \must explain whether and how the replacement is justified". Named in the Study Types umbrella sentence as a conditional \must applying particularly to \annotators, \judges, \synthesis, and \subjects.
 % Human Validation \iconS replacement line: Recommendations (Replacing Human Judgment) - "researchers \should follow systematic approaches to support this judgment ... such as Krippendorff's $\alpha>0.8$"; "researchers \should additionally validate a sample against human experts"; "Researchers \should justify why the LLM is methodologically appropriate".

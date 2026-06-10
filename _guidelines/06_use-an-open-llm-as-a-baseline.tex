@@ -66,7 +66,7 @@ Open-source LLMs face several challenges:
 
 This guideline applies primarily to study types in which the researcher controls which LLM is used.
 For \benchmarkingtasks, an open LLM \should be one of the models under evaluation, so that the reported scores can be independently re-run. Where this is not feasible, researchers \should justify the omission and, per \design, ensure the evaluation harness can be used with open models.
-For controlled experiments, an open LLM \should be one of the models under test; if the experimental design requires capabilities that only a specific commercial model exhibits, researchers \should acknowledge this as a limitation.
+For controlled experiments under \llmusage, an open LLM \should be one of the models under test; if the experimental design requires capabilities that only a specific commercial model exhibits, researchers \should acknowledge this as a limitation.
 When evaluating \newtools, researchers \should use an open LLM as a baseline whenever it is technically feasible; if integration proves too complex, they \should report the initial benchmarking results of open models.
 For \annotators and \judges, researchers \should compare annotation or judgment quality from open vs.\ commercial models to assess the extent to which results depend on a specific proprietary model.
 For \synthesis, researchers \should compare synthesis results from open and commercial models to evaluate robustness of the findings.
