@@ -20,13 +20,13 @@ This guideline addresses runtime reporting and complements \design, which covers
 
 \guidelinesubsubsection{Recommendations}
 
-\paragraph{Interaction Logs.}
+\guidelineparagraph{Interaction Logs}
 Researchers \should report the full interaction logs (prompts sent to the LLM and responses returned) as part of their \supplementarymaterial.
 For agentic systems, interaction logs cover the human-facing exchanges with the agent, including human-in-the-loop feedback, approval or rejection decisions, and iterative refinements.
 These \should also be reported as \supplementarymaterial so that readers can reconstruct the sequence of exchanges and assess human oversight decisions.
 For traces containing sensitive information, researchers \must anonymize personal identifiers, replace proprietary code with placeholders, and clearly highlight modified sections.
 
-\paragraph{Runtime Traces.}
+\guidelineparagraph{Runtime Traces}
 When an LLM calls out to external tools (e.g., APIs, file systems, databases, MCP servers, subagents) or activates configured artifacts reported under \design (e.g., context files, skills, subagents), this runtime activity forms a \emph{runtime trace} distinct from the interaction log.
 Researchers \should report the complete runtime trace as \supplementarymaterial, including for each entry the tool or artifact name, arguments (if any), result, and ordering relative to surrounding interaction-log entries.
 This lets readers attribute task success to the model, the external tools, or their interaction pattern, and distinguish artifacts that were configured from those that actually influenced a given run.
@@ -34,7 +34,7 @@ Researchers \should use an open format with a documented schema. Emerging standa
 % GROUNDING otel_genai_semconv: "Semantic conventions for Generative AI operations are defined for the following signals: Events, Exceptions, Metrics, and Spans."
 % GROUNDING openinference_spec: "OpenInference is a semantic convention specification for AI application observability, built on OpenTelemetry."
 
-\paragraph{Agentic Plans.}
+\guidelineparagraph{Agentic Plans}
 For agentic systems that autonomously plan and execute tasks, researchers \should report any plans the system exposes as \supplementarymaterial.
 In Claude Code, for example, a plan is a short Markdown document the user can open and edit during a session, listing the proposed steps and the files or commands the agent intends to touch.
 Other frameworks such as LangGraph keep plans inside the agent's internal execution state.

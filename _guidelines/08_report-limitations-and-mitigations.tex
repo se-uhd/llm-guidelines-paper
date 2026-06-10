@@ -14,7 +14,7 @@ We follow the standard SE convention of organizing limitations by external, inte
 % GROUNDING ralph2021empiricalstandardssoftwareengineering: "General Quality Criteria (e.g. internal validity, construct validity, credibility, resonance)"
 % GROUNDING guba1981criteria: "The four terms credibility, transferability, dependability and confirmability were established as the naturalist's equivalents for the more conventional rigor criteria of internal validity, external validity, reliablity and objectivity."
 
-\paragraph{External Validity.}
+\guidelineparagraph{External Validity}
 The primary threats to external validity are:
 \begin{itemize}
     \item \emph{Cross-model transfer limitations}: Results obtained with one LLM or family of LLMs may not generalize to others due to differences in training data, architecture, and post-training procedures (e.g., fine-tuning and reinforcement learning from human feedback); see \openllm for using an open LLM as a comparison baseline.
@@ -31,7 +31,7 @@ The primary threats to external validity are:
 Generalizability is particularly critical for proprietary and non-deterministic systems whose behavior is subject to drift (i.e., silent changes in model output over time). Researchers \must discuss the limitations and mitigations of external validity.
 Mitigations include \emph{triangulation} across multiple models (e.g., proprietary and open), independent datasets, and complementary metrics; \emph{sensitivity analysis} that varies LLM configurations, prompts, architecture decisions, datasets, and where applicable participant backgrounds; and performing \emph{longitudinal re-runs} (see \emph{Reliability \& Reproducibility} below), which also helps detect cross-time instability.
 
-\paragraph{Internal Validity.}
+\guidelineparagraph{Internal Validity}
 The primary threats to internal validity are:
 \begin{itemize}
 	\item \emph{Data leakage and contamination}: Inter-dataset duplication can produce training-evaluation overlap, yielding overly optimistic results (see \benchmarksmetrics).
@@ -41,7 +41,7 @@ The primary threats to internal validity are:
 
 As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results. Concrete mitigations for contamination (e.g., post-cutoff benchmark construction, held-out subsets, canary strings) are discussed in \benchmarksmetrics.
 
-\paragraph{Construct Validity.}
+\guidelineparagraph{Construct Validity}
 The primary threats to construct validity are:
 \begin{itemize}
 	\item \emph{Metric-construct mismatch}: Traditional metrics such as BLEU or ROUGE may miss SE-specific aspects such as functional correctness or behavioral equivalence (see \benchmarksmetrics).
@@ -56,7 +56,7 @@ The primary threats to construct validity are:
 
 If constructs are based on subjective interpretations, purely automated metrics are insufficient. Researchers \must discuss how they ensured quality of subjective results, similarly to qualitative research. The primary mitigation is \emph{human validation} of subjective constructs following quality criteria known from qualitative research (see \humanvalidation).
 
-\paragraph{Reliability \& Reproducibility.}
+\guidelineparagraph{Reliability \& Reproducibility}
 The primary threats to reliability and reproducibility are:
 \begin{itemize}
     \item \emph{Non-deterministic outputs}: Identical prompts and configurations can yield different outputs across runs due to factors such as floating-point arithmetic, batching, and stochastic decoding strategies.
@@ -70,7 +70,7 @@ Researchers \must discuss the measures taken to increase reliability and reprodu
 However, non-deterministic reproducibility is not inherently disqualifying. The trustworthiness criteria introduced above apply particularly to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
 Mitigations include providing \emph{replication packages} that cover prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability), and performing \emph{longitudinal re-runs} with statistical analyses. When deterministic reproduction is structurally impossible, researchers \should consider \emph{methodological trustworthiness measures} such as triangulation, reflexivity, audit trails, and peer debriefing as complementary measures.
 
-\paragraph{Ethical \& Regulatory Boundaries.}
+\guidelineparagraph{Ethical \& Regulatory Boundaries}
 The primary concerns for ethical and regulatory matters are:
 \begin{itemize}
     \item \emph{Use of sensitive or proprietary data}: Studies involving proprietary code, confidential business data, or personally identifiable information may face restrictions on data sharing that limit reproducibility.
@@ -81,7 +81,7 @@ The primary concerns for ethical and regulatory matters are:
 
 Studies involving sensitive data \must discuss data governance mechanisms tailored toward LLM environments, compliant with applicable jurisdictional obligations. If applicable, researchers \should discuss how model biases potentially impact the study outcomes and how those biases were evaluated.
 
-\paragraph{Environmental \& Sustainability Constraints.}
+\guidelineparagraph{Environmental \& Sustainability Constraints}
 The primary environmental and sustainability concerns are:
 \begin{itemize}
     \item \emph{Energy consumption}: With growing model size, the environmental impact of experiments with LLMs increases, and the substantial energy costs of LLM experiments warrant consideration in study design~\cite{DBLP:conf/acl/StrubellGM19}.

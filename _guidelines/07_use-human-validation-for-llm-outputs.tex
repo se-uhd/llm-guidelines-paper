@@ -8,19 +8,19 @@ Subjective constructs and constructs that no current benchmark covers require hu
 When LLMs automate research or software development tasks previously performed by humans, the LLM's performance needs to be assessed.
 Where no benchmark adequately operationalizes the target construct, researchers \should validate LLM outputs against human judgment.
 
-\paragraph{Study Design Considerations.}
+\guidelineparagraph{Study Design Considerations}
 Studies that include human participants need additional considerations, including a recruitment strategy, annotation guidelines, training sessions, or ethical approvals.
 Therefore, researchers \should consider human validation early in the study design, not as an afterthought.
 Authors \must clearly define in the \paper the constructs that the human and LLM annotators evaluate~\cite{DBLP:conf/ease/RalphT18}.
 % GROUNDING DBLP:conf/ease/RalphT18: "many software engineering studies simply assume that proposed measures are valid and make no attempt to assess construct validity"
 When designing custom instruments to assess LLM output (e.g., questionnaires, scales), researchers \must share these instruments.
 
-\paragraph{Replacing Human Judgment.}
+\guidelineparagraph{Replacing Human Judgment}
 LLMs may be used to replace, rather than augment, humans in research tasks such as annotating software artifacts, coding interview transcripts, or simulating participants in user studies. In such cases, researchers \must explain whether and how the replacement is justified and \should follow systematic approaches to support this judgment, e.g., showing that a jury of three LLMs exhibits inter-model agreement at the same threshold researchers would require for human-to-human agreement, such as Krippendorff's $\alpha>0.8$. Such agreement is necessary but not sufficient. High inter-model agreement can reflect shared model biases rather than valid annotation, so researchers \should additionally validate a sample against human experts before treating LLM outputs as a substitute for human work~\cite{DBLP:conf/msr/AhmedDTP25, Krippendorff2018}. For qualitative coding of interpretive data such as open-ended developer interview responses, agreement metrics do not show that an LLM can perform the interpretive work that the task requires. Researchers \should justify why the LLM is methodologically appropriate (see \llmsforresearcher).
 % GROUNDING DBLP:conf/msr/AhmedDTP25: "replacing more than one human can inflate inter-rater agreement because model-model agreements are much higher"
 % GROUNDING Krippendorff2018: "Reliability does not guarantee validity."
 
-\paragraph{Subjective Judgment and Agreement.}
+\guidelineparagraph{Subjective Judgment and Agreement}
 When the judgment is subjective (i.e., depends on the judge's values or theories), the same artifacts \should be judged independently by both the LLM and a panel of human experts, and the LLM judgments \should then be compared against an aggregated human reference. Researchers \should clearly describe their aggregation method and reasoning.
 Researchers \should use established reference models to compare humans with LLMs.
 For example, \citeauthor{DBLP:conf/icse/SchneiderFW25} outline design considerations for studies comparing LLMs with humans~\cite{DBLP:conf/icse/SchneiderFW25}.
@@ -47,7 +47,7 @@ Where applicable, researchers may perform a power analysis~\cite{Cohen1992,DBLP:
 Although established sample-size guidance for LLM-human comparisons is limited, related fields commonly use 100 comparisons without further justification~\cite{DBLP:journals/npjdm/TamSKSPMOWVFMCSPW24}.
 % GROUNDING DBLP:journals/npjdm/TamSKSPMOWVFMCSPW24: "The majority of studies have 100 or below LLMs output for human evaluation"
 
-\paragraph{Agentic Tools.}
+\guidelineparagraph{Agentic Tools}
 Agentic human-in-the-loop interaction is a built-in human validation, with larger degrees of freedom than traditional experiments that use LLMs directly.
 Besides generating and modifying content, agentic systems such as \emph{Claude Code} (see \design) can autonomously call command-line tools or pull in additional information from MCP servers.
 When evaluating agentic tools, researchers \should assess the feedback that users provided on the agent's proposed actions (e.g., file edits, command executions), report statistics on how frequently they accepted the proposals, and how they modified them.

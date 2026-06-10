@@ -72,7 +72,7 @@ Researchers building or releasing new SE benchmarks \should consult operational 
 
 \guidelinesubsubsection{Examples}
 
-\paragraph{Common Metrics.}
+\guidelineparagraph{Common Metrics}
 
 Two common metrics used for generation tasks are \emph{BLEU-N} and \emph{pass@k}.
 \emph{BLEU-N}~\cite{DBLP:conf/acl/PapineniRWZ02} was originally developed for evaluating machine translation quality by measuring modified n-gram precision (with a brevity penalty) between a candidate and reference text, ranging from 0 (dissimilar) to 1 (similar). It has been widely adopted in SE for code generation tasks, though its validity in this context is debatable. An n-gram overlap does not capture functional correctness, and syntactically different code can be semantically equivalent (see \emph{Challenges} below).
@@ -120,7 +120,7 @@ Common problem types for LLM-based studies are classification, recommendation, a
 % GROUNDING yang2025code: "It explores critical phases—from initial data curation and instruction tuning to advanced code applications and the development of autonomous coding agents."
 % GROUNDING Anthropic2025evals: "Code-based graders ... Model-based graders ... Human graders"
 
-\paragraph{Benchmark Examples.}
+\guidelineparagraph{Benchmark Examples}
 
 Benchmarks used for code generation include \emph{HumanEval} (available on \href{https://github.com/openai/human-eval}{GitHub}) \cite{DBLP:journals/corr/abs-2107-03374}, \emph{MBPP} (available on \href{https://huggingface.co/datasets/google-research-datasets/mbpp}{Hugging Face}) \cite{DBLP:journals/corr/abs-2108-07732},
 % GROUNDING DBLP:journals/corr/abs-2107-03374: "The dataset can be found at https://www.github.com/openai/human-eval"
