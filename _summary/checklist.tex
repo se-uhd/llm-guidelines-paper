@@ -8,6 +8,13 @@
 % (\iconM before \iconS), then by general before \condition{}-tagged
 % (conditional) items, then by reporting location
 % (\paper -> unspecified -> \supplementarymaterial).
+% Selection rule: every \must and \mustnot statement in the guideline bodies
+% appears in (or is absorbed into) an item. A \should gets its own item when
+% it names a standalone reporting action or artifact; a \should that refines,
+% conditions, or illustrates an included item is folded into that item (quote
+% it in the item's comment), and interpretation cautions or reflective-practice
+% advice without a discrete reportable artifact stays out. Document deliberate
+% exclusions in a comment (see the power-analysis note under Human Validation).
 
 The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes actionable items from the guidelines.
 % GROUNDING Schulz2010: "The CONSORT 2010 Statement is this paper including the 25 item checklist in the table (Table 1) and the flow diagram (Figure 1)."
@@ -22,7 +29,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 \paragraph{\textbf{Introduction}}
 \begin{itemize}[label={},leftmargin=*]
     \item \iconM Disclose any use of LLMs in the empirical study, specifying which LLM, how, and where it was used~(\refdeclareusage).
-    % G1 Recommendations: "researchers \must clearly declare that an LLM was used"; specifies which/how/where in the research process.
+    % G1 Recommendations: "researchers \must clearly declare that an LLM was used"; specifies which/how/where in the research process. Folds the multiple-roles refinement: "each role \should be declared separately".
     \item \iconS Report in the \paper the purpose of using LLMs, the tasks they automate, and the expected benefits~(\refdeclareusage).
     % G1 Recommendations: "researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper".
 \end{itemize}
@@ -35,7 +42,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM \condition{fine-tuning} For fine-tuned models, describe in the \paper the fine-tuning goal, the dataset, and the procedure~(\refmodelversion).
     % G2 Recommendations: "If a model was fine-tuned, researchers \must describe the fine-tuning goal..., the fine-tuning procedure..., and the fine-tuning dataset... in the \paper".
     \item \iconS Report default parameters and explain model and version choices~(\refmodelversion).
-    % G2 Recommendations: "researchers \should report all configuration values, even if they used the defaults"; "Researchers \should motivate in the \paper why they selected certain models, versions, and configurations".
+    % G2 Recommendations: "researchers \should report all configuration values, even if they used the defaults"; "Researchers \should motivate in the \paper why they selected certain models, versions, and configurations". Folds the temperature-0 sub-case: "this motivation \should be stated explicitly"; the \shouldnot caution against treating temperature 0 as a reproducibility guarantee is an interpretation caution, not an item.
     \item \iconS Report checksums and additional model properties where available; for commercial tools, openly acknowledge their reproducibility limits~(\refmodelversion).
     % G2 Recommendations: "Checksums and fingerprints \should be reported"; "other properties such as the context window size... \should be reported"; for commercial tools, "researchers \should report what is available and openly acknowledge limitations that hinder reproducibility". Wording compresses "checksums and fingerprints" to "checksums" for symmetry with the summary-table row; the guideline body retains the full "checksums and fingerprints" phrasing.
     \item \iconS \condition{quantization} For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ)~(\refmodelversion).
@@ -74,7 +81,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM \condition{tool-use} Summarize in the \paper which tools were exposed to the model~(\refdesign).
     % G3 Tool Catalog and MCP Servers: "Researchers \must summarize in the \paper which tools were exposed to the model".
     \item \iconM \condition{agents} If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(\refdesign).
-    % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used".
+    % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used". Folds the subagent refinement: "researchers \should also describe the delegation pattern".
     \item \iconM \condition{agents} For agentic systems that use external tools, distinguish the model's reasoning and outputs, its tool calls, and its interactions with users, the environment, or other agents~(\refdesign).
     % G3 Agentic Systems: "researchers \must distinguish three kinds of activity: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or ... (MCP) servers); (3) interactions with users, the environment, or other agents".
     \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model's context~(\refdesign).
@@ -151,7 +158,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should provide an operational definition of the phenomenon the benchmark is intended to measure ..., including its scope and any sub-components".
     \item \iconS Summarize benchmark structure, task types, and limitations~(\refbenchmarks).
-    % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)".
+    % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)". Folds the illustration refinement: "include an example of a task and the corresponding test case(s)".
     \item \iconS Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should identify which capabilities a benchmark conflates, isolate the target capability where possible ..., and acknowledge remaining confounders as threats to construct validity".
     \item \iconS Perform an error analysis: categorize the failures observed and report their relative frequency; report failures that cluster on confounding capabilities as construct-validity threats~(\refbenchmarks).
