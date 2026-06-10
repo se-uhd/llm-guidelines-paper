@@ -56,9 +56,9 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Benchmarks and Metrics:** Metric definitions sharpened. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data-flow matching versus removal of corpus-common n-grams. pass@k clarified as a per-prompt estimator that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
 - **Editorial pass:** Tightened *Benefits* in Declare Usage, Design, Benchmarks and Metrics, and Human Validation (others reverted to original after review); split five 90+-word sentences in *Advantages and Challenges* into shorter units; applied the caption-punctuation rule (`\paragraph{Title.}` for captions followed by prose); standardized *human validation* across *See Also* lines; split filler semicolons and colons where both halves stand alone.
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing-only assistance from disclosure. Advice for Reviewers now cites the policy's author-accountability and reject/retract provisions.
-- **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name; the website page moved to /guidelines/benchmarks-metrics/ with a redirect from the old URL.
+- **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name; the website page moved to /guidelines/benchmarks-metrics/.
 - **Open LLM:** In-prose cross-reference name now singular (*Open LLM*), matching the guideline title and all tables.
-- **Study Types:** The benchmarking study type's short name expanded from *Benchmarks* to *Benchmarking*, completing the disambiguation from the Benchmarks & Metrics guideline; the website page moved to /study-types/benchmarking/ with a redirect from the old URL.
+- **Study Types:** The benchmarking study type's short name expanded from *Benchmarks* to *Benchmarking*, completing the disambiguation from the Benchmarks & Metrics guideline; the website page moved to /study-types/benchmarking/.
 
 ### Fixed
 
