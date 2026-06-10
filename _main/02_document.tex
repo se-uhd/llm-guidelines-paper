@@ -121,10 +121,16 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 \subsection{Declare LLM Usage and Role}
 \label{sec:declare-llm-usage-and-role}
 
+% TL;DR box seam discipline: `\summary: %` ends its line with a comment, and
+% `\end{framed}` sits directly after the \input with no line break between
+% them. This makes the regular build and the latexpand-flattened build
+% tokenize the box end identically (exactly one space), so the two PDFs stay
+% text-equivalent; compare_pdfs.sh enforces this in CI. Do not move
+% \end{framed} onto its own line.
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/01_declare-llm-usage-and-role-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/01_declare-llm-usage-and-role-tldr.tex}\end{framed}
 
 \input{_guidelines/01_declare-llm-usage-and-role}
 
@@ -133,8 +139,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/02_report-model-version-configuration-and-customizations-tldr.tex} 
-\end{framed}
+\summary: %
+\input{_tldr/02_report-model-version-configuration-and-customizations-tldr.tex}\end{framed}
 
 \input{_guidelines/02_report-model-version-configuration-and-customizations.tex}
 
@@ -143,8 +149,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/03_report-system-and-prompt-design-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/03_report-system-and-prompt-design-tldr.tex}\end{framed}
 
 \input{_guidelines/03_report-system-and-prompt-design.tex}
 
@@ -153,8 +159,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/04_report-session-traces-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/04_report-session-traces-tldr.tex}\end{framed}
 
 \input{_guidelines/04_report-session-traces.tex}
 
@@ -163,8 +169,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/05_use-baselines-benchmarks-and-metrics-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/05_use-baselines-benchmarks-and-metrics-tldr.tex}\end{framed}
 
 \input{_guidelines/05_use-baselines-benchmarks-and-metrics.tex}
 
@@ -173,8 +179,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/06_use-an-open-llm-as-a-baseline-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/06_use-an-open-llm-as-a-baseline-tldr.tex}\end{framed}
 
 \input{_guidelines/06_use-an-open-llm-as-a-baseline.tex}
 
@@ -183,8 +189,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/07_use-human-validation-for-llm-outputs-tldr.tex}
-\end{framed}
+\summary: %
+\input{_tldr/07_use-human-validation-for-llm-outputs-tldr.tex}\end{framed}
 
 \input{_guidelines/07_use-human-validation-for-llm-outputs.tex}
 
@@ -193,8 +199,8 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 
 \vspace{0.5\baselineskip}
 \begin{framed}
-\summary: \input{_tldr/08_report-limitations-and-mitigations-tldr.tex}   
-\end{framed}
+\summary: %
+\input{_tldr/08_report-limitations-and-mitigations-tldr.tex}\end{framed}
 
 \input{_guidelines/08_report-limitations-and-mitigations.tex}
 
