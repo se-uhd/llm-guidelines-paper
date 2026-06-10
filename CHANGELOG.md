@@ -58,6 +58,7 @@ Version accepted at Empirical Software Engineering (EMSE).
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing-only assistance from disclosure. Advice for Reviewers now cites the policy's author-accountability and reject/retract provisions.
 - **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name; the website page moved to /guidelines/benchmarks-metrics/ with a redirect from the old URL.
 - **Open LLM:** In-prose cross-reference name now singular (*Open LLM*), matching the guideline title and all tables.
+- **Study Types:** The benchmarking study type's short name expanded from *Benchmarks* to *Benchmarking*, completing the disambiguation from the Benchmarks & Metrics guideline; the website page moved to /study-types/benchmarking/ with a redirect from the old URL.
 
 ### Fixed
 
