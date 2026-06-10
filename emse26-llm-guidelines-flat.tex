@@ -2119,19 +2119,19 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 \midrule
 % Declare LLM Usage and Role: "Researchers must follow this guideline for all study types."
 \hyperref[sec:declare-llm-usage-and-role]{Declare Usage}\hspace{12pt}
-  & \iconM % annotators: "must declare the specific role assigned to the LLM (e.g., annotator)"
-  & \iconM % judges: "must declare the specific role assigned to the LLM (e.g., judge)"
-  & \iconM % synthesis: "must declare the specific role assigned to the LLM (e.g., synthesizer)"
-  & \iconM % subjects: "must declare the specific role assigned to the LLM (e.g., simulated participant)"
+  & \iconM % annotators: "must declare the specific role assigned to the LLM (e.g., annotator, judge, synthesizer, or simulated participant)"
+  & \iconM % judges: same combined sentence as annotators
+  & \iconM % synthesis: same combined sentence as annotators
+  & \iconM % subjects: same combined sentence as annotators
   & \iconM % llmusage: "must clarify which LLM(s) the observed participants used and under which conditions"
   & \iconM % newtools: "must declare the LLM's role within the tool architecture and its contribution"
   & \iconM % benchmarkingtasks: "must declare which LLMs were benchmarked and for which tasks"
   \\
 % Report Model Version: "must be followed for all study types for which the researcher has access to (parts of) the model's configuration"
 \hyperref[sec:report-model-version-configuration-and-customizations]{Model Version}
-  & \iconM % annotators: "must report the model configuration used for the respective annotation tasks, including temperature and other sampling parameters"
-  & \iconM % judges: "must report the model configuration used for the respective judging tasks"
-  & \iconM % synthesis: "must report the model configuration used for the respective synthesis tasks"
+  & \iconM % annotators: "must report the model configuration used for the respective annotation, judging, or synthesis tasks, including temperature and other sampling parameters that affect output variability"
+  & \iconM % judges: same combined sentence as annotators
+  & \iconM % synthesis: same combined sentence as annotators
   & \iconM % subjects: "must report any persona-related configuration settings and parameters that configure the simulated behavior"
   & \iconM % llmusage: "must be as specific as possible"; model name, version, date "must always be reported"
   & \iconM % newtools: "must report the configuration for each model integrated in the tool's architecture"
@@ -2144,7 +2144,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconM % synthesis: "must document the sequence of prompts used to generate and refine outputs"
   & \iconM % subjects: "must report any role-playing instructions, constraints, or personas used to guide LLM behavior"
   & \iconS % llmusage: "should describe the tool architecture of the studied tool to the extent that it is accessible"; the must clause applies only to controlled experiments
-  & \iconM % newtools: "of primary importance: must describe the tool's full architecture, prompts, context files, tool catalog, skill definitions"
+  & \iconM % newtools: "this guideline is of primary importance: researchers \must describe the tool's full architecture, explain how prompts were generated and structured within the tool, report the context files, tool catalog, and skill definitions used"
   & \iconM % benchmarkingtasks: "must describe the evaluation harness and infrastructure when it goes beyond bare model API calls"; "must specify the benchmark version and any modifications"; "must disclose and justify" prompt tuning/RAG changes
   \\
 % Session Traces: runtime trace reporting requirements depend heavily on the study type and the accessibility of the underlying system
@@ -2153,7 +2153,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % judges: same as annotators (multi-turn / agentic case)
   & \iconS % synthesis: same as annotators (multi-turn / agentic case)
   & \iconS % subjects: same as annotators (multi-turn / agentic case)
-  & \iconM % llmusage: "must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal/confidential information"
+  & \iconM % llmusage: "must report the full interaction logs except when transcripts might identify anonymous participants or reveal personal or confidential information"
   & \iconS % newtools: "should report runtime traces for the runs used to evaluate the tool" (for agentic execution)
   & \iconS % benchmarkingtasks: "should report runtime traces for representative runs" (for agentic harnesses)
   \\
@@ -2163,14 +2163,14 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   & \iconS % judges: "should report inter-rater agreement metrics and validity measures to demonstrate the reliability and quality of LLM judgments"
   & \iconS % synthesis: "should specify metrics for comparing synthesized outputs (e.g., coverage, faithfulness)"
   & \iconS % subjects: "should compare simulated and real human responses using appropriate metrics to assess simulation fidelity"
-  & \iconS % llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"; conditional \must: "in interactive setups where response times can influence participant behavior, researchers \must report observed latency" (checklist: latency-sensitive item)
+  & \iconS % llmusage: "should justify the measurement instruments and metrics used for studying LLM usage patterns"; conditional \must: "In interactive setups where response times can influence participant behavior, researchers \must report observed latency" (checklist: latency-sensitive item)
   & \iconS % newtools: "should benchmark the tool against suitable baselines using appropriate metrics that capture the tool's intended contribution"
-  & \iconM % benchmarkingtasks: "of primary importance: must use established benchmarks or rigorously justify the creation of new ones, must report standard metrics", "should report an error analysis alongside the primary scores"
+  & \iconM % benchmarkingtasks: "this guideline is of primary importance: researchers \must use established benchmarks or rigorously justify the creation of new ones, \must report standard metrics to enable cross-study comparison, and \should report an error analysis alongside the primary scores"
   \\
 % Open LLM Baseline: "applies primarily to study types in which the researcher controls which LLM is used"
 \hyperref[sec:use-an-open-llm-as-a-baseline]{Open LLM}
-  & \iconS % annotators: "should compare annotation quality from open vs. commercial models"
-  & \iconS % judges: "should compare judgment quality from open vs. commercial models"
+  & \iconS % annotators: "should compare annotation or judgment quality from open vs.\ commercial models to assess the extent to which results depend on a specific proprietary model"
+  & \iconS % judges: same combined sentence as annotators
   & \iconS % synthesis: "should compare synthesis results from open and commercial models"
   & --     % subjects: Open LLM source - "may similarly be impractical if the study design requires the capabilities of a specific model"; the same sentence's "researchers \should acknowledge this limitation" is subsumed by Limitations' \must clauses for subjects (Limitations row marks subjects as \iconM).
   & --     % llmusage: Open LLM source - "often not feasible when the study observes participants using specific commercial tools"; the same sentence's "investigators \should explicitly acknowledge its absence and discuss how this limitation might affect their conclusions" is subsumed by Limitations' \must clauses for llmusage (Limitations row marks llmusage as \iconM). For controlled experiments under \llmusage, the body adds a \should that an open LLM be among the models under test.
@@ -2189,13 +2189,13 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
   \\
 % Limitations and Mitigations: "Researchers must follow this guideline for all study types."
 \hyperref[sec:report-limitations-and-mitigations]{Limitations}
-  & \iconM % annotators: "must discuss potential biases in label assignment, label reliability limitations, and sensitivity to prompt wording and model choice"
+  & \iconM % annotators: "must discuss potential biases in label assignment, label reliability limitations, and sensitivity of annotations to prompt wording and model choice"
   & \iconM % judges: "must address measurement validity concerns, known biases such as position bias or verbosity bias"
-  & \iconM % synthesis: "must discuss the risk of contextual misinterpretation, potential loss of nuance, and reflexivity limitations"
+  & \iconM % synthesis: "must discuss the risk of contextual misinterpretation, potential loss of nuance in summarized or aggregated outputs, and reflexivity limitations inherent in using an LLM for qualitative interpretation"
   & \iconM % subjects: "must discuss the fundamental inability of LLMs to truly simulate human behavior, the risk of stereotype amplification"
   & \iconM % llmusage: "must discuss generalizability constraints across different tools and user populations"
   & \iconM % newtools: "must discuss replicability constraints arising from dependencies on commercial models, the impact of model updates"
-  & \iconM % benchmarkingtasks: "must discuss potential data contamination, benchmark scope limitations, and the extent to which benchmark performance generalizes"
+  & \iconM % benchmarkingtasks: "must discuss potential data contamination, benchmark scope limitations, capability confounding, and the extent to which benchmark performance generalizes to real-world tasks"
   \\
 \bottomrule
 \end{tabular}
@@ -2285,6 +2285,13 @@ Limitations & Honest acknowledgment of threats strengthens a study. &
 % (\iconM before \iconS), then by general before \condition{}-tagged
 % (conditional) items, then by reporting location
 % (\paper -> unspecified -> \supplementarymaterial).
+% Selection rule: every \must and \mustnot statement in the guideline bodies
+% appears in (or is absorbed into) an item. A \should gets its own item when
+% it names a standalone reporting action or artifact; a \should that refines,
+% conditions, or illustrates an included item is folded into that item (quote
+% it in the item's comment), and interpretation cautions or reflective-practice
+% advice without a discrete reportable artifact stays out. Document deliberate
+% exclusions in a comment (see the power-analysis note under Human Validation).
 
 The following checklist, inspired by CONSORT~\citep{Schulz2010}, summarizes actionable items from the guidelines.
 % GROUNDING Schulz2010: "The CONSORT 2010 Statement is this paper including the 25 item checklist in the table (Table 1) and the flow diagram (Figure 1)."
@@ -2299,7 +2306,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 \paragraph{\textbf{Introduction}}
 \begin{itemize}[label={},leftmargin=*]
     \item \iconM Disclose any use of LLMs in the empirical study, specifying which LLM, how, and where it was used~(\refdeclareusage).
-    % G1 Recommendations: "researchers \must clearly declare that an LLM was used"; specifies which/how/where in the research process.
+    % G1 Recommendations: "researchers \must clearly declare that an LLM was used"; specifies which/how/where in the research process. Folds the multiple-roles refinement: "each role \should be declared separately".
     \item \iconS Report in the \paper the purpose of using LLMs, the tasks they automate, and the expected benefits~(\refdeclareusage).
     % G1 Recommendations: "researchers \should report the exact purpose of using an LLM in a study, the tasks it was used to automate, and the expected benefits in the \paper".
 \end{itemize}
@@ -2312,7 +2319,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM \condition{fine-tuning} For fine-tuned models, describe in the \paper the fine-tuning goal, the dataset, and the procedure~(\refmodelversion).
     % G2 Recommendations: "If a model was fine-tuned, researchers \must describe the fine-tuning goal..., the fine-tuning procedure..., and the fine-tuning dataset... in the \paper".
     \item \iconS Report default parameters and explain model and version choices~(\refmodelversion).
-    % G2 Recommendations: "researchers \should report all configuration values, even if they used the defaults"; "Researchers \should motivate in the \paper why they selected certain models, versions, and configurations".
+    % G2 Recommendations: "researchers \should report all configuration values, even if they used the defaults"; "Researchers \should motivate in the \paper why they selected certain models, versions, and configurations". Folds the temperature-0 sub-case: "this motivation \should be stated explicitly"; the \shouldnot caution against treating temperature 0 as a reproducibility guarantee is an interpretation caution, not an item.
     \item \iconS Report checksums and additional model properties where available; for commercial tools, openly acknowledge their reproducibility limits~(\refmodelversion).
     % G2 Recommendations: "Checksums and fingerprints \should be reported"; "other properties such as the context window size... \should be reported"; for commercial tools, "researchers \should report what is available and openly acknowledge limitations that hinder reproducibility". Wording compresses "checksums and fingerprints" to "checksums" for symmetry with the summary-table row; the guideline body retains the full "checksums and fingerprints" phrasing.
     \item \iconS \condition{quantization} For quantized models, report the quantization level (e.g., 4-bit, 8-bit) and method (e.g., GPTQ or AWQ)~(\refmodelversion).
@@ -2351,7 +2358,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconM \condition{tool-use} Summarize in the \paper which tools were exposed to the model~(\refdesign).
     % G3 Tool Catalog and MCP Servers: "Researchers \must summarize in the \paper which tools were exposed to the model".
     \item \iconM \condition{agents} If autonomous agents are used, specify agent roles, reasoning frameworks, and communication flows~(\refdesign).
-    % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used".
+    % G3 Agentic Systems: "researchers \must additionally describe the agents' roles..., whether the system is single-agent or multi-agent, how the agents interact with external tools and users, and the reasoning framework used". Folds the subagent refinement: "researchers \should also describe the delegation pattern".
     \item \iconM \condition{agents} For agentic systems that use external tools, distinguish the model's reasoning and outputs, its tool calls, and its interactions with users, the environment, or other agents~(\refdesign).
     % G3 Agentic Systems: "researchers \must distinguish three kinds of activity: (1) the model's reasoning, planning, and outputs; (2) tool calls (e.g., to APIs, databases, file systems, or ... (MCP) servers); (3) interactions with users, the environment, or other agents".
     \item \iconM \condition{context-augmentation} For retrieval-augmented generation (RAG) or related methods, describe how external data was retrieved, stored, and selected for inclusion in the model's context~(\refdesign).
@@ -2428,7 +2435,7 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS Provide an operational definition of the phenomenon the benchmark is intended to measure, including its scope and any sub-components~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should provide an operational definition of the phenomenon the benchmark is intended to measure ..., including its scope and any sub-components".
     \item \iconS Summarize benchmark structure, task types, and limitations~(\refbenchmarks).
-    % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)".
+    % G5 Recommendations: researchers "\should summarize the structure and tasks of the selected benchmark(s)" and "\should discuss the limitations of the selected benchmark(s)". Folds the illustration refinement: "include an example of a task and the corresponding test case(s)".
     \item \iconS Identify the capabilities a benchmark conflates with the target phenomenon, isolate the target where possible, and acknowledge remaining confounders as construct-validity threats~(\refbenchmarks).
     % G5 Recommendations (new): researchers "\should identify which capabilities a benchmark conflates, isolate the target capability where possible ..., and acknowledge remaining confounders as threats to construct validity".
     \item \iconS Perform an error analysis: categorize the failures observed and report their relative frequency; report failures that cluster on confounding capabilities as construct-validity threats~(\refbenchmarks).
