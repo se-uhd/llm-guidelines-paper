@@ -1,9 +1,17 @@
 Since the release of ChatGPT in November 2022, large language models (LLMs) have been adopted widely across software engineering (SE) research~\cite{DBLP:journals/tosem/HouZLYWLLLGW24}, yet the reproducibility and replicability of empirical studies involving LLMs remains uncertain.
 % GROUNDING DBLP:journals/tosem/HouZLYWLLLGW24: "Large Language Models (LLMs) have significantly impacted numerous domains, including Software Engineering (SE). Many recent publications have explored LLMs applied to various SE tasks."
-Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}. \citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} surveyed 72 peer-reviewed papers from leading security and SE venues published in 2023--2024 and found that every paper contained at least one of nine LLM-specific pitfalls they identified, spanning data collection, pre-training, fine-tuning, prompting, and evaluation; only 15.7\% of the pitfalls present in those papers were explicitly discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
-% GROUNDING DBLP:journals/corr/abs-2510-25506: "For none of the five studies, we were able to fully reproduce the results."
-% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024, finding that every paper contains at least one pitfall"
-Three characteristics of LLMs make this particularly challenging.
+Recent findings indicate low reproducibility in SE studies involving LLMs.
+\citeauthor{DBLP:journals/corr/abs-2510-25506} examined 85 LLM-centric ICSE and ASE 2024 papers~\cite{DBLP:journals/corr/abs-2510-25506}.
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "we studied the 85 articles describing LLM-centric studies, published at ICSE 2024 and ASE 2024"
+Of the 18 papers that both used OpenAI models and provided artifacts, only five were complete enough to execute, and none fully reproduced the original results~\cite{DBLP:journals/corr/abs-2510-25506}.
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "Of the 85 articles, 18 provided research artefacts and used OpenAI models"
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "Of the 18 studies, only five were sufficiently complete and executable. For none of the five studies, we were able to fully reproduce the results."
+\citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} found at least one LLM-specific pitfall in each of 72 peer-reviewed security and SE papers from 2023--2024, and only 15.7\% of the observed pitfalls were discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "We assess the prevalence of these pitfalls across all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024."
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "We find that every paper contains at least one pitfall"
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "Yet only 15.7% of the present pitfalls were explicitly discussed"
+
+LLM-based SE studies are hard to reproduce for three reasons.
 First, their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, and slight changes can lead to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509}.
 % GROUNDING DBLP:conf/naacl/SongWLL25: "given a particular input, the same LLM may generate significantly different outputs under various decoding configurations, a phenomenon known as non-determinism in generation"
 % GROUNDING DBLP:journals/corr/abs-2602-07150: "single-run pass@1 estimates vary by 2.2 to 6.0 percentage points depending on which run is selected, with standard deviations exceeding 1.5 percentage points even at temperature 0"
@@ -17,6 +25,7 @@ Moreover, prompt formatting choices alone can shift accuracy by up to 76 percent
 % GROUNDING DBLP:conf/iclr/Sclar0TS24: "several widely used open-source LLMs are extremely sensitive to subtle changes in prompt formatting in few-shot settings, with performance differences of up to 76 accuracy points"
 % GROUNDING renze2024temperature: "A higher temperature makes the output more random, thus favoring more 'creative' predictions."
 Hence, not reporting these settings directly affects reproducibility.
+
 Traditional open science practice in SE has focused on releasing source code and datasets as a replication package. The empirical artifact analysis literature in SE focuses more on code repositories and data than on upstream artifacts such as requirements specifications and design documents~\cite{DBLP:journals/jss/LiuHHXZJCM24}. With LLMs, code is often generated from prompts, context files, and other runtime inputs to the model, so reporting must shift left to cover these upstream artifacts in addition to the code and data they produce.
 % GROUNDING DBLP:journals/jss/LiuHHXZJCM24: "All the top-starred artifacts include executable code, providing either tools, frameworks, or toolkits."
 

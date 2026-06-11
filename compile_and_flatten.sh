@@ -15,6 +15,7 @@ latexpand --keep-comments \
   --in-encoding 'encoding(UTF-8)' \
   --out-encoding 'encoding(UTF-8)' \
   "$MAIN_TEX" > "$FLAT_OUTPUT"
+perl -pi -e 's/[ \t]+$//' "$FLAT_OUTPUT"
 
 echo "Compiling $(basename "$FLAT_OUTPUT")..."
 latexmk -pdf -interaction=nonstopmode -halt-on-error -cd "$FLAT_OUTPUT"

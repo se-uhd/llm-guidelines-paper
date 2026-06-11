@@ -170,23 +170,23 @@
 
 % Cross-references — scope
 \ifpaper
-  \newcommand{\scope}{\hyperref[sec:scope]{\emph{Scope}}\xspace}
+  \newcommand{\scope}{\hyperref[sec:scope]{\mbox{\emph{Scope}}}\xspace}
 \else
   \newcommand{\scope}{\href{/scope/}{\emph{Scope}}\xspace}
 \fi
 
 % Cross-references — study types
 \ifpaper
-  \newcommand{\studytypes}{\hyperref[sec:study-types]{\emph{Study Types}}\xspace}
-  \newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\emph{LLMs for Research}}\xspace}
-  \newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\emph{LLMs as Annotators}}\xspace}
-  \newcommand{\judges}{\hyperref[sec:llms-as-judges]{\emph{LLMs as Judges}}\xspace}
-  \newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\emph{LLMs for Synthesis}}\xspace}
-  \newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\emph{LLMs as Subjects}}\xspace}
-  \newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\emph{LLMs for SE}}\xspace}
-  \newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\emph{Studying LLM Usage}}\xspace}
-  \newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\emph{LLMs for Tools}}\xspace}
-  \newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\emph{Benchmarking LLMs}}\xspace}
+  \newcommand{\studytypes}{\hyperref[sec:study-types]{\mbox{\emph{Study Types}}}\xspace}
+  \newcommand{\llmsforresearcher}{\hyperref[sec:llms-as-tools-for-software-engineering-researchers]{\mbox{\emph{LLMs for Research}}}\xspace}
+  \newcommand{\annotators}{\hyperref[sec:llms-as-annotators]{\mbox{\emph{LLMs as Annotators}}}\xspace}
+  \newcommand{\judges}{\hyperref[sec:llms-as-judges]{\mbox{\emph{LLMs as Judges}}}\xspace}
+  \newcommand{\synthesis}{\hyperref[sec:llms-for-synthesis]{\mbox{\emph{LLMs for Synthesis}}}\xspace}
+  \newcommand{\subjects}{\hyperref[sec:llms-as-subjects]{\mbox{\emph{LLMs as Subjects}}}\xspace}
+  \newcommand{\llmsforengineers}{\hyperref[sec:llms-as-tools-for-software-engineers]{\mbox{\emph{LLMs for SE}}}\xspace}
+  \newcommand{\llmusage}{\hyperref[sec:studying-llm-usage-in-software-engineering]{\mbox{\emph{Studying LLM Usage}}}\xspace}
+  \newcommand{\newtools}{\hyperref[sec:llms-for-new-software-engineering-tools]{\mbox{\emph{LLMs for Tools}}}\xspace}
+  \newcommand{\benchmarkingtasks}{\hyperref[sec:benchmarking-llms-for-software-engineering-tasks]{\mbox{\emph{Benchmarking LLMs}}}\xspace}
 \else
   \newcommand{\studytypes}{\href{/study-types/}{\emph{Study Types}}\xspace}
   \newcommand{\llmsforresearcher}{\href{/study-types/llms-for-research/}{\emph{LLMs for Research}}\xspace}
@@ -202,14 +202,14 @@
 
 % Cross-references — guidelines
 \ifpaper
-  \newcommand{\guidelines}{\hyperref[sec:guidelines]{\emph{Guidelines}}\xspace}
-  \newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\emph{Usage and Role}}\xspace}
-  \newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\emph{Version and Configuration}}\xspace}
-  \newcommand{\design}{\hyperref[sec:report-system-and-prompt-design]{\emph{System and Prompt Design}}\xspace}
-  \newcommand{\traces}{\hyperref[sec:report-session-traces]{\emph{Session Traces}}\xspace}
-  \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\emph{Benchmarks and Metrics}}\xspace}
-  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\emph{Open LLM}}\xspace}
-  \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\emph{Human Validation}}\xspace}
+  \newcommand{\guidelines}{\hyperref[sec:guidelines]{\mbox{\emph{Guidelines}}}\xspace}
+  \newcommand{\usagerole}{\hyperref[sec:declare-llm-usage-and-role]{\mbox{\emph{Usage and Role}}}\xspace}
+  \newcommand{\modelversion}{\hyperref[sec:report-model-version-configuration-and-customizations]{\mbox{\emph{Version and Configuration}}}\xspace}
+  \newcommand{\design}{\hyperref[sec:report-system-and-prompt-design]{\mbox{\emph{System and Prompt Design}}}\xspace}
+  \newcommand{\traces}{\hyperref[sec:report-session-traces]{\mbox{\emph{Session Traces}}}\xspace}
+  \newcommand{\benchmarksmetrics}{\hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{\mbox{\emph{Benchmarks and Metrics}}}\xspace}
+  \newcommand{\openllm}{\hyperref[sec:use-an-open-llm-as-a-baseline]{\mbox{\emph{Open LLM}}}\xspace}
+  \newcommand{\humanvalidation}{\hyperref[sec:use-human-validation-for-llm-outputs]{\mbox{\emph{Human Validation}}}\xspace}
   \newcommand{\limitationsmitigations}{\hyperref[sec:report-limitations-and-mitigations]{\emph{Limitations and Mitigations}}\xspace}
   % Short-name references for the reporting checklist (parenthetical citations
   % that link to the corresponding guideline). Plain (non-italic) hyperlinks
@@ -286,7 +286,7 @@
   \newcommand{\seehumanvalidation}{\href{/guidelines/human-validation/}{Use Human Validation for LLM Outputs}}
   \newcommand{\seelimitationsmitigations}{\href{/guidelines/limitations/}{Report Limitations and Mitigations}}
 \fi
- 
+
 % Paper-only: lstset color overrides (requires xcolor loaded above)
 \lstset{
   keywordstyle=\color{blue},
@@ -306,11 +306,14 @@
 % prevent single lines at the end of a paragraph (Hurenkinder)
 \widowpenalty = 10000 \displaywidowpenalty = 10000
 % avoid a single short word alone on the last line of a paragraph:
-% \parfillskip can stretch at most 0.75\textwidth, so the last line must
-% fill at least ~25% of the text width (raise to 0.8/0.85 for a gentler
-% 20%/15% minimum). \emergencystretch absorbs the rare overfull line this
+% \parfillskip can stretch at most 0.6\textwidth, so the last line must
+% fill at least ~40% of the text width. \emergencystretch absorbs the rare
+% overfull line this
 % can cause.
-\setlength{\parfillskip}{0pt plus 0.75\textwidth}
+\setlength{\parfillskip}{0pt plus 0.6\textwidth}
+% avoid splitting the final word of a paragraph across the penultimate and
+% final lines (e.g., "re-" / "porting.").
+\finalhyphendemerits = 1000000
 % allow line breaks at explicit hyphens (sub-components, retrieval-augmented, ...)
 \exhyphenpenalty = 0
 % give LaTeX more flexibility on tight lines so it does not overrun the margin
@@ -348,7 +351,7 @@
     \hss}}
 \makeatother
 
-\date{Submitted: 26/08/2025\\Revised: 27/02/2026, 05/05/2026}
+\date{Submitted: 26/08/2025\\Revised: 27/02/2026, 05/05/2026, 11/06/2026}
 
 \title{Guidelines for Empirical Studies in Software~Engineering involving Large~Language~Models}
 
@@ -480,10 +483,18 @@ community to use and shape
 
 Since the release of ChatGPT in November 2022, large language models (LLMs) have been adopted widely across software engineering (SE) research~\cite{DBLP:journals/tosem/HouZLYWLLLGW24}, yet the reproducibility and replicability of empirical studies involving LLMs remains uncertain.
 % GROUNDING DBLP:journals/tosem/HouZLYWLLLGW24: "Large Language Models (LLMs) have significantly impacted numerous domains, including Software Engineering (SE). Many recent publications have explored LLMs applied to various SE tasks."
-Recent findings indicate a low reproducibility of SE studies involving LLMs~\cite{DBLP:journals/corr/abs-2510-25506}. \citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} surveyed 72 peer-reviewed papers from leading security and SE venues published in 2023--2024 and found that every paper contained at least one of nine LLM-specific pitfalls they identified, spanning data collection, pre-training, fine-tuning, prompting, and evaluation; only 15.7\% of the pitfalls present in those papers were explicitly discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
-% GROUNDING DBLP:journals/corr/abs-2510-25506: "For none of the five studies, we were able to fully reproduce the results."
-% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024, finding that every paper contains at least one pitfall"
-Three characteristics of LLMs make this particularly challenging.
+Recent findings indicate low reproducibility in SE studies involving LLMs.
+\citeauthor{DBLP:journals/corr/abs-2510-25506} examined 85 LLM-centric ICSE and ASE 2024 papers~\cite{DBLP:journals/corr/abs-2510-25506}.
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "we studied the 85 articles describing LLM-centric studies, published at ICSE 2024 and ASE 2024"
+Of the 18 papers that both used OpenAI models and provided artifacts, only five were complete enough to execute, and none fully reproduced the original results~\cite{DBLP:journals/corr/abs-2510-25506}.
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "Of the 85 articles, 18 provided research artefacts and used OpenAI models"
+% GROUNDING DBLP:journals/corr/abs-2510-25506: "Of the 18 studies, only five were sufficiently complete and executable. For none of the five studies, we were able to fully reproduce the results."
+\citeauthor{DBLP:conf/ndss/EvertzRNMNSGPSS26} found at least one LLM-specific pitfall in each of 72 peer-reviewed security and SE papers from 2023--2024, and only 15.7\% of the observed pitfalls were discussed~\cite{DBLP:conf/ndss/EvertzRNMNSGPSS26}.
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "We assess the prevalence of these pitfalls across all 72 peer-reviewed papers published at leading Security and Software Engineering venues between 2023 and 2024."
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "We find that every paper contains at least one pitfall"
+% GROUNDING DBLP:conf/ndss/EvertzRNMNSGPSS26: "Yet only 15.7% of the present pitfalls were explicitly discussed"
+
+LLM-based SE studies are hard to reproduce for three reasons.
 First, their inherent non-determinism causes variability across runs~\cite{DBLP:conf/naacl/SongWLL25, DBLP:journals/corr/abs-2602-07150}, and slight changes can lead to substantially different results~\cite{DBLP:conf/nips/AgarwalSCCB21, DBLP:journals/corr/abs-2412-12509}.
 % GROUNDING DBLP:conf/naacl/SongWLL25: "given a particular input, the same LLM may generate significantly different outputs under various decoding configurations, a phenomenon known as non-determinism in generation"
 % GROUNDING DBLP:journals/corr/abs-2602-07150: "single-run pass@1 estimates vary by 2.2 to 6.0 percentage points depending on which run is selected, with standard deviations exceeding 1.5 percentage points even at temperature 0"
@@ -497,6 +508,7 @@ Moreover, prompt formatting choices alone can shift accuracy by up to 76 percent
 % GROUNDING DBLP:conf/iclr/Sclar0TS24: "several widely used open-source LLMs are extremely sensitive to subtle changes in prompt formatting in few-shot settings, with performance differences of up to 76 accuracy points"
 % GROUNDING renze2024temperature: "A higher temperature makes the output more random, thus favoring more 'creative' predictions."
 Hence, not reporting these settings directly affects reproducibility.
+
 Traditional open science practice in SE has focused on releasing source code and datasets as a replication package. The empirical artifact analysis literature in SE focuses more on code repositories and data than on upstream artifacts such as requirements specifications and design documents~\cite{DBLP:journals/jss/LiuHHXZJCM24}. With LLMs, code is often generated from prompts, context files, and other runtime inputs to the model, so reporting must shift left to cover these upstream artifacts in addition to the code and data they produce.
 % GROUNDING DBLP:journals/jss/LiuHHXZJCM24: "All the top-starred artifacts include executable code, providing either tools, frameworks, or toolkits."
 
@@ -513,7 +525,7 @@ After outlining our \scope, we introduce a taxonomy of \studytypes, then present
 We complement these with an applicability matrix mapping guidelines to study types and a reporting checklist for authors and reviewers.
 For each study type and guideline, we identify relevant examples, both within and outside of SE research.
 We maintain the study types and guidelines online as a living resource for the community to use and shape (\href{https://llm-guidelines.org/}{llm-guidelines.org}).
- 
+
 \section{Scope and Conventions}
 \label{sec:scope}
 
@@ -569,7 +581,7 @@ Reporting guidelines have a long tradition in healthcare research, where CONSORT
 
 \citeauthor{DBLP:journals/corr/abs-2601-01954} frame their recommendations as complementing ours. The items their 105 surveyed program committee members endorsed as essential align with what \modelversion, \design, and \limitationsmitigations already require. \citeauthor{DBLP:conf/chi/NavarroSA26}'s HCI guidelines, by contrast, balance \enq{the practical realities of authors' time, cost, and page limitations} with scientific concerns and HCI norms, while our \guidelines aim for comprehensive coverage and use \must and \should to express that balance. On prompt reporting, \citeauthor{DBLP:conf/chi/NavarroSA26} argue for selective disclosure based on each prompt's centrality to author claims, whereas \design recommends fuller disclosure with named exceptions for privacy, anonymity, or confidentiality concerns. On technical evaluation, \citeauthor{DBLP:conf/chi/NavarroSA26} recommend a \enq{modest technical evaluation of the LLM component on a dataset of representative inputs} tailored to HCI research, whereas \benchmarksmetrics asks for established benchmarks, traditional baselines, and inferential statistics where applicable. Peripheral LLM uses such as proofreading, spell-checking, and translation are entirely out of scope (see \emph{Focus on Direct Development or Research Support} above).
 
-Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial. 
+Our guidelines name \paper or \supplementarymaterial as the reporting location for each recommendation (see \emph{Reporting Locations} above). In summary, our guidelines apply to SE empirical research broadly, organize recommendations around the taxonomy of seven study types introduced in \studytypes with explicit per-study-type applicability, and pair each recommendation with a target reporting location in \paper or \supplementarymaterial.
 \section{Methodology}
 \label{sec:methodology}
 
@@ -609,7 +621,7 @@ Each study type section starts with a \textbf{description}, followed by \textbf{
 \ifpaper
 See Table~\ref{tab:study-types} for an overview of study types.
 \fi
- 
+
 \begin{table}[tb]
 \centering
 \caption{Overview of study types.}
@@ -638,7 +650,7 @@ See Table~\ref{tab:study-types} for an overview of study types.
 LLMs can serve as tools to help researchers conduct empirical studies.
 They can automate various tasks such as data collection, pre-processing, and analysis.
 For example, LLMs can perform qualitative coding on natural language text such as interview transcripts (\annotators), assess the quality of software artifacts (\judges), generate summaries of research papers (\synthesis), or simulate human behavior in empirical studies (\subjects). If LLMs could complete these tasks well enough, they would reduce the time and effort required to conduct a study. However, these applications each pose challenges to validity and reproducibility.
- 
+
 \studytypesubsection{LLMs as Annotators}
 \label{sec:llms-as-annotators}
 
@@ -655,11 +667,11 @@ The extent to which, or under what conditions, LLMs can perform these tasks \tex
 \studytypeparagraph{Examples}
 \citeauthor{Huang2023Enhancing} used multiple LLMs for joint annotation of mobile application reviews~\cite{Huang2023Enhancing}.
 % GROUNDING Huang2023Enhancing: "we propose a novel approach to constructing mobile application review datasets by leveraging multiple large language models (LLMs) for joint annotation"
-They used three models of comparable size with an absolute majority voting rule (i.e., a label is only accepted if it receives more than half of the total votes from the models). This approach slightly outperformed the best individual model tested. 
+They used three models of comparable size with an absolute majority voting rule (i.e., a label is only accepted if it receives more than half of the total votes from the models). This approach slightly outperformed the best individual model tested.
 Meanwhile, \citeauthor{DBLP:conf/msr/AhmedDTP25} examined LLMs as annotators in SE research across five datasets, six LLMs, and ten annotation tasks~\cite{DBLP:conf/msr/AhmedDTP25}.
 % GROUNDING DBLP:conf/msr/AhmedDTP25: "applying six state-of-the-art LLMs to ten annotation tasks from five datasets created by prior work"
 They found that inter-model agreement strongly correlates with human-model agreement; models performed poorly in tasks where humans also frequently disagreed. They proposed to use model confidence scores to identify specific samples that could be safely delegated to LLMs, potentially reducing human annotation effort without compromising inter-rater agreement.
- 
+
 \studytypesubsection{LLMs as Judges}
 \label{sec:llms-as-judges}
 
@@ -687,7 +699,7 @@ Explain your decision and suggest an improved version.
 
 They evaluated LLM output against expert human judges and found moderate agreement for simple requirements and poor agreement for more complex requirements. In contrast, \citeauthor{DBLP:conf/kbse/WangALHTASL25} used an LLM to generate acceptance criteria for user stories, and provided a rubric to an LLM to judge the generated acceptance criteria on interpretable scales (0 to 4)~\cite{DBLP:conf/kbse/WangALHTASL25}.
 % GROUNDING DBLP:conf/kbse/WangALHTASL25: "explicit class-based scoring with clearly interpretable scales (e.g., ratings 0–4) [36]–[38], and using LLMs themselves as judges"
- 
+
 \studytypesubsection{LLMs for Synthesis}
 \label{sec:llms-for-synthesis}
 
@@ -695,11 +707,11 @@ In the synthesis role, LLMs integrate and interpret information from multiple so
 
 \studytypeparagraph{Description}
 
-Unlike annotation (see \annotators), which focuses on categorizing or labeling individual data points, synthesis refers to the process of integrating and interpreting information from multiple sources to generate higher-level insights, identify patterns across datasets, and develop conceptual frameworks or theories. LLMs may be able to support synthesis tasks in SE research by processing and distilling information from qualitative data sources. 
+Unlike annotation (see \annotators), which focuses on categorizing or labeling individual data points, synthesis refers to the process of integrating and interpreting information from multiple sources to generate higher-level insights, identify patterns across datasets, and develop conceptual frameworks or theories. LLMs may be able to support synthesis tasks in SE research by processing and distilling information from qualitative data sources.
 Although synthesis in the preceding notion refers to abstraction and interpretation across multiple data sources, the term is sometimes also used to refer to generating synthetic content (e.g., source code, bug-fix pairs, or requirements) that is then used in downstream tasks to train, fine-tune, or evaluate existing models or tools.
 In this case, the synthesis is done primarily using the LLM and its training data; the input is limited to basic instructions and examples.
 
-\studytypeparagraph{Examples} 
+\studytypeparagraph{Examples}
 
 Published examples of applying LLMs for synthesis in SE remain scarce. However, some recent work in other domains is instructive~\cite{DBLP:journals/ase/BanoHZT24}.
 % GROUNDING DBLP:journals/ase/BanoHZT24: "the integration of Large Language Models (LLMs) like ChatGPT into qualitative research in software engineering, much like in other professional domains"
@@ -713,7 +725,7 @@ In SE, \citeauthor{DBLP:conf/wsese/LecaVSS25} explored how LLMs have been applie
 Finally, \citeauthor{DBLP:journals/corr/abs-2506-21138}'s work is an example of using LLMs to create synthetic datasets.
 They presented an approach to generate synthetic requirements, showing that they \enq{can match or surpass human-authored requirements for specific classification tasks}~\cite{DBLP:journals/corr/abs-2506-21138}.
 % GROUNDING DBLP:journals/corr/abs-2506-21138: "our results establish that synthetic requirements can match or surpass human-authored requirements for specific classification tasks"
- 
+
 % Reverted back to "subject", as participant seems to be primarily used for humans: see  https://dictionary.apa.org/subject and https://dictionary.apa.org/participant
 \studytypesubsection{LLMs as Subjects}
 \label{sec:llms-as-subjects}
@@ -736,14 +748,14 @@ To serve as virtual subjects, generated responses should be indistinguishable fr
 % GROUNDING DBLP:journals/ipm/XuSRGPLSH24: "AI for social science, where AI is utilized as a powerful tool to enhance various stages of social science research"
 % GROUNDING DBLP:journals/ase/GerosaTSS24: "discussing how LLMs can replicate human responses and behaviors in research settings ... including persona-based prompting for interviews, multi-persona dialogue for focus groups"
 % GROUNDING DBLP:conf/icse/BanoGH25: "We generated a total of 300 synthetic profiles, 100 gender-based and 50 gender-neutral profiles from each LLM (GPT-4 and Copilot) specific to SE roles"
- 
+
 \subsection{LLMs as Tools for Software Engineers}
 \label{sec:llms-as-tools-for-software-engineers}
 
 LLM-based assistants have become a widely adopted tool for software engineers~\cite{stackoverflow2025survey}, supporting them in various tasks such as code generation and debugging.
 % GROUNDING stackoverflow2025survey: "84% of respondents are using or planning to use AI tools in their development process, an increase over last year (76%)."
 Researchers have studied how software engineers use LLMs (\llmusage), developed new tools that integrate LLMs (\newtools), and benchmarked LLMs for software engineering tasks (\benchmarkingtasks).
- 
+
 \studytypesubsection{Studying LLM Usage in Software Engineering}
 \label{sec:studying-llm-usage-in-software-engineering}
 
@@ -753,7 +765,7 @@ Studies of LLM usage examine how software engineers adopt and integrate LLM-base
 
 LLM usage studies focus on real-world settings, outside the controlled conditions of benchmarks and experiments.
 Researchers can observe software engineers' usage of LLM-based tools in the field, or study if and how they adopt such tools, their usage patterns, as well as perceived benefits and challenges.
-Surveys, interviews, observational studies, or analysis of usage logs can provide insights into how LLMs are integrated into development processes, how they influence decision making, and what factors affect their acceptance and effectiveness. 
+Surveys, interviews, observational studies, or analysis of usage logs can provide insights into how LLMs are integrated into development processes, how they influence decision making, and what factors affect their acceptance and effectiveness.
 Such studies can inform improvements for existing LLM-based tools, motivate the design of novel tools, or derive best practices for LLM-assisted software engineering.
 They can also uncover risks or deficiencies of existing tools.
 
@@ -764,9 +776,9 @@ Based on a convergent mixed-methods study, \citeauthor{DBLP:journals/tosem/Russo
 \citeauthor{DBLP:journals/pacmse/KhojahM0N24} investigated the use of ChatGPT (GPT-3.5) by professional software engineers in a week-long observational study~\cite{DBLP:journals/pacmse/KhojahM0N24}.
 % GROUNDING DBLP:journals/pacmse/KhojahM0N24: "We conduct an observational study of 24 professional software engineers who have been using ChatGPT over a period of one week in their jobs"
 They found that most developers do not use the code generated by ChatGPT directly but instead use the output as a guide to implement their own solutions.
-\citeauthor{DBLP:conf/csee/AzanzaPIG24}'s case study found that LLMs could \enq{enhance personalized, instant onboarding support; however, relying on proprietary external LLMs poses significant data privacy risks}~\cite{DBLP:conf/csee/AzanzaPIG24}. 
+\citeauthor{DBLP:conf/csee/AzanzaPIG24}'s case study found that LLMs could \enq{enhance personalized, instant onboarding support; however, relying on proprietary external LLMs poses significant data privacy risks}~\cite{DBLP:conf/csee/AzanzaPIG24}.
 % GROUNDING DBLP:conf/csee/AzanzaPIG24: "enhance personalized, instant onboarding support; however, relying on proprietary external LLMs poses significant data privacy risks"
- \citeauthor{DBLP:conf/icsa/JahicS24} found that most participants from 15 software companies they surveyed had already adopted AI (especially ChatGPT) for SE tasks, but cited low-quality outputs, copyright issues, and the risk of proprietary code leaks as barriers to adoption~\cite{DBLP:conf/icsa/JahicS24}. 
+ \citeauthor{DBLP:conf/icsa/JahicS24} found that most participants from 15 software companies they surveyed had already adopted AI (especially ChatGPT) for SE tasks, but cited low-quality outputs, copyright issues, and the risk of proprietary code leaks as barriers to adoption~\cite{DBLP:conf/icsa/JahicS24}.
  % GROUNDING DBLP:conf/icsa/JahicS24: "Ten survey participants already adopted AI for at least some software engineering tasks, while five of them did not do so."
  % GROUNDING DBLP:conf/icsa/JahicS24: "The results show that low quality of produced output, copyright issues, and the effort for checking solutions before adopting them are and will be the main factors hindering adoption of AI in software engineering."
 Retrospective studies that analyze data generated while developers use LLMs can provide additional insights into human-LLM interactions.
@@ -775,7 +787,7 @@ For example, researchers can employ data mining methods to build large-scale con
 Conversations can then be analyzed using quantitative~\cite{DBLP:conf/msr/RabbiCZI24} and qualitative~\cite{DBLP:conf/msr/MohamedPP24} analysis methods.
 % GROUNDING DBLP:conf/msr/RabbiCZI24: "In this study, we quantitatively analyze 1,756 AI-written Python code snippets in the DevGPT dataset and evaluate them for quality and security issues."
 % GROUNDING DBLP:conf/msr/MohamedPP24: "an empirical study identifying patterns in the conversation that developers have with LLMs"
- 
+
 \studytypesubsection{LLMs for New Software Engineering Tools}
 \label{sec:llms-for-new-software-engineering-tools}
 
@@ -805,7 +817,7 @@ Because these architectures vary, researchers can test and compare them to study
 
 \citeauthor{DBLP:conf/chi/YanHWH24} proposed \emph{IVIE}, a tool integrated into the VS Code graphical interface that generates and explains code using LLMs~\cite{DBLP:conf/chi/YanHWH24}.
 % GROUNDING DBLP:conf/chi/YanHWH24: "We present an implementation of Ivie that forks VS Code, applying a modern LLM for timely segmentation and explanation of generated code."
-The authors focused more on the presentation, providing a user-friendly interface to interact with the LLM. 
+The authors focused more on the presentation, providing a user-friendly interface to interact with the LLM.
 \citeauthor{DBLP:journals/tse/SchaferNET24} presented a large-scale empirical evaluation on the effectiveness of LLMs for automated unit test generation~\cite{DBLP:journals/tse/SchaferNET24}.
 % GROUNDING DBLP:journals/tse/SchaferNET24: "This paper presents a large-scale empirical evaluation on the effectiveness of LLMs for automated unit test generation without requiring additional training or manual effort."
 They presented \emph{TestPilot}, a tool that implements an approach in which the LLM is provided with prompts that include the signature and implementation of a function under test, along with usage examples extracted from the documentation.
@@ -813,7 +825,7 @@ They presented \emph{TestPilot}, a tool that implements an approach in which the
 % GROUNDING DBLP:conf/icsm/RichardsW24: "we designed an LLM-based conversational assistant that provides a personalized interaction based on inferred user mental state (e.g., background knowledge and experience)"
 \citeauthor{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25} presented \emph{HULA}, a multi-agent system deployed in Atlassian JIRA that lets engineers refine LLM-generated coding plans and source code, and reported acceptance and modification rates from real users~\cite{DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25}.
 % GROUNDING DBLP:conf/icse-seip/TakerngsaksiriPTTZJLCCW25: "We design the user interface, implement, and deploy HULA into Atlassian JIRA for internal uses"
- 
+
 \studytypesubsection{Benchmarking LLMs for Software Engineering Tasks}
 \label{sec:benchmarking-llms-for-software-engineering-tasks}
 
@@ -832,9 +844,9 @@ In SE, benchmarking may include evaluating an LLM's ability to produce accurate 
 % GROUNDING DBLP:conf/llm4code/SilvaM25: "we define a maximum of 0.2 USD per evaluated bug, or approx. $115.1 for a total of 574 bugs"
 \emph{SWE-Bench}~\cite{DBLP:conf/iclr/JimenezYWYPPN24} is a more generic benchmark that contains 2,294 SE Python tasks extracted from GitHub pull requests.
 % GROUNDING DBLP:conf/iclr/JimenezYWYPPN24: "We therefore introduce SWE-bench, an evaluation framework including 2294 software engineering problems drawn from real GitHub issues and corresponding pull requests across 12 popular Python repositories."
-To score the LLM's task performance, the benchmark validates whether the generated patch successfully compiles and calculates the percentage of passed test cases. Meanwhile, \emph{HumanEval}~\cite{DBLP:journals/corr/abs-2107-03374} is often used to assess code generation. 
+To score the LLM's task performance, the benchmark validates whether the generated patch successfully compiles and calculates the percentage of passed test cases. Meanwhile, \emph{HumanEval}~\cite{DBLP:journals/corr/abs-2107-03374} is often used to assess code generation.
 % GROUNDING DBLP:journals/corr/abs-2107-03374: "On HumanEval, a new evaluation set we release to measure functional correctness for synthesizing programs from docstrings"
- 
+
 \subsection{Advantages and Challenges}
 \label{sec:advantages-challenges}
 
@@ -903,7 +915,7 @@ Majority voting across multiple outputs improves reliability~\cite{DBLP:journals
 
 Field study findings face \emph{generalizability} challenges because outcomes may be highly sensitive to individual differences, usage patterns, goals, and contexts. Field studies must be \enq{dependable}~\cite{Sullivan2011-ub} beyond traditional validity criteria, which complicates methodology; see \limitationsmitigations for a detailed threat taxonomy.
 % GROUNDING Sullivan2011-ub: "Dependability is gained though consistency of data, which is evaluated through transparent research steps and research findings."
- 
+
 \section{Guidelines}
 \label{sec:guidelines}
 
@@ -942,9 +954,10 @@ Cells marked -- indicate that the guideline is typically not applicable or not f
 The following sections indicate which information we expect researchers to report, and whether it should be in the \paper or \supplementarymaterial. Where a publication venue's page limits hinder reporting all expected elements in the \paper, it is better to report essential information in the \supplementarymaterial than not at all.
 The \supplementarymaterial \should be published according to the \emph{ACM SIGSOFT Open Science Policies}~\citep{daniel_graziotin_2024_10796477}.
 % GROUNDING daniel_graziotin_2024_10796477: "Artifacts related to a study ... and the paper itself should, in principle, be made available on the Internet"
- 
+
 \begin{table}[tb]
 \centering
+\setlength{\tabcolsep}{5pt}
 \caption{Overview of guidelines.}
 \label{tab:guidelines}
 \begin{tabular}{@{}lll@{}}
@@ -955,7 +968,7 @@ The \supplementarymaterial \should be published according to the \emph{ACM SIGSO
 \ref*{sec:report-model-version-configuration-and-customizations} & \hyperref[sec:report-model-version-configuration-and-customizations]{Report Model Version, Configuration, and Customizations} & Model Version    \\
 \ref*{sec:report-system-and-prompt-design}                       & \hyperref[sec:report-system-and-prompt-design]{Report System and Prompt Design}                                & Design           \\
 \ref*{sec:report-session-traces}                                 & \hyperref[sec:report-session-traces]{Report Session Traces}                                                    & Traces           \\
-\ref*{sec:use-suitable-baselines-benchmarks-and-metrics}         & \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Use Suitable Baselines, Benchmarks, and Metrics}  & Benchmarks \& Metrics \\
+\ref*{sec:use-suitable-baselines-benchmarks-and-metrics}         & \hyperref[sec:use-suitable-baselines-benchmarks-and-metrics]{Use Suitable Baselines, Benchmarks, and Metrics}  & \begin{tabular}[t]{@{}l@{}}Benchmarks\\\& Metrics\end{tabular} \\
 \ref*{sec:use-an-open-llm-as-a-baseline}                         & \hyperref[sec:use-an-open-llm-as-a-baseline]{Use an Open LLM as a Baseline}                                    & Open LLM         \\
 \ref*{sec:use-human-validation-for-llm-outputs}                  & \hyperref[sec:use-human-validation-for-llm-outputs]{Use Human Validation for LLM Outputs}                      & Human Validation \\
 \ref*{sec:report-limitations-and-mitigations}                    & \hyperref[sec:report-limitations-and-mitigations]{Report Limitations and Mitigations}                          & Limitations      \\
@@ -1057,7 +1070,7 @@ If undisclosed LLM use is suspected, the reviewer should consult their editor or
     \item \seemodelversion: The disclosure is incomplete without naming the specific model and version.
     \item \seedesign: When the LLM lives inside a tool or agent, authors must also describe that tool's architecture and prompts.
     \item \seetraces: Session traces show what the LLM did during the study.
-\end{itemize} 
+\end{itemize}
 \subsection{Report Model Version, Configuration, and Customizations}
 \label{sec:report-model-version-configuration-and-customizations}
 
@@ -1069,7 +1082,7 @@ Researchers \must report the exact LLM model or tool version, configuration, and
 
 \guidelinesubsubsection{Rationale}
 
-LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation. 
+LLMs and LLM-based tools are frequently updated, and configuration parameters such as temperature or seed values affect content generation.
 This guideline focuses on documenting the \emph{model-specific} aspects of empirical studies involving LLMs, concentrating on the models themselves, their version, configuration parameters, and customizations (e.g., fine-tuning). While the \design section addresses system-level integration and the authored artifacts (including prompts) that the model uses on each call, the information outlined here is essential for reproducibility whenever an LLM is involved.
 
 \guidelinesubsubsection{Recommendations}
@@ -1135,7 +1148,7 @@ For example, OpenAI provides a model version and a system fingerprint describing
 However, the fingerprint is intended only to detect changes in the model or its configuration; one cannot go back to a certain fingerprint.
 As a beta feature, OpenAI lets users set a seed parameter to receive \enq{(mostly) consistent output}~\cite{OpenAI23}.
 % GROUNDING OpenAI23: "Developers can now specify `seed` parameter in the Chat Completion request to receive (mostly) consistent outputs."
-However, the seed value does not allow for full reproducibility and the fingerprint changes frequently. 
+However, the seed value does not allow for full reproducibility and the fingerprint changes frequently.
 Although, as motivated above, open models substantially simplify re-running experiments, they also come with challenges in terms of reproducibility, as generated outputs can be inconsistent despite setting the temperature to 0 and using a seed value (see \href{https://github.com/ollama/ollama/issues/5321}{GitHub issue for Llama3}).
 Setting the temperature to 0 configures greedy decoding (always selecting the most probable next token), which minimizes output variability but can degrade quality by producing repetitive text and missing higher-quality responses~\cite{DBLP:conf/iclr/HoltzmanBDFC20}.
 % GROUNDING DBLP:conf/iclr/HoltzmanBDFC20: "maximization-based decoding methods such as beam search lead to degeneration — output text that is bland, incoherent, or gets stuck in repetitive loops"
@@ -1175,7 +1188,7 @@ Missing version, configuration, or parameter information is typically a minor re
     \item \seebenchmarksmetrics: Benchmark comparisons require identifying the exact model version under test.
     \item \seeopenllm: An open model gives full version visibility, which some commercial products do not.
     \item \seelimitationsmitigations: Hidden or shifting commercial versions become reproducibility threats in their own right.
-\end{itemize} 
+\end{itemize}
 \subsection{Report System and Prompt Design}
 \label{sec:report-system-and-prompt-design}
 
@@ -1341,7 +1354,7 @@ A challenging aspect of prompt reporting is the description of prompt developmen
     \item \seeopenllm: Open models let other researchers run the reported prompts and schemas on the exact same model weights.
     \item \seelimitationsmitigations: When a tool hides internal prompts or schemas, authors must report the gap as a limitation.
 \end{itemize}
- 
+
 \subsection{Report Session Traces}
 \label{sec:report-session-traces}
 
@@ -1442,7 +1455,7 @@ When reviewing commercial-tool studies, reviewers should focus on whether author
     \item \seeopenllm: Open models let other researchers reproduce a reported trace on the exact same model weights.
     \item \seelimitationsmitigations: When a tool hides parts of the trace, authors must report the gap as a limitation.
 \end{itemize}
- 
+
 \subsection{Use Suitable Baselines, Benchmarks, and Metrics}
 \label{sec:use-suitable-baselines-benchmarks-and-metrics}
 
@@ -1535,11 +1548,26 @@ Code-specific variations attempt to address these limitations. \emph{CodeBLEU}~\
 % GROUNDING DBLP:journals/corr/abs-2009-10297: "CodeBLEU is a weighted combination of the original BLEU, the weighted n-gram match, the syntactic AST match, and the semantic data-flow match"
 % GROUNDING DBLP:conf/kbse/EghbaliP22: "A new metric for evaluating code similarity, called CrystalBLEU, which ignores trivially shared n-grams when comparing two pieces of code."
 
-The metric \emph{pass@k} reports the likelihood that a model correctly completes a code snippet at least once within $k$ attempts. Originally introduced by \citeauthor{DBLP:conf/nips/KulalPC0PAL19} as the success rate within a budget of $B$ program attempts (corresponding to $k$ in \emph{pass@k})~\cite{DBLP:conf/nips/KulalPC0PAL19} and popularized by \citeauthor{DBLP:journals/corr/abs-2107-03374}~\cite{DBLP:journals/corr/abs-2107-03374}, it ranges from 0 (no correct solution in $k$ tries) to 1 (at least one correct solution), with correctness typically defined by passing test cases.
+The metric \emph{pass@k} reports the probability that at least one of $k$ generated solutions for a task passes the task's tests.
+In their pseudocode-to-code study, \citeauthor{DBLP:conf/nips/KulalPC0PAL19} counted a test example as solved if best-first search over one candidate code line per pseudocode line produced an accepted program within $B$ trials.
+Each trial compiled one candidate program and, if compilation succeeded, ran public tests~\cite{DBLP:conf/nips/KulalPC0PAL19}.
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "First, a translation model encodes each pseudocode line"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "generates M candidate code lines"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "search over the possible combinations of candidate translations"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "successfully compiles and passes all public test cases"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "Given the candidate lists"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "we can synthesize a program"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "by picking a candidate"
 % GROUNDING DBLP:conf/nips/KulalPC0PAL19: "Our main evaluation metric is success rate at B: the fraction of test examples where the system generates an accepted program under the budget of B trials."
-% GROUNDING DBLP:journals/corr/abs-2107-03374: "Kulal et al. (2019) evaluate functional correctness using the pass@k metric, where k code samples are generated per problem, a problem is considered solved if any sample passes the unit tests"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "we use the number of synthesis trials as the budget, where in each trial, the system can issue a single call to the compiler and execute the compiled program on public test cases."
+\citeauthor{DBLP:journals/corr/abs-2107-03374} defined \emph{pass@k} for code generation and estimated it from $n \ge k$ samples, treating a sample as correct when it passes the task's unit tests~\cite{DBLP:journals/corr/abs-2107-03374}.
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "We begin by defining the pass@k metric"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "a sample is considered correct if it passes a set of unit tests"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "we generate n"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "samples per task"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "count the number of correct samples"
 
-The \emph{pass@k} metric is defined as:
+For a single task, the estimator for \emph{pass@k} is:
 
 \[
 \text{pass@}k = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}},
@@ -1547,12 +1575,12 @@ The \emph{pass@k} metric is defined as:
 where:
 
 \begin{itemize}
-  \item $n$ is the total number of samples generated per prompt (with $n \ge k$),
+  \item $n$ is the total number of samples generated per task (with $n \ge k$),
   \item $c$ is the number of correct samples among the $n$, and
   \item $k$ is the number of attempts considered, drawn from the $n$ generated samples without replacement.
 \end{itemize}
 
-The formula above gives \emph{pass@k} for a single prompt. The value reported for a benchmark is its mean over all prompts.
+A benchmark reports the mean of the task-level \emph{pass@k} estimates.
 The choice of $k$ depends on the downstream task. The metric \emph{pass@1} is critical for single-suggestion scenarios such as code completion, while higher $k$ values (e.g., 2, 5, 10) assess multi-attempt capability and are commonly reported in technical reports of code LLMs (e.g., Code Llama~\cite{DBLP:journals/corr/abs-2308-12950}, DeepSeek-Coder~\cite{DBLP:journals/corr/abs-2401-14196}, Qwen2.5-Coder~\cite{DBLP:journals/corr/abs-2409-12186}, StarCoder~\cite{DBLP:journals/tmlr/LiAZMKMMALCLZZW23}).
 % GROUNDING DBLP:journals/corr/abs-2308-12950: "The pass@1 scores of our models are computed with greedy decoding. The pass@10 and pass@100 scores are computed with nucleus sampling with p=0.95 and temperature 0.8"
 % GROUNDING DBLP:journals/corr/abs-2401-14196: "Specifically, the DeepSeek-Coder-Instruct 6.7B and 33B achieve Pass@1 scores of 19.4% and 27.8% respectively in this benchmark."
@@ -1623,7 +1651,7 @@ Benchmarks and metrics also have generalizability problems. Prominent LLM benchm
 Execution-based metrics such as \emph{pass@k} directly evaluate correctness by running test cases, but they require an execution environment.
 When metric values look surprising, examine the specific test cases driving them: common causes include outliers, bugs in test suites or scoring code, and items that exercise capabilities other than the one being measured.
 
-Finally, benchmark data contamination, where the benchmark itself is part of the training data, may lead to artificially high performance if the model remembers the solution from the training data rather than deriving it from the input~\cite{DBLP:journals/corr/abs-2406-04244} (see \limitationsmitigations). Therefore, for proprietary LLMs that do not release their training data, researchers \should consider using human validation, curating new data, or refactoring existing data~\cite{DBLP:journals/corr/abs-2406-04244}. 
+Finally, benchmark data contamination, where the benchmark itself is part of the training data, may lead to artificially high performance if the model remembers the solution from the training data rather than deriving it from the input~\cite{DBLP:journals/corr/abs-2406-04244} (see \limitationsmitigations). Therefore, for proprietary LLMs that do not release their training data, researchers \should consider using human validation, curating new data, or refactoring existing data~\cite{DBLP:journals/corr/abs-2406-04244}.
 % GROUNDING DBLP:journals/corr/abs-2406-04244: "When labels are made available during training, the model may directly memorize them, leading to overfitting and compromised generalization."
 % GROUNDING DBLP:journals/corr/abs-2406-04244: "we have categorized existing BDC mitigation strategies into three main groups: data curation, data refactoring, and benchmark-free evaluation approaches."
 
@@ -1668,7 +1696,8 @@ As with other guidelines, missing information about baselines or metrics is typi
     \item \seeopenllm: Using an open LLM as a baseline supports reproducible benchmark comparisons across studies.
     \item \seehumanvalidation: Human evaluation captures aspects of LLM outputs that automated metrics cannot measure.
     \item \seelimitationsmitigations: Every benchmark and metric choice carries construct-validity threats that authors must discuss.
-\end{itemize} 
+\end{itemize}
+
 \subsection{Use an Open LLM as a Baseline}
 \label{sec:use-an-open-llm-as-a-baseline}
 
@@ -1766,7 +1795,7 @@ Performance differences between open and proprietary models are beyond the study
     \item \seebenchmarksmetrics: Inter-model agreement metrics make open-vs-commercial comparisons interpretable.
     \item \seelimitationsmitigations: When using an open LLM as a baseline is impractical, authors must report this as a limitation.
 \end{itemize}
- 
+
 \subsection{Use Human Validation for LLM Outputs}
 \label{sec:use-human-validation-for-llm-outputs}
 
@@ -1884,7 +1913,7 @@ As with other guidelines, missing information is typically a revision request. A
     \item \seedesign: Prompt and architecture choices produce the outputs that humans then validate.
     \item \seetraces: Stored interaction logs and runtime traces are the artifacts human reviewers examine.
     \item \seelimitationsmitigations: Rater demographics, threshold choices, and the validity of human judgments are limitations to discuss.
-\end{itemize} 
+\end{itemize}
 \subsection{Report Limitations and Mitigations}
 \label{sec:report-limitations-and-mitigations}
 
@@ -2037,7 +2066,7 @@ When important limitations are missing, reviewers should request they be added. 
     \item \seebenchmarksmetrics: Benchmark and metric choices are one source of construct-validity threats authors must discuss.
     \item \seeopenllm: An open LLM baseline mitigates cross-model transfer concerns by providing an independently reproducible comparison.
     \item \seehumanvalidation: When automated metrics cannot validly measure a construct, human validation is an alternative.
-\end{itemize} 
+\end{itemize}
 \section{Conclusion}
 
 LLM non-determinism, opaque training data, and rapidly evolving models
@@ -2200,7 +2229,7 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 \bottomrule
 \end{tabular}
 \end{center}
- 
+
 \section{Rationale and Recommendations}
 \nopagebreak
 % NOTE: Each row carries a non-rendered comment justifying the rationale phrase
@@ -2211,8 +2240,8 @@ Each guideline's study-type-specific guidance is detailed in the corresponding s
 \begin{center}
 \captionof{table}{Rationale and key recommendations for each guideline. \iconM~=~\must, \iconS~=~\should.}
 \label{tab:rationale-recommendations}
-\scriptsize
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.05cm}>{\hsize=.72\hsize\raggedright\arraybackslash}X>{\hsize=1.28\hsize\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Guideline} & \textbf{Rationale} & \textbf{Core Recommendations} \\
 \midrule
@@ -2274,7 +2303,7 @@ Limitations & Honest acknowledgment of threats strengthens a study. &
 \bottomrule
 \end{tabularx}
 \end{center}
- 
+
 \section{Reporting Checklist}
 \label{sec:checklist}
 
@@ -2511,8 +2540,9 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     \item \iconS Employ and report strategies to mitigate identified validity and reproducibility threats, such as replication packages, human validation, longitudinal re-runs, triangulation, and sensitivity analysis~(\reflimitations).
     % G8 Mitigations distributed across threat sections: Replication Packages, Methodological Trustworthiness Measures, Longitudinal Re-Runs, Cost Accounting (Reliability \& Reproducibility); Triangulation, Sensitivity Analysis (External Validity); Human Validation (Construct Validity). No explicit \must; "Researchers \should consider triangulation, reflexivity, audit trails, and peer debriefing as complementary measures".
 \end{itemize}
- 
-\end{appendices} 
+
+\end{appendices}
+
 \section{Statements and Declarations}
 
 \begin{description}
