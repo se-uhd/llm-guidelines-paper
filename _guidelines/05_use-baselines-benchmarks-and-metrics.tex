@@ -81,11 +81,26 @@ Code-specific variations attempt to address these limitations. \emph{CodeBLEU}~\
 % GROUNDING DBLP:journals/corr/abs-2009-10297: "CodeBLEU is a weighted combination of the original BLEU, the weighted n-gram match, the syntactic AST match, and the semantic data-flow match"
 % GROUNDING DBLP:conf/kbse/EghbaliP22: "A new metric for evaluating code similarity, called CrystalBLEU, which ignores trivially shared n-grams when comparing two pieces of code."
 
-The metric \emph{pass@k} reports the likelihood that a model correctly completes a code snippet at least once within $k$ attempts. Originally introduced by \citeauthor{DBLP:conf/nips/KulalPC0PAL19} as the success rate within a budget of $B$ program attempts (corresponding to $k$ in \emph{pass@k})~\cite{DBLP:conf/nips/KulalPC0PAL19} and popularized by \citeauthor{DBLP:journals/corr/abs-2107-03374}~\cite{DBLP:journals/corr/abs-2107-03374}, it ranges from 0 (no correct solution in $k$ tries) to 1 (at least one correct solution), with correctness typically defined by passing test cases.
+The metric \emph{pass@k} reports the probability that at least one of $k$ generated solutions for a task passes the task's tests.
+In their pseudocode-to-code study, \citeauthor{DBLP:conf/nips/KulalPC0PAL19} counted a test example as solved if best-first search over one candidate code line per pseudocode line produced an accepted program within $B$ trials.
+Each trial compiled one candidate program and, if compilation succeeded, ran public tests~\cite{DBLP:conf/nips/KulalPC0PAL19}.
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "First, a translation model encodes each pseudocode line"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "generates M candidate code lines"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "search over the possible combinations of candidate translations"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "successfully compiles and passes all public test cases"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "Given the candidate lists"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "we can synthesize a program"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "by picking a candidate"
 % GROUNDING DBLP:conf/nips/KulalPC0PAL19: "Our main evaluation metric is success rate at B: the fraction of test examples where the system generates an accepted program under the budget of B trials."
-% GROUNDING DBLP:journals/corr/abs-2107-03374: "Kulal et al. (2019) evaluate functional correctness using the pass@k metric, where k code samples are generated per problem, a problem is considered solved if any sample passes the unit tests"
+% GROUNDING DBLP:conf/nips/KulalPC0PAL19: "we use the number of synthesis trials as the budget, where in each trial, the system can issue a single call to the compiler and execute the compiled program on public test cases."
+\citeauthor{DBLP:journals/corr/abs-2107-03374} defined \emph{pass@k} for code generation and estimated it from $n \ge k$ samples, treating a sample as correct when it passes the task's unit tests~\cite{DBLP:journals/corr/abs-2107-03374}.
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "We begin by defining the pass@k metric"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "a sample is considered correct if it passes a set of unit tests"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "we generate n"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "samples per task"
+% GROUNDING DBLP:journals/corr/abs-2107-03374: "count the number of correct samples"
 
-The \emph{pass@k} metric is defined as:
+For a single task, the estimator for \emph{pass@k} is:
 
 \[
 \text{pass@}k = 1 - \frac{\binom{n-c}{k}}{\binom{n}{k}},
@@ -93,12 +108,12 @@ The \emph{pass@k} metric is defined as:
 where:
 
 \begin{itemize}
-  \item $n$ is the total number of samples generated per prompt (with $n \ge k$),
+  \item $n$ is the total number of samples generated per task (with $n \ge k$),
   \item $c$ is the number of correct samples among the $n$, and
   \item $k$ is the number of attempts considered, drawn from the $n$ generated samples without replacement.
 \end{itemize}
 
-The formula above gives \emph{pass@k} for a single prompt. The value reported for a benchmark is its mean over all prompts.
+A benchmark reports the mean of the task-level \emph{pass@k} estimates.
 The choice of $k$ depends on the downstream task. The metric \emph{pass@1} is critical for single-suggestion scenarios such as code completion, while higher $k$ values (e.g., 2, 5, 10) assess multi-attempt capability and are commonly reported in technical reports of code LLMs (e.g., Code Llama~\cite{DBLP:journals/corr/abs-2308-12950}, DeepSeek-Coder~\cite{DBLP:journals/corr/abs-2401-14196}, Qwen2.5-Coder~\cite{DBLP:journals/corr/abs-2409-12186}, StarCoder~\cite{DBLP:journals/tmlr/LiAZMKMMALCLZZW23}).
 % GROUNDING DBLP:journals/corr/abs-2308-12950: "The pass@1 scores of our models are computed with greedy decoding. The pass@10 and pass@100 scores are computed with nucleus sampling with p=0.95 and temperature 0.8"
 % GROUNDING DBLP:journals/corr/abs-2401-14196: "Specifically, the DeepSeek-Coder-Instruct 6.7B and 33B achieve Pass@1 scores of 19.4% and 27.8% respectively in this benchmark."
