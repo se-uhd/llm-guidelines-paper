@@ -122,12 +122,12 @@ We self-assessed our guidelines against the quality dimensions of the \emph{SIGS
 \subsection{Declare LLM Usage and Role}
 \label{sec:declare-llm-usage-and-role}
 
-% TL;DR box seam discipline: `\summary: %` ends its line with a comment, and
-% `\end{framed}` sits directly after the \input with no line break between
-% them. This makes the regular build and the latexpand-flattened build
-% tokenize the box end identically (exactly one space), so the two PDFs stay
-% text-equivalent; compare_pdfs.sh enforces this in CI. Do not move
-% \end{framed} onto its own line.
+% TL;DR box whitespace requirement: `\summary: %` ends its line with a comment,
+% and `\end{framed}` sits directly after the \input with no line break between
+% them. This makes the regular and flattened builds tokenize the box end
+% identically (exactly one space), so the two PDFs stay text-equivalent;
+% compare_pdfs.sh enforces this in CI. Do not move \end{framed} onto its own
+% line.
 \vspace{0.5\baselineskip}
 \begin{framed}
 \summary: %

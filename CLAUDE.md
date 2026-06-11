@@ -38,7 +38,7 @@ latexmk -pdf reviews-and-response/response-letter_r2.tex
 ./scripts/create_diff.sh [path/to/old/version]
 
 # Flatten all \input files into a single .tex file (without compiling)
-./scripts/flatten.sh
+python3 scripts/flatten_latex.py
 ```
 
 PDF outputs (`emse26-llm-guidelines.pdf`, `emse26-llm-guidelines-flat.pdf`) are gitignored. Response-letter PDFs and the R2 bundle artifacts under `versions/r2/` are tracked. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
@@ -98,9 +98,9 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 - `reviews-and-response/response-letter_r1.tex` and `response-letter_r2.tex` — Point-by-point responses to reviewers (`response-letter_r1.tex` is the major-revision response; `response-letter_r2.tex` is the minor-revision R2 response). Each is a standalone document using `literature.bib`, with custom `reviewcomment`/`response` environments and one `\review` section per reviewer. Build via `versions/r2/regenerate.sh` (preferred) or directly with `latexmk -pdf reviews-and-response/response-letter_r2.tex`.
 - `reviews-and-response/emse-reviews.md`, `emse-reviews_r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
 - `versions/r2/title-page_r2.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class). Lives inside the R2 bundle.
-- `versions/r2/regenerate.sh` — Rebuilds the R2 resubmission bundle (`emse26-llm-guidelines-flat_r2.{tex,pdf}`, `literature_r2.bib`, `title-page_r2.pdf`) and `reviews-and-response/response-letter_r2.pdf` from current sources. Runs `compile_and_flatten.sh` first, then re-verifies via a fresh `latexpand` pass and aborts if the working-copy flat tex differs, so stale artifacts cannot enter the bundle. Does not touch `EMSE-D-25-00637_R2.pdf` (that PDF is downloaded from Editorial Manager).
+- `versions/r2/regenerate.sh` — Rebuilds the R2 resubmission bundle (`emse26-llm-guidelines-flat_r2.{tex,pdf}`, `literature_r2.bib`, `title-page_r2.pdf`) and `reviews-and-response/response-letter_r2.pdf` from current sources. Runs `compile_and_flatten.sh` first, then re-verifies via a fresh flat-generation pass and aborts if the working-copy flat tex differs, so stale artifacts cannot enter the bundle. Does not touch `EMSE-D-25-00637_R2.pdf` (that PDF is downloaded from Editorial Manager).
 - `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
-- `scripts/flatten.sh` — Flattens all `\input` files into `emse26-llm-guidelines-flat.tex` via `latexpand`
+- `scripts/flatten_latex.py` — Generates `emse26-llm-guidelines-flat.tex`; run without arguments for the default paper paths, or with `<main.tex> <output.tex>` for custom paths.
 - `versions/` — Per-round bundles: `initial/` (original submission PDF), `r1/` (R1 diff and PDFs), `r2/` (R2 resubmission bundle with regenerate script)
 
 ## Key Conventions
@@ -162,7 +162,7 @@ All scripts live in the `scripts/` directory (requires `bibtexparser`).
 
 - **`scripts/clean_bibliography.py`** — Validates each entry against DBLP (and Crossref as fallback). For entries with an arXiv id (detected from `eprint`, DBLP CoRR key, `url`, `volume = abs/...`, or arXiv DOI), queries DBLP for all records of that work; if a non-CoRR record exists (conference, journal, workshop), the entry is upgraded and its citation key is renamed to the new DBLP key. For already-published entries that still carry leftover arXiv metadata (`eprint`, `archiveprefix`, `primaryclass`, `eprinttype`, redundant arXiv `url`), strips those fields. After bib changes, rewrites `\cite` sites in all source `.tex` files for renamed keys. A persistent JSON cache (`scripts/.bib_validation_cache.json`) records last-validation timestamp, content hash, and outcome per entry; subsequent runs skip cached entries that are fresh and unchanged. Unreferenced entries are reported on every run (stdout and the report file) but removed only with `--remove-unref` (default off). Removal stays opt-in because the scan strips comments from the current `.tex` files, so a commented-out or not-yet-wired `\cite{}` key would otherwise drop an entry someone still wants, a real risk in this multi-author Overleaf workflow.
 
-  CLI flags: `--force` (ignore cache), `--only KEY[,KEY...]`, `--max-age-days N` (default 30), `--remove-unref`, `--no-rename`, `--no-tex-update`, `--no-strip`, `--dry-run`, `--limit N`. The script writes `literature.bib` in place (backs up to `literature.bib.backup` first), updates `.tex` cite sites, refreshes the cache, and writes a per-run report at `dblp_unmatched_report.txt`. After a run that renames keys, regenerate `emse26-llm-guidelines-flat.tex` via `./scripts/flatten.sh`.
+  CLI flags: `--force` (ignore cache), `--only KEY[,KEY...]`, `--max-age-days N` (default 30), `--remove-unref`, `--no-rename`, `--no-tex-update`, `--no-strip`, `--dry-run`, `--limit N`. The script writes `literature.bib` in place (backs up to `literature.bib.backup` first), updates `.tex` cite sites, refreshes the cache, and writes a per-run report at `dblp_unmatched_report.txt`. After a run that renames keys, regenerate `emse26-llm-guidelines-flat.tex` via `python3 scripts/flatten_latex.py`.
 
 - **`scripts/retry_dblp.py`** — Retries DBLP key-based lookups for entries that failed in the initial run (e.g., 429s or transient errors). Reads failed keys from `dblp_unmatched_report.txt` and appends results. Largely superseded by `clean_bibliography.py`'s built-in retry, but kept for targeted reruns.
 
