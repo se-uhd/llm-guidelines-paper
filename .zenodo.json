@@ -1,0 +1,124 @@
+{
+  "title": "Guidelines for Empirical Studies in Software Engineering involving Large Language Models",
+  "description": "Large Language Models (LLMs) are widely used in software engineering (SE) research and practice, yet their non-determinism, opaque training data, and rapidly evolving models threaten the reproducibility and replicability of empirical studies. We address this challenge through a collaborative effort of 22 researchers, presenting a taxonomy of seven study types that organizes how LLMs are used in SE research, together with eight guidelines for designing and reporting such studies. Each guideline distinguishes requirements (must) from recommendations (should) and is contextualized by the study types it applies to. Our guidelines recommend that researchers: (1) declare LLM usage and role; (2) report model versions, configurations, and customizations; (3) document the system and prompt design beyond the model; (4) report session traces, i.e., interaction logs and runtime traces; (5) use suitable baselines, benchmarks, and metrics; (6) include an open LLM as a baseline; (7) validate LLM outputs against human judgment; and (8) articulate limitations and mitigations. We complement the guidelines with an applicability matrix mapping guidelines to study types and a reporting checklist for authors and reviewers. We maintain the study types and guidelines online as a living resource for the community to use and shape (llm-guidelines.org).",
+  "creators": [
+    {
+      "name": "Baltes, Sebastian",
+      "affiliation": "Heidelberg University, Germany"
+    },
+    {
+      "name": "Angermeir, Florian",
+      "affiliation": "fortiss, Germany; Blekinge Institute of Technology, Sweden"
+    },
+    {
+      "name": "Arora, Chetan",
+      "affiliation": "Monash University, Australia"
+    },
+    {
+      "name": "Muñoz Barón, Marvin",
+      "affiliation": "Technical University of Munich, Germany"
+    },
+    {
+      "name": "Chen, Chunyang",
+      "affiliation": "Technical University of Munich, Germany"
+    },
+    {
+      "name": "Böhme, Lukas",
+      "affiliation": "Hasso-Plattner-Institut, Germany; University of Potsdam, Germany"
+    },
+    {
+      "name": "Calefato, Fabio",
+      "affiliation": "University of Bari, Italy"
+    },
+    {
+      "name": "Ernst, Neil",
+      "affiliation": "University of Victoria, Canada"
+    },
+    {
+      "name": "Falessi, Davide",
+      "affiliation": "University of Rome Tor Vergata, Italy"
+    },
+    {
+      "name": "Fitzgerald, Brian",
+      "affiliation": "Lero, Ireland; University of Limerick, Ireland"
+    },
+    {
+      "name": "Fucci, Davide",
+      "affiliation": "Blekinge Institute of Technology, Sweden"
+    },
+    {
+      "name": "He, Junda",
+      "affiliation": "Singapore Management University, Singapore"
+    },
+    {
+      "name": "Treude, Christoph",
+      "affiliation": "Singapore Management University, Singapore"
+    },
+    {
+      "name": "Kalinowski, Marcos",
+      "affiliation": "PUC Rio de Janeiro, Brazil"
+    },
+    {
+      "name": "Lambiase, Stefano",
+      "affiliation": "Aalborg University in Copenhagen, Denmark"
+    },
+    {
+      "name": "Russo, Daniel",
+      "affiliation": "Aalborg University in Copenhagen, Denmark"
+    },
+    {
+      "name": "Lungu, Mircea",
+      "affiliation": "IT University of Copenhagen, Denmark"
+    },
+    {
+      "name": "Martinez Montes, Cristina",
+      "affiliation": "Chalmers University of Technology, Sweden; University of Gothenburg, Sweden"
+    },
+    {
+      "name": "Prechelt, Lutz",
+      "affiliation": "Freie Universität Berlin, Germany"
+    },
+    {
+      "name": "Ralph, Paul",
+      "affiliation": "Dalhousie University, Canada"
+    },
+    {
+      "name": "van Tonder, Rijnard",
+      "affiliation": "Independent Researcher, Antigua and Barbuda"
+    },
+    {
+      "name": "Wagner, Stefan",
+      "affiliation": "Technical University of Munich, Germany"
+    }
+  ],
+  "keywords": [
+    "software engineering",
+    "large language models",
+    "empirical research",
+    "meta-science",
+    "guidelines"
+  ],
+  "license": "cc-by-4.0",
+  "version": "2026.06",
+  "publication_date": "2026-06-12",
+  "upload_type": "publication",
+  "publication_type": "report",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "10.1007/s10664-026-10922-3",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.48550/arXiv.2508.15503",
+      "relation": "isVariantFormOf",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://llm-guidelines.org",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    }
+  ]
+}

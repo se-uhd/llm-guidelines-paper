@@ -1,0 +1,159 @@
+cff-version: 1.2.0
+title: Guidelines for Empirical Studies in Software Engineering involving Large Language Models
+message: >-
+  If you use these guidelines, please cite the article in Empirical Software
+  Engineering listed under preferred-citation. To reference a specific version
+  of the guidelines, cite the Zenodo record for the corresponding release.
+type: software
+abstract: >-
+  Large Language Models (LLMs) are widely used in software engineering (SE)
+  research and practice, yet their non-determinism, opaque training data, and
+  rapidly evolving models threaten the reproducibility and replicability of
+  empirical studies. We address this challenge through a collaborative effort
+  of 22 researchers, presenting a taxonomy of seven study types that organizes
+  how LLMs are used in SE research, together with eight guidelines for
+  designing and reporting such studies. Each guideline distinguishes
+  requirements (must) from recommendations (should) and is contextualized by
+  the study types it applies to. Our guidelines recommend that researchers:
+  (1) declare LLM usage and role; (2) report model versions, configurations,
+  and customizations; (3) document the system and prompt design beyond the
+  model; (4) report session traces, i.e., interaction logs and runtime traces;
+  (5) use suitable baselines, benchmarks, and metrics; (6) include an open LLM
+  as a baseline; (7) validate LLM outputs against human judgment; and
+  (8) articulate limitations and mitigations. We complement the guidelines with
+  an applicability matrix mapping guidelines to study types and a reporting
+  checklist for authors and reviewers. We maintain the study types and
+  guidelines online as a living resource for the community to use and shape
+  (llm-guidelines.org).
+version: "2026.06"
+date-released: "2026-06-12"
+license: CC-BY-4.0
+repository-code: https://github.com/se-uhd/llm-guidelines-paper
+url: https://llm-guidelines.org
+keywords:
+  - software engineering
+  - large language models
+  - empirical research
+  - meta-science
+  - guidelines
+authors:
+  - given-names: Sebastian
+    family-names: Baltes
+    affiliation: Heidelberg University, Germany
+    email: sebastian.baltes@uni-heidelberg.de
+  - given-names: Florian
+    family-names: Angermeir
+    affiliation: fortiss, Germany; Blekinge Institute of Technology, Sweden
+  - given-names: Chetan
+    family-names: Arora
+    affiliation: Monash University, Australia
+  - given-names: Marvin
+    family-names: Muñoz Barón
+    affiliation: Technical University of Munich, Germany
+  - given-names: Chunyang
+    family-names: Chen
+    affiliation: Technical University of Munich, Germany
+  - given-names: Lukas
+    family-names: Böhme
+    affiliation: Hasso-Plattner-Institut, Germany; University of Potsdam, Germany
+  - given-names: Fabio
+    family-names: Calefato
+    affiliation: University of Bari, Italy
+  - given-names: Neil
+    family-names: Ernst
+    affiliation: University of Victoria, Canada
+  - given-names: Davide
+    family-names: Falessi
+    affiliation: University of Rome Tor Vergata, Italy
+  - given-names: Brian
+    family-names: Fitzgerald
+    affiliation: Lero, Ireland; University of Limerick, Ireland
+  - given-names: Davide
+    family-names: Fucci
+    affiliation: Blekinge Institute of Technology, Sweden
+  - given-names: Junda
+    family-names: He
+    affiliation: Singapore Management University, Singapore
+  - given-names: Christoph
+    family-names: Treude
+    affiliation: Singapore Management University, Singapore
+  - given-names: Marcos
+    family-names: Kalinowski
+    affiliation: PUC Rio de Janeiro, Brazil
+  - given-names: Stefano
+    family-names: Lambiase
+    affiliation: Aalborg University in Copenhagen, Denmark
+  - given-names: Daniel
+    family-names: Russo
+    affiliation: Aalborg University in Copenhagen, Denmark
+  - given-names: Mircea
+    family-names: Lungu
+    affiliation: IT University of Copenhagen, Denmark
+  - given-names: Cristina
+    family-names: Martinez Montes
+    affiliation: Chalmers University of Technology, Sweden; University of Gothenburg, Sweden
+  - given-names: Lutz
+    family-names: Prechelt
+    affiliation: Freie Universität Berlin, Germany
+  - given-names: Paul
+    family-names: Ralph
+    affiliation: Dalhousie University, Canada
+  - given-names: Rijnard
+    name-particle: van
+    family-names: Tonder
+    affiliation: Independent Researcher, Antigua and Barbuda
+  - given-names: Stefan
+    family-names: Wagner
+    affiliation: Technical University of Munich, Germany
+preferred-citation:
+  type: article
+  title: Guidelines for Empirical Studies in Software Engineering involving Large Language Models
+  journal: Empirical Software Engineering
+  year: 2026
+  doi: 10.1007/s10664-026-10922-3
+  authors:
+    - given-names: Sebastian
+      family-names: Baltes
+    - given-names: Florian
+      family-names: Angermeir
+    - given-names: Chetan
+      family-names: Arora
+    - given-names: Marvin
+      family-names: Muñoz Barón
+    - given-names: Chunyang
+      family-names: Chen
+    - given-names: Lukas
+      family-names: Böhme
+    - given-names: Fabio
+      family-names: Calefato
+    - given-names: Neil
+      family-names: Ernst
+    - given-names: Davide
+      family-names: Falessi
+    - given-names: Brian
+      family-names: Fitzgerald
+    - given-names: Davide
+      family-names: Fucci
+    - given-names: Junda
+      family-names: He
+    - given-names: Christoph
+      family-names: Treude
+    - given-names: Marcos
+      family-names: Kalinowski
+    - given-names: Stefano
+      family-names: Lambiase
+    - given-names: Daniel
+      family-names: Russo
+    - given-names: Mircea
+      family-names: Lungu
+    - given-names: Cristina
+      family-names: Martinez Montes
+    - given-names: Lutz
+      family-names: Prechelt
+    - given-names: Paul
+      family-names: Ralph
+    - given-names: Rijnard
+      name-particle: van
+      family-names: Tonder
+    - given-names: Stefan
+      family-names: Wagner
