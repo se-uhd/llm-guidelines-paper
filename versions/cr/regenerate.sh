@@ -16,12 +16,14 @@
 #      rewriting \bibliography{literature} to \bibliography{literature_cr}.
 #   5. Compile emse26-llm-guidelines-flat_cr.pdf in versions/cr/.
 #   6. Compile title-page_cr.pdf in versions/cr/.
-#   7. Remove LaTeX auxiliary files created by the CR compiles.
+#   7. Compile response-letter_r3.pdf in reviews-and-response/.
+#   8. Remove LaTeX auxiliary files created by the CR compiles.
 #
 set -euo pipefail
 
 CR_DIR="$(cd "$(dirname "$0")" && pwd)"
 PAPER_DIR="$(cd "$CR_DIR/../.." && pwd)"
+RESPONSE_DIR="$PAPER_DIR/reviews-and-response"
 
 SRC_FLAT_TEX="$PAPER_DIR/emse26-llm-guidelines-flat.tex"
 SRC_BIB="$PAPER_DIR/literature.bib"
@@ -52,10 +54,10 @@ cleanup_latex_auxiliary_files() {
   \) -delete
 }
 
-echo "[1/7] compile_and_flatten.sh"
+echo "[1/8] compile_and_flatten.sh"
 "$PAPER_DIR/compile_and_flatten.sh" >/dev/null
 
-echo "[2/7] check flat tex has exactly one \\bibliography{literature}"
+echo "[2/8] check flat tex has exactly one \\bibliography{literature}"
 bib_lines=$(grep -c '^\\bibliography{literature}$' "$SRC_FLAT_TEX" || true)
 if [ "$bib_lines" -ne 1 ]; then
   echo "ERROR: expected exactly one '\\bibliography{literature}' line in $SRC_FLAT_TEX, found $bib_lines." >&2
@@ -63,10 +65,10 @@ if [ "$bib_lines" -ne 1 ]; then
   exit 1
 fi
 
-echo "[3/7] copy literature.bib -> $(basename "$CR_BIB")"
+echo "[3/8] copy literature.bib -> $(basename "$CR_BIB")"
 cp "$SRC_BIB" "$CR_BIB"
 
-echo "[4/7] copy flat tex -> $(basename "$CR_FLAT_TEX") (rewrite bibliography)"
+echo "[4/8] copy flat tex -> $(basename "$CR_FLAT_TEX") (rewrite bibliography)"
 sed 's|^\\bibliography{literature}$|\\bibliography{literature_cr}|' \
   "$SRC_FLAT_TEX" > "$CR_FLAT_TEX"
 if ! grep -q '^\\bibliography{literature_cr}$' "$CR_FLAT_TEX"; then
@@ -74,17 +76,22 @@ if ! grep -q '^\\bibliography{literature_cr}$' "$CR_FLAT_TEX"; then
   exit 1
 fi
 
-echo "[5/7] compile $(basename "$CR_FLAT_TEX")"
+echo "[5/8] compile $(basename "$CR_FLAT_TEX")"
 cleanup_latex_auxiliary_files "$CR_FLAT_TEX"
 latexmk -pdf -interaction=nonstopmode -halt-on-error -cd "$CR_FLAT_TEX" >/dev/null
 
-echo "[6/7] compile title-page_cr.tex"
+echo "[6/8] compile title-page_cr.tex"
 cleanup_latex_auxiliary_files "$CR_DIR/title-page_cr.tex"
 latexmk -pdf -interaction=nonstopmode -halt-on-error -cd "$CR_DIR/title-page_cr.tex" >/dev/null
 
-echo "[7/7] remove LaTeX auxiliary files"
+echo "[7/8] compile response-letter_r3.tex"
+cleanup_latex_auxiliary_files "$RESPONSE_DIR/response-letter_r3.tex"
+latexmk -pdf -interaction=nonstopmode -halt-on-error -cd "$RESPONSE_DIR/response-letter_r3.tex" >/dev/null
+
+echo "[8/8] remove LaTeX auxiliary files"
 cleanup_latex_auxiliary_files "$CR_FLAT_TEX"
 cleanup_latex_auxiliary_files "$CR_DIR/title-page_cr.tex"
+cleanup_latex_auxiliary_files "$RESPONSE_DIR/response-letter_r3.tex"
 
 echo
 echo "Done. CR bundle under versions/cr/ is rebuilt from current sources."
