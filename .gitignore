@@ -98,6 +98,8 @@ emse26-llm-guidelines-flat.pdf
 /title-page.pdf
 dblp_unmatched_report.txt
 scripts/.bib_validation_cache.json
+# Publisher proof PDFs must not become public
+versions/cr/*OnlinePDF.pdf
 
 ##########
 # Python #
