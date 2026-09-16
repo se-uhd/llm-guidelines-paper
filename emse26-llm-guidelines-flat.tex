@@ -1724,7 +1724,7 @@ As with other guidelines, missing information about baselines or metrics is typi
 \vspace{0.5\baselineskip}
 \begin{framed}
 \summary: %
-Researchers \should include an open LLM as a baseline when using commercial models and report inter-model agreement. We follow the OSI definition of open-source AI: access to everything needed to understand, modify, share, retrain, and recreate the model. Many models release only trained weights without training data or methodological details (``open weight''). Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial.
+When researchers can control which LLM a study uses, they \should include an open-weight LLM as a baseline and report inter-model agreement. Researchers \should ensure the open-weight baseline is independently reproducible from their \supplementarymaterial.
 \end{framed}
 
 \guidelinesubsubsection{Rationale}
@@ -1734,6 +1734,19 @@ When research relies exclusively on proprietary models, other researchers cannot
 Including an open LLM as a baseline ensures that at least part of the study can be fully replicated.
 
 \guidelinesubsubsection{Recommendations}
+
+The term ``open'' can have different meanings in the context of LLMs.
+\citeauthor{widder2024open} discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
+% GROUNDING widder2024open: "We highlight three main affordances of 'open' AI, namely transparency, reusability, and extensibility"
+We distinguish open-weight from open-source LLMs.
+An \emph{open-weight} LLM has publicly released trained weights, so others can fine-tune, adapt, or deploy the model~\cite{OSIOpenWeights}.
+% GROUNDING OSIOpenWeights: "Open Weights refer to the final weights and biases of a trained neural network. [...] When AI developers share these parameters under an OSI Approved License, they empower others to fine-tune, adapt, or deploy the model for their own projects."
+An \emph{open-source} LLM, as defined by the \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024}, also releases the complete source code used to train and run the model and sufficiently detailed information about the training data to build a substantially equivalent model.
+% GROUNDING OSIAI2024: "The complete source code used to train and run the system."
+% GROUNDING OSIAI2024: "Sufficiently detailed information about the data used to train the system so that a skilled person can build a substantially equivalent system."
+These components are available under terms that grant the freedoms to use, study, modify, and share the model.
+% GROUNDING OSIAI2024: "An Open Source AI is an AI system made available under terms and in a way that grant the freedoms to: Use [...] Study [...] Modify [...] Share"
+In our guidelines, an \emph{open LLM} is any LLM that is at least open-weight.
 
 Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see \benchmarksmetrics).
 We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible.
@@ -1746,20 +1759,14 @@ Researchers \should ensure the open-LLM baseline is independently reproducible f
 Open LLMs are available from hubs such as \href{https://huggingface.co/}{\emph{Hugging Face}}. They can be self-hosted with frameworks such as \href{https://ollama.com/}{\emph{Ollama}} or \href{https://lmstudio.ai/}{\emph{LM Studio}}, accessed through cloud services such as \href{https://together.ai/}{\emph{Together AI}}, AWS, Azure, and Google Cloud, or routed through aggregators such as \href{https://openrouter.ai/}{\emph{OpenRouter}} that expose many providers behind a single API. For agentic setups, open-source tools such as \href{https://www.continue.dev/}{\emph{Continue}}, \href{https://cline.bot/}{\emph{Cline}}, and \href{https://opencode.ai/}{\emph{opencode}}~\cite{opencode} publish their full agent code, system prompts, and tool catalog. By contrast, vendor-hosted services such as \emph{GitHub Copilot} and \emph{Claude Code} expose only parts of their tooling (e.g., editor extensions, hook examples) and keep their deployed agent loops, system prompts, and tool catalogs proprietary.
 % GROUNDING opencode: "OpenCode is an open source AI coding agent."
 
-The term ``open'' can have different meanings in the context of LLMs.
-\citeauthor{widder2024open} discuss three types of openness (i.e., transparency, reusability, and extensibility) and what openness can and cannot provide~\cite{widder2024open}.
-% GROUNDING widder2024open: "We highlight three main affordances of 'open' AI, namely transparency, reusability, and extensibility"
-The \emph{Open Source Initiative} (OSI)~\cite{OSIAI2024} defines open-source AI as having access to everything needed to understand, modify, share, retrain, and recreate the model.
-% GROUNDING OSIAI2024: "Sufficiently detailed information about the data used to train the system so that a skilled person can build a substantially equivalent system."
-
 \guidelinesubsubsection{Examples}
 
 An increasing number of studies have adopted open LLMs as baseline models.
-For example, \citeauthor{DBLP:journals/corr/abs-2406-09834} evaluated seven advanced LLMs, six of which were open-source, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion~\cite{DBLP:journals/corr/abs-2406-09834}.
+For example, \citeauthor{DBLP:journals/corr/abs-2406-09834} evaluated seven advanced LLMs, six of which were open-weight, testing 145 API mappings drawn from eight popular Python libraries across 28,125 completion prompts aimed at detecting deprecated API usage in code completion~\cite{DBLP:journals/corr/abs-2406-09834}.
 % GROUNDING DBLP:journals/corr/abs-2406-09834: "This study involved seven advanced LLMs, 145 API mappings from eight popular Python libraries, and 28,125 completion prompts."
 \citeauthor{DBLP:journals/corr/abs-2408-04430} compared four LLMs on a cross-language code clone detection task~\cite{DBLP:journals/corr/abs-2408-04430}.
 % GROUNDING DBLP:journals/corr/abs-2408-04430: "We evaluated four LLMs and one embedding model for cross-lingual code clone detection."
-Three evaluated models were open-source.
+Three evaluated models were open-weight.
 \citeauthor{DBLP:conf/eicc/GoncalvesSC0MPS25} fine-tuned the open LLM \emph{LLaMA} 3.2 on a refined version of the \emph{DiverseVul} dataset to benchmark vulnerability detection performance~\cite{DBLP:conf/eicc/GoncalvesSC0MPS25}.
 % GROUNDING DBLP:conf/eicc/GoncalvesSC0MPS25: "we present a refined version of DiverseVul dataset, which is used to fine-tune a large language model, LLaMA 3.2, for vulnerability detection"
 \citeauthor{DBLP:journals/corr/abs-2601-11895} evaluated nine code completion models on the \emph{DevBench} benchmark and included three open-weight models (\emph{DeepSeek-V3}, \emph{DeepSeek-V3.1}, and \emph{Ministral-3B}) alongside commercial frontier models, releasing benchmark, evaluation scripts, and per-model raw completions under an MIT license~\cite{DBLP:journals/corr/abs-2601-11895}.
@@ -1773,22 +1780,21 @@ Three evaluated models were open-source.
 
 \guidelinesubsubsection{Benefits}
 
-A true open LLM baseline improves reproducibility by exposing model architectures, parameter settings, and ideally training data, enabling independent verification of results.
+An open LLM baseline improves reproducibility by exposing model architectures, weights, and ideally training data, enabling independent verification of results.
 Such baselines also let researchers compare novel methods against a stable reference point, since proprietary models can silently change between tests.
 They also allow inspection of training data (when released) and model behavior, helping identify biases and limitations.
-Unlike closed-source alternatives, which can be withdrawn or silently updated, open LLMs remain available for future studies.
+Unlike proprietary alternatives, which can be withdrawn or silently updated, open LLMs remain available for future studies.
 They typically avoid the per-use API fees that can constrain research groups with limited budgets.
 
 \guidelinesubsubsection{Challenges}
 
-Open-source LLMs face several challenges:
+Open LLMs face several challenges:
 \begin{itemize}
-    \item \emph{Definitional inconsistency.} Many models release only trained weights without training data or methodological details (``open weight'' openness)~\cite{Gibney2024}, which is why we reference the OSI definition in our recommendations~\cite{OSIAI2024}.
+    \item \emph{Definitional inconsistency.} Vendors such as Meta and Microsoft describe their models as ``open source'' although they release only trained weights without training data or methodological details~\cite{Gibney2024}, which is why we distinguish open-weight from open-source LLMs (see \emph{Recommendations} above).
     % GROUNDING Gibney2024: "Technology giants such as Meta and Microsoft are describing their artificial intelligence (AI) models as 'open source' while failing to disclose important information about the underlying technology"
-    % GROUNDING OSIAI2024: "The complete source code used to train and run the system"
     \item \emph{Performance gap.} Open models often lag behind the most advanced proprietary ``frontier'' models in common benchmarks, making it difficult to demonstrate clear improvements when evaluating new methods using open LLMs alone.
     \item \emph{Hardware demands.} Deploying and experimenting with these models typically requires substantial hardware resources, in particular high-performance GPUs that may be beyond reach for many academic groups.
-    \item \emph{Operational complexity.} Unlike APIs provided by proprietary vendors (e.g., the OpenAI API), installing, configuring, and fine-tuning open-source models can be technically demanding.
+    \item \emph{Operational complexity.} Unlike APIs provided by proprietary vendors (e.g., the OpenAI API), installing, configuring, and fine-tuning open models can be technically demanding.
 \end{itemize}
 
 \guidelinesubsubsection{Study Types}
@@ -2380,8 +2386,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % Model Version Recommendations: "When using quantized models, researchers \should report the quantization level... and method".
     \item \iconS \condition{fine-tuning} Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(\refmodelversion).
     % Model Version Recommendations: "Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model"; "Researchers \should either share the fine-tuning dataset as part of the \supplementarymaterial or explain in the \paper why the data cannot be shared. The same applies to the fine-tuned model weights".
-    \item \iconS \condition{commercial-models} Include an open LLM as a baseline when using commercial models and report inter-model agreement~(\refopenllm).
-    % Open LLM Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement". Placed in Model Selection and Configuration because the trigger is a model-choice condition (use of commercial models), even though the recommendation itself involves a baseline.
+    \item \iconS \condition{commercial-models} Include an open-weight LLM as a baseline when using commercial models and report inter-model agreement~(\refopenllm).
+    % Open LLM Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement"; "In our guidelines, an \emph{open LLM} is any LLM that is at least open-weight". Placed in Model Selection and Configuration because the trigger is a model-choice condition (use of commercial models), even though the recommendation itself involves a baseline.
 \end{itemize}
 
 \noindent\textit{System and Prompt Design}
