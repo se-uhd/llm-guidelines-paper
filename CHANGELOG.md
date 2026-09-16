@@ -9,7 +9,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
 ### Changed
 
-- **Open LLM:** *Recommendations* now defines *open-weight* LLMs (publicly released trained weights) and *open-source* LLMs (OSI definition, which also requires training code and information about the training data). An open LLM is any LLM that is at least open-weight. The guideline's summary box previously stated that the guideline follows the OSI definition.
+- **Open LLM:** *Recommendations* now defines *open-weight* LLMs (publicly released trained weights) and *open-source* LLMs (OSI definition, which also requires training code and information about the training data). An open LLM is any LLM that is at least open-weight, and open-source LLMs are preferable. The guideline's summary box previously stated that the guideline follows the OSI definition.
 
 ## [2026.06]
 
