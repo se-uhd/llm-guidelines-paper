@@ -1724,7 +1724,7 @@ As with other guidelines, missing information about baselines or metrics is typi
 \vspace{0.5\baselineskip}
 \begin{framed}
 \summary: %
-When researchers can control which LLM a study uses, they \should include an open-weight LLM as a baseline and report inter-model agreement. Researchers \should ensure the open-weight baseline is independently reproducible from their \supplementarymaterial.
+When researchers can control which LLM a study uses, they \should include an open-weight LLM, ideally an open-source LLM, as a baseline and report inter-model agreement. Researchers \should ensure the open-weight baseline is independently reproducible from their \supplementarymaterial.
 \end{framed}
 
 \guidelinesubsubsection{Rationale}
@@ -1747,6 +1747,7 @@ An \emph{open-source} LLM, as defined by the \emph{Open Source Initiative} (OSI)
 These components are available under terms that grant the freedoms to use, study, modify, and share the model.
 % GROUNDING OSIAI2024: "An Open Source AI is an AI system made available under terms and in a way that grant the freedoms to: Use [...] Study [...] Modify [...] Share"
 In our guidelines, an \emph{open LLM} is any LLM that is at least open-weight.
+Open-source LLMs are preferable, because the information about their training data lets researchers check for benchmark contamination (see \benchmarksmetrics).
 
 Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement (see \benchmarksmetrics).
 We acknowledge that including an open LLM baseline might not always be possible, for example, if the study involves human participants, and letting them work on the tasks using two different models might not be feasible.
@@ -2387,8 +2388,8 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
     % Model Version Recommendations: "When using quantized models, researchers \should report the quantization level... and method".
     \item \iconS \condition{fine-tuning} Compare base and fine-tuned models using suitable metrics and benchmarks; share fine-tuning data and weights as \supplementarymaterial (or justify in the \paper why they cannot be shared)~(\refmodelversion).
     % Model Version Recommendations: "Suitable benchmarks and metrics \should be used to compare the base model with the fine-tuned model"; "Researchers \should either share the fine-tuning dataset as part of the \supplementarymaterial or explain in the \paper why the data cannot be shared. The same applies to the fine-tuned model weights".
-    \item \iconS \condition{commercial-models} Include an open-weight LLM as a baseline when using commercial models and report inter-model agreement~(\refopenllm).
-    % Open LLM Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement"; "In our guidelines, an \emph{open LLM} is any LLM that is at least open-weight". Placed in Model Selection and Configuration because the trigger is a model-choice condition (use of commercial models), even though the recommendation itself involves a baseline.
+    \item \iconS \condition{commercial-models} Include an open-weight LLM, ideally an open-source LLM, as a baseline when using commercial models and report inter-model agreement~(\refopenllm).
+    % Open LLM Recommendations: "Empirical studies using LLMs in SE, especially those that target commercial tools or models, \should incorporate an open LLM as a baseline and report established metrics for inter-model agreement"; "In our guidelines, an \emph{open LLM} is any LLM that is at least open-weight"; "Open-source LLMs are preferable". Placed in Model Selection and Configuration because the trigger is a model-choice condition (use of commercial models), even though the recommendation itself involves a baseline.
 \end{itemize}
 
 \noindent\textit{System and Prompt Design}
