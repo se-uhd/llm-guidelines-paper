@@ -14,13 +14,13 @@ echo "Flattening current version..."
 (cd "$PROJECT_DIR" && latexpand "$MAIN_TEX" --output /tmp/new_flat.tex)
 
 echo "Generating diff markup..."
-mkdir -p "$PROJECT_DIR/versions"
+mkdir -p "$PROJECT_DIR/diff"
 # Treat tabular/tabularx environments as opaque so heavily restructured
 # tables (column changes, row reorderings) render as a single delete + add
 # instead of producing broken \DIFdelendFL markup inside cells.
 latexdiff \
   --config='PICTUREENV=(?:picture|DIFnomarkup|tabular|tabularx)[\w\d*@]*' \
-  /tmp/old_flat.tex /tmp/new_flat.tex > "$PROJECT_DIR/versions/diff.tex"
+  /tmp/old_flat.tex /tmp/new_flat.tex > "$PROJECT_DIR/diff/diff.tex"
 
 
 # Merge bibliographies: the diff references citations from both old and new
@@ -52,7 +52,7 @@ for key, entry in old.items():
         merged[key] = entry
         added += 1
 
-with open('$PROJECT_DIR/versions/literature_merged.bib', 'w') as f:
+with open('$PROJECT_DIR/diff/literature_merged.bib', 'w') as f:
     f.write('\n\n'.join(merged.values()))
     f.write('\n')
 
@@ -60,25 +60,25 @@ print(f'Merged bibliography: {len(new)} current + {added} old-only = {len(merged
 "
 
 # Point diff.tex to the merged bibliography
-sed -i '' 's|\\bibliography{literature}|\\bibliography{versions/literature_merged}|' "$PROJECT_DIR/versions/diff.tex"
+sed -i '' 's|\\bibliography{literature}|\\bibliography{diff/literature_merged}|' "$PROJECT_DIR/diff/diff.tex"
 
 # Clean stale build artifacts to ensure bibtex re-runs with the merged bib
-rm -f "$PROJECT_DIR"/versions/diff.{bbl,aux,blg,log,fls,fdb_latexmk,out,pdf}
+rm -f "$PROJECT_DIR"/diff/diff.{bbl,aux,blg,log,fls,fdb_latexmk,out,pdf}
 
 echo "Compiling diff PDF..."
 cd "$PROJECT_DIR"
-latexmk -pdf -jobname=versions/diff -silent versions/diff.tex
+latexmk -pdf -jobname=diff/diff -silent diff/diff.tex
 # latexmk sometimes stops one pass short for the diff; run one extra pass
 # to ensure all \bibcite entries from the .aux are resolved
-pdflatex -interaction=nonstopmode -jobname=versions/diff versions/diff.tex > /dev/null 2>&1
+pdflatex -interaction=nonstopmode -jobname=diff/diff diff/diff.tex > /dev/null 2>&1
 
 # Verify no undefined citations remain
-UNDEF=$(grep -c "Citation.*undefined" versions/diff.log 2>/dev/null || echo 0)
+UNDEF=$(grep -c "Citation.*undefined" diff/diff.log 2>/dev/null || echo 0)
 if [ "$UNDEF" -gt 0 ]; then
-    echo "WARNING: $UNDEF undefined citation(s) remain — check versions/diff.log"
+    echo "WARNING: $UNDEF undefined citation(s) remain — check diff/diff.log"
 fi
 
 echo "Cleaning auxiliary files..."
-rm -f "$PROJECT_DIR"/versions/diff.{aux,bbl,blg,log,fls,fdb_latexmk,out,toc,lof,lot}
+rm -f "$PROJECT_DIR"/diff/diff.{aux,bbl,blg,log,fls,fdb_latexmk,out,toc,lof,lot}
 
-echo "Done: versions/diff.pdf"
+echo "Done: diff/diff.pdf"
