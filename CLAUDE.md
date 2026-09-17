@@ -25,14 +25,8 @@ bibtex emse26-llm-guidelines
 # Word count (must use -inc to count \input files)
 texcount -inc emse26-llm-guidelines.tex
 
-# Response letter build (R2)
-latexmk -pdf reviews-and-response/response-letter_r2.tex
-
 # Compile and flatten into a single .tex file
 ./compile_and_flatten.sh
-
-# Rebuild the full R2 resubmission bundle (flat tex, bib, main PDF, title page, response letter)
-./versions/r2/regenerate.sh
 
 # Generate diff PDF against old submission (requires latexpand, latexdiff)
 ./scripts/create_diff.sh [path/to/old/version]
@@ -41,11 +35,9 @@ latexmk -pdf reviews-and-response/response-letter_r2.tex
 python3 scripts/flatten_latex.py
 ```
 
-PDF outputs (`emse26-llm-guidelines.pdf`, `emse26-llm-guidelines-flat.pdf`) are gitignored. Response-letter PDFs and the R2 bundle artifacts under `versions/r2/` are tracked. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
+PDF outputs (`emse26-llm-guidelines.pdf`, `emse26-llm-guidelines-flat.pdf`) are gitignored; the only tracked PDF is the per-release build under `release/`. `emse26-llm-guidelines-flat.tex` is the pre-generated flattened version (for diff generation and submission).
 
 **Always run `./compile_and_flatten.sh` after content edits** before committing. The flat `.tex` is tracked, so it goes stale otherwise; the local PDF preview goes stale too. This applies to any change under `_main/`, `_scope/`, `_studytypes/`, `_guidelines/`, `_tldr/`, `_summary/`, `literature.bib`, or `shared-header.tex`. After running it, downstream rebuilds (website + skill bundle) need `./compile-latex.sh && ./convert-and-merge-sources.sh` from the `llm-guidelines-website/` repo.
-
-**Before resubmitting R2, run `./versions/r2/regenerate.sh`.** It refreshes every R2 artifact from the current sources and aborts if the flat tex is stale, so an out-of-date PDF or bibliography cannot be uploaded by mistake.
 
 ## Document Structure
 
@@ -95,13 +87,12 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 
 ### Revision Artifacts
 
-- `reviews-and-response/response-letter_r1.tex` and `response-letter_r2.tex` — Point-by-point responses to reviewers (`response-letter_r1.tex` is the major-revision response; `response-letter_r2.tex` is the minor-revision R2 response). Each is a standalone document using `literature.bib`, with custom `reviewcomment`/`response` environments and one `\review` section per reviewer. Build via `versions/r2/regenerate.sh` (preferred) or directly with `latexmk -pdf reviews-and-response/response-letter_r2.tex`.
-- `reviews-and-response/emse-reviews.md`, `emse-reviews_r1.md` — Raw reviewer comments in markdown for each round (reference copies for context)
-- `versions/r2/title-page_r2.tex` — Standalone title page with author list (separate from main paper, uses KOMA-Script `scrbook` class). Lives inside the R2 bundle.
-- `versions/r2/regenerate.sh` — Rebuilds the R2 resubmission bundle (`emse26-llm-guidelines-flat_r2.{tex,pdf}`, `literature_r2.bib`, `title-page_r2.pdf`) and `reviews-and-response/response-letter_r2.pdf` from current sources. Runs `compile_and_flatten.sh` first, then re-verifies via a fresh flat-generation pass and aborts if the working-copy flat tex differs, so stale artifacts cannot enter the bundle. Does not touch `EMSE-D-25-00637_R2.pdf` (that PDF is downloaded from Editorial Manager).
-- `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `versions/diff.pdf`
+The EMSE submission trail lives in the website repo under `../llm-guidelines-website/_emse-submission/`, not here. Each tag of this repo is archived on Zenodo, so submission artifacts must not come back into it.
+
+- `_emse-submission/reviews-and-response/` — reviewer comments per round and the point-by-point response letters (`_r1` major revision, `_r2` minor revision, `_r3` camera-ready). Each is a standalone document.
+- `_emse-submission/versions/` — per-round bundles: `initial/`, `r1/`, `r2/`, `cr/`. The `r2/regenerate.sh` and `cr/regenerate.sh` scripts rebuild their bundle from the current sources here, which they locate through the website repo's `llm-guidelines-paper/` submodule.
+- `scripts/create_diff.sh` — Shell script that flattens old and new versions with `latexpand`, generates a `latexdiff` markup, and compiles `diff/diff.pdf` (gitignored)
 - `scripts/flatten_latex.py` — Generates `emse26-llm-guidelines-flat.tex`; run without arguments for the default paper paths, or with `<main.tex> <output.tex>` for custom paths.
-- `versions/` — Per-round bundles: `initial/` (original submission PDF), `r1/` (R1 diff and PDFs), `r2/` (R2 resubmission bundle with regenerate script)
 
 ## Key Conventions
 
@@ -145,6 +136,21 @@ The LaTeX preamble is shared with the website via `shared-header.tex` (lives in 
 - Web pages, blog posts, vendor docs: `howpublished = {\url{...}}` and `note = {Accessed YYYY-MM-DD}`
 - arXiv preprints: `url = {...}`, `archiveprefix = {arXiv}`, `eprint = {...}`, `primaryclass = {...}`
 - Sort fields alphabetically within an entry; sort entries alphabetically by citation key
+
+## Releases and Archiving
+
+Releases are `YYYY.MM` tags (CalVer). Each tag is published as a new arXiv version and archived on Zenodo, which mints a version DOI plus a concept DOI resolving to the latest. The full release procedure spans three repos and is documented in the website repo's `CLAUDE.md` under "Bumping the guideline version".
+
+Zenodo archives the tag's source zipball and ignores files attached to a GitHub release, so anything that belongs in the DOI record has to be committed here:
+
+- **`release/llm-guidelines-<version>.pdf`** — the built guidelines, tracked so the record holds a readable document. Rebuild with `./scripts/make_release_pdf.sh`, which reads the version from `CITATION.cff`. Superseded release PDFs are not deleted automatically.
+- **`CITATION.cff`** — hand-maintained source of truth for release metadata (title, abstract, the 22 authors, version, date, license). GitHub's "Cite this repository" widget reads it, and `preferred-citation` points at the EMSE article.
+- **`.zenodo.json`** — **generated, never edit.** Zenodo ignores `CITATION.cff` entirely when this file is present, so it is derived from `CITATION.cff` plus `scripts/zenodo-overlay.json` by `scripts/generate_zenodo_json.py` (requires PyYAML; the other scripts here are stdlib-only). Run `--check` to fail on a stale file.
+- **`scripts/zenodo-overlay.json`** — the Zenodo-only fields CFF cannot express (`upload_type`, `publication_type`, `related_identifiers`), because CFF's `type` enum is `software|dataset` and its schema sets `additionalProperties: false`.
+
+Bumping a release means editing `version` and `date-released` in `CITATION.cff`, then rerunning `make_release_pdf.sh` and `generate_zenodo_json.py`.
+
+Because every tag is archived publicly and permanently, this repo must stay free of journal correspondence and submission bundles; those live in the website repo under `_emse-submission/`.
 
 ## Syncing Content to Website
 

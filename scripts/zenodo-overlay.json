@@ -1,0 +1,23 @@
+{
+  "_comment": "Zenodo-only metadata that CITATION.cff cannot express: CFF's type enum is software|dataset, and its schema forbids extra keys. Merged over the CFF-derived fields by generate_zenodo_json.py; edit this file, never .zenodo.json.",
+  "upload_type": "publication",
+  "publication_type": "report",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "10.1007/s10664-026-10922-3",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.48550/arXiv.2508.15503",
+      "relation": "isVariantFormOf",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://llm-guidelines.org",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    }
+  ]
+}

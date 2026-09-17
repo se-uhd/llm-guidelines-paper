@@ -5,11 +5,27 @@ All notable changes to the LLM Guidelines for SE will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 
-## [Ahead of last paper release]
+A release is a `YYYY.MM` tag on the paper repository, published as a new arXiv version
+and archived on Zenodo under its own DOI. The website tracks `main`, so it can be ahead
+of the latest release.
+
+## [Ahead of latest release]
+
+_No unreleased changes._
+
+## [2026.09]
+
+Terminology revision to the Open LLM guideline, with bibliography corrections.
 
 ### Changed
 
-- **Open LLM:** *Recommendations* now defines *open-weight* LLMs (publicly released trained weights) and *open-source* LLMs (OSI definition, which also requires training code and information about the training data). An open LLM is any LLM that is at least open-weight, and open-source LLMs are preferable. The guideline's summary box previously stated that the guideline follows the OSI definition.
+- **Open LLM:** *Recommendations* now distinguishes *open-weight* LLMs (released trained weights) from *open-source* LLMs (OSI definition, which also requires training code and information about the training data). An open LLM is any LLM that is at least open-weight; open-source LLMs are preferable because their training data can be checked for benchmark contamination. Examples, summary box, and reporting checklist follow the new terminology.
+- **Open LLM:** The summary box scopes the baseline recommendation to studies where researchers control which LLM is used. It previously stated that the guideline follows the OSI definition.
+- **Open LLM:** *Definitional inconsistency* names Llama and Gemma as models marketed as open source that release weights only, grounded in Gibney (2024).
+
+### Fixed
+
+- **Bibliography:** Remaining acronyms and proper nouns wrapped in `{}` to preserve capitalization, completing the pass started in 2026.05. Two compound surnames corrected to `Family, Given` form, so citations now read *Martinez Montes et al.* and *Muñoz Barón et al.*
 
 ## [2026.06]
 
@@ -135,7 +151,8 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 
 First explicitly versioned release, corresponding to the EMSE major revision submission (2026-03-19).
 
-[Ahead of last paper release]: https://github.com/se-uhd/llm-guidelines-paper/compare/2026.06...main
+[Ahead of latest release]: https://github.com/se-uhd/llm-guidelines-paper/compare/2026.09...main
+[2026.09]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.09
 [2026.06]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.06
 [2026.05]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.05
 [2026.04]: https://github.com/se-uhd/llm-guidelines-paper/releases/tag/2026.04

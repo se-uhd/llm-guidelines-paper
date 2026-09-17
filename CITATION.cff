@@ -25,8 +25,8 @@ abstract: >-
   checklist for authors and reviewers. We maintain the study types and
   guidelines online as a living resource for the community to use and shape
   (llm-guidelines.org).
-version: "2026.06"
-date-released: "2026-06-12"
+version: "2026.09"
+date-released: "2026-09-17"
 license: CC-BY-4.0
 repository-code: https://github.com/se-uhd/llm-guidelines-paper
 url: https://llm-guidelines.org
