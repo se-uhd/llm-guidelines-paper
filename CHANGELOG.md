@@ -16,7 +16,7 @@ _No unreleased changes._
 
 ## [2026.09]
 
-Terminology revision to the Open LLM guideline, with bibliography corrections.
+Terminology revision to the Open LLM guideline, with bibliography corrections.<br/>
 DOI: [10.5281/zenodo.22834987](https://doi.org/10.5281/zenodo.22834987)
 
 ### Changed
@@ -27,11 +27,11 @@ DOI: [10.5281/zenodo.22834987](https://doi.org/10.5281/zenodo.22834987)
 
 ### Fixed
 
-- **Bibliography:** Remaining acronyms and proper nouns wrapped in `{}` to preserve capitalization, completing the pass started in 2026.05. Two compound surnames corrected to `Family, Given` form, so citations now read *Martinez Montes et al.* and *Muñoz Barón et al.*
+- **Bibliography:** Remaining acronyms and proper nouns wrapped in `{}` to preserve capitalization. Two compound surnames corrected to `Family, Given` form, so citations now read *Martinez Montes et al.* and *Muñoz Barón et al.*
 
 ## [2026.06]
 
-Version accepted at Empirical Software Engineering (EMSE).
+Version accepted at Empirical Software Engineering (EMSE).<br/>
 DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 
 ### Added
@@ -80,11 +80,11 @@ DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 - **Limitations and Mitigations:** *Environmental & Sustainability Constraints* caption flipped to a period with a preamble of one sentence, matching the structure of the other six validity category captions.
 - **Open LLM:** *Challenges* refactored from prose enumeration to an itemize with named captions (*Definitional inconsistency*, *Performance gap*, *Hardware demands*, *Operational complexity*).
 - **Benchmarks and Metrics:** Metric definitions sharpened. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data flow matching versus removal of n-grams common in the corpus. pass@k clarified as an estimator for each prompt that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
-- **Editorial pass:** Tightened *Benefits* in Declare Usage, Design, Benchmarks and Metrics, and Human Validation. Other edits were reverted to the original after review. Split five sentences of more than 90 words in *Advantages and Challenges* into shorter units. Applied the caption punctuation rule (`\paragraph{Title.}` for captions followed by prose). Standardized *human validation* across *See Also* lines. Split filler semicolons and colons where both halves stand alone.
+- **Editorial pass:** Tightened *Benefits* in Declare Usage, Design, Benchmarks and Metrics, and Human Validation. Split five sentences of more than 90 words in *Advantages and Challenges* into shorter units. Applied the caption punctuation rule (`\paragraph{Title.}` for captions followed by prose). Standardized *human validation* across *See Also* lines. Split filler semicolons and colons where both halves stand alone.
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing assistance only from disclosure. Advice for Reviewers now cites the policy's author accountability and reject/retract provisions.
 - **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name. The website page moved to /guidelines/benchmarks-metrics/.
 - **Open LLM:** The cross-reference name in prose is now singular (*Open LLM*), matching the guideline title and all tables.
-- **Study Types:** The benchmarking study type's short name expanded from *Benchmarks* to *Benchmarking*, completing the disambiguation from the Benchmarks & Metrics guideline. The website page moved to /study-types/benchmarking/.
+- **Study Types:** The benchmarking study type's short name expanded from *Benchmarks* to *Benchmarking*. The website page moved to /study-types/benchmarking/.
 
 ### Fixed
 
