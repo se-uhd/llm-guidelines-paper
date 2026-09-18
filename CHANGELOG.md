@@ -8,6 +8,7 @@ and this project follows [Calendar Versioning](https://calver.org/) (`YYYY.MM`).
 A release is a `YYYY.MM` tag on the paper repository, published as a new arXiv version
 and archived on Zenodo under its own DOI. The website tracks `main`, so it can be ahead
 of the latest release.
+[10.5281/zenodo.22834847](https://doi.org/10.5281/zenodo.22834847) resolves to the latest archived release.
 
 ## [Ahead of latest release]
 
@@ -16,6 +17,7 @@ _No unreleased changes._
 ## [2026.09]
 
 Terminology revision to the Open LLM guideline, with bibliography corrections.
+DOI: [10.5281/zenodo.22834987](https://doi.org/10.5281/zenodo.22834987)
 
 ### Changed
 
@@ -30,6 +32,7 @@ Terminology revision to the Open LLM guideline, with bibliography corrections.
 ## [2026.06]
 
 Version accepted at Empirical Software Engineering (EMSE).
+DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 
 ### Added
 

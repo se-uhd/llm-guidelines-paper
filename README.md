@@ -1,5 +1,7 @@
 # Guidelines for Empirical Studies in SE involving LLMs
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22834847.svg)](https://doi.org/10.5281/zenodo.22834847)
+
 Source repository for the community guidelines on reporting empirical studies in software engineering that involve large language models. The guidelines are rendered as a living resource at [llm-guidelines.org](https://llm-guidelines.org) and published as an [Agent Skill](https://llm-guidelines.org/skill/).
 
 This repo is authoritative for the content: the LaTeX sources under `_main/`, `_scope/`, `_studytypes/`, `_guidelines/`, `_tldr/`, and `_summary/`, plus `literature.bib` and `shared-header.tex`. The [website repo](https://github.com/se-uhd/llm-guidelines-website) references them directly through a git submodule.
