@@ -12,7 +12,9 @@ of the latest release.
 
 ## [Ahead of latest release]
 
-_No unreleased changes._
+### Changed
+
+- **Bibliography:** Replaced Schröder et al.'s preprint with the published journal article.
 
 ## [2026.09]
 
