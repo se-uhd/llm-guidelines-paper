@@ -41,7 +41,7 @@ DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 - **Limitations and Mitigations:** External Validity absorbed the former Generalizability list, gaining two new threats (configuration sensitivity, research-to-practice gap). Construct Validity gained five threats: construct under-specification, reliability without validity, capability confounding, prompt sensitivity, judge biases (position, verbosity, format).
 - **Limitations and Mitigations:** Cross-references added from each threat to the guideline carrying the relevant reporting requirement.
 - **Benchmarks and Metrics:** AgentBench (Liu et al., ICLR 2024) added as a benchmark example for LLMs as agents, with eight environments.
-- **Human Validation:** Krippendorff threshold tiers (α<0.667 discard, 0.667≤α<0.8 tentative, α≥0.8 reliable) elevated from Examples to a **should** in Recommendations.
+- **Human Validation:** Krippendorff thresholds (α<0.667 discard, 0.667≤α<0.8 tentative, α≥0.8 reliable) moved from Examples to a **should** in Recommendations.
 - **Guidelines introduction:** New paragraph explaining that **must** covers disclosure obligations and **should** covers methodological recommendations.
 - **Declare Usage:** For studies that assign multiple distinct LLM roles, **should** declare each role separately. DevBench (Golnari et al.) cited as illustration, with generator, evaluation subjects, and judge each disclosed.
 - **Benchmarks:** Synthesizing benchmark instances added as a third contamination mitigation strategy alongside post-cutoff collection and private benchmarks. DevBench listed under *Benchmark Examples*.
@@ -55,12 +55,12 @@ DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 - **Design:** **should** justify substantive architectural choices where alternatives existed (e.g., agentic framework, tool catalog).
 - **Benchmarks and Metrics:** Dror et al. (2018) cited as a decision tree for selecting among inferential tests (Mann-Whitney U, McNemar, bootstrap), based on distributional assumptions and test set size.
 - **Open LLM:** OpenRouter named as an aggregator option alongside cloud services and self-hosting frameworks; open source agentic tools (Continue, Cline, opencode) and vendor-hosted services (GitHub Copilot, Claude Code) contrasted on what they expose.
-- **Study Types:** Each of the seven study type subsections opens with a sentence that frames its role within its grouping (researcher tools / engineer tools).
+- **Study Types:** Each of the seven study type subsections opens with a sentence that states its role within its grouping (researcher tools / engineer tools).
 - **Human Validation:** *Benefits* notes that disagreements between human reviewers and the LLM point to concrete improvements in the prompts, the context provided to the LLM, or the construct's operational definition.
 
 ### Changed
 
-- **New Software Engineering Tools:** The GenAI agent description now centers on a control loop around the model (observe, inspect, choose, act), with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation) drawn from Raschka's decomposition of coding agents and CoALA (Sumers et al.), replacing the earlier framing with three components.
+- **New Software Engineering Tools:** The GenAI agent description now describes a control loop around the model (observe, inspect, choose, act) with supporting building blocks (repository context, prompt and tool definitions, session memory, subagent delegation), drawn from Raschka's decomposition of coding agents and CoALA (Sumers et al.), instead of the earlier three components.
 - **Citations audited and grounded:** Every cited claim was checked against its source, and several miscitations were corrected. Mode collapse now cites Verbalized Sampling (Zhang et al.) and Kirk et al. Non-determinism under fixed settings cites Atil et al. Benchmark overconfidence cites Banerjee et al. TnT-LLM and other unsupported citations were removed.
 - **Limitations and Mitigations:** Threat sections restructured. Mitigation strategies distributed from a single consolidated list into the corresponding threat sections as prose. Generalizability merged into External Validity, which now leads the threat sections. Internal Validity contamination mitigations now cross-reference Benchmarks and Metrics for concrete strategies (post-cutoff construction, held-out subsets, canary strings).
 - **Session Traces:** Interaction log and runtime trace definitions tightened. Interaction logs cover the human-observable exchange at the LLM's interface (prompts in, responses out, including human-in-the-loop exchanges for agentic systems). Runtime traces cover the LLM's internal activity (tool calls and configured artifact activations), naming the tool/artifact, arguments, and result per entry.
@@ -79,9 +79,9 @@ DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 - **Scope:** *Related Reporting Guidelines* tightened (~20% shorter): CONSORT year and "across communities" filler removed; HCI contrasts for each paper reorganized so the two "On X" comparisons read consecutively.
 - **Methodology:** Chronology from ISERN 2024 to CHASEAI 2024 and WSESE 2025 made explicit (a preprint of the position paper was the basis for the CHASEAI discussions; paper published at WSESE 2025).
 - **Model Version:** Summary item (4) for fine-tuned models names *approach* (full vs LoRA) and *hyperparameters* explicitly instead of generic "parameters and procedure".
-- **Limitations and Mitigations:** *Environmental & Sustainability Constraints* caption flipped to a period with a preamble of one sentence, matching the structure of the other six validity category captions.
+- **Limitations and Mitigations:** *Environmental & Sustainability Constraints* caption now ends with a period and is followed by a one-sentence preamble, matching the other six validity category captions.
 - **Open LLM:** *Challenges* refactored from prose enumeration to an itemize with named captions (*Definitional inconsistency*, *Performance gap*, *Hardware demands*, *Operational complexity*).
-- **Benchmarks and Metrics:** Metric definitions sharpened. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data flow matching versus removal of n-grams common in the corpus. pass@k clarified as an estimator for each prompt that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
+- **Benchmarks and Metrics:** Metric definitions made more precise. BLEU-N specified as modified n-gram precision with a brevity penalty. CodeBLEU and CrystalBLEU distinguished by mechanism: AST and data flow matching versus removal of n-grams common in the corpus. pass@k clarified as an estimator for each prompt that draws k samples without replacement from n ≥ k generations, with the reported benchmark value the mean over prompts.
 - **Declare Usage:** Aligned with the 2026 ACM Policy on Authorship, which requires research use of LLMs to be reported in the methods section and exempts writing assistance only from disclosure. Advice for Reviewers now cites the policy's author accountability and reject/retract provisions.
 - **Benchmarks and Metrics:** Guideline short name expanded from *Benchmarks* to *Benchmarks & Metrics*, removing the label collision with the benchmarking study type's short name. The website page moved to /guidelines/benchmarks-metrics/.
 - **Open LLM:** The cross-reference name in prose is now singular (*Open LLM*), matching the guideline title and all tables.
@@ -98,7 +98,7 @@ DOI: [10.5281/zenodo.22834848](https://doi.org/10.5281/zenodo.22834848)
 
 ## [2026.05]
 
-EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens construct validity drawing on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review, and incorporates further input from discussions during ICSE 2026 (April 2026) and the 3rd Copenhagen Symposium on Human-Centered Software Engineering AI (May 2026).
+EMSE minor revision: addresses Reviewer 1's stylistic feedback, expands the construct validity recommendations based on Cao et al.'s 572-benchmark survey and Bean et al.'s 445-benchmark review, and incorporates further input from discussions during ICSE 2026 (April 2026) and the 3rd Copenhagen Symposium on Human-Centered Software Engineering AI (May 2026).
 
 ### Added
 
@@ -124,7 +124,7 @@ EMSE minor revision: addresses Reviewer 1's stylistic feedback, strengthens cons
 - **Bibliography:** seven arXiv preprints replaced with peer-reviewed citations; entries normalized to DBLP keys; proper nouns and acronyms wrapped in `{}` to preserve capitalization.
 - **Reporting Checklist:** Items now ordered with general entries before conditional entries within each severity. The sampling strategy bullet split into a general "describe and justify the sampling strategy" item plus a conditional non-probability follow-up. The open LLM baseline item moved to *Model Selection and Configuration* because its trigger is a model choice condition.
 - **Limitations and Mitigations:** Threat list and mitigation bullets unified across all six categories. Transfer across models, tool architecture, and over-reliance bullets refactored from vague "and capabilities" / "API or capabilities" / "intended construct" to concrete dimensions (post-training procedures, features specific to vendors, the capability the benchmark tests). Construct validity gained behavioral equivalence as a second aspect specific to SE. Infrastructure dependence absorbed vendor quotas, throttling, and pricing changes as reproducibility threats.
-- **Benchmarks:** *Recommendations* MUSTs lifted into prose; bullet list now SHOULDs only.
+- **Benchmarks:** *Recommendations* **must** items moved into prose; the bullet list now holds only **should** items.
 - **Model Version:** Two summary lists condensed into one prose summary.
 - **Tools / Human Validation:** HULA (Takerngsaksiri et al., ICSE-SEIP 2025) repositioned from a definitional citation cluster to an industrial example.
 - **ClassEval citation:** upgraded from arXiv preprint to the ICSE 2024 entry.
@@ -142,9 +142,9 @@ This release incorporates feedback from the community session at ICSE 2026 in Ri
 
 ### Changed
 
-- **Guidelines order:** *Use Suitable Baselines, Benchmarks, and Metrics* moved above *Use Human Validation for LLM Outputs*. Evaluation guidelines now flow from benchmarks to open LLM baseline to human validation. The promoted guideline is now G5; *Use Human Validation* is now G7; *Use an Open LLM as a Baseline* keeps G6. Section anchors and macro names are unchanged.
+- **Guidelines order:** *Use Suitable Baselines, Benchmarks, and Metrics* moved above *Use Human Validation for LLM Outputs*. The evaluation guidelines now run in the order benchmarks, open LLM baseline, human validation. The promoted guideline is now G5; *Use Human Validation* is now G7; *Use an Open LLM as a Baseline* keeps G6. Section anchors and macro names are unchanged.
 - **G3 / G4:** Split and renamed. G3 *Report System and Prompt Design* (was *Report Tool Architecture Beyond Models*) covers files, schemas, skill and tool definitions. G4 *Report Session Traces* (was *Report Prompts, their Development, and Interaction Logs*) covers runtime traces. Several G3 items moved from MUST to SHOULD; G3 subheadings were reordered, with two renamed to *Agentic Systems and Pipelines* and *RAG and Ensembles*.
-- **G7 (Human Validation):** Rationale and Recommendations now pick up directly from G5: where no benchmark adequately operationalizes the target construct, validate against human judgment. The *LLMs for Tools* (S6) clause is now an explicit SHOULD.
+- **G7 (Human Validation):** Rationale and Recommendations now continue from G5: where no benchmark adequately operationalizes the target construct, validate against human judgment. The *LLMs for Tools* (S6) clause is now an explicit SHOULD.
 - **G2:** Treating temperature 0 as a reproducibility guarantee is now SHOULD NOT. Prompts and interaction logs cross-reference G3 and G4 instead of being restated.
 - **G1:** Added a contemporary example declaration alongside the existing Llama 2 quote.
 - **Throughout:** Tightened prose and elevated several plain "should" / "should not" instances to SHOULD / SHOULD NOT.
