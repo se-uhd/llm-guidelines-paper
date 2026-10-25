@@ -15,6 +15,7 @@ of the latest release.
 ### Added
 
 - **Benchmarks and Metrics:** Researchers **must not** claim more than their evaluation verified (passing tests does not show that an issue is resolved). A naive baseline that does not consider the task input **should** be included as a lower bound, and exceeding it only slightly **must** be reported as a construct-validity threat. Both have checklist items under *Results*.
+- **Model Version:** If models were selected based on a pilot study, researchers **should** name the models and versions compared and the selection criteria. Also added to the checklist item on model and version choices.
 
 ### Changed
 
