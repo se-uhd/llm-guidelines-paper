@@ -211,10 +211,14 @@ Beyond these characteristic-tagged items, each guideline's \emph{Study Types} su
 
 \paragraph{\textbf{Results}}
 \begin{itemize}[label={},leftmargin=*]
+    \item \iconM Do not claim more in the \paper than the evaluation verified~(\refbenchmarks).
+    % Benchmarks & Metrics Recommendations: "Researchers \mustnot claim more than their evaluation verified. When patches are evaluated by running tests, the evaluation shows how many patches pass the tests. A claim that the patches resolve the underlying issues requires verifying correctness beyond the tests."
     \item \iconS Repeat experiments due to the inherent non-determinism of LLMs and report the result distribution using descriptive statistics~(\refbenchmarks).
     % Benchmarks & Metrics Recommendations: "Due to LLM non-determinism, researchers \should repeat experiments and report descriptive statistics of model or tool performance".
     \item \iconS Use traditional (non-LLM) baselines for comparison where possible~(\refbenchmarks).
     % Benchmarks & Metrics Recommendations: "researchers \should check whether a less resource-intensive approach... can serve as a baseline. If so, the LLM or LLM-based tool \should be compared with such baselines using suitable metrics".
+    \item \iconS Include a naive baseline that does not consider the task input (e.g., a random or majority-class classifier) as a lower bound for performance~(\refbenchmarks).
+    % Benchmarks & Metrics Recommendations: "Researchers \should also include a naive baseline ... Such a baseline does not consider the task input, so its performance is a lower bound for the LLM or tool under study." The \must to report a small margin over the baseline as a construct-validity threat is covered by the construct validity item under Benchmarks and Metrics and the limitations items.
     \item \iconS Report established metrics to make study results comparable; additional metrics may be reported where appropriate~(\refbenchmarks).
     % Benchmarks & Metrics Recommendations: "researchers \should report established metrics whenever possible, as this allows secondary research. They can report additional metrics".
     \item \iconS \condition{comparing-models} If comparing models or tools, use appropriate inferential statistics (e.g., hypothesis tests, effect sizes) rather than relying solely on summary statistics~(\refbenchmarks).

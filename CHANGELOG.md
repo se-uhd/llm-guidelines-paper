@@ -12,8 +12,13 @@ of the latest release.
 
 ## [Ahead of latest release]
 
+### Added
+
+- **Benchmarks and Metrics:** Researchers **must not** claim more than their evaluation verified (passing tests does not show that an issue is resolved). A naive baseline that does not consider the task input **should** be included as a lower bound, and exceeding it only slightly **must** be reported as a construct-validity threat. Both have checklist items under *Results*.
+
 ### Changed
 
+- **Benchmarks and Metrics:** *Challenges* adds that recently collected data is not necessarily recent, since a bug mined today may have been fixed before the training cutoff. *Recommendations* cites Izadi et al.'s design principles for AI4SE benchmarks (2026 preprint).
 - **Bibliography:** Replaced Schröder et al.'s preprint with the published journal article.
 
 ## [2026.09]

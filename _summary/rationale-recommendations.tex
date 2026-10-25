@@ -38,11 +38,11 @@ Traces & Runtime traces make LLM and agent behavior verifiable despite non-deter
 \newline \iconS Otherwise, share interaction logs, runtime traces, and plans where feasible. \\
 \addlinespace
 % Benchmarks Rationale: "Meaningful evaluation requires well-understood, valid measurement instruments. Without justified benchmarks and metrics, claims about LLM performance lack the rigor needed for scientific comparison and cumulative progress."
-% Benchmarks \iconM line: Recommendations - "\must briefly justify... why selected benchmarks and metrics are suitable"; "\must discuss the reliability and validity (especially construct validity)".
+% Benchmarks \iconM line: Recommendations - "\must briefly justify... why selected benchmarks and metrics are suitable"; "\must discuss the reliability and validity (especially construct validity)"; "\mustnot claim more than their evaluation verified".
 % Benchmarks \iconS line: Recommendations - "\should provide an operational definition of the phenomenon"; "\should describe and justify the sampling strategy used to select problems for inclusion in the benchmark"; "\should identify which capabilities a benchmark conflates, isolate the target capability where possible"; "\should perform an error analysis by categorizing the failures observed and reporting the relative frequency of each category"; "\should repeat experiments and report descriptive statistics".
 Benchmarks \& Metrics & Meaningful evaluation requires reasoned valid measurement. &
-\iconM Justify metric and benchmark choices; discuss their validity.
-\newline \iconS Define the phenomenon and sampling strategy; isolate confounders; analyze errors; repeat experiments and report distributions. \\
+\iconM Justify metric and benchmark choices; discuss their validity; do not claim more than the evaluation verified.
+\newline \iconS Define the phenomenon and sampling strategy; include a naive baseline; isolate confounders; analyze errors; repeat experiments and report distributions. \\
 \addlinespace
 % Open LLM Rationale: "Reproducibility depends on access to the model under study. When research relies exclusively on proprietary models, other researchers cannot independently verify or build upon the findings."
 % Open LLM \iconS line: Recommendations - "Empirical studies using LLMs in SE... \should incorporate an open LLM as a baseline"; "Researchers \should ensure the open-LLM baseline is independently reproducible from their \supplementarymaterial". Study Types for \benchmarkingtasks now reads \should rather than \must; the replicability load is carried by Design's benchmarking \must (describe the harness) and \should (harness should be usable with open models). Broader replication-package guidance moved to Limitations Reliability \& Reproducibility Mitigations.
