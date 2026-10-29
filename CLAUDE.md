@@ -96,7 +96,7 @@ The EMSE submission trail lives in the website repo under `../llm-guidelines-web
 
 ## Key Conventions
 
-**RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render bold in both paper and website (per Reviewer 1's stylistic ask: lowercase, not small-caps; this paper is not a standard). `\may` has been removed; reword as plain suggestions ("researchers may/can...").
+**RFC 2119 terminology:** `\must`, `\mustnot`, `\should`, `\shouldnot` render bold in both paper and website (per Reviewer 1's stylistic ask: lowercase, not small-caps; this paper is not a standard). There is no `\may` macro; write suggestions as plain prose ("researchers may/can...").
 
 **Cross-reference macros:** Each study type and guideline has a shorthand command that creates a hyperlinked italic reference to the corresponding section. All accept an optional `[id]` argument for in-text identifiers. Defined in `shared-header.tex` with `\ifpaper` conditionals.
 - Study types: `\annotators`, `\judges`, `\synthesis`, `\subjects`, `\llmusage`, `\newtools`, `\benchmarkingtasks`
@@ -111,7 +111,7 @@ The EMSE submission trail lives in the website repo under `../llm-guidelines-web
 
 **Summary label:** `\summary` renders the inline "Summary" label that opens each guideline's framed summary box.
 
-**See Also macros:** `\seesection{label}` (paper-side) renders `Section X: Full Title` with only the section number hyperlinked, pulling the title automatically via `\nameref*`. Per-guideline convenience macros (`\seeusagerole`, `\seemodelversion`, `\seedesign`, `\seetraces`, `\seebenchmarksmetrics`, `\seeopenllm`, `\seehumanvalidation`, `\seelimitationsmitigations`) take no arguments and target the corresponding guideline. Use these in `See Also` lists.
+**See Also macros:** `\seesection{label}` (paper-side) renders `Section X (Full Title)` with only the section number hyperlinked, pulling the title automatically via `\nameref*`. Per-guideline convenience macros (`\seeusagerole`, `\seemodelversion`, `\seedesign`, `\seetraces`, `\seebenchmarksmetrics`, `\seeopenllm`, `\seehumanvalidation`, `\seelimitationsmitigations`) take no arguments and target the corresponding guideline. Use these in `See Also` lists.
 
 **File naming:** Content files use numeric prefixes for ordering (`01_`, `02_`, `01-02_`). Directories use underscore prefixes (`_guidelines/`, `_studytypes/`).
 
@@ -175,6 +175,6 @@ All scripts live in the `scripts/` directory (requires `bibtexparser`).
 - **`scripts/handle_remaining.py`** — One-off handler for the entries that DBLP couldn't match during the initial cleanup (non-CS journals, gray literature, etc.). Crossref enrichment, fuzzy DBLP search, and `@misc` URL validation. Kept for historical reference; the categorized lists at the top of the file are frozen at the state of the original cleanup.
 
 **Supporting files:**
-- `literature.bib.backup` — Backup written before each `clean_bibliography.py` run (tracked by git).
+- `literature.bib.backup` — Backup written before each `clean_bibliography.py` run (not tracked).
 - `dblp_unmatched_report.txt` — Per-run report with old → new key map, stripped fields, and unmatched entries (overwritten each run; not tracked).
 - `scripts/.bib_validation_cache.json` — Persistent validation cache (not tracked).
