@@ -39,7 +39,7 @@ The primary threats to internal validity are:
 	\item \emph{Incomplete architecture, prompt, or pipeline reporting}: Undisclosed components introduce hidden confounders (see \design).
 \end{itemize}
 
-As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage effects and their impact on results. Concrete mitigations for contamination (e.g., post-cutoff benchmark construction, held-out subsets, canary strings) are discussed in \benchmarksmetrics.
+As transparency on training data is limited for LLMs, researchers \must discuss potential data leakage and its impact on results. Concrete mitigations for contamination (e.g., post-cutoff benchmark construction, held-out subsets, canary strings) are discussed in \benchmarksmetrics.
 
 \guidelineparagraph{Construct Validity}
 The primary threats to construct validity are:
@@ -68,7 +68,7 @@ The primary threats to reliability and reproducibility are:
 
 Researchers \must discuss the measures taken to increase reliability and reproducibility.
 However, non-deterministic reproducibility is not inherently disqualifying. The trustworthiness criteria introduced above apply particularly to SaaS-based LLM research, where providers frequently deprecate model versions without guaranteeing stable behavior.
-Mitigations include providing \emph{replication packages} that cover prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability), and performing \emph{longitudinal re-runs} with statistical analyses. When deterministic reproduction is structurally impossible, researchers \should consider \emph{methodological trustworthiness measures} such as triangulation, reflexivity, audit trails, and peer debriefing as complementary measures.
+Mitigations include providing \emph{replication packages} that cover prompt and architecture specifications, model outputs, and representative examples for partial replicability (ideally accompanied by an implementation using an open model for long-term stability), and performing \emph{longitudinal re-runs} with statistical analyses. When deterministic reproduction is structurally impossible, researchers \should consider the \emph{trustworthiness measures} of qualitative research, such as triangulation, reflexivity, audit trails, and peer debriefing, as a complement.
 
 \guidelineparagraph{Ethical \& Regulatory Boundaries}
 The primary concerns for ethical and regulatory matters are:
